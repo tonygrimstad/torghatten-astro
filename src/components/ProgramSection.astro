@@ -1,0 +1,60 @@
+---
+const { lang = "no" } = Astro.props as { lang?: "no" | "en" };
+
+const programText = {
+  no: {
+    title: "🗓️ Starttider – 26. april 2025",
+    events: [
+      { time: "10:00", description: "Start 42 km – Maraton" },
+      { time: "10:45", description: "Paraløp" },
+      { time: "11:00", description: "Barneløp (500 m)" },
+      { time: "11:45", description: "3,6 km trim (Offisiell start *)" },
+      { time: "12:00", description: "Start 21 km - Halvmaraton" },
+      { time: "12:15", description: "Start 10 km - Øygaloppen" },
+      { time: "12:30", description: "Start 3,6 km - Minimaraton" },
+    ],
+    note: "* De som skal gå/trille 3,6 km trim kan starte når de selv ønsker, men vi oppfordrer til å følge offisiell start kl. 11:45 eller starte tidligere på dagen, slik at man får med seg målgang til distanseløperne. I tillegg vil det da bli bedre plass i løypa siden både minimaraton 3,6 km og 10 km følger samme løypetrasé.",
+  },
+  en: {
+    title: "🗓️ Start Times – April 26, 2025",
+    events: [
+      { time: "10:00", description: "Start 42 km – Marathon" },
+      { time: "10:45", description: "Para race" },
+      { time: "11:00", description: "Kid's run (500 m)" },
+      { time: "11:45", description: "3.6 km fun walk (Official start *)" },
+      { time: "12:00", description: "Start 21 km - Half marathon" },
+      { time: "12:15", description: "Start 10 km - Øygaloppen" },
+      { time: "12:30", description: "Start 3.6 km - Mini marathon" },
+    ],
+    note: "* Participants in the 3.6 km walk/stroll can start whenever they want, but we encourage starting at the official time (11:45) or earlier in the day. This allows for enjoying the atmosphere at the finish line and avoids congestion since 3.6 km and 10 km share the same path.",
+  },
+};
+
+const { title, events, note } = programText[lang];
+---
+
+<section
+  class="relative z-10 -mt-0 max-w-3xl mx-auto bg-black/70 text-white backdrop-blur-md shadow-lg rounded-lg px-6 py-12"
+  id="program"
+>
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">{title}</h2>
+    <ul class="space-y-4">
+      {
+        events.map((item) => (
+          <li class="flex items-start gap-6">
+            <div class="text-xl font-bold w-24 text-right">{item.time}</div>
+            <div>{item.description}</div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="mt-10 p-4 bg-yellow-100 text-black text-sm rounded-md shadow-inner border-l-4 border-yellow-400"
+    >
+      <strong>NB:</strong>
+      {note}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+const distances = [
+  {
+    name: "Helmaraton",
+    description: "42 km gjennom skjærgården på Torgøyene.",
+    icon: "💪",
+    link: "/helmaraton",
+    color: "border-blue-400",
+    timed: true,
+  },
+  {
+    name: "Halvmaraton",
+    description: "21 km i samme trase som helmaraton.",
+    icon: "🏃‍♂️",
+    link: "/halmaraton",
+    color: "border-blue-400",
+    timed: true,
+  },
+  {
+    name: "10 km",
+    description: "En rask og kupert trasé – perfekt for personlige rekorder!",
+    icon: "🏃",
+    link: "/10km",
+    color: "border-red-400",
+    timed: true,
+  },
+  {
+    name: "3,6 km Løp",
+    description: "Lav terskel, den følelsen!",
+    icon: "🚶‍♂️",
+    link: "/36km-lop",
+    color: "border-green-400",
+    timed: true,
+  },
+  {
+    name: "3,6 km Trim",
+    description: "Gå eller trill, ut på tur!",
+    icon: "🧑‍🦽",
+    link: "/36km-trim",
+    color: "border-green-400",
+    timed: false,
+  },
+  {
+    name: "Barneløp",
+    description: "500 meter med heiarop og medalje!",
+    icon: "🎈",
+    link: "/barnelop",
+    color: "border-yellow-300",
+    timed: false,
+  },
+  {
+    name: "Paraløp",
+    description: "Løp med funksjonnedsettelse med heiarop og medalje!",
+    icon: "♿",
+    link: "/paralop",
+    color: "border-yellow-300",
+    timed: false,
+  },
+];
+---
+
+<section
+  id="distanser"
+  class="relative bg-cover bg-center bg-no-repeat text-black py-20 px-6"
+  style="background-image: url('/lopebaner.jpg');"
+>
+  <div class="absolute inset-0 bg-white/70 backdrop-blur-sm z-0"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+      🏅 Våre distanser
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {
+        distances.map((dist) => (
+          <a
+            href={dist.link}
+            class={`relative p-6 rounded-xl shadow-xl text-center transition transform hover:scale-105 duration-300 bg-white/80 backdrop-blur-md border-2 ${dist.color}`}
+          >
+            {dist.timed && <div class="absolute top-2 right-2 text-lg">⏱️</div>}
+            <div class="text-4xl mb-3">{dist.icon}</div>
+            <h3 class="text-lg md:text-xl font-semibold mb-2 tracking-wide uppercase">
+              {dist.name}
+            </h3>
+            <p class="text-sm text-gray-800">{dist.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

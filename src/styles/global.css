@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Reset default padding/margin */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

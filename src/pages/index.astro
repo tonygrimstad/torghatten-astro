@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+//import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProgramSection from "../components/ProgramSection.astro";
+import DistancesSection from "../components/DistancesSection.astro";
+import ResultsSection from "../components/ResultsSection.astro";
+import GallerySection from "../components/GallerySection.astro";
+import AccommodationSection from "../components/AccommodationSection.astro";
+import AboutSection from "../components/AboutSection.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <!-- 🖼️ Bakgrunnsbilde liggende helt bak innholdet -->
+  <div
+    class="fixed top-0 left-0 w-full h-full -z-10 bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center bg-fixed"
+  >
+  </div>
+  <!-- Hero med transparent bakgrunn og mørkt innhold -->
+  <HeroSection />
+  <!-- Program flyter over bildet, med semi-transparent bakgrunn -->
+  <ProgramSection lang="no" />
+  <DistancesSection />
+  <ResultsSection />
+  <GallerySection />
+  <AccommodationSection />
+  <AboutSection />
 </Layout>

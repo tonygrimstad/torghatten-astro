@@ -1,0 +1,75 @@
+---
+const navLinks = [
+  { href: "#program", label: "Program" },
+  { href: "#distanser", label: "Distanser" },
+  { href: "#overnatting", label: "Overnatting" },
+  { href: "#omoss", label: "Om oss" },
+  { href: "jukseside", label: "Jukseside" },
+];
+---
+
+<header
+  class="fixed top-0 left-0 w-full bg-black/80 text-yellow-400 z-50 backdrop-blur-md shadow"
+>
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Tittel helt til venstre -->
+    <a
+      href="/"
+      class="text-xl md:text-2xl font-bold tracking-wide hover:underline"
+    >
+      Torghatten Maraton
+    </a>
+
+    <!-- Desktop-meny -->
+    <div class="hidden md:flex space-x-6">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="hover:underline">
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Mobilmeny-knapp -->
+    <button class="md:hidden" id="menu-button" aria-label="Toggle menu">
+      <svg
+        class="w-7 h-7 text-yellow-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobilmeny -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden px-4 pb-4 space-y-2 bg-black text-center"
+  >
+    {
+      navLinks.map((link) => (
+        <a href={link.href} class="block hover:underline">
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+
+  <script>
+    const btn = document.getElementById("menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
+  </script>
+</header>
