@@ -1,45 +1,37 @@
-# Bygg- og produksjonsmapper
+# 📦 Node & bygde filer
 node_modules/
 dist/
 .next/
 out/
-*.log
 .cache/
-.vscode/
-.DS_Store
 
-# Astro caches
-.cache/
-astro.config.mjs.tsbuildinfo
-*.astro.d.ts
-
-# Logs og OS-filer
+# 🧪 Midlertidige filer og logger
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Miljøvariabler
+# ⚙️ Dev- og editor-filer
+.vscode/
+.DS_Store
+
+# 🔐 Miljøvariabler
 .env
 .env.*
 
-# VS Code filer
-.vscode/
-
-# Mac OS metadata
-.DS_Store
-
-# Netlify/Vercel/Domeneshop byggmapper (hvis aktuelt)
+# 🌐 Netlify / Vercel / Domeneshop deploy mapper
 .netlify/
 .vercel/
 
-# Ekskluder juksesiden og tailwind-komponenten
+# ⚡ Astro-typefiler og TS-cache
+*.astro.d.ts
+tsconfig.tsbuildinfo
+
+# ❌ Ekskluder juksesider og testkomponenter
 src/pages/jukseside.astro
 src/components/TailwindJukseside.astro
 
-# Inkluder GitHub Actions
+# ✅ Tillat disse mappene i git
 !.github/
-
-# Inkluder statiske bilder og offentlig mappe
 !public/
