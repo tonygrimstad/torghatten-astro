@@ -28,3 +28,6 @@ pnpm-debug.log*
 # Netlify/Vercel/Domeneshop byggmapper (hvis aktuelt)
 .netlify/
 .vercel/
+
+# sider med midlertidig innhold
+.jukseside/
