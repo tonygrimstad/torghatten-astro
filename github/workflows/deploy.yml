@@ -3,7 +3,7 @@ name: Deploy to Domeneshop via FTP
 on:
   push:
     branches:
-      - main  # Kjør deploy når du pusher til main
+      - main  # Kjør deploy når du pusher til main (NB!)
 
 jobs:
   deploy:
