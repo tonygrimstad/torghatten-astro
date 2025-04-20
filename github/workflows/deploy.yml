@@ -1,0 +1,29 @@
+name: Deploy to Domeneshop via FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout koden
+        uses: actions/checkout@v3
+
+      - name: Installer avhengigheter
+        run: npm install
+
+      - name: Bygg prosjektet
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.domeneshop.no
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist
+          server-dir: /www/astro/
