@@ -1,0 +1,48 @@
+{
+  "M": [
+    {
+      "Navn": "Lasse Blom",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:11:03",
+      "Klasse": "M35-39",
+      "År": 2018
+    },
+    {
+      "Navn": "Kjell Arne Trælnes",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:11:57",
+      "Klasse": "M35-39",
+      "År": 2018
+    },
+    {
+      "Navn": "Lasse Blom",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:12:14",
+      "Klasse": "M40-44",
+      "År": 2023
+    },
+    {
+      "Navn": "Kjell Arne Trælnes",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:12:38",
+      "Klasse": "M35-39",
+      "År": 2019
+    },
+    {
+      "Navn": "Lasse Blom",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:13:20",
+      "Klasse": "M23-34",
+      "År": 2017
+    }
+  ],
+  "K": [
+    {
+      "Navn": "Lasse Blom",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "1:13:20",
+      "Klasse": "K23-34",
+      "År": 2017
+    }
+  ]
+}

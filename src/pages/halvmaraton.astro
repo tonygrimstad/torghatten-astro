@@ -6,14 +6,14 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
-import helmaratonRecords from "../data/top5_json/helmaraton.json";
+import halvmaratonRecords from "../data/top5_json/halvmaraton.json";
 import VideoSection from "../components/VideoSection.astro";
 ---
 
-<Layout title="Helmaraton" lang="no" light={true}>
+<Layout title="Halvmaraton" lang="no" light={true}>
   <HeroSectionDistanse
-    distanse="🏃‍♂️ Helmaraton (42 195 m)"
-    description="Helmaratonløypen gir også mulighet for uforglemmelige naturopplevelser."
+    distanse="🏃‍♂️ Halvmaraton (21 098 m)"
+    description="Halvmaratonløypen gir også mulighet for uforglemmelige naturopplevelser."
     signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
@@ -22,12 +22,13 @@ import VideoSection from "../components/VideoSection.astro";
     kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
     kontrollbilde="/KontrollertLoype.png"
     tittel="📍 Løypeprofil"
-    beskrivelse1="Helmaratonløypa (halvmaraton x 2) har start og mål på Nordhus Stadion. Den går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten."
+    beskrivelse1="Halvmaraton har start og mål på Nordhus Stadion. Løypen går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten."
     beskrivelse2="Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål."
   />
   <ClassList
     tittel="Damer og Herrer:"
     klasser={[
+      "16–17 år",
       "18–22 år",
       "23–34 år",
       "35–39 år",
@@ -44,17 +45,17 @@ import VideoSection from "../components/VideoSection.astro";
   />
 
   <Top5recordsComponent
-    distanse="Helmaraton"
+    distanse="Halvmaraton"
     kjonn="K"
-    data={helmaratonRecords}
+    data={halvmaratonRecords}
   />
   <Top5recordsComponent
     distanse="Helmaraton"
     kjonn="M"
-    data={helmaratonRecords}
+    data={halvmaratonRecords}
   />
   <VideoSection
-    title="🎥 Se hele helmaratonløypen"
+    title="🎥 Se hele halvmaratonløypen"
     description="Få oversikt over traseen før løpet."
     videoUrl="https://www.youtube.com/embed/sPpCKe2s94k"
   />

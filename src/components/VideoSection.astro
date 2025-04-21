@@ -1,0 +1,32 @@
+---
+const {
+  title = "🎥 Se løypen",
+  description = "Ta en visuell reise gjennom hele løypen og forbered deg til eventyret!",
+  videoUrl = "https://www.youtube.com/embed/sPpCKe2s94k",
+} = Astro.props;
+---
+
+<section class="relative py-20 px-6 text-white bg-cover bg-center">
+  <!-- Mørkt overlegg -->
+  <div class="absolute inset-0 bg-black/70 z-0"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
+      {title}
+    </h2>
+    <p class="mb-6 text-lg md:text-xl max-w-3xl mx-auto text-white">
+      {description}
+    </p>
+    <div
+      class="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-400/40"
+    >
+      <iframe
+        src={videoUrl}
+        title={title}
+        class="absolute top-0 left-0 w-full h-full"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>

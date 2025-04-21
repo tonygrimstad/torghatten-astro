@@ -1,0 +1,62 @@
+---
+interface Rekord {
+  Navn: string;
+  "Lag/Klubb": string;
+  Tid: string;
+  Klasse: string;
+  År: number;
+}
+
+const { distanse, kjonn, data } = Astro.props;
+
+// Hent riktig liste basert på kjønn
+const liste = Array.isArray(data[kjonn]) ? (data[kjonn] as Rekord[]) : [];
+
+const topp5 = liste
+  .filter((row) => row.Tid)
+  .sort((a, b) => a.Tid.localeCompare(b.Tid))
+  .slice(0, 5);
+
+const title = kjonn === "K" ? "Kvinner" : "Menn";
+const tableColor = kjonn === "K" ? "pink" : "blue";
+---
+
+<section class="py-8 px-4 max-w-6xl mx-auto">
+  <div class="bg-white/80 backdrop-blur-lg rounded-xl shadow-lg p-6">
+    <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">
+      {kjonn === "K" ? "👩" : "👨"} Topp 5 {title} – {distanse}
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm md:text-base">
+        <thead>
+          <tr
+            class={kjonn === "K"
+              ? "bg-pink-100 text-pink-800"
+              : "bg-blue-100 text-blue-800"}
+          >
+            <th class="p-2">Navn</th>
+            <th class="p-2">Klubb</th>
+            <th class="p-2">Tid</th>
+            <th class="p-2">Klasse</th>
+            <th class="p-2">År</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            topp5.map((row) => (
+              <tr class="odd:bg-white even:bg-gray-100 hover:bg-yellow-50 transition">
+                <td class="p-2 whitespace-nowrap">{row.Navn}</td>
+                <td class="p-2 whitespace-nowrap">{row["Lag/Klubb"]}</td>
+                <td class="p-2 whitespace-nowrap font-semibold text-gray-800">
+                  {row.Tid}
+                </td>
+                <td class="p-2 whitespace-nowrap">{row.Klasse}</td>
+                <td class="p-2 whitespace-nowrap">{row.År}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

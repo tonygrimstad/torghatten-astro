@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
+import RaceProfile from "../components/RaceProfile.astro";
+import ClassList from "../components/ClassList.astro";
+import InfoSection from "../components/InfoSection.astro";
+import DistancesSection from "../components/DistancesSection.astro";
+import Top5recordsComponent from "../components/Top5recordsComponent.astro";
+import minimaraton_36_km from "../data/top5_json/minimaraton_36_km.json";
+import VideoSection from "../components/VideoSection.astro";
+---
+
+<Layout title="Minimaraton" lang="no" light={true}>
+  <HeroSectionDistanse
+    distanse="🚶‍♂️ Minimaraton"
+    description="Minimaraton kan være en grei løype om man ikke er klar for de lengste distansene."
+    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
+  />
+
+  <RaceProfile
+    kontrollmalt={false}
+    kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
+    kontrollbilde="/KontrollertLoype.png"
+    tittel="📍 Løypeprofil"
+    beskrivelse1="Minimaraton følger delvis samme løype som Øygaloppen. Løypa starter ved Nordhus skole, og går ned mot Toft."
+    beskrivelse2="Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion."
+  />
+  <ClassList
+    tittel="Damer og Herrer:"
+    klasser={["10–11 år", "12–13 år", "14–15 år", "over 15 år"]}
+  />
+
+  <Top5recordsComponent
+    distanse="Minimaraton"
+    kjonn="K"
+    data={minimaraton_36_km}
+  />
+  <Top5recordsComponent
+    distanse="Minimaraton"
+    kjonn="M"
+    data={minimaraton_36_km}
+  />
+  <VideoSection
+    title="🎥 Se hele minimaratonløypen"
+    description="Få oversikt over traseen før løpet."
+    videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
+  />
+
+  <InfoSection />
+  <DistancesSection />
+</Layout>
