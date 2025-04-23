@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
+import RaceProfile from "../components/RaceProfile.astro";
+import InfoSection from "../components/InfoSection.astro";
+import DistancesSection from "../components/DistancesSection.astro";
+---
+
+<Layout title="Paraløp" lang="no" light={true}>
+  <HeroSectionDistanse
+    distanse="♿ Paraløp"
+    description="Løp med funksjonsnedsettelse med heiarop og medalje!"
+    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
+  />
+
+  <RaceProfile
+    kontrollmalt={false}
+    kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
+    kontrollbilde="/KontrollertLoype.png"
+    tittel="📍 Løypeprofil"
+    beskrivelse1="Paraløpet er for mennesker med funksjonsnedsettelse – i alle aldre!"
+    beskrivelse2="Deltagerne i løpet løper/går/triller en eller to runder rundt Nordhus stadion, og går i mål på samme sted som de andre distansene. Alle hjelpemidler og ledsager er tillatt."
+  />
+
+  <InfoSection />
+  <DistancesSection />
+</Layout>

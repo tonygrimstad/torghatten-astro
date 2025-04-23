@@ -1,4 +1,76 @@
 {
-  "M": [],
-  "K": []
+  "K": [
+    {
+      "Navn": "Heidi Hestmark Smalås",
+      "Lag/Klubb": "Namdal Løpeklubb",
+      "Tid": "00:38:24",
+      "Klasse": "K23-34",
+      "År": 2019
+    },
+    {
+      "Navn": "Heidi Hestmark Smalås",
+      "Lag/Klubb": "Namdal Løpeklubb",
+      "Tid": "00:38:52",
+      "Klasse": "K35-39",
+      "År": 2022
+    },
+    {
+      "Navn": "Mari Brox",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:40:26",
+      "Klasse": "K35-39",
+      "År": 2024
+    },
+    {
+      "Navn": "Mari Brox",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:40:36",
+      "Klasse": "K35-39",
+      "År": 2022
+    },
+    {
+      "Navn": "Mari Brox",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:40:41",
+      "Klasse": "K23-34",
+      "År": 2015
+    }
+  ],
+  "M": [
+    {
+      "Navn": "Alexander Kirkeberg",
+      "Lag/Klubb": "Steinkjer Friidrettsklubb",
+      "Tid": "00:31:41",
+      "Klasse": "M23-34",
+      "År": 2024
+    },
+    {
+      "Navn": "Waldemar Knygh-Rossdal",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:33:56",
+      "Klasse": "M18-19",
+      "År": 2024
+    },
+    {
+      "Navn": "Eirik Johansen",
+      "Lag/Klubb": "Brønnøysund IL",
+      "Tid": "00:34:32",
+      "Klasse": "M18-19",
+      "År": 2018
+    },
+    {
+      "Navn": "Eirik Nordvik",
+      "Lag/Klubb": "Namdal løpeklubb",
+      "Tid": "00:34:41",
+      "Klasse": "M40-44",
+      "År": 2024
+    },
+    {
+      "Navn": "Eirik Johansen",
+      "Lag/Klubb": "Brønnøysund IL",
+      "Tid": "00:35:10",
+      "Klasse": "M18-19",
+      "År": 2017
+    }
+  ]
 }

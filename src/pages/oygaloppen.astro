@@ -6,14 +6,14 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
-import halvmaratonRecords from "../data/top5_json/halvmaraton.json";
+import oygaloppenRecords from "../data/top5_json/oygaloppen_10_km.json";
 import VideoSection from "../components/VideoSection.astro";
 ---
 
-<Layout title="Halvmaraton" lang="no" light={true}>
+<Layout title="Øygaloppen" lang="no" light={true}>
   <HeroSectionDistanse
-    distanse="🏃‍♂️ Halvmaraton (21 098 m)"
-    description="Halvmaratonløypen gir også mulighet for uforglemmelige naturopplevelser."
+    distanse="🏃 Øygaloppen (10 000 m)"
+    description="10 km, en rask og kupert trase - perfekt for personlige rekorder!"
     signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
@@ -22,14 +22,17 @@ import VideoSection from "../components/VideoSection.astro";
     kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
     kontrollbilde="/KontrollertLoype.png"
     tittel="📍 Løypeprofil"
-    beskrivelse1="Halvmaraton har start og mål på Nordhus Stadion. Løypen går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten."
-    beskrivelse2="Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål."
+    beskrivelse1="Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn."
+    beskrivelse2="Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan. Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion."
   />
   <ClassList
     tittel="Damer og Herrer:"
     klasser={[
+      "12–13 år",
+      "14–15 år",
       "16–17 år",
-      "18–22 år",
+      "18–19 år",
+      "20–22 år",
       "23–34 år",
       "35–39 år",
       "40–44 år",
@@ -45,19 +48,19 @@ import VideoSection from "../components/VideoSection.astro";
   />
 
   <Top5recordsComponent
-    distanse="Halvmaraton"
+    distanse="Øygaloppen"
     kjonn="K"
-    data={halvmaratonRecords}
+    data={oygaloppenRecords}
   />
   <Top5recordsComponent
-    distanse="Halvmaraton"
+    distanse="Øygaloppen"
     kjonn="M"
-    data={halvmaratonRecords}
+    data={oygaloppenRecords}
   />
   <VideoSection
-    title="🎥 Se hele halvmaratonløypen"
+    title="🎥 Se hele Øygaloppen"
     description="Få oversikt over traseen før løpet."
-    videoUrl="https://www.youtube.com/embed/sPpCKe2s94k"
+    videoUrl="https://www.youtube.com/embed/LNofALhX42k"
   />
 
   <InfoSection />

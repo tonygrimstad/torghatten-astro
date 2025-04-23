@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
+import RaceProfile from "../components/RaceProfile.astro";
+import InfoSection from "../components/InfoSection.astro";
+import DistancesSection from "../components/DistancesSection.astro";
+---
+
+<Layout title="Barneløp" lang="no" light={true}>
+  <HeroSectionDistanse
+    distanse="🎈 Barneløp"
+    description="500 meter med heiarop og medalje!"
+    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
+  />
+
+  <RaceProfile
+    kontrollmalt={false}
+    kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
+    kontrollbilde="/KontrollertLoype.png"
+    tittel="📍 Løypeprofil"
+    beskrivelse1="Det er alltid god stemning på Nordhus når barna blir heiet frem av familie og andre. Om noen av barna vil ha hjelp for å komme seg gjennom løpet er det selvsagt helt greit."
+    beskrivelse2="Barneløpet har en kort distanse som alle klarer, med eller uten hjelp. Det er 2 runder rundt Nordhus stadion og barna løper i mål på samme sted som andre distanser."
+  />
+
+  <InfoSection />
+  <DistancesSection />
+</Layout>
