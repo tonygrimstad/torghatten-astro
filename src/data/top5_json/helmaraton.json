@@ -58,19 +58,20 @@
       "Klasse": "M45-49",
       "År": 2022
     },
+
+    {
+      "Navn": "Øystein Solligård",
+      "Lag/Klubb": "Svorkmo N.O.I.",
+      "Tid": "02:45:09",
+      "Klasse": "M23-34",
+      "År": 2025
+    },
     {
       "Navn": "Jo Inge Norum",
       "Lag/Klubb": "Hell Ultraløpeklubb",
       "Tid": "02:47:16",
       "Klasse": "M40-44",
       "År": 2019
-    },
-    {
-      "Navn": "Kristoffer Reitan Selnes Buvarp",
-      "Lag/Klubb": "Steinkjer Friidrettsklubb",
-      "Tid": "02:47:59",
-      "Klasse": "M18-22",
-      "År": 2022
     }
   ]
 }
