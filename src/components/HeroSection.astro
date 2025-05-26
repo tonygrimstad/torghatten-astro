@@ -1,5 +1,6 @@
 ---
-const signupUrl = "https://live.eqtiming.com/74867#dashboard";
+import SignupButton from "./signupButton.astro";
+import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
 ---
 
 <section
@@ -8,7 +9,7 @@ const signupUrl = "https://live.eqtiming.com/74867#dashboard";
   <!-- Overlay for mørkere bakgrunn -->
   <div class="absolute inset-0 bg-black/60 z-0"></div>
 
-  <!-- Logo oppe i venstre hjørne -->
+  <!-- Logo -->
   <img
     src="/tm-logo.jpg"
     alt="Torghatten Maraton logo"
@@ -16,25 +17,28 @@ const signupUrl = "https://live.eqtiming.com/74867#dashboard";
     style="box-shadow: 4px 4px 15px rgba(234, 179, 8, 0.5);"
   />
 
-  <!-- Innhold sentrert -->
+  <!-- Innhold -->
   <div
     class="relative z-10 flex flex-col flex-grow justify-start items-center px-4 pt-80 md:pt-80 pb-16 text-center"
   >
     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">
-      Torghatten Maraton 2025
+      Torghatten Maraton
+      {isFeatureActive("raceYear") && ` ${getFeatureText("raceYear")}`}
     </h1>
+
     <p class="text-lg md:text-xl mb-6 max-w-2xl">
-      Opplev løpsglede rundt Torghatten – 26. april 2025
+      Opplev løpsglede rundt Torghatten
+      {isFeatureActive("raceDate") && ` – ${getFeatureText("raceDate")}`}
     </p>
 
-    <!-- Påmeldingsknapp -->
+    <SignupButton />
+
+    <!-- Paameldingsknapp
     <a
       href={signupUrl}
       target="_blank"
       rel="noopener noreferrer"
       class="bg-white text-black font-bold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-300 transition"
-    >
-      Meld deg på nå
-    </a>
+    >-->
   </div>
 </section>

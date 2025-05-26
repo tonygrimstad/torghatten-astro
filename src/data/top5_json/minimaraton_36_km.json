@@ -8,6 +8,20 @@
       "År": 2017
     },
     {
+      "Navn": "Ellen Adler",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:15:25",
+      "Klasse": "K12-13",
+      "År": 2025
+    },
+    {
+      "Navn": "Dagmar De Lie",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:15:31",
+      "Klasse": "K16-17",
+      "År": 2025
+    },
+    {
       "Navn": "Tiril Graven",
       "Lag/Klubb": "Sømna IL",
       "Tid": "00:15:43",
@@ -20,20 +34,6 @@
       "Tid": "00:15:49",
       "Klasse": "K14-15",
       "År": 2024
-    },
-    {
-      "Navn": "Ronja Ødegaard",
-      "Lag/Klubb": "Brønnøysund",
-      "Tid": "00:15:56",
-      "Klasse": "K12-13",
-      "År": 2016
-    },
-    {
-      "Navn": "Ellen Adler",
-      "Lag/Klubb": "Brønnøysund IL",
-      "Tid": "00:16:28",
-      "Klasse": "K10-11",
-      "År": 2024
     }
   ],
   "M": [
@@ -43,6 +43,13 @@
       "Tid": "00:13:50",
       "Klasse": "UfK",
       "År": 2024
+    },
+    {
+      "Navn": "Nikolas Berg Olsen",
+      "Lag/Klubb": "Brønnøysund IL",
+      "Tid": "00:14:00",
+      "Klasse": "M12-13",
+      "År": 2025
     },
     {
       "Navn": "Håkon Nilsen",
@@ -59,18 +66,11 @@
       "År": 2024
     },
     {
-      "Navn": "Baste Høyerholt",
-      "Lag/Klubb": "Sportsklubben Vidar",
-      "Tid": "00:15:01",
-      "Klasse": "M10-11",
-      "År": 2019
-    },
-    {
-      "Navn": "Lukas Strømsnes",
-      "Lag/Klubb": "Tjalg IL",
-      "Tid": "00:15:06",
-      "Klasse": "M12-13",
-      "År": 2017
+      "Navn": "Markus Sterjo Langås",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:14:56",
+      "Klasse": "F16+",
+      "År": 2025
     }
   ]
 }

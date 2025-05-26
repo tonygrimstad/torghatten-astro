@@ -31,6 +31,7 @@ tsconfig.tsbuildinfo
 # ❌ Ekskluder juksesider og testkomponenter
 src/pages/jukseside.astro
 src/components/TailwindJukseside.astro
+src/pages/Doc
 
 # ✅ Tillat disse mappene i git
 !.github/

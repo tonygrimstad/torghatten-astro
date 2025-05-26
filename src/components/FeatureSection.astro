@@ -1,0 +1,6 @@
+---
+import { isFeatureActive } from "../config/siteConfig.ts";
+const { feature } = Astro.props;
+---
+
+{isFeatureActive(feature) && <slot />}

@@ -1,0 +1,68 @@
+---
+import { featureToggles, isFeatureActive } from "../../config/siteConfig.ts";
+
+const toggles = Object.entries(featureToggles).map(([key, toggle]) => ({
+  key,
+  ...toggle,
+  active: isFeatureActive(key as keyof typeof featureToggles),
+}));
+---
+
+<html lang="no">
+  <head>
+    <title>Feature Toggle-status</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        background: #f9fafb;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 1rem;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-left: 5px solid #facc15;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .active {
+        color: green;
+        font-weight: bold;
+      }
+      .inactive {
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Feature Toggles 🔧</h1>
+    <ul>
+      {
+        toggles.map((t) => (
+          <li>
+            <div>
+              <span>{t.key}</span>
+              <span class={t.active ? "active" : "inactive"}>
+                {t.active ? " ✅ aktiv" : " ❌ deaktivert"}
+              </span>
+            </div>
+            <small>
+              {t.enabled !== undefined && `Enabled: ${t.enabled} `}
+              {t.from && `| Fra: ${t.from} `}
+              {t.to && `| Til: ${t.to}`}
+            </small>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>
