@@ -1,9 +1,11 @@
 ---
+import FeatureSection from "../components/FeatureSection.astro";
 import Layout from "../layouts/Layout.astro";
 import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
 import RaceProfile from "../components/RaceProfile.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <Layout title="Paraløp" lang="no" light={true}>
@@ -22,6 +24,9 @@ import DistancesSection from "../components/DistancesSection.astro";
     beskrivelse2="Deltagerne i løpet løper/går/triller en eller to runder rundt Nordhus stadion, og går i mål på samme sted som de andre distansene. Alle hjelpemidler og ledsager er tillatt."
   />
 
-  <InfoSection />
+  <FeatureSection feature="infoSection">
+    <InfoSection />
+  </FeatureSection>
   <DistancesSection />
+  <Footer />
 </Layout>

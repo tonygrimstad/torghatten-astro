@@ -27,11 +27,13 @@ export const navLinks: NavItem[] = [
       { href: "/minimaraton", label: "Minimaraton (3,6 km)" },
       { href: "/barnelop", label: "Barneløp" },
       { href: "/paralop", label: "Paraløp" },
+      { href: "/trim", label: "Trim" },
     ],
   },
   // isFeatureActive("infoSection") && { href: "/informasjon", label: "Informasjon" },
   {
     label: "Resultater",
+    toggle: "Resultater",
     dropdown: [
       { href: "https://live.eqtiming.com/74867#result", label: "2025", external: true },
       { href: "https://live.eqtiming.com/69716#result", label: "2024", external: true },
@@ -46,6 +48,7 @@ export const navLinks: NavItem[] = [
   },
   {
     label: "Bilder",
+    toggle: "Bilder",
     dropdown: [
       { href: "https://photos.app.goo.gl/link2025", label: "2025", external: true },
       { href: "https://photos.app.goo.gl/link2023", label: "2024", external: true },
@@ -58,8 +61,9 @@ export const navLinks: NavItem[] = [
       { href: "https://photos.app.goo.gl/link2023", label: "2015", external: true },
     ],
   },
-  { href: "/overnatting", label: "Overnatting" },
-  { href: "/omoss", label: "Om oss" },
-  { href: "/helgelandslopene", label: "Helgelandsløpene" },
+  { href: "/overnatting", label: "Overnatting", toggle: "Overnatting" },
+  { href: "/omoss", label: "Om oss", toggle: "OmOss" },
+  { href: "/helgelandslopene", label: "Helgelandsløpene", toggle: "Helgelandslopene" },
+  // isFeatureActive("signupHint") && { href: "/pamelding", label: "Påmelding" },
 ];
 // .filter(Boolean); // Fjerner tomme elementer

@@ -1,4 +1,5 @@
 ---
+import FeatureSection from "../components/FeatureSection.astro";
 import Layout from "../layouts/Layout.astro";
 import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
 import RaceProfile from "../components/RaceProfile.astro";
@@ -6,6 +7,7 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import VideoSection from "../components/VideoSection.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <Layout title="Trim" lang="no" light={true}>
@@ -34,6 +36,9 @@ import VideoSection from "../components/VideoSection.astro";
     videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
   />
 
-  <InfoSection />
+  <FeatureSection feature="infoSection">
+    <InfoSection />
+  </FeatureSection>
   <DistancesSection />
+  <Footer />
 </Layout>

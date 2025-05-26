@@ -10,7 +10,7 @@ export const siteMeta = {
   email: "post@torghattenmaraton.no",
   phone: "", // hvis du ikke ønsker å vise telefon, sett denne til ""
   description:
-    "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser i Brønnøy kommune.",
+    "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
   orgName: "Sport Torghatten Idrettslag",
   orgUrl: "https://sporttorghatten.no",
 };
@@ -26,7 +26,13 @@ export type FeatureToggleKey =
   | "raceYear"
   | "raceDate"
   | "signupButton"
-  | "signupUrl";
+  | "signupUrl"
+  | "Distanser"
+  | "Resultater"
+  | "Bilder"
+  | "Overnatting"
+  | "OmOss"
+  | "Helgelandslopene";
 
 // Toggle-typen støtter nå også `text`
 export type FeatureToggle = {
@@ -51,7 +57,7 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     enabled: true,
   },
   signupHint: {
-    enabled: true,
+    enabled: false,
     to: "2025-04-25",
     text: "📣 Påmelding er åpen frem til 25. april!",
   },
@@ -65,23 +71,63 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     text: "2026",
   },
   raceDate: {
-    enabled: true,
+    enabled: false,
     from: "2025-01-01",
     to: "2025-12-31",
     text: "25. april 2026",
   },
   signupButton: {
-    enabled: true,
+    enabled: false,
     from: "2025-01-01",
     to: "2025-12-31",
     text: "Meld deg på nå",
     url: "https://live.eqtiming.com/74867#dashboard",
   },
   signupUrl: {
-    enabled: true,
+    enabled: false,
     from: "2025-01-01",
     to: "2025-12-31",
     text: "https://live.eqtiming.com/74867#dashboard",
+  },
+  Bilder: {
+    enabled: false,
+    from: "2025-01-01",
+    to: "2025-02-31"
+  },
+  Distanser: {
+    enabled: true,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  Resultater: {
+    enabled: true,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  Overnatting: {
+    enabled: false,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  OmOss: {
+    enabled: false,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  Helgelandslopene: {
+    enabled: false,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
   }
 };
 

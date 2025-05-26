@@ -1,4 +1,5 @@
 ---
+import FeatureSection from "../components/FeatureSection.astro";
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import ProgramSection from "../components/ProgramSection.astro";
@@ -22,9 +23,9 @@ import Footer from "../components/footer.astro";
   <!-- Hero med transparent bakgrunn og mørkt innhold -->
   <HeroSection />
   <!-- Program flyter over bildet, med semi-transparent bakgrunn -->
-  <ProgramSection lang="no" />
+  <FeatureSection feature="ProgramSection"><ProgramSection /></FeatureSection>
   <DistancesSection />
-  <InfoSection />
+  <FeatureSection feature="InfoSection"><InfoSection /></FeatureSection>
   <GallerySection />
   <AccommodationSection />
   <AboutSection />
