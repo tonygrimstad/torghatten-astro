@@ -25,5 +25,5 @@ jobs:
           server: ftp.domeneshop.no
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist
+          local-dir: ./dist/
           server-dir: /www/astro/  # Pass på at denne mappen eksisterer på server
