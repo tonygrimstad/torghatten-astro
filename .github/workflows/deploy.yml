@@ -1,9 +1,9 @@
-name: Deploy to Domeneshop via FTP
+name: Deploy to Domeneshop
 
 on:
   push:
     branches:
-      - main  # Kjør deploy når du pusher til main (NB!)
+      - main
 
 jobs:
   deploy:
@@ -14,16 +14,18 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 📦 Installer avhengigheter
-        run: npm install
+        run: npm ci
 
-      - name: 🛠️ Bygg Astro-prosjekt
+      - name: 🛠️ Bygg Astro-nettsted
         run: npm run build
 
-      - name: 🚀 Last opp via FTP til Domeneshop
+      - name: 🚀 Deploy via FTP til Domeneshop
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.domeneshop.no
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /www/astro/  # Pass på at denne mappen eksisterer på server
+          server-dir: /www/astro/
+          # Viktig! Ikke slett ting som ikke eksisterer første gang
+          delete-existing: false
