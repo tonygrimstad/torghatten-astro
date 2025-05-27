@@ -19,7 +19,7 @@ jobs:
       - name: 🛠️ Bygg Astro-nettsted
         run: npm run build
 
-      - name: 🚀 Deploy via FTP til Domeneshop
+      - name: 🚀 Last opp til Domeneshop via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.domeneshop.no
@@ -27,5 +27,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /www/astro/
-          # Viktig! Ikke slett ting som ikke eksisterer første gang
-          delete-existing: false
+          log-level: minimal
