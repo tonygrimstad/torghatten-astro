@@ -28,4 +28,3 @@ jobs:
           local-dir: ./dist/
           server-dir: /www/astro/
           log-level: minimal
-          dangerous-clean-slate: true  # eller bruk delete-removed: true hvis du ønsker tryggere alternativ
