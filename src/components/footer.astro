@@ -1,46 +1,51 @@
 ---
+import { useTranslations } from "../utils/useTranslations.ts";
 import { siteMeta } from "../config/siteConfig.ts";
+
+const { t } = useTranslations(Astro.url);
 const year = new Date().getFullYear();
-const email = siteMeta.email;
-const phone = siteMeta.phone;
-const description = siteMeta.description;
-const orgUrl = siteMeta.orgUrl;
-const orgName = siteMeta.orgName;
-const siteName = siteMeta.siteName;
+const { phone } = siteMeta;
 ---
 
-<footer class="bg-neutral-900 text-yellow-400 py-10 px-6 mt-16 text-sm">
+<footer class="bg-black/80 text-yellow-400 py-10 px-6 mt-16 text-sm">
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
     <!-- Kontaktinfo -->
     <div>
-      <h3 class="text-lg font-semibold mb-2">📬 Kontakt oss</h3>
-      <p>{siteName}</p>
+      <h3 class="text-lg font-semibold mb-2">📬 {t("footer.contact")}</h3>
+      <p>{t("footer.siteName")}</p>
       <p>
-        <a href={`mailto:${email}`} class="underline hover:text-yellow-300"
-          >{email}</a
+        <a
+          href={`mailto:${t("footer.email")}`}
+          class="underline hover:text-yellow-300"
         >
+          {t("footer.email")}
+        </a>
       </p>
       {phone && <p>Telefon: {phone}</p>}
     </div>
 
     <!-- Om arrangementet -->
     <div class="md:col-span-2">
-      <h3 class="text-lg font-semibold mb-2">🏃‍♀️ {siteName}</h3>
+      <h3 class="text-lg font-semibold mb-2">🏃‍♀️ {t("footer.event")}</h3>
       <p class="italic text-gray-300">
-        {description}
-        <br /><br />Arrangør:
-        <a href={orgUrl} target="_blank" class="underline hover:text-yellow-300"
-          >{orgName}</a
+        {t("footer.description")}<br /><br />
+        {t("footer.organizedBy")}:
+        <a
+          href={t("footer.orgUrl")}
+          target="_blank"
+          class="underline hover:text-yellow-300"
         >
+          {t("footer.organizedBy")}
+        </a>
       </p>
     </div>
 
     <!-- Språkvalg -->
     <div>
-      <h3 class="text-lg font-semibold mb-2">🌍 Språk / Language</h3>
+      <h3 class="text-lg font-semibold mb-2">🌍 {t("footer.language")}</h3>
       <div class="flex space-x-4">
-        <button class="hover:text-yellow-300">🇳🇴 Norsk</button>
-        <button class="hover:text-yellow-300">🇬🇧 English</button>
+        <a href="?lang=nb" class="hover:text-yellow-300">🇳🇴 Norsk</a>
+        <a href="?lang=en" class="hover:text-yellow-300">🇬🇧 English</a>
       </div>
     </div>
   </div>
@@ -50,10 +55,10 @@ const siteName = siteMeta.siteName;
     class="mt-10 border-t border-gray-700 pt-4 text-center text-xs text-gray-400"
   >
     © 2014–{year}
-    {siteName} • Utvikles og driftes av Tony Grimstad
+    {t("footer.siteName")} • {t("footer.poweredBy")}
     <br />
     <a
-      href="https://github.com/TonyGrimstad/torghatten-astro"
+      href="https://github.com/tonygrimstad/torghatten-astro"
       target="_blank"
       rel="noopener noreferrer"
       class="inline-flex items-center gap-1 text-gray-400 hover:text-yellow-300 mt-1"
@@ -76,7 +81,7 @@ const siteName = siteMeta.siteName;
           c0-6.627-5.373-12-12-12z"
         ></path>
       </svg>
-      Gi gjerne innspill på GitHub
+      {t("footer.feedback")}
     </a>
   </div>
 </footer>

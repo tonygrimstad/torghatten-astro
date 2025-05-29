@@ -1,6 +1,10 @@
 ---
 import SignupButton from "./signupButton.astro";
 import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
+import { useTranslations } from "../utils/useTranslations.ts";
+import { navLinks } from "../config/navLinks.ts";
+
+const { t } = useTranslations(Astro.url);
 ---
 
 <section
@@ -22,12 +26,12 @@ import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
     class="relative z-10 flex flex-col flex-grow justify-start items-center px-4 pt-80 md:pt-80 pb-16 text-center"
   >
     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">
-      Torghatten Maraton
+      {t("hero.title")}
       {isFeatureActive("raceYear") && ` ${getFeatureText("raceYear")}`}
     </h1>
 
     <p class="text-lg md:text-xl mb-6 max-w-2xl">
-      Opplev løpsglede på Torgøyan – Norges vakreste maraton!
+      {t("hero.subtitle")}
       {isFeatureActive("raceDate") && ` – ${getFeatureText("raceDate")}`}
     </p>
 

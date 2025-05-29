@@ -3,16 +3,13 @@
 // Utviklet av Tony Grimstad (github.com/tonygrimstad) siden 2014
 // ======================================================================
 
-// src/config/siteConfig.ts
+import { string } from "astro:schema";
+
+
+//src/config/siteConfig.ts
 
 export const siteMeta = {
-  siteName: "Torghatten Maraton",
-  email: "post@torghattenmaraton.no",
   phone: "", // hvis du ikke ønsker å vise telefon, sett denne til ""
-  description:
-    "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
-  orgName: "Sport Torghatten Idrettslag",
-  orgUrl: "https://sporttorghatten.no",
 };
 
 
@@ -66,8 +63,8 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
   },
   raceYear: {
     enabled: true,
-    from: "2025-01-01",
-    to: "2025-12-31",
+    from: "2025-05-01",
+    to: "2026-05-01",
     text: "2026",
   },
   raceDate: {

@@ -1,17 +1,21 @@
 ---
-//import { isFeatureActive } from "../config/siteConfig.ts";
+// Header.astro
+import { useTranslations } from "../utils/useTranslations.ts";
 import { navLinks } from "../config/navLinks.ts";
 import { isFeatureActive, isValidToggleKey } from "../config/siteConfig.ts";
+const { t } = useTranslations(Astro.url);
 ---
 
 <header
   class="fixed top-0 left-0 w-full bg-black/80 text-yellow-400 z-50 shadow-md"
 >
-  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold hover:underline">Torghatten Maraton</a>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold tracking-tight hover:text-yellow-300">
+      Torghatten Maraton
+    </a>
 
     <!-- Desktop -->
-    <div class="hidden md:flex space-x-6">
+    <nav class="hidden md:flex space-x-6">
       {
         navLinks
           .filter(
@@ -19,14 +23,13 @@ import { isFeatureActive, isValidToggleKey } from "../config/siteConfig.ts";
               !link.toggle ||
               (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle))
           )
-
           .map((link) =>
             "dropdown" in link ? (
               <div class="relative group">
                 <button class="hover:underline whitespace-nowrap">
-                  {link.label}
+                  {t(`nav.${link.label}`)}
                 </button>
-                <div class="absolute left-0 min-w-[200px] bg-black/90 rounded shadow-md z-50 hidden group-hover:flex flex-col transition-all duration-200">
+                <div class="absolute left-0 min-w-[200px] bg-black/90 rounded shadow-md z-50 hidden group-hover:flex flex-col">
                   {link.dropdown.map((item) => (
                     <a
                       href={item.href}
@@ -34,42 +37,28 @@ import { isFeatureActive, isValidToggleKey } from "../config/siteConfig.ts";
                       rel={item.external ? "noopener noreferrer" : undefined}
                       class="block px-4 py-2 hover:bg-yellow-500 hover:text-black whitespace-nowrap"
                     >
-                      {item.label}
+                      {t(`nav.${item.label}`)}
                     </a>
                   ))}
                 </div>
               </div>
             ) : (
               <a href={link.href} class="hover:underline whitespace-nowrap">
-                {link.label}
+                {t(`nav.${link.label}`)}
               </a>
             )
           )
       }
-    </div>
+    </nav>
 
     <!-- Mobilknapp -->
-    <button class="md:hidden" id="menu-button">
-      <svg
-        class="w-6 h-6 text-yellow-400"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
+    <button id="mobile-menu-toggle" class="md:hidden" aria-label="Meny">
+      ☰
     </button>
-  </nav>
+  </div>
 
   <!-- Mobilmeny -->
-  <div
-    id="mobile-menu"
-    class="md:hidden hidden px-4 pb-4 space-y-2 bg-black text-center"
-  >
+  <nav id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 text-sm">
     {
       navLinks
         .filter(
@@ -77,38 +66,46 @@ import { isFeatureActive, isValidToggleKey } from "../config/siteConfig.ts";
             !link.toggle ||
             (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle))
         )
-
         .map((link) =>
           "dropdown" in link ? (
-            <div>
-              <div class="font-semibold mt-4">{link.label}</div>
-              {link.dropdown.map((item) => (
-                <a
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
-                  class="block hover:underline"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+            <details>
+              <summary class="cursor-pointer hover:text-yellow-300">
+                {t(`nav.${link.label}`)}
+              </summary>
+              <div class="ml-4 pl-2 border-l border-yellow-700 space-y-1">
+                {link.dropdown.map((item) => (
+                  <a
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                    class="block hover:text-yellow-300"
+                  >
+                    {t(`nav.${item.label}`)}
+                  </a>
+                ))}
+              </div>
+            </details>
           ) : (
-            <a href={link.href} class="block hover:underline">
-              {link.label}
+            <a href={link.href} class="block hover:text-yellow-300">
+              {t(`nav.${link.label}`)}
             </a>
           )
         )
     }
-  </div>
 
-  <script>
-    const btn = document.getElementById("menu-button");
-    const menu = document.getElementById("mobile-menu");
-    if (btn && menu) {
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
-    }
-  </script>
+    <!-- Språkvalg -->
+    <div class="pt-2 border-t border-yellow-700">
+      <a href="?lang=nb" class="mr-2 hover:text-yellow-300">🇳🇴 Norsk</a>
+      <a href="?lang=en" class="hover:text-yellow-300">🇬🇧 English</a>
+    </div>
+  </nav>
 </header>
+
+<script>
+  document
+    .getElementById("mobile-menu-toggle")
+    ?.addEventListener("click", () => {
+      const menu = document.getElementById("mobile-menu");
+      if (menu) menu.classList.toggle("hidden");
+    });
+</script>

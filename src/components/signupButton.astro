@@ -4,6 +4,8 @@ import {
   getFeatureUrl,
   getFeatureText,
 } from "../config/siteConfig.ts";
+import { useTranslations } from "../utils/useTranslations.ts";
+const { t } = useTranslations(Astro.url);
 ---
 
 {
