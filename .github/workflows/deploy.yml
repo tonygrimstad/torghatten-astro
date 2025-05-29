@@ -28,3 +28,4 @@ jobs:
           local-dir: ./dist/
           server-dir: /www/astro/
           log-level: minimal
+          dangerous-clean-slate: true  # 💣 Sletter alt i målkatalog før deploy
