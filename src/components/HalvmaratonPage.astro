@@ -1,0 +1,62 @@
+---
+import { classGroups } from "../config/classGroups.ts";
+import FeatureSection from "../components/FeatureSection.astro";
+import Layout from "../layouts/Layout.astro";
+import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
+import RaceProfile from "../components/RaceProfile.astro";
+import ClassList from "../components/ClassList.astro";
+import InfoSection from "../components/InfoSection.astro";
+import DistancesSection from "../components/DistancesSection.astro";
+import Top5recordsComponent from "../components/Top5recordsComponent.astro";
+import halvmaratonRecords from "../data/top5_json/halvmaraton.json";
+import VideoSection from "../components/VideoSection.astro";
+import Footer from "../components/footer.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
+---
+
+<Layout title={t("nav.Halvmaraton")} lang={currentLang} light={true}>
+  <HeroSectionDistanse
+    distanse={`🏃‍♂️ ${t("nav.Halvmaraton")} (21 098 m)`}
+    description={t("halvmaraton.description")}
+    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
+  />
+
+  <RaceProfile
+    kontrollmalt={true}
+    kontrolltekst={t("halvmaraton.certified")}
+    kontrollbilde="/KontrollertLoype.png"
+    tittel={t("halvmaraton.profileTitle")}
+    beskrivelse1={t("halvmaraton.description1")}
+    beskrivelse2={t("halvmaraton.description2")}
+  />
+
+  <ClassList
+    tittel={t("helmaraton.classTitle")}
+    klasser={classGroups.halvmaraton}
+  />
+
+  <Top5recordsComponent
+    distanse={t("nav.Halvmaraton")}
+    kjonn="K"
+    data={halvmaratonRecords}
+  />
+  <Top5recordsComponent
+    distanse={t("nav.Halvmaraton")}
+    kjonn="M"
+    data={halvmaratonRecords}
+  />
+
+  <VideoSection
+    title={t("halvmaraton.videoTitle")}
+    description={t("halvmaraton.videoDescription")}
+    videoUrl="https://www.youtube.com/embed/sPpCKe2s94k"
+  />
+
+  <FeatureSection feature="infoSection">
+    <InfoSection />
+  </FeatureSection>
+  <DistancesSection current="Halvmaraton" />
+  <Footer />
+</Layout>

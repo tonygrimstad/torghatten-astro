@@ -1,20 +1,19 @@
-import Trim from "../pages/trim.astro";
-
 // src/config/i18n.ts
+
 export const defaultLang = "nb";
 
 export const translations = {
-
   nb: {
     hero: {
       title: "Torghatten Maraton",
-      subtitle: "Opplev løpsglede på Torgøyan – Norges vakreste maraton!"
+      subtitle: "Opplev løpsglede på Torgøyan – Norges vakreste maraton!",
     },
     footer: {
       contact: "Kontakt oss",
       siteName: "Torghatten Maraton",
       email: "post@torghattenmaraton.no",
-      description: "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
+      description:
+        "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
       event: "Torghatten Maraton",
       organizedBy: "Sport Torghatten Idrettslag",
       orgUrl: "https://sporttorghatten.no",
@@ -22,15 +21,15 @@ export const translations = {
       poweredByUrl: "webmaster@torghattenmaraton.no",
       language: "Språk",
       languageToggle: "Bytt språk",
-      //privacyPolicy: "Personvernerklæring",
-      //termsOfService: "Vilkår for bruk",
-      feedback: "Gi gjerne innspill på GitHub"
+      feedback: "Gi gjerne innspill på GitHub",
     },
     nav: {
       Distanser: "Distanser",
       Helmaraton: "Helmaraton",
       Halvmaraton: "Halvmaraton",
       "Øygaloppen (10 km)": "Øygaloppen (10 km)",
+      Øygaloppen: "Øygaloppen",
+      Minimaraton: "Minimaraton",
       "Minimaraton (3,6 km)": "Minimaraton (3,6 km)",
       Barneløp: "Barneløp",
       Paraløp: "Paraløp",
@@ -47,34 +46,149 @@ export const translations = {
       2022: "2022",
       2023: "2023",
       2024: "2024",
-      2025: "2025"
+      2025: "2025",
     },
+    records: {
+      top5: "Topp 5",
+      female: "Kvinner",
+      male: "Menn",
+      name: "Navn",
+      club: "Klubb",
+      time: "Tid",
+      class: "Klasse",
+      year: "År",
+    },
+
+    classList: {
+      title: "Damer og Herrer:",
+      heading: "👥 Klasser",
+      groups: {
+        "10–11 år": "10–11 år",
+        "12–13 år": "12–13 år",
+        "14–15 år": "14–15 år",
+        "over 15 år": "over 15 år",
+        "16–17 år": "16–17 år",
+        "18–19 år": "18–19 år",
+        "18–22 år": "18–22 år",
+        "20–22 år": "20–22 år",
+        "23–34 år": "23–34 år",
+        "35–39 år": "35–39 år",
+        "40–44 år": "40–44 år",
+        "45–49 år": "45–49 år",
+        "50–54 år": "50–54 år",
+        "55–59 år": "55–59 år",
+        "60–64 år": "60–64 år",
+        "65–69 år": "65–69 år",
+        "70–74 år": "70–74 år",
+        "75–79 år": "75–79 år",
+        "80+": "80+",
+      },
+    },
+
+    distances: {
+      title: "Våre distanser",
+      others: "Våre andre distanser",
+      "Helmaraton": { description: "42 km gjennom skjærgården på Torgøyene." },
+      "Halvmaraton": { description: "21 km i samme trase som helmaraton." },
+      "Øygaloppen (10 km)": { description: "10 km, en rask og kupert trasé – perfekt for personlige rekorder!" },
+      "Minimaraton (3,6 km)": { description: "3,6 km med tidtaking." },
+      "Trim": { description: "3,6 km, gå/jogg eller trill, ut på tur!" },
+      "Barneløp": { description: "500 meter med heiarop og medalje!" },
+      "Paraløp": { description: "Løp med funksjonsnedsettelse med heiarop og medalje!" },
+    },
+
+    helmaraton: {
+      description: "Helmaratonløypen gir også mulighet for uforglemmelige naturopplevelser.",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Helmaratonløypa (halvmaraton x 2) har start og mål på Nordhus Stadion. Den går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten.",
+      description2: "Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål.",
+      classTitle: "Damer og Herrer:",
+    },
+    halvmaraton: {
+      description: "Halvmaratonløypen gir mulighet for uforglemmelige naturopplevelser.",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Halvmaraton har start og mål på Nordhus Stadion. Løypen går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten.",
+      description2: "Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål.",
+      classTitle: "Damer og Herrer:",
+      videoTitle: "🎥 Se hele halvmaratonløypen",
+      videoDescription: "Få oversikt over traseen før løpet.",
+    },
+    minimaraton: {
+      description: "Minimaraton kan være en grei løype om man ikke er klar for de lengste distansene.",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Minimaraton følger delvis samme løype som Øygaloppen. Løypa starter ved Nordhus skole, og går ned mot Toft.",
+      description2: "Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
+      classTitle: "Damer og Herrer:",
+      videoTitle: "🎥 Se hele minimaratonløypen",
+      videoDescription: "Få oversikt over traseen før løpet.",
+    },
+    oygaloppen: {
+      description: "10 km, en rask og kupert trase – perfekt for personlige rekorder!",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn.",
+      description2: "Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan. Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
+      classTitle: "Damer og Herrer:",
+      videoTitle: "🎥 Se hele Øygaloppen",
+      videoDescription: "Få oversikt over traseen før løpet.",
+    },
+    barnelop: {
+      description: "500 meter med heiarop og medalje!",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Det er alltid god stemning på Nordhus når barna blir heiet frem av familie og andre. Om noen av barna vil ha hjelp for å komme seg gjennom løpet er det selvsagt helt greit.",
+      description2: "Barneløpet har en kort distanse som alle klarer, med eller uten hjelp. Det er 2 runder rundt Nordhus stadion og barna løper i mål på samme sted som andre distanser.",
+    },
+    trim: {
+      description: "3,6 km, gå/jogg eller trill, ut på tur!",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Trimmen følger samme løype som Minimaraton (og delvis samme løype som Øygaloppen). Løypa starter ved Nordhus skole, og går ned mot Toft.",
+      description2: "Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
+      classTitle: "Damer og Herrer:",
+      classValue: "Ingen klasser – Alle aldre",
+      videoTitle: "🎥 Se hele trimløypen",
+      videoDescription: "Få oversikt over traseen før løpet.",
+    },
+    paralop: {
+      description: "Løp med funksjonsnedsettelse med heiarop og medalje!",
+      certified: "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
+      profileTitle: "📍 Løypeprofil",
+      description1: "Paraløpet er for mennesker med funksjonsnedsettelse – i alle aldre!",
+      description2: "Deltagerne i løpet løper/går/triller en eller to runder rundt Nordhus stadion, og går i mål på samme sted som de andre distansene. Alle hjelpemidler og ledsager er tillatt.",
+    }
+
   },
 
   en: {
     hero: {
       title: "Torghatten Marathon",
-      subtitle: "Experience the joy of running in Norway's most scenic marathon!"
+      subtitle: "Experience the joy of running in Norway's most scenic marathon!",
     },
     footer: {
       contact: "Contact",
       siteName: "Torghatten Marathon",
       email: "post@torghattenmaraton.no",
       event: "Torghatten Marathon",
-      description: "Torghatten Marathon was first held in 2015 and is organized annually on the last weekend of April. The race takes place in scenic surroundings on the Torgøyan islands in Brønnøy municipality.",
+      description:
+        "Torghatten Marathon was first held in 2015 and is organized annually on the last weekend of April. The race takes place in scenic surroundings on the Torgøyan islands in Brønnøy municipality.",
       organizedBy: "Sport Torghatten Idrettslag",
       orgUrl: "https://sporttorghatten.no",
       language: "Language",
       poweredBy: "Developed and maintained by Tony Grimstad with ❤️ and Astro",
       feedback: "Give feedback on GitHub",
     },
-
     nav: {
       Distanser: "Distances",
       Helmaraton: "Full marathon",
       Halvmaraton: "Half marathon",
       "Øygaloppen (10 km)": "Island race (10 km)",
+      Øygaloppen: "Island race",
       "Minimaraton (3,6 km)": "Mini marathon (3.6 km)",
+      Minimaraton: "Mini marathon",
       Barneløp: "Kids race",
       Paraløp: "Pararace",
       Trim: "Trim",
@@ -90,7 +204,124 @@ export const translations = {
       2022: "2022",
       2023: "2023",
       2024: "2024",
-      2025: "2025"
+      2025: "2025",
     },
+    records: {
+      top5: "Top 5",
+      female: "Women",
+      male: "Men",
+      name: "Name",
+      club: "Club",
+      time: "Time",
+      class: "Class",
+      year: "Year",
+    },
+
+    classList: {
+      title: "Women and Men:",
+      heading: "👥 Classes",
+      groups: {
+        "10–11 år": "10–11 years",
+        "12–13 år": "12–13 years",
+        "14–15 år": "14–15 years",
+        "over 15 år": "over 15 years",
+        "16–17 år": "16–17 years",
+        "18–19 år": "18–19 years",
+        "18–22 år": "18–22 years",
+        "20–22 år": "20–22 years",
+        "23–34 år": "23–34 years",
+        "35–39 år": "35–39 years",
+        "40–44 år": "40–44 years",
+        "45–49 år": "45–49 years",
+        "50–54 år": "50–54 years",
+        "55–59 år": "55–59 years",
+        "60–64 år": "60–64 years",
+        "65–69 år": "65–69 years",
+        "70–74 år": "70–74 years",
+        "75–79 år": "75–79 years",
+        "80+": "80+",
+      },
+    },
+
+    distances: {
+      title: "Our distances",
+      others: "Other distances",
+      "Helmaraton": { description: "42 km through the archipelago around Torgøyan." },
+      "Halvmaraton": { description: "21 km on the same route as the full marathon." },
+      "Øygaloppen (10 km)": { description: "10 km – a fast and hilly course, perfect for personal bests!" },
+      "Minimaraton (3,6 km)": { description: "3.6 km with timing." },
+      "Trim": { description: "3.6 km – walk, jog or roll!" },
+      "Barneløp": { description: "500 meters with cheers and a medal!" },
+      "Paraløp": { description: "Race for people with disabilities – cheering and medals included!" },
+    },
+
+
+    helmaraton: {
+      description: "The full marathon course also offers unforgettable nature experiences.",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "The full marathon route (half marathon x 2) starts and finishes at Nordhus Stadium. It winds through scenic surroundings along the Torgøyan islands and around the legendary Torghatten mountain.",
+      description2: "The course is relatively flat. Starting at ~8 m.a.s.l., with the highest point at 32 m.a.s.l. after 12.5 km. A steady climb and gentle downhill to the finish.",
+      classTitle: "Women and Men:",
+    },
+    halvmaraton: {
+      description: "The half marathon offers unforgettable nature experiences.",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "The half marathon starts and finishes at Nordhus Stadium. The course runs through scenic surroundings along the Torgøyan islands and around the legendary Torghatten mountain.",
+      description2: "The course is relatively flat. Starting at approx. 8 meters above sea level, with the highest point at 32 meters after 12.5 km. A steady incline and a gentle downhill to the finish.",
+      classTitle: "Women and Men:",
+      videoTitle: "🎥 View the full half marathon course",
+      videoDescription: "Get an overview of the route before the race.",
+    },
+    minimaraton: {
+      description: "The mini marathon is a great route if you're not ready for the longer distances.",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "The mini marathon partially follows the same route as Øygaloppen. It starts at Nordhus School and heads down toward Toft.",
+      description2: "The route turns right up the bike path near Solvang Toft youth center, follows it down past the aquaculture center, and continues along the main road back to the finish at Nordhus stadium.",
+      classTitle: "Women and Men:",
+      videoTitle: "🎥 View the full mini marathon course",
+      videoDescription: "Get an overview of the route before the race.",
+    },
+    oygaloppen: {
+      description: "10 km – a fast and hilly course, perfect for personal bests!",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "Øygaloppen follows the same route as the traditional Sør-Helgeland race series with the same name.",
+      description2: "The course starts at Nordhus school, heads on asphalt toward Torghatten with a turnaround just before Torgvatnan. On the way back, it passes Nordhus again and continues down to Toft, turning right at the bike path near Solvang Toft youth center, and follows it past the aquaculture center and back along the main road to the finish at Nordhus stadium.",
+      classTitle: "Women and Men:",
+      videoTitle: "🎥 View the full Øygaloppen course",
+      videoDescription: "Get an overview of the route before the race.",
+    },
+    barnelop: {
+      description: "500 meters of cheering and medals!",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "There's always a great atmosphere at Nordhus when kids are cheered on by family and others. If any of them need help to complete the run, that's of course totally fine.",
+      description2: "The kids' run has a short distance that everyone can complete, with or without help. It’s two laps around Nordhus stadium, and they finish at the same line as the other races.",
+    },
+    trim: {
+      description: "3.6 km – walk, jog or roll, just enjoy the journey!",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "The trim route follows the same course as the mini marathon (and partly Øygaloppen). It starts at Nordhus school and heads down toward Toft.",
+      description2: "The route turns right at the bike path near Solvang Toft youth center, continues past the aquaculture center, and follows the main road back to the finish at Nordhus stadium.",
+      classTitle: "Women and Men:",
+      classValue: "No classes – All ages",
+      videoTitle: "🎥 View the full trim route",
+      videoDescription: "Get an overview of the route before the race.",
+    },
+    paralop: {
+      description: "A race for people with disabilities – cheering and medals included!",
+      certified: "The course is certified by Norwegian Athletics – April 2022",
+      profileTitle: "📍 Course Profile",
+      description1: "The para race is for people with disabilities – of all ages!",
+      description2: "Participants run/walk/roll one or two laps around Nordhus stadium, and finish at the same spot as the other races. All aids and companions are welcome.",
+    }
+
   },
+
 };
+
+export const i18n = translations;

@@ -6,27 +6,30 @@ import RaceProfile from "../components/RaceProfile.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Footer from "../components/footer.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title="Paraløp" lang="no" light={true}>
+<Layout title={t("nav.Paraløp")} lang={currentLang} light={true}>
   <HeroSectionDistanse
-    distanse="♿ Paraløp"
-    description="Løp med funksjonsnedsettelse med heiarop og medalje!"
+    distanse={`♿ ${t("nav.Paraløp")}`}
+    description={t("paralop.description")}
     signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
     kontrollmalt={false}
-    kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
+    kontrolltekst={t("paralop.certified")}
     kontrollbilde="/KontrollertLoype.png"
-    tittel="📍 Løypeprofil"
-    beskrivelse1="Paraløpet er for mennesker med funksjonsnedsettelse – i alle aldre!"
-    beskrivelse2="Deltagerne i løpet løper/går/triller en eller to runder rundt Nordhus stadion, og går i mål på samme sted som de andre distansene. Alle hjelpemidler og ledsager er tillatt."
+    tittel={t("paralop.profileTitle")}
+    beskrivelse1={t("paralop.description1")}
+    beskrivelse2={t("paralop.description2")}
   />
 
   <FeatureSection feature="infoSection">
     <InfoSection />
   </FeatureSection>
-  <DistancesSection />
+  <DistancesSection current="Paraløp" />
   <Footer />
 </Layout>

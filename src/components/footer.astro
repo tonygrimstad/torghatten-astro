@@ -2,7 +2,11 @@
 import { useTranslations } from "../utils/useTranslations.ts";
 import { siteMeta } from "../config/siteConfig.ts";
 
-const { t } = useTranslations(Astro.url);
+const { t, currentLang } = useTranslations(Astro.url);
+const path = Astro.url.pathname;
+const restPath = path.split("/").slice(2).join("/");
+const otherLang = currentLang === "no" ? "en" : "no";
+const switchUrl = `/${otherLang}/${restPath}`;
 const year = new Date().getFullYear();
 const { phone } = siteMeta;
 ---
@@ -44,8 +48,9 @@ const { phone } = siteMeta;
     <div>
       <h3 class="text-lg font-semibold mb-2">🌍 {t("footer.language")}</h3>
       <div class="flex space-x-4">
-        <a href="?lang=nb" class="hover:text-yellow-300">🇳🇴 Norsk</a>
-        <a href="?lang=en" class="hover:text-yellow-300">🇬🇧 English</a>
+        <a href={switchUrl} class="hover:text-yellow-300">
+          {currentLang === "no" ? "🇬🇧 English" : "🇳🇴 Norsk"}
+        </a>
       </div>
     </div>
   </div>

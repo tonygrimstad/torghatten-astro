@@ -10,47 +10,52 @@ import Top5recordsComponent from "../components/Top5recordsComponent.astro";
 import minimaraton_36_km from "../data/top5_json/minimaraton_36_km.json";
 import VideoSection from "../components/VideoSection.astro";
 import Footer from "../components/footer.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title="Minimaraton" lang="no" light={true}>
+<Layout title={t("nav.Minimaraton")} lang={currentLang} light={true}>
   <HeroSectionDistanse
-    distanse="🏃‍♂️ Minimaraton"
-    description="Minimaraton kan være en grei løype om man ikke er klar for de lengste distansene."
+    distanse={`🏃‍♂️ ${t("nav.Minimaraton (3,6 km)")}`}
+    description={t("minimaraton.description")}
     signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
     kontrollmalt={false}
-    kontrolltekst="Løypen er kontrollmålt av Norsk Friidrett – april 2022"
+    kontrolltekst={t("minimaraton.certified")}
     kontrollbilde="/KontrollertLoype.png"
-    tittel="📍 Løypeprofil"
-    beskrivelse1="Minimaraton følger delvis samme løype som Øygaloppen. Løypa starter ved Nordhus skole, og går ned mot Toft."
-    beskrivelse2="Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion."
+    tittel={t("minimaraton.profileTitle")}
+    beskrivelse1={t("minimaraton.description1")}
+    beskrivelse2={t("minimaraton.description2")}
   />
+
   <ClassList
-    tittel="Damer og Herrer:"
+    tittel={t("minimaraton.classTitle")}
     klasser={["10–11 år", "12–13 år", "14–15 år", "over 15 år"]}
   />
 
   <Top5recordsComponent
-    distanse="Minimaraton"
+    distanse={t("nav.Minimaraton")}
     kjonn="K"
     data={minimaraton_36_km}
   />
   <Top5recordsComponent
-    distanse="Minimaraton"
+    distanse={t("nav.Minimaraton")}
     kjonn="M"
     data={minimaraton_36_km}
   />
+
   <VideoSection
-    title="🎥 Se hele minimaratonløypen"
-    description="Få oversikt over traseen før løpet."
+    title={t("minimaraton.videoTitle")}
+    description={t("minimaraton.videoDescription")}
     videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
   />
 
   <FeatureSection feature="infoSection">
     <InfoSection />
   </FeatureSection>
-  <DistancesSection />
+  <DistancesSection current="Minimaraton (3,6 km)" />
   <Footer />
 </Layout>

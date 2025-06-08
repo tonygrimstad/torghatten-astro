@@ -1,3 +1,5 @@
+// navLinks.ts
+
 export type DropdownItem = {
   label: string;
   href: string;
@@ -21,13 +23,13 @@ export const navLinks: NavItem[] = [
   {
     label: "Distanser",
     dropdown: [
-      { href: "/helmaraton", label: "Helmaraton" },
-      { href: "/halvmaraton", label: "Halvmaraton" },
-      { href: "/oygaloppen", label: "Øygaloppen (10 km)" },
-      { href: "/minimaraton", label: "Minimaraton (3,6 km)" },
-      { href: "/barnelop", label: "Barneløp" },
-      { href: "/paralop", label: "Paraløp" },
-      { href: "/trim", label: "Trim" },
+      { href: "helmaraton", label: "Helmaraton" },
+      { href: "halvmaraton", label: "Halvmaraton" },
+      { href: "oygaloppen", label: "Øygaloppen (10 km)" },
+      { href: "minimaraton", label: "Minimaraton (3,6 km)" },
+      { href: "barnelop", label: "Barneløp" },
+      { href: "paralop", label: "Paraløp" },
+      { href: "trim", label: "Trim" },
     ],
   },
   // isFeatureActive("infoSection") && { href: "/informasjon", label: "Informasjon" },
@@ -61,9 +63,11 @@ export const navLinks: NavItem[] = [
       { href: "https://photos.app.goo.gl/link2023", label: "2015", external: true },
     ],
   },
-  { href: "/overnatting", label: "Overnatting", toggle: "Overnatting" },
-  { href: "/omoss", label: "Om oss", toggle: "OmOss" },
-  { href: "/helgelandslopene", label: "Helgelandsløpene", toggle: "Helgelandslopene" },
+
+
+  { href: "overnatting", label: "Overnatting", toggle: "Overnatting" },
+  { href: "omoss", label: "Om oss", toggle: "OmOss" },
+  { href: "helgelandslopene", label: "Helgelandsløpene", toggle: "Helgelandslopene" },
   // isFeatureActive("signupHint") && { href: "/pamelding", label: "Påmelding" },
 ];
 // .filter(Boolean); // Fjerner tomme elementer

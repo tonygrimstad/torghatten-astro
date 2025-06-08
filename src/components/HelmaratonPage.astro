@@ -1,0 +1,61 @@
+---
+import HeroSectionDistanse from "./HeroSectionDistanse.astro";
+import RaceProfile from "./RaceProfile.astro";
+import ClassList from "./ClassList.astro";
+import InfoSection from "./InfoSection.astro";
+import DistancesSection from "./DistancesSection.astro";
+import Top5recordsComponent from "./Top5recordsComponent.astro";
+import VideoSection from "./VideoSection.astro";
+import helmaratonRecords from "../data/top5_json/helmaraton.json";
+import Footer from "./footer.astro";
+import FeatureSection from "./FeatureSection.astro";
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+import { classGroups } from "../config/classGroups.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
+---
+
+<Layout title={t("nav.Helmaraton")} lang={currentLang} light={true}>
+  <HeroSectionDistanse
+    distanse={`🏃‍♂️ ${t("nav.Helmaraton")} (42 195 m)`}
+    description={t("helmaraton.description")}
+    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
+  />
+
+  <RaceProfile
+    kontrollmalt={true}
+    kontrolltekst={t("helmaraton.certified")}
+    kontrollbilde="/KontrollertLoype.png"
+    tittel={t("helmaraton.profileTitle")}
+    beskrivelse1={t("helmaraton.description1")}
+    beskrivelse2={t("helmaraton.description2")}
+  />
+
+  <ClassList
+    tittel={t("helmaraton.classTitle")}
+    klasser={classGroups.helmaraton}
+  />
+
+  <Top5recordsComponent
+    distanse={t("nav.Helmaraton")}
+    kjonn="K"
+    data={helmaratonRecords}
+  />
+  <Top5recordsComponent
+    distanse={t("nav.Helmaraton")}
+    kjonn="M"
+    data={helmaratonRecords}
+  />
+
+  <FeatureSection feature="VideoSection">
+    <VideoSection />
+  </FeatureSection>
+
+  <FeatureSection feature="infoSection">
+    <InfoSection />
+  </FeatureSection>
+
+  <DistancesSection current="Helmaraton" />
+  <Footer />
+</Layout>

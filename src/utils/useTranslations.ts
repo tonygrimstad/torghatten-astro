@@ -1,20 +1,24 @@
-// src/utils/useTranslations.ts
-import { translations, defaultLang } from "../config/i18n";
+import { i18n } from "../config/i18n"; // NB: ikke defaultLang
+
+type Translations = Record<string, any>;
 
 export function useTranslations(url: URL) {
-  const langParam = url.searchParams.get("lang") ?? defaultLang;
-  type LangKey = keyof typeof translations;
-  const lang = (langParam in translations ? langParam : defaultLang) as LangKey;
+  const [, lang] = url.pathname.split("/");
 
-  function t(path: string): string {
-    const keys = path.split(".");
-    let result: any = translations[lang];
-    for (const key of keys) {
-      result = result?.[key];
-      if (result === undefined) return path; // fallback
+  const urlLang = lang === "en" ? "en" : "no";
+  const i18nLang = urlLang === "no" ? "nb" : "en";
+
+  const t = (key: string): string | undefined => {
+    const parts = key.split(".");
+    let value: any = (i18n as Record<string, Translations>)[i18nLang];
+
+    for (const part of parts) {
+      if (value?.[part] === undefined) return undefined;
+      value = value[part];
     }
-    return result;
-  }
 
-  return { t, lang };
+    return value;
+  };
+
+  return { t, currentLang: urlLang };
 }
