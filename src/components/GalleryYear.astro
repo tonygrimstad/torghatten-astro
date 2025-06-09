@@ -1,0 +1,20 @@
+---
+// props: year, photos
+const { year, photos } = Astro.props;
+---
+
+<section class="my-12 px-4">
+  <h2 class="text-3xl text-yellow-400 font-bold text-center mb-6">{year}</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+    {
+      photos.map((url: string, i: number) => (
+        <img
+          src={`${url}=w800`}
+          alt={`Bilde ${i + 1}`}
+          class="rounded shadow hover:scale-105 transition duration-300"
+          loading="lazy"
+        />
+      ))
+    }
+  </div>
+</section>

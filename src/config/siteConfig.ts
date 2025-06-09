@@ -3,7 +3,7 @@
 // Utviklet av Tony Grimstad (github.com/tonygrimstad) siden 2014
 // ======================================================================
 
-import { string } from "astro:schema";
+
 
 
 //src/config/siteConfig.ts

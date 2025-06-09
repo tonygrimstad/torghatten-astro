@@ -1,0 +1,48 @@
+
+---
+interface Props {
+  year: number;
+  photos: string[];
+}
+
+const { year, photos } = Astro.props as Props;
+---
+
+<section class="my-12 px-4">
+  <h2 class="text-3xl text-yellow-400 font-bold text-center mb-6">{year}</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto" id={"gallery-" + year}>
+    {
+      photos.map((url: string, i: number) => (
+        <a
+          href="#"
+          data-pswp-src={url + "=w1600"}
+          data-pswp-width="1600"
+          data-pswp-height="1067"
+          class="block"
+          onclick="event.preventDefault();"
+        >
+          <img
+            src={url + "=w800"}
+            alt={`Bilde ${i + 1}`}
+            class="rounded shadow hover:scale-105 transition duration-300"
+            loading="lazy"
+          />
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<script type="module">
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-{year}',
+    children: 'a',
+    pswpModule: () => import('photoswipe')
+  });
+
+  lightbox.init();
+  console.log('🧪 PhotoSwipe initialized for', '#gallery-' + {year});
+</script>

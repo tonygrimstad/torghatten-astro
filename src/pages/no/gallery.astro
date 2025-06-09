@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LightboxGallery from "../../components/LightboxGallery.astro";
+import { galleriData } from "../../data/galleriIndex";
+
+const sortedYears = [...galleriData].sort((a, b) => b.year - a.year);
+---
+
+<Layout title="Galleri" lang="no">
+  <h1 class="text-4xl text-yellow-400 font-bold text-center my-10">
+    📸 Galleri
+  </h1>
+
+  <div class="text-center mb-6">
+    <select
+      id="yearFilter"
+      class="bg-black text-yellow-300 p-2 rounded border border-yellow-500"
+    >
+      <option value="all">Vis alle år</option>
+      {
+        sortedYears.map((g) => (
+          <option value={`year-${g.year}`}>{g.year}</option>
+        ))
+      }
+    </select>
+  </div>
+
+  {
+    sortedYears.map((entry) => (
+      <div class="gallery-year" data-year={`year-${entry.year}`}>
+        <LightboxGallery year={entry.year} photos={entry.photos} />
+      </div>
+    ))
+  }
+
+  <script>
+    const select = document.getElementById("yearFilter") as HTMLSelectElement;
+    const sections = document.querySelectorAll(
+      ".gallery-year"
+    ) as NodeListOf<HTMLElement>;
+
+    select?.addEventListener("change", () => {
+      const val = select.value;
+      sections.forEach((section) => {
+        const match = section.dataset.year === val;
+        section.style.display = val === "all" || match ? "" : "none";
+      });
+    });
+  </script>
+</Layout>
