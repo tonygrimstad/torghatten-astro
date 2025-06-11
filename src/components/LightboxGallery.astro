@@ -41,3 +41,18 @@ const { photos = [], year = 2023 } = Astro.props;
 </div>
 
 <script type="module" src="/scripts/lightbox.js"></script>
+
+<style>
+  #lightbox-image {
+    opacity: 0;
+    transform: scale(0.98);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  #lightbox-image.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+</style>
