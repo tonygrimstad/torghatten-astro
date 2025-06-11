@@ -33,3 +33,30 @@ document.getElementById("next-btn")?.addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % allImages.length;
   lightboxImage.src = allImages[currentIndex];
 });
+
+let touchStartX = 0;
+
+function handleTouchStart(e) {
+  touchStartX = e.touches[0].clientX;
+}
+
+function handleTouchEnd(e) {
+  const touchEndX = e.changedTouches[0].clientX;
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      // swipe venstre → neste bilde
+      document.getElementById("next-btn")?.click();
+    } else {
+      // swipe høyre → forrige bilde
+      document.getElementById("prev-btn")?.click();
+    }
+  }
+}
+
+
+if (overlay) {
+  overlay.addEventListener("touchstart", handleTouchStart);
+  overlay.addEventListener("touchend", handleTouchEnd);
+}
