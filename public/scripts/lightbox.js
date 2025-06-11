@@ -60,3 +60,33 @@ if (overlay) {
   overlay.addEventListener("touchstart", handleTouchStart);
   overlay.addEventListener("touchend", handleTouchEnd);
 }
+
+let touchStartY = 0;
+
+/*function handleTouchStart(e) {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}*/
+
+function handleTouchEnd(e) {
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const diffX = touchStartX - touchEndX;
+  const diffY = touchStartY - touchEndY;
+
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    // Horisontal swipe
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        document.getElementById("next-btn")?.click();
+      } else {
+        document.getElementById("prev-btn")?.click();
+      }
+    }
+  } else {
+    // Vertikal swipe
+    if (diffY > 50) {
+      document.getElementById("close-btn")?.click();
+    }
+  }
+}
