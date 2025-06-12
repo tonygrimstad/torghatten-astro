@@ -11,13 +11,14 @@ const { title = "Torghatten Maraton", lang = "no" } = Astro.props;
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+  <script src="https://cdn.jsdelivr.net/npm/fslightbox/index.js" defer></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+
   <body
     class={`bg-fixed bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center ${bodyClass}`}
   >

@@ -41,10 +41,23 @@ const sortedYears = [...galleriData].sort((a, b) => b.year - a.year);
 
     select?.addEventListener("change", () => {
       const val = select.value;
-      sections.forEach((section) => {
-        const match = section.dataset.year === val;
-        section.style.display = val === "all" || match ? "" : "none";
+      sections.forEach((sectionEl) => {
+        const match = sectionEl.dataset.year === val;
+        sectionEl.style.display = val === "all" || match ? "" : "none";
       });
+
+      // Rebind etter DOM-endring
+      setTimeout(() => {
+        if (typeof window.bindImageEvents === "function") {
+          window.bindImageEvents();
+        }
+      }, 0);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (typeof window.bindImageEvents === "function") {
+        window.bindImageEvents();
+      }
     });
   </script>
 </Layout>

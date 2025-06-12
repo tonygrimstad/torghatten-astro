@@ -1,5 +1,9 @@
 ---
-const { photos = [], year = 2023 } = Astro.props;
+// props: year, photos
+const { photos, year } = Astro.props;
+if (!photos || !year) {
+  throw new Error("LightboxGallery requires 'photos' and 'year' props");
+}
 ---
 
 <div class="mb-8">
@@ -7,12 +11,17 @@ const { photos = [], year = 2023 } = Astro.props;
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     {
       photos.map((url: string, i: number) => (
-        <img
-          src={url}
-          class="w-full h-auto cursor-pointer"
-          data-index={i}
-          alt={`Bilde ${i + 1}`}
-        />
+        <a
+          href={url.replace("/w_800/", "/w_1600/")}
+          data-fslightbox={`gallery-${year}`}
+        >
+          <img
+            src={url}
+            class="w-full h-auto cursor-pointer transition-transform duration-300 hover:scale-105"
+            alt={`Bilde ${i + 1}`}
+            loading="lazy"
+          />
+        </a>
       ))
     }
   </div>
@@ -24,14 +33,18 @@ const { photos = [], year = 2023 } = Astro.props;
   style="backdrop-filter: blur(5px);"
 >
   <div class="relative max-w-4xl w-full px-4">
-    <button class="absolute top-2 right-2 text-white text-3xl" id="close-btn">
+    <button
+      id="close-btn"
+      class="absolute top-2 right-2 text-white text-3xl z-50"
+      aria-label="Lukk"
+    >
       ✖
     </button>
     <img
       id="lightbox-image"
       src=""
       alt="Stort bilde"
-      class="w-full max-h-[90vh] object-contain rounded"
+      class="w-full max-h-[90vh] object-contain rounded opacity-0 transition-opacity duration-500"
     />
     <div class="flex justify-between mt-4">
       <button id="prev-btn" class="text-white text-2xl">←</button>
@@ -39,20 +52,3 @@ const { photos = [], year = 2023 } = Astro.props;
     </div>
   </div>
 </div>
-
-<script type="module" src="/scripts/lightbox.js"></script>
-
-<style>
-  #lightbox-image {
-    opacity: 0;
-    transform: scale(0.98);
-    transition:
-      opacity 0.4s ease,
-      transform 0.4s ease;
-  }
-
-  #lightbox-image.show {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>
