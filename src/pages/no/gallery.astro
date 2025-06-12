@@ -34,30 +34,19 @@ const sortedYears = [...galleriData].sort((a, b) => b.year - a.year);
   }
 
   <script>
-    const select = document.getElementById("yearFilter") as HTMLSelectElement;
-    const sections = document.querySelectorAll(
-      ".gallery-year"
-    ) as NodeListOf<HTMLElement>;
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("yearFilter");
+      const sections = document.querySelectorAll(".gallery-year");
 
-    select?.addEventListener("change", () => {
-      const val = select.value;
-      sections.forEach((sectionEl) => {
-        const match = sectionEl.dataset.year === val;
-        sectionEl.style.display = val === "all" || match ? "" : "none";
+      select?.addEventListener("change", () => {
+        const val = (select as HTMLSelectElement).value;
+
+        sections.forEach((section) => {
+          const el = section as HTMLElement;
+          const match = el.dataset.year === val;
+          el.style.display = val === "all" || match ? "" : "none";
+        });
       });
-
-      // Rebind etter DOM-endring
-      setTimeout(() => {
-        if (typeof window.bindImageEvents === "function") {
-          window.bindImageEvents();
-        }
-      }, 0);
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      if (typeof window.bindImageEvents === "function") {
-        window.bindImageEvents();
-      }
     });
   </script>
 </Layout>
