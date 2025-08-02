@@ -41,3 +41,69 @@ src/pages/Doc/
 # ✅ Tillat disse mappene i git
 !.github/
 !public/
+
+# Logs
+logs
+dev-debug.log
+# Dependency directories
+# Environment variables
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+
+# Task files
+# tasks.json
+# tasks/
+
+# Taskmaster / Claude / Windsurf
+.taskmaster/
+.claude/
+.windsurf/
+taskmaster.json
+claude.config.json
+mcp.config.*
+mcp.lock
+fastmcp.db
+mcp.json
+.mcp.json
+mcp.config.json
+tmkey.env
+.clinerules/
+.rules/
+.rules
+.roomodes
+.roomodes/
+*.mdc
+opencode.json
+.gemini/settings.json
+agent.md
+agents.md
+claude.md
+gemini.md
+.github
+settings.json
+
+# Kiro AI-hooks
+.kiro/
+.kiro/hooks/
+.kiro/steering/
+
+# Roo-regelbasert utvikling
+.roo/
+.roo/rules/
+.roo/rules-ask/
+.roo/rules-code/
+.roo/rules-architect/
+.roo/rules-debug/
+.roo/rules-orchestrator/
+.roo/rules-test/
+
+# Trae-regler (Taskmaster-relatert)
+.trae/
+.trae/rules/
