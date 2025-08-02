@@ -15,6 +15,7 @@ export const translations = {
       description:
         "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
       event: "Torghatten Maraton",
+      organizer: "Arrangør",
       organizedBy: "Sport Torghatten Idrettslag",
       orgUrl: "https://sporttorghatten.no",
       poweredBy: "Utvikles og driftes av Tony Grimstad med ❤️ og Astro",
@@ -47,6 +48,8 @@ export const translations = {
       2023: "2023",
       2024: "2024",
       2025: "2025",
+      Bilder: "Bilder",
+      Helgelandslopene: "Helgelandsløpene"
     },
     records: {
       top5: "Topp 5",
@@ -175,6 +178,7 @@ export const translations = {
       event: "Torghatten Marathon",
       description:
         "Torghatten Marathon was first held in 2015 and is organized annually on the last weekend of April. The race takes place in scenic surroundings on the Torgøyan islands in Brønnøy municipality.",
+      organizer: "Organizer",
       organizedBy: "Sport Torghatten Idrettslag",
       orgUrl: "https://sporttorghatten.no",
       language: "Language",
@@ -205,6 +209,8 @@ export const translations = {
       2023: "2023",
       2024: "2024",
       2025: "2025",
+      Bilder: "Gallery",
+      Helgelandslopene: "Helgelandsløpene"
     },
     records: {
       top5: "Top 5",

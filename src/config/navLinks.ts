@@ -48,22 +48,7 @@ export const navLinks: NavItem[] = [
       { href: "https://torghattenmaraton.no/wordpress/wp-content/uploads/2016/TM16/Annonser/TorghattenMaraton2015_res.pdf", label: "2015", external: true },
     ],
   },
-  {
-    label: "Bilder",
-    toggle: "Bilder",
-    dropdown: [
-      { href: "https://photos.app.goo.gl/link2025", label: "2025", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2024", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2023", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2022", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2019", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2018", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2017", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2016", external: true },
-      { href: "https://photos.app.goo.gl/link2023", label: "2015", external: true },
-    ],
-  },
-
+  { href: "gallery", label: "Bilder", toggle: "Bilder" },
 
   { href: "overnatting", label: "Overnatting", toggle: "Overnatting" },
   { href: "omoss", label: "Om oss", toggle: "OmOss" },

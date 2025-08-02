@@ -87,9 +87,9 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     text: "https://live.eqtiming.com/74867#dashboard",
   },
   Bilder: {
-    enabled: false,
+    enabled: true,
     from: "2025-01-01",
-    to: "2025-02-31"
+    to: "2025-12-31"
   },
   Distanser: {
     enabled: true,
