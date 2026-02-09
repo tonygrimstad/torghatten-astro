@@ -8,7 +8,7 @@ const {
   tittel = "📍 Løypeprofil",
   beskrivelse1 = "Helmaratonløypa (halvmaraton x 2) har start og mål på Nordhus Stadion. Den går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten.",
   beskrivelse2 = "Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål.",
-  profileId = "race-profile" // Ny prop for unik ID
+  profileId = "race-profile", // Ny prop for unik ID
 } = Astro.props;
 
 // Generer unik ID hvis ikke gitt
@@ -20,24 +20,9 @@ const headingId = `${profileId}-heading`;
   aria-labelledby={headingId}
   role="region"
 >
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
-
-    {kontrollmalt && (
-      <div class="order-2 md:order-1">
-        <img
-          src={kontrollbilde}
-          alt="Offisielt godkjent løype - kontrollmålt av Norsk Friidrett"
-          class="w-48 mx-auto mb-4 rounded-full opacity-80 shadow-lg"
-          loading="lazy"
-          role="img"
-        />
-        <p class="text-center text-sm text-gray-800 font-medium">
-          {kontrolltekst}
-        </p>
-      </div>
-    )}
-
-    <div class="order-1 md:order-2">
+  <div class="max-w-6xl mx-auto">
+    <!-- Hovedinnhold - full bredde -->
+    <div class="mb-8">
       <h2
         id={headingId}
         class="text-2xl md:text-3xl font-bold mb-4 text-gray-900"
@@ -63,5 +48,33 @@ const headingId = `${profileId}-heading`;
       </div>
     </div>
 
+    <!-- Kontrollmål seksjon - under beskrivelsen -->
+    {
+      kontrollmalt && (
+        <div class="flex flex-col items-center justify-center py-6 border-t border-gray-200">
+          <a
+            href="https://www.friidrett.no/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block text-center hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+            aria-label="Besøk Norges Friidrettsforbund - åpnes i ny fane"
+          >
+            <img
+              src={kontrollbilde}
+              alt="Offisielt godkjent løype - kontrollmålt av Norsk Friidrett"
+              class="w-40 md:w-48 mx-auto mb-3 rounded-full opacity-80 shadow-lg group-hover:opacity-100 transition-opacity duration-200"
+              loading="lazy"
+              role="img"
+            />
+            <p class="text-sm text-gray-800 font-medium group-hover:text-blue-600 transition-colors">
+              {kontrolltekst}
+            </p>
+            <p class="text-xs text-gray-600 mt-1 group-hover:text-blue-500 italic">
+              Klikk for å besøke Norges Friidrettsforbund ↗
+            </p>
+          </a>
+        </div>
+      )
+    }
   </div>
 </section>
