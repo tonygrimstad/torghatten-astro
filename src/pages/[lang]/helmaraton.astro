@@ -1,0 +1,17 @@
+---
+import HelmaratonPage from "../../components/HelmaratonPage.astro";
+import { useTranslations } from "../../utils/useTranslations.ts";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/helmaraton");
+}
+---
+
+<HelmaratonPage />

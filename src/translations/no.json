@@ -1,0 +1,277 @@
+{
+  "hero": {
+    "title": "Torghatten Maraton",
+    "subtitle": "Opplev løpsglede på Torgøyan – Norges vakreste maraton!",
+    "scrollHint": "Les mer om løpet",
+    "scrollHintAriaLabel": "Rull ned for mer informasjon om løpet"
+  },
+
+  "seo": {
+    "defaultTitle": "Torghatten Maraton - Norges vakreste maraton",
+    "defaultDescription": "Torghatten Maraton arrangeres årlig siste helgen i april på Torgøyan i Brønnøy. Opplev løpsglede i naturskjønne omgivelser med distanser for alle.",
+    "galleryTitle": "Galleri - Torghatten Maraton",
+    "galleryDescription": "Se bilder fra tidligere år av Torghatten Maraton. Opplev atmosfæren og naturskjønheten fra Norges vakreste maraton.",
+    "fullMarathonTitle": "Helmaraton - Torghatten Maraton",
+    "halfMarathonTitle": "Halvmaraton - Torghatten Maraton",
+    "islandRaceTitle": "Øygaloppen 10km - Torghatten Maraton",
+    "miniMarathonTitle": "Minimaraton 3,6km - Torghatten Maraton",
+    "kidsRaceTitle": "Barneløp - Torghatten Maraton",
+    "paraRaceTitle": "Paraløp - Torghatten Maraton",
+    "trimTitle": "Trim - Torghatten Maraton",
+    "helgelandRacesTitle": "Helgelandsløpene 2025 - Torghatten Maraton",
+    "helgelandRacesDescription": "Delta i minst fire av fem løp på Helgeland og vinn en spesiell t-skjorte, inngravert tallerken og bli med i trekningen av 5000 kroner. Opplev Torghatten, Sømnamile, Alstahaug Maraton, Milæ og Nesna løpefestival."
+  },
+  "footer": {
+    "contact": "Kontakt oss",
+    "siteName": "Torghatten Maraton",
+    "email": "post@torghattenmaraton.no",
+    "description": "Torghatten Maraton ble arrangert første gang i 2015 og arrangeres årlig siste helgen i april. Løpet går i naturskjønne omgivelser på Torgøyan i Brønnøy kommune.",
+    "event": "Torghatten Maraton",
+    "organizer": "Arrangør",
+    "organizedBy": "Sport Torghatten Idrettslag",
+    "orgUrl": "https://sporttorghatten.no",
+    "poweredBy": "Utvikles og driftes av TonyG med ❤️ og Astro",
+    "language": "Språk",
+    "_feedback": "Gi gjerne innspill på GitHub",
+    "phone": "Telefon: ",
+    "english": "🇬🇧 English",
+    "norwegian": "🇳🇴 Norsk"
+  },
+  "nav": {
+    "distances": "Distanser",
+    "fullMarathon": "Helmaraton",
+    "halfMarathon": "Halvmaraton",
+    "islandRace": "Øygaloppen",
+    "islandRace10km": "Øygaloppen (10 km)",
+    "miniMarathon": "Minimaraton",
+    "miniMarathon36km": "Minimaraton (3,6 km)",
+    "kidsRace": "Barneløp",
+    "paraRace": "Paraløp",
+    "trim": "Trim",
+    "program": "Program",
+    "results": "Resultater",
+    "accommodation": "Overnatting",
+    "about": "Om oss",
+    "gallery": "Øyeblikk",
+    "sponsors": "Sponsorer",
+    "helgelandRaces": "Helgelandsløpene"
+  },
+  "records": {
+    "top5": "Topp 5",
+    "female": "Kvinner",
+    "male": "Menn",
+    "name": "Navn",
+    "club": "Klubb",
+    "time": "Tid",
+    "class": "Klasse",
+    "year": "År"
+  },
+  "classList": {
+    "title": "Damer og Herrer:",
+    "heading": "👥 Klasser"
+  },
+  "distances": {
+    "title": "Våre distanser",
+    "others": "Våre andre distanser",
+    "timed": "Tidtaking",
+    "notTimed": "Uten tidtaking",
+    "timedTooltip": "Løp med tidtaking",
+    "timedLabel": "Dette løpet har tidtaking",
+    "clockIcon": "klokke",
+    "medal": "medalje",
+    "navigation": "Velg løpsdistanse",
+    "backgroundAlt": "Bakgrunnsbilde viser løyper og natur rundt Torghatten",
+    "colorIndicator": "Kategorimarkør",
+    "pressEnter": "Trykk Enter for å lese mer",
+    "summary": "{{count}} tilgjengelige distanser",
+    "icons": {
+      "marathon": "maraton styrke",
+      "halfMarathon": "løper mann",
+      "tenK": "løper",
+      "mini": "mini løp",
+      "trim": "trim og mosjon",
+      "children": "barneaktivitet",
+      "para": "paraløp tilgjengelighet"
+    }
+  },
+  "gallery": {
+    "title": "📸 Galleri",
+    "modernTitle": "Øyeblikk fra Løpet",
+    "subtitle": "Se tilbake på magiske øyeblikk fra Torghatten Maraton gjennom årene",
+    "photoCount": "bilder totalt",
+    "image": "Bilde ",
+    "photographers": "Foto"
+  },
+  "visAlleAar": "Vis alle år",
+  "admin": {
+    "title": "Feature Toggle-status",
+    "toggles": "Feature Toggles 🔧",
+    "active": " ✅ aktiv",
+    "inactive": " ❌ deaktivert",
+    "enabled": "Enabled: ",
+    "from": "| Fra: ",
+    "to": "| Til: "
+  },
+  "redirect": {
+    "message": "Du blir videresendt...",
+    "link": "Gå videre til "
+  },
+  "barnelop": {
+    "description": "Morsomt løp for barn med aldersseserterte distanser.",
+    "certified": "Denne løypa er ikke offisielt målt.",
+    "profileTitle": "Barneløp Profil",
+    "description1": "Et trygt og morsomt løp designet spesielt for barn.",
+    "description2": "Forskjellige distanser basert på aldersgrupper slik at alle barn kan delta."
+  },
+  "halvmaraton": {
+    "description": "Halvmaratondistanse gjennom spektakulært norsk landskap.",
+    "certified": "Denne løypa er offisielt målt og sertifisert.",
+    "profileTitle": "Halvmaraton Profil",
+    "description1": "Opplev den perfekte balansen mellom utfordring og naturskjønnet.",
+    "description2": "21,097 km med vakre kyst- og øylandskap.",
+    "videoTitle": "Halvmaraton Høydepunkter",
+    "videoDescription": "Se høydepunkter fra tidligere halvmaratonløp."
+  },
+  "helmaraton": {
+    "classTitle": "Helmaraton Klasser",
+    "description": "Den ultimate utfordringen - full maratondistanse i fantastiske omgivelser.",
+    "certified": "Denne løypa er offisielt målt og sertifisert.",
+    "profileTitle": "Helmaraton Profil",
+    "description1": "Kronjuvelen til Torghatten Maraton - 42,195 km med purt eventyr.",
+    "description2": "Test dine grenser på Norges vakreste maratonløype."
+  },
+  "minimaraton": {
+    "description": "Kortere distanse perfekt for nybegynnere eller de som ønsker en lettere utfordring.",
+    "certified": "Denne løypa er ikke offisielt målt.",
+    "profileTitle": "Minimaraton Profil",
+    "description1": "En flott introduksjon til distanseløp i vakre omgivelser.",
+    "description2": "3,6 km med naturskjønne ruter perfekt for alle treningsnivåer.",
+    "classTitle": "Minimaraton Klasser",
+    "videoTitle": "Minimaraton Opplevelse",
+    "videoDescription": "Se hva minimaraton opplevelsen handler om."
+  },
+  "oygaloppen": {
+    "description": "10 km løp rundt de vakre øyene med fantastisk kystutsikt.",
+    "certified": "Denne løypa er offisielt målt og sertifisert.",
+    "profileTitle": "Øygaloppen Profil",
+    "description1": "Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn. ",
+    "description2": "- Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan.  \n \n- Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. \n \n- Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
+    "classTitle": "Øygaloppen Klasser",
+    "videoTitle": "Øygaloppen Eventyr",
+    "videoDescription": "Opplev øygaloppen gjennom dramatiske landskap."
+  },
+  "paralop": {
+    "description": "Tilgjengelig løp for deltakere med funksjonsnedsettelser.",
+    "certified": "Denne løypa er ikke offisielt målt.",
+    "profileTitle": "Paraløp Profil",
+    "description1": "Et inkluderende løp designet for alle funksjonsnivåer.",
+    "description2": "Tilpasset løype som sikrer at alle kan delta i maratonopplevelsen."
+  },
+  "trim": {
+    "description": "Rekreasjons treningsaktivitet for alle aldre og ferdighetsnivåer.",
+    "certified": "Dette er en rekreasjonsaktivitet, ikke offisielt sertifisert.",
+    "profileTitle": "Trim Aktivitetsprofil",
+    "description1": "Bli med på vår samfunnstreningsaktivitet i vakre naturomgivelser.",
+    "description2": "En ikke-konkurransebasert måte å nyte trening og det fantastiske Torghatten landskapet.",
+    "classTitle": "Trim Klasser",
+    "classValue": "Åpent for alle aldre",
+    "videoTitle": "Trim Aktivitet",
+    "videoDescription": "Se hvordan vårt samfunn kommer sammen for sunn utendørsaktivitet."
+  },
+  "helgelandslopene": {
+    "title": "Helgelandsløpene 2025",
+    "lead": "Helgelandsløpene 2025 er 5 flotte arrangementer på Helgeland. Dersom du deltar på minst 4 av 5 løp har du gjort deg fortjent til en helt spesiell t-skjorte og inngravert tallerken. Samtidig blir du med i trekningen av 5000 kroner. Kravet er at du deltar på distanser fra 10 km og oppover. Følgende løp inngår i dette samarbeidet:",
+    "bannerAlt": "Helgelandsløpene – toppbanner",
+    "sections": {
+      "races": { "title": "Løpene" }
+    },
+    "runs": [
+      {
+        "key": "torghatten",
+        "name": "Torghatten Maraton – lørdag 26. april",
+        "desc": "Her kan du løpe i naturskjønne omgivelser rundt det legendariske fjellet utenfor Brønnøysund. Det er distanser fra 3,6 til 42.2 km, med kontrollmålte løyper på 10km, halv- og helmaraton. Torghatten har også barneløp og paraløp.",
+        "url": "https://torghattenmaraton.no/",
+        "logo": "torghatten-maraton.jpg",
+        "alt": "Torghatten Maraton logo"
+      },
+      {
+        "key": "somnamile",
+        "name": "Sømnamile – lørdag 24. mai",
+        "desc": "Sømna idrettslag har gjennom flere tiår hatt gode langdistanseløpere. Sømnamile er en del av denne tradisjonen. Løpet inneholder kontrollmålte og raske distanser på 5 og 10 km og et barneløp på 650 meter. Vi ønsker et bredt felt av mosjonister og kan love en trivelig lørdag på Sømna stadion!",
+        "url": "https://www.somnamile.no/",
+        "logo": "Somnamile.jpg",
+        "alt": "Sømnamile logo"
+      },
+      {
+        "key": "alstahaug",
+        "name": "Alstahaug Maraton – lørdag 14. juni",
+        "desc": "Dette legendariske løpet har vært arrangert siden 1982. Kontrollmålte distanser på 5, 10, 21 og 42.2 km. Maratondistansen starter i Sandnessjøen. Alle distanser med målgang på vakre Tjøtta gård.",
+        "url": "https://tjotta.net/alstahaug-maraton/hjem.html",
+        "logo": "Alstahaug-maraton.png",
+        "alt": "Alstahaug Maraton logo"
+      },
+      {
+        "key": "milae",
+        "name": "Milæ – lørdag 16. august",
+        "desc": "Dette er et stemningsfullt sentrumsløp med flate løyper gjennom gatene i Mosjøen. Arrangør er bedriftslagene til Vefsn kommune og Helgeland Kraft. Distanser er barneløp, 5 og 10 km. I år får Milæ en helt spesielle vri. Det inngår i Energilekene 2025, en stor happening i regi av Helgeland Kraft. Løpet blir en del av flere konkurranser på Kippermoen, blant annet NM i stolpeklatring!",
+        "url": "https://milæ.no/",
+        "logo": "mila.png",
+        "alt": "Milæ logo"
+      },
+      {
+        "key": "nesna",
+        "name": "Nesna løpefestival – lørdag 20. september",
+        "desc": "Nesna løpefestival ble første gang arrangert i 2023 med til sammen over 400 deltakere. Du kan velge mellom 3 distanser; halvmaraton, 10 og 5 km. Alle distansene er kontrollmålte. I tillegg kan du løpe 5 km uten tid og barneløp. Nesna løpefestival ønsker å lage en folkefest med god stemning i løypene.",
+        "url": "https://heilehelgeland.no/events/nesna-lopefestival/",
+        "logo": "nesna-lop.png",
+        "alt": "Nesna løpefestival logo"
+      }
+    ]
+  },
+
+  "sponsors": {
+    "title": "Sponsorer",
+    "partners": "Samarbeidspartnere",
+    "viewAll": "Se alle samarbeidspartnere",
+    "pageTitle": "Våre Samarbeidspartnere",
+    "pageSubtitle": "Takk til alle som gjør Torghatten Maraton mulig",
+    "pageDescription": "Takk til alle våre samarbeidspartnere som gjør Torghatten Maraton mulig. Se alle sponsorene som støtter oss.",
+    "premium": "Hovedsponsorer",
+    "gold": "Gullsponsorer",
+    "silver": "Sølvsponsorer",
+    "becomeTitle": "Bli en Samarbeidspartner",
+    "becomeDescription": "Vil du støtte Torghatten Maraton? Ta kontakt for å høre om sponsormuligheter.",
+    "contactUs": "Kontakt oss"
+  },
+
+  "results": {
+    "pageTitle": "Resultater & Tider",
+    "subtitle": "Se resultater fra alle Torghatten Maraton løp gjennom årene",
+    "pageDescription": "Se resultater fra alle Torghatten Maraton løp gjennom årene. Finn din tid og plassering fra tidligere løp.",
+    "current": "Seneste løp",
+    "upcoming": "Kommende løp",
+    "viewResults": "Se komplett resultatliste og tider",
+    "viewButton": "Se resultater",
+    "viewUpcoming": "Se påmelding",
+    "infoTitle": "Finner du ikke resultatet ditt?",
+    "infoText": "Kontakt oss hvis du har spørsmål om resultater eller ikke finner det du leter etter.",
+    "contactUs": "Kontakt oss"
+  },
+  "liveScroll": {
+    "title": "Live resultater",
+    "description": "Følg løpet live mens det skjer!",
+    "live": "LIVE",
+    "loading": "Laster live resultater...",
+    "refreshInfo": "Resultatene oppdateres automatisk. Ingen behov for å laste siden på nytt."
+  },
+  "liveScrollHint": {
+    "title": "Løpet er i gang!",
+    "message": "Følg løpet live! Klikk for å se resultater i sanntid",
+    "scrollDown": "Klikk for å gå til live resultater",
+    "close": "Lukk melding"
+  },
+  "signup": {
+    "button": "Meld deg på nå",
+    "hint": "📣 Påmelding er åpen frem til 25. april!"
+  }
+}

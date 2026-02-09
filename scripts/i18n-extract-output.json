@@ -1,0 +1,122 @@
+[
+  {
+    "key": "galleryTitle",
+    "noText": "📸 Galleri",
+    "enText": "📸 Gallery",
+    "file": "src\\pages\\no\\gallery.astro",
+    "line": "N/A",
+    "suggestedKey": "gallery.title"
+  },
+  {
+    "key": "visAlleAar",
+    "noText": "Vis alle år",
+    "enText": "Show all years",
+    "file": "src\\pages\\no\\gallery.astro",
+    "line": "N/A",
+    "suggestedKey": "visAlleAar"
+  },
+  {
+    "key": "admin",
+    "noText": "Feature Toggle-status",
+    "enText": "Feature Toggle Status",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.title"
+  },
+  {
+    "key": "adminToggles",
+    "noText": "Feature Toggles 🔧",
+    "enText": "Feature Toggles 🔧",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.toggles"
+  },
+  {
+    "key": "adminActive",
+    "noText": " ✅ aktiv",
+    "enText": " ✅ active",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.active"
+  },
+  {
+    "key": "adminInactive",
+    "noText": " ❌ deaktivert",
+    "enText": " ❌ inactive",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.inactive"
+  },
+  {
+    "key": "adminEnabled",
+    "noText": "Enabled: ",
+    "enText": "Enabled: ",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.enabled"
+  },
+  {
+    "key": "adminFrom",
+    "noText": "| Fra: ",
+    "enText": "| From: ",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.from"
+  },
+  {
+    "key": "adminTo",
+    "noText": "| Til: ",
+    "enText": "| To: ",
+    "file": "src\\pages\\admin\\feature-toggles.astro",
+    "line": "N/A",
+    "suggestedKey": "admin.to"
+  },
+  {
+    "key": "redirect",
+    "noText": "Du blir videresendt...",
+    "enText": "You are being redirected...",
+    "file": "src\\components\\LanguageRedirectPage.astro",
+    "line": "N/A",
+    "suggestedKey": "redirect.message"
+  },
+  {
+    "key": "redirectLink",
+    "noText": "Gå videre til ",
+    "enText": "Continue to ",
+    "file": "src\\components\\LanguageRedirectPage.astro",
+    "line": "N/A",
+    "suggestedKey": "redirect.link"
+  },
+  {
+    "key": "footerPhone",
+    "noText": "Telefon: ",
+    "enText": "Phone: ",
+    "file": "src\\components\\footer.astro",
+    "line": "N/A",
+    "suggestedKey": "footer.phone"
+  },
+  {
+    "key": "footerEnglish",
+    "noText": "🇬🇧 English",
+    "enText": "🇬🇧 English",
+    "file": "src\\components\\footer.astro",
+    "line": "N/A",
+    "suggestedKey": "footer.english"
+  },
+  {
+    "key": "footerNorwegian",
+    "noText": "🇳🇴 Norsk",
+    "enText": "🇳🇴 Norwegian",
+    "file": "src\\components\\footer.astro",
+    "line": "N/A",
+    "suggestedKey": "footer.norwegian"
+  },
+  {
+    "key": "galleryImage",
+    "noText": "Bilde ",
+    "enText": "Image ",
+    "file": "src\\components\\GalleryYear.astro",
+    "line": "N/A",
+    "suggestedKey": "gallery.image"
+  }
+]

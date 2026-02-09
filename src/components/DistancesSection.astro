@@ -1,101 +1,304 @@
 ---
 import { useTranslations } from "../utils/useTranslations.ts";
 
+interface Distance {
+  key: string;
+  icon: string;
+  link: string;
+  color: string;
+  timed: boolean;
+  iconLabel?: string;
+}
+
+interface Props {
+  current?: string;
+}
+
+const { current }: Props = Astro.props;
 const { t, currentLang } = useTranslations(Astro.url);
 
-// Valgfritt prop: current = "Helmaraton", "Minimaraton (3,6 km)", osv.
-const { current } = Astro.props;
-
-const distances = [
+const distances: Distance[] = [
   {
     key: "Helmaraton",
     icon: "💪",
     link: "helmaraton",
-    color: "border-blue-400",
+    color: "border-blue-500",
     timed: true,
+    iconLabel: t("distances.icons.marathon") || "maraton styrke",
   },
   {
     key: "Halvmaraton",
     icon: "🏃‍♂️",
     link: "halvmaraton",
-    color: "border-blue-400",
+    color: "border-blue-500",
     timed: true,
+    iconLabel: t("distances.icons.halfMarathon") || "løper mann",
   },
   {
     key: "Øygaloppen (10 km)",
     icon: "🏃",
     link: "oygaloppen",
-    color: "border-red-400",
+    color: "border-red-500",
     timed: true,
+    iconLabel: t("distances.icons.tenK") || "løper",
   },
   {
     key: "Minimaraton (3,6 km)",
     icon: "🏃‍♂️",
     link: "minimaraton",
-    color: "border-green-400",
+    color: "border-green-600",
     timed: true,
+    iconLabel: t("distances.icons.mini") || "mini løp",
   },
   {
     key: "Trim",
-    icon: "🧑‍🦽🚶‍♂️",
+    icon: "🚶‍♂️",
     link: "trim",
-    color: "border-green-400",
+    color: "border-green-600",
     timed: false,
+    iconLabel: t("distances.icons.trim") || "trim og mosjon",
   },
   {
     key: "Barneløp",
     icon: "🎈",
     link: "barnelop",
-    color: "border-yellow-300",
+    color: "border-yellow-500",
     timed: false,
+    iconLabel: t("distances.icons.children") || "barneaktivitet",
   },
   {
     key: "Paraløp",
     icon: "♿",
     link: "paralop",
-    color: "border-yellow-300",
+    color: "border-yellow-500",
     timed: false,
+    iconLabel: t("distances.icons.para") || "paraløp tilgjengelighet",
   },
 ];
 
-// Filtrer bort aktuell distanse hvis current er satt
+// Filter out current distance if current is set
 const filtered = current
   ? distances.filter((d) => d.key !== current)
   : distances;
 
-const title = current ? t("distances.others") : t("distances.title");
+const title = current
+  ? t("distances.others") || "Andre distanser"
+  : t("distances.title") || "Velg din distanse";
+
+// Generate unique ID for this component
+const componentId = `distances-section-${Math.random().toString(36).substr(2, 9)}`;
+const headingId = `${componentId}-heading`;
 ---
 
 <section
   id="distanser"
-  class="relative bg-cover bg-center bg-no-repeat text-black py-20 px-6"
+  role="region"
+  aria-labelledby={headingId}
+  class="relative bg-cover bg-center bg-no-repeat text-gray-900 py-20 px-6"
   style="background-image: url('/lopebaner.jpg');"
+  aria-describedby={`${componentId}-description`}
 >
-  <div class="absolute inset-0 bg-white/70 backdrop-blur-sm z-0"></div>
+  <!-- High contrast overlay for better readability -->
+  <div
+    class="absolute inset-0 bg-white/80 backdrop-blur-sm z-0"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Screen reader description of background image -->
+  <div id={`${componentId}-description`} class="sr-only">
+    {
+      t("distances.backgroundAlt") ||
+        "Bakgrunnsbilde viser løyper og natur rundt Torghatten"
+    }
+  </div>
 
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-      🏅 {title}
+    <h2
+      id={headingId}
+      class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900"
+    >
+      <span role="img" aria-label={t("distances.medal") || "medalje"}>🏅</span>
+      {title}
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {/* Navigation landmark for distance cards */}
+    <nav
+      role="navigation"
+      aria-label={t("distances.navigation") || "Velg løpsdistanse"}
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+    >
       {
-        filtered.map((dist) => (
-          <a
-            href={`/${currentLang}/${dist.link}`}
-            class={`relative p-6 rounded-xl shadow-xl text-center transition transform hover:scale-105 duration-300 bg-white/80 backdrop-blur-md border-2 ${dist.color}`}
-          >
-            {dist.timed && <div class="absolute top-2 right-2 text-lg">⏱️</div>}
-            <div class="text-4xl mb-3">{dist.icon}</div>
-            <h3 class="text-lg md:text-xl font-semibold mb-2 tracking-wide uppercase">
-              {t(`nav.${dist.key}`)}
-            </h3>
-            <p class="text-sm text-gray-800">
-              {t(`distances.${dist.key}.description`)}
-            </p>
-          </a>
-        ))
+        filtered.map((dist, index) => {
+          const isTimedText = dist.timed
+            ? t("distances.timed") || "tidtatt"
+            : t("distances.notTimed") || "ikke tidtatt";
+          const cardLabel = `${t(`nav.${dist.key}`) || dist.key} - ${isTimedText}. ${t(`distances.${dist.key}.description`) || ""}`;
+
+          return (
+            <a
+              href={`/${currentLang}/${dist.link}/`}
+              class={`
+                group relative p-6 rounded-xl shadow-xl text-center
+                transition-all transform hover:scale-[1.02] focus:scale-[1.02]
+                duration-300 bg-white/90 backdrop-blur-md border-2
+                ${dist.color} hover:shadow-2xl focus:shadow-2xl
+                focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white
+              `}
+              aria-label={cardLabel}
+              tabindex="0"
+              role="link"
+            >
+              {/* Timing indicator */}
+              {dist.timed && (
+                <div
+                  class="absolute top-3 right-3 p-1 bg-gray-800 text-white rounded-full"
+                  title={t("distances.timedTooltip") || "Tidtatt løp"}
+                  aria-label={
+                    t("distances.timedLabel") || "Dette er et tidtatt løp"
+                  }
+                >
+                  <span
+                    role="img"
+                    aria-label={t("distances.clockIcon") || "klokke"}
+                  >
+                    ⏱️
+                  </span>
+                </div>
+              )}
+
+              {/* Distance type indicator */}
+              <div
+                class={`absolute top-3 left-3 w-4 h-4 rounded-full ${dist.color.replace(
+                  "border-",
+                  "bg-",
+                )} opacity-75`}
+                aria-label={
+                  t("distances.colorIndicator") || `${dist.key} kategori markør`
+                }
+              />
+
+              {/* Main icon */}
+              <div
+                class="text-5xl mb-4 group-hover:scale-110 group-focus:scale-110 transition-transform duration-300"
+                role="img"
+                aria-label={dist.iconLabel}
+              >
+                {dist.icon}
+              </div>
+
+              {/* Distance name */}
+              <h3 class="text-lg md:text-xl font-semibold mb-3 tracking-wide uppercase text-gray-800">
+                {t(`nav.${dist.key}`) || dist.key}
+              </h3>
+
+              {/* Description */}
+              <p class="text-sm text-gray-700 leading-relaxed mb-2">
+                {t(`distances.${dist.key}.description`) || ""}
+              </p>
+
+              {/* Timing status */}
+              <div class="flex items-center justify-center gap-2 mt-4">
+                <span
+                  class={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
+                    dist.timed
+                      ? "bg-blue-100 text-blue-800 border border-blue-300"
+                      : "bg-gray-100 text-gray-700 border border-gray-300"
+                  }`}
+                >
+                  {dist.timed && (
+                    <span
+                      role="img"
+                      aria-label={t("distances.clockIcon") || "klokke"}
+                    >
+                      ⏱️
+                    </span>
+                  )}
+                  {isTimedText}
+                </span>
+              </div>
+
+              {/* Focus indicator for screen readers */}
+              <span class="sr-only group-hover:not-sr-only group-focus:not-sr-only absolute inset-x-4 bottom-4 text-xs text-gray-600 text-center">
+                {t("distances.pressEnter") || "Trykk Enter for å lese mer"}
+              </span>
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    {/* Summary for screen readers */}
+    <div class="sr-only" role="status" aria-live="polite">
+      {
+        t("distances.summary") ||
+          `${filtered.length} tilgjengelige distanser. ${filtered.filter((d) => d.timed).length} tidtatte løp og ${filtered.filter((d) => !d.timed).length} trim/aktiviteter.`
       }
     </div>
   </div>
 </section>
+
+<style>
+  /* Enhanced hover and focus states */
+  nav a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  nav a:hover,
+  nav a:focus {
+    transform: translateY(-4px);
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .border-blue-500,
+    .border-red-500,
+    .border-green-600,
+    .border-yellow-500 {
+      border-width: 4px;
+    }
+
+    .bg-blue-100,
+    .bg-gray-100 {
+      border: 1px solid currentColor;
+    }
+
+    nav a {
+      outline: 1px solid ButtonBorder;
+    }
+  }
+
+  /* Reduce motion for users with vestibular disorders */
+  @media (prefers-reduced-motion: reduce) {
+    nav a,
+    nav a > div {
+      transition: none;
+      transform: none !important;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      transform: none;
+    }
+  }
+
+  /* Better spacing for keyboard navigation */
+  nav a:focus {
+    scroll-margin-top: 2rem;
+  }
+
+  /* Ensure background image doesn't interfere with text readability */
+  @media (prefers-contrast: high) {
+    section {
+      background-image: none !important;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: Canvas;
+      z-index: 0;
+    }
+  }
+</style>

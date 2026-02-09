@@ -1,0 +1,16 @@
+---
+import HalvmaratonPage from "../../components/HalvmaratonPage.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/halvmaraton");
+}
+---
+
+<HalvmaratonPage />

@@ -1,6 +1,9 @@
 ---
+import { useTranslations } from "../utils/useTranslations.ts";
+
 // props: year, photos
 const { year, photos } = Astro.props;
+const { t } = useTranslations(Astro.url);
 ---
 
 <section class="my-12 px-4">
@@ -10,7 +13,7 @@ const { year, photos } = Astro.props;
       photos.map((url: string, i: number) => (
         <img
           src={`${url}=w800`}
-          alt={`Bilde ${i + 1}`}
+          alt={`${t("gallery.image")}${i + 1}`}
           class="rounded shadow hover:scale-105 transition duration-300"
           loading="lazy"
         />

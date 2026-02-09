@@ -1,0 +1,416 @@
+[
+  {
+    "file": "src/components/BarnelopPage.astro",
+    "key": "BarnelopPage.tnavbarneloep",
+    "noText": "🎈 ${t(\"nav.Barneløp\")}",
+    "enText": null
+  },
+  {
+    "file": "src/components/ClassList.astro",
+    "key": "ClassList.inlineblock_px4_py1_roundedfull_textsm",
+    "noText": "inline-block px-4 py-1 rounded-full text-sm font-medium shadow ${ index % 2 === 0 ? \"bg-yellow-200 text-black\" : \"bg-yellow-300 text-black\" }",
+    "enText": null
+  },
+  {
+    "file": "src/components/ClassList.astro",
+    "key": "ClassList.tclasslistgroupsklasse_klasse",
+    "noText": "{t(`classList.groups.${klasse}`) ?? klasse}",
+    "enText": null
+  },
+  {
+    "file": "src/components/DistancesSection.astro",
+    "key": "DistancesSection.currentlangdistlink",
+    "noText": "/${currentLang}/${dist.link}",
+    "enText": null
+  },
+  {
+    "file": "src/components/DistancesSection.astro",
+    "key": "DistancesSection.relative_p6_roundedxl_shadowxl_textcenter",
+    "noText": "relative p-6 rounded-xl shadow-xl text-center transition transform hover:scale-105 duration-300 bg-white/80 backdrop-blur-md border-2 ${dist.color}",
+    "enText": null
+  },
+  {
+    "file": "pages/gallery.astro",
+    "key": "gallery.gyear",
+    "noText": "{g.year}",
+    "enText": "{g.year}"
+  },
+  {
+    "file": "pages/gallery.astro",
+    "key": "gallery.tvisalleaar",
+    "noText": "{t(\"visAlleAar\")}",
+    "enText": "{t(\"visAlleAar\")}"
+  },
+  {
+    "file": "pages/gallery.astro",
+    "key": "gallery.yearentryyear",
+    "noText": "year-${entry.year}",
+    "enText": "year-${entry.year}"
+  },
+  {
+    "file": "pages/gallery.astro",
+    "key": "gallery.yeargyear",
+    "noText": "year-${g.year}",
+    "enText": "year-${g.year}"
+  },
+  {
+    "file": "src/components/GalleryYear.astro",
+    "key": "GalleryYear.tgalleryimagei_1",
+    "noText": "${t(\"gallery.image\")}${i + 1}",
+    "enText": null
+  },
+  {
+    "file": "src/components/GalleryYear.astro",
+    "key": "GalleryYear.urlw800",
+    "noText": "${url}=w800",
+    "enText": null
+  },
+  {
+    "file": "src/components/HalvmaratonPage.astro",
+    "key": "HalvmaratonPage.tnavhalvmaraton_21_098_m",
+    "noText": "🏃‍♂️ ${t(\"nav.Halvmaraton\")} (21 098 m)",
+    "enText": null
+  },
+  {
+    "file": "src/components/Header.astro",
+    "key": "Header.currentlang",
+    "noText": "/${currentLang}/",
+    "enText": null
+  },
+  {
+    "file": "src/components/Header.astro",
+    "key": "Header.currentlangitemhref",
+    "noText": "/${currentLang}/${item.href}",
+    "enText": null
+  },
+  {
+    "file": "src/components/Header.astro",
+    "key": "Header.currentlanglinkhref",
+    "noText": "/${currentLang}/${link.href}",
+    "enText": null
+  },
+  {
+    "file": "src/components/Header.astro",
+    "key": "Header.tnavlinklabel",
+    "noText": "{t(`nav.${link.label}`)}",
+    "enText": null
+  },
+  {
+    "file": "src/components/HelmaratonPage.astro",
+    "key": "HelmaratonPage.tnavhelmaraton_42_195_m",
+    "noText": "🏃‍♂️ ${t(\"nav.Helmaraton\")} (42 195 m)",
+    "enText": null
+  },
+  {
+    "file": "src/components/HeroSection.astro",
+    "key": "HeroSection.torghatten_maraton_logo",
+    "noText": "Torghatten Maraton logo",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.blaa",
+    "noText": "Blå:",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.drikkestasjoner",
+    "noText": "🥤 Drikkestasjoner",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.fredag_kl_17002000",
+    "noText": "Fredag: kl. 17:00–20:00",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.garderober_toalett_og_dusj",
+    "noText": "🚿 Garderober, toalett og dusj",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.generelt",
+    "noText": "📍 Generelt",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.groenn",
+    "noText": "Grønn:",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.gul",
+    "noText": "Gul:",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.informasjon",
+    "noText": "ℹ️ Informasjon",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.loerdag_fra_kl_0900",
+    "noText": "Lørdag: fra kl. 09:00",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.medalje_til_alle_som_fullfoerer",
+    "noText": "Medalje til alle som fullfører",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.nordhus_stadion_nordhus_krets_samfunnshus",
+    "noText": "Nordhus stadion / Nordhus Krets Samfunnshus",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.premie_til_klassevinnere_og_topp",
+    "noText": "Premie til klassevinnere og topp 3",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.premiering",
+    "noText": "🏅 Premiering",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.premieutdeling_paa_stadion_kl_1500",
+    "noText": "Premieutdeling på stadion ~kl. 15:00",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.roed",
+    "noText": "Rød:",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.roede_kors",
+    "noText": "Røde Kors",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.sikkerhet",
+    "noText": "⛑️ Sikkerhet",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.startnummer_og_tidbrikker",
+    "noText": "🎫 Startnummer og tidbrikker",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.startnummerfarger",
+    "noText": "🎨 Startnummer-farger",
+    "enText": null
+  },
+  {
+    "file": "src/components/InfoSection.astro",
+    "key": "InfoSection.vi_venter_til_alle_er",
+    "noText": "Vi venter til alle er i mål!",
+    "enText": null
+  },
+  {
+    "file": "src/components/LanguageRedirectPage.astro",
+    "key": "LanguageRedirectPage.0_urlredirectto",
+    "noText": "0; url=${redirectTo}",
+    "enText": null
+  },
+  {
+    "file": "src/components/LightboxGallery.astro",
+    "key": "LightboxGallery.bilde_i_1",
+    "noText": "Bilde ${i + 1}",
+    "enText": null
+  },
+  {
+    "file": "src/components/LightboxGallery.astro",
+    "key": "LightboxGallery.galleryyear",
+    "noText": "gallery-${year}",
+    "enText": null
+  },
+  {
+    "file": "src/components/LightboxGallery.astro",
+    "key": "LightboxGallery.stort_bilde",
+    "noText": "Stort bilde",
+    "enText": null
+  },
+  {
+    "file": "src/components/MinimaratonPage.astro",
+    "key": "MinimaratonPage.tnavminimaraton_36_km",
+    "noText": "🏃‍♂️ ${t(\"nav.Minimaraton (3,6 km)\")}",
+    "enText": null
+  },
+  {
+    "file": "src/components/OygaloppenPage.astro",
+    "key": "OygaloppenPage.tnavoeygaloppen_10_km",
+    "noText": "🏃 ${t(\"nav.Øygaloppen (10 km)\")}",
+    "enText": null
+  },
+  {
+    "file": "src/components/ParalopPage.astro",
+    "key": "ParalopPage.tnavparaloep",
+    "noText": "♿ ${t(\"nav.Paraløp\")}",
+    "enText": null
+  },
+  {
+    "file": "src/components/ProgramSection.astro",
+    "key": "ProgramSection.nb",
+    "noText": "NB:",
+    "enText": null
+  },
+  {
+    "file": "src/components/RaceProfile.astro",
+    "key": "RaceProfile.logo_nasjonalt_kontrollmaalt_loeype",
+    "noText": "Logo: Nasjonalt kontrollmålt løype",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.bgblack70",
+    "noText": "bg-black/70",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.bgurlbildejpg",
+    "noText": "bg-[url('/bilde.jpg')]",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.diverse",
+    "noText": "🧩 Diverse",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.du_kan_legge_breakpoints_foran",
+    "noText": "Du kan legge breakpoints foran hvilken som helst klasse",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.hoverbgyellow300",
+    "noText": "hover:bg-yellow-300",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.layout",
+    "noText": "🧱 Layout",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.lg",
+    "noText": "lg:",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.lgflex",
+    "noText": "lg:flex",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.md",
+    "noText": "md:",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.mdtext3xl",
+    "noText": "md:text-3xl",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.responsive",
+    "noText": "📱 Responsive",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.senter_horisontalt",
+    "noText": "– senter horisontalt",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.sm",
+    "noText": "sm:",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.tailwind_jukseside",
+    "noText": "🎨 Tailwind Jukseside",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.tekst_farger",
+    "noText": "🎨 Tekst & Farger",
+    "enText": null
+  },
+  {
+    "file": "src/components/TailwindJukseside.astro",
+    "key": "TailwindJukseside.xl",
+    "noText": "xl:",
+    "enText": null
+  },
+  {
+    "file": "src/components/TrimPage.astro",
+    "key": "TrimPage.tnavtrim",
+    "noText": "🧑‍🦽🚶‍♂️ ${t(\"nav.Trim\")}",
+    "enText": null
+  },
+  {
+    "file": "src/components/Welcome.astro",
+    "key": "Welcome.astro_homepage",
+    "noText": "Astro Homepage",
+    "enText": null
+  },
+  {
+    "file": "src/components/Welcome.astro",
+    "key": "Welcome.join_our_discord",
+    "noText": "Join our Discord",
+    "enText": null
+  },
+  {
+    "file": "src/components/Welcome.astro",
+    "key": "Welcome.read_our_docs",
+    "noText": "Read our docs",
+    "enText": null
+  },
+  {
+    "file": "src/components/Welcome.astro",
+    "key": "Welcome.srcpages",
+    "noText": "src/pages",
+    "enText": null
+  },
+  {
+    "file": "src/components/Welcome.astro",
+    "key": "Welcome.whats_new_in_astro_50",
+    "noText": "What's New in Astro 5.0?",
+    "enText": null
+  }
+]

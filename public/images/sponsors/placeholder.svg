@@ -1,0 +1,6 @@
+<!-- Simple SVG placeholder for sponsor logo testing -->
+<svg width="120" height="60"
+  xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="60" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+  <text x="60" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">SPONSOR</text>
+</svg>

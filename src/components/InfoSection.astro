@@ -1,95 +1,336 @@
 ---
-// InfoSection.astro
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t } = useTranslations(Astro.url);
+
+// Generate unique IDs for accessibility
+const componentId = `info-section-${Math.random().toString(36).substr(2, 9)}`;
+const headingId = `${componentId}-main-heading`;
 ---
 
 <section
-  class="bg-white/90 text-black py-12 px-6 rounded-lg shadow-lg max-w-5xl mx-auto my-12"
+  role="region"
+  aria-labelledby={headingId}
+  class="bg-white/90 text-gray-900 py-12 px-6 rounded-lg shadow-lg max-w-5xl mx-auto my-12 border border-gray-200"
 >
-  <h2 class="text-3xl font-bold text-center mb-8">ℹ️ Informasjon</h2>
+  <h2 id={headingId} class="text-3xl font-bold text-center mb-8 text-gray-900">
+    <span role="img" aria-label={t("info.icon") || "informasjon"}>ℹ️</span>
+    {t("info.title") || "Informasjon"}
+  </h2>
 
   <div class="space-y-8 text-sm md:text-base leading-relaxed">
     <!-- Generelt -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">📍 Generelt</h3>
-      <p>
-        Alle løp starter på <strong
-          >Nordhus stadion / Nordhus Krets Samfunnshus</strong
-        >.
+    <div role="region" aria-labelledby={`${componentId}-general-heading`}>
+      <h3
+        id={`${componentId}-general-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.general.icon") || "plassering"}
+          >📍</span
+        >
+        {t("info.general.title") || "Generelt"}
+      </h3>
+      <p class="text-gray-700">
+        {
+          t("info.general.description") || (
+            <>
+              Alle løp starter på{" "}
+              <strong class="text-gray-900">
+                Nordhus stadion / Nordhus Krets Samfunnshus
+              </strong>
+              .
+            </>
+          )
+        }
       </p>
     </div>
 
     <!-- Startnummer -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">🎫 Startnummer og tidbrikker</h3>
-      <p>
-        Henting skjer på Nordhus skole (NKS). Du får en SMS med ditt startnummer
-        fredag.
-        <br />
-        Henting:
-        <ul class="list-disc list-inside ml-4 mt-1">
-          <li>Fredag: kl. 17:00–20:00</li>
-          <li>Lørdag: fra kl. 09:00</li>
-        </ul>
-      </p>
+    <div role="region" aria-labelledby={`${componentId}-bib-heading`}>
+      <h3
+        id={`${componentId}-bib-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.bib.icon") || "startnummer"}
+          >🎫</span
+        >
+        {t("info.bib.title") || "Startnummer og tidbrikker"}
+      </h3>
+      <div class="text-gray-700 space-y-2">
+        <p>
+          {
+            t("info.bib.description") ||
+              "Henting skjer på Nordhus skole (NKS). Du får en SMS med ditt startnummer fredag."
+          }
+        </p>
+        <div>
+          <p class="font-medium mb-2">
+            {t("info.bib.pickupTitle") || "Henting:"}
+          </p>
+          <ul
+            class="list-disc list-inside ml-4 space-y-1"
+            role="list"
+            aria-label={t("info.bib.pickupTimes") ||
+              "Hentetider for startnummer"}
+          >
+            <li role="listitem">
+              <span class="font-medium"
+                >{t("info.bib.friday") || "Fredag:"}</span
+              >
+              {t("info.bib.fridayTime") || "kl. 17:00–20:00"}
+            </li>
+            <li role="listitem">
+              <span class="font-medium"
+                >{t("info.bib.saturday") || "Lørdag:"}</span
+              >
+              {t("info.bib.saturdayTime") || "fra kl. 09:00"}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- Startnummer-farger -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">🎨 Startnummer-farger</h3>
-      <ul class="list-disc list-inside ml-4">
-        <li>
-          <span class="font-semibold text-blue-600">Blå:</span> Hel- og Halvmaraton
+    <div role="region" aria-labelledby={`${componentId}-colors-heading`}>
+      <h3
+        id={`${componentId}-colors-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.colors.icon") || "farger"}>🎨</span
+        >
+        {t("info.colors.title") || "Startnummer-farger"}
+      </h3>
+      <ul
+        class="space-y-2 ml-4"
+        role="list"
+        aria-label={t("info.colors.description") ||
+          "Fargesystem for startnummer"}
+      >
+        <li
+          role="listitem"
+          class="flex items-center gap-3 p-2 bg-blue-50 rounded-md border-l-4 border-blue-500"
+        >
+          <span
+            class="w-4 h-4 bg-blue-500 rounded-full border border-blue-600"
+            aria-label={t("info.colors.blue") || "blå farge"}></span>
+          <span class="font-semibold text-blue-800" aria-label="blå kategori">
+            {t("info.colors.blueLabel") || "Blå:"}
+          </span>
+          <span class="text-gray-700">
+            {t("info.colors.blueRaces") || "Hel- og Halvmaraton"}
+          </span>
         </li>
-        <li>
-          <span class="font-semibold text-red-600">Rød:</span> Øygaloppen (10 000
-          m)
+        <li
+          role="listitem"
+          class="flex items-center gap-3 p-2 bg-red-50 rounded-md border-l-4 border-red-500"
+        >
+          <span
+            class="w-4 h-4 bg-red-500 rounded-full border border-red-600"
+            aria-label={t("info.colors.red") || "rød farge"}></span>
+          <span class="font-semibold text-red-800" aria-label="rød kategori">
+            {t("info.colors.redLabel") || "Rød:"}
+          </span>
+          <span class="text-gray-700">
+            {t("info.colors.redRaces") || "Øygaloppen (10 000 m)"}
+          </span>
         </li>
-        <li>
-          <span class="font-semibold text-green-600">Grønn:</span> Minimaraton og
-          Trim
+        <li
+          role="listitem"
+          class="flex items-center gap-3 p-2 bg-green-50 rounded-md border-l-4 border-green-600"
+        >
+          <span
+            class="w-4 h-4 bg-green-600 rounded-full border border-green-700"
+            aria-label={t("info.colors.green") || "grønn farge"}></span>
+          <span
+            class="font-semibold text-green-800"
+            aria-label="grønn kategori"
+          >
+            {t("info.colors.greenLabel") || "Grønn:"}
+          </span>
+          <span class="text-gray-700">
+            {t("info.colors.greenRaces") || "Minimaraton og Trim"}
+          </span>
         </li>
-        <li>
-          <span class="font-semibold text-yellow-500">Gul:</span> Barneløp/Paraløp
+        <li
+          role="listitem"
+          class="flex items-center gap-3 p-2 bg-yellow-50 rounded-md border-l-4 border-yellow-600"
+        >
+          <span
+            class="w-4 h-4 bg-yellow-500 rounded-full border border-yellow-600"
+            aria-label={t("info.colors.yellow") || "gul farge"}></span>
+          <span class="font-semibold text-yellow-800" aria-label="gul kategori">
+            {t("info.colors.yellowLabel") || "Gul:"}
+          </span>
+          <span class="text-gray-700">
+            {t("info.colors.yellowRaces") || "Barneløp/Paraløp"}
+          </span>
         </li>
       </ul>
     </div>
 
     <!-- Garderobe -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">🚿 Garderober, toalett og dusj</h3>
-      <p>
-        Garderober med dusj og toalett finnes på NKS ved start-/målområdet.
-        Tøy/verdisaker kan oppbevares i sekretariatet.
+    <div role="region" aria-labelledby={`${componentId}-facilities-heading`}>
+      <h3
+        id={`${componentId}-facilities-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.facilities.icon") || "fasiliteter"}
+          >🚿</span
+        >
+        {t("info.facilities.title") || "Garderober, toalett og dusj"}
+      </h3>
+      <p class="text-gray-700">
+        {
+          t("info.facilities.description") ||
+            "Garderober med dusj og toalett finnes på NKS ved start-/målområdet. Tøy/verdisaker kan oppbevares i sekretariatet."
+        }
       </p>
     </div>
 
     <!-- Drikkestasjoner -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">🥤 Drikkestasjoner</h3>
-      <p>
-        Hver ~5. km for hel- og halvmaraton. Vann, sportsdrikk og banan.
-        <br />
-        Betjenes av lokale frivillige.
-      </p>
+    <div role="region" aria-labelledby={`${componentId}-drinks-heading`}>
+      <h3
+        id={`${componentId}-drinks-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.drinks.icon") || "drikkestasjoner"}
+          >🥤</span
+        >
+        {t("info.drinks.title") || "Drikkestasjoner"}
+      </h3>
+      <div class="text-gray-700 space-y-2">
+        <p>
+          {
+            t("info.drinks.frequency") ||
+              "Hver ~5. km for hel- og halvmaraton. Vann, sportsdrikk og banan."
+          }
+        </p>
+        <p class="text-sm text-gray-600">
+          {t("info.drinks.volunteers") || "Betjenes av lokale frivillige."}
+        </p>
+      </div>
     </div>
 
     <!-- Sikkerhet -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">⛑️ Sikkerhet</h3>
-      <p>
-        Vi samarbeider med <strong>Røde Kors</strong> for din sikkerhet.
+    <div role="region" aria-labelledby={`${componentId}-safety-heading`}>
+      <h3
+        id={`${componentId}-safety-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.safety.icon") || "sikkerhet"}
+          >⛑️</span
+        >
+        {t("info.safety.title") || "Sikkerhet"}
+      </h3>
+      <p class="text-gray-700">
+        {
+          t("info.safety.description") || (
+            <>
+              Vi samarbeider med{" "}
+              <strong class="text-gray-900">Røde Kors</strong> for din
+              sikkerhet.
+            </>
+          )
+        }
       </p>
     </div>
 
     <!-- Premiering -->
-    <div>
-      <h3 class="text-xl font-semibold mb-2">🏅 Premiering</h3>
-      <ul class="list-disc list-inside ml-4">
-        <li>Medalje til alle som fullfører</li>
-        <li>Premie til klassevinnere og topp 3</li>
-        <li>Premieutdeling på stadion ~kl. 15:00</li>
-        <li>Vi venter til alle er i mål!</li>
+    <div role="region" aria-labelledby={`${componentId}-awards-heading`}>
+      <h3
+        id={`${componentId}-awards-heading`}
+        class="text-xl font-semibold mb-3 text-gray-800 flex items-center gap-2"
+      >
+        <span role="img" aria-label={t("info.awards.icon") || "premiering"}
+          >🏅</span
+        >
+        {t("info.awards.title") || "Premiering"}
+      </h3>
+      <ul
+        class="space-y-2 ml-4"
+        role="list"
+        aria-label={t("info.awards.description") || "Informasjon om premiering"}
+      >
+        <li role="listitem" class="flex items-start gap-2">
+          <span
+            class="w-2 h-2 bg-gray-400 rounded-full mt-2 shrink-0"
+            aria-hidden="true"></span>
+          <span class="text-gray-700">
+            {t("info.awards.medal") || "Medalje til alle som fullfører"}
+          </span>
+        </li>
+        <li role="listitem" class="flex items-start gap-2">
+          <span
+            class="w-2 h-2 bg-gray-400 rounded-full mt-2 shrink-0"
+            aria-hidden="true"></span>
+          <span class="text-gray-700">
+            {t("info.awards.prizes") || "Premie til klassevinnere og topp 3"}
+          </span>
+        </li>
+        <li role="listitem" class="flex items-start gap-2">
+          <span
+            class="w-2 h-2 bg-gray-400 rounded-full mt-2 shrink-0"
+            aria-hidden="true"></span>
+          <span class="text-gray-700">
+            {
+              t("info.awards.ceremony") ||
+                "Premieutdeling på stadion ~kl. 15:00"
+            }
+          </span>
+        </li>
+        <li role="listitem" class="flex items-start gap-2">
+          <span
+            class="w-2 h-2 bg-gray-400 rounded-full mt-2 shrink-0"
+            aria-hidden="true"></span>
+          <span class="text-gray-700 font-medium">
+            {t("info.awards.waitForAll") || "Vi venter til alle er i mål!"}
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
+
+<style>
+  /* Enhanced focus styles for accessibility */
+  h2:focus,
+  h3:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 4px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .border-l-4 {
+      border-left-width: 6px;
+    }
+
+    .bg-blue-50,
+    .bg-red-50,
+    .bg-green-50,
+    .bg-yellow-50 {
+      border: 1px solid currentColor;
+    }
+
+    .text-blue-800,
+    .text-red-800,
+    .text-green-800,
+    .text-yellow-800 {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+  /* Better spacing for screen readers */
+  [role="listitem"] {
+    scroll-margin-top: 4rem;
+  }
+
+  /* Ensure emoji spacing doesn't break layout */
+  [role="img"] {
+    display: inline-block;
+    flex-shrink: 0;
+  }
+</style>

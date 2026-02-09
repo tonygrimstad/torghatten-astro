@@ -14,12 +14,33 @@ const switchUrl = `/${otherLang}/${restPath}`;
 <header
   class="fixed top-0 left-0 w-full bg-black/80 text-yellow-400 z-50 shadow-md"
 >
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+    <!-- Logo og navn -->
     <a
       href={`/${currentLang}/`}
-      class="text-xl font-bold tracking-tight hover:text-yellow-300"
+      class="flex items-center gap-3 hover:opacity-90 transition-opacity group"
     >
-      Torghatten Maraton
+      <div class="relative">
+        <div
+          class="w-28 h-28 md:w-32 md:h-32 rounded-full bg-white shadow-lg border-2 border-gray-200 overflow-hidden transition-all duration-300 group-hover:border-yellow-400 group-hover:shadow-yellow-400/30 group-hover:scale-105"
+        >
+          <img
+            src="/images/logos/torghatten-maraton2.jpg"
+            alt="Torghatten Maraton logo"
+            class="w-full h-full object-contain p-2 transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:brightness-110"
+          />
+          <!-- Fargeoverlay på hover -->
+          <div
+            class="absolute inset-0 bg-linear-to-br from-yellow-400/0 to-blue-600/0 transition-all duration-300 group-hover:from-yellow-400/20 group-hover:to-blue-600/10"
+          >
+          </div>
+        </div>
+      </div>
+      <span
+        class="text-xl font-bold tracking-tight text-yellow-400 group-hover:text-yellow-300 transition-colors"
+      >
+        Torghatten Maraton
+      </span>
     </a>
 
     <!-- Desktop navigasjon -->
@@ -29,7 +50,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
           .filter(
             (link) =>
               !link.toggle ||
-              (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle))
+              (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle)),
           )
           .map((link) =>
             "dropdown" in link ? (
@@ -37,7 +58,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
                 <button class="hover:underline whitespace-nowrap">
                   {t(`nav.${link.label}`)}
                 </button>
-                <div class="absolute left-0 min-w-[200px] bg-black/90 rounded shadow-md z-50 hidden group-hover:flex flex-col">
+                <div class="absolute left-0 min-w-50 bg-black/90 rounded shadow-md z-50 hidden group-hover:flex flex-col">
                   {link.dropdown.map((item) => (
                     <a
                       href={`/${currentLang}/${item.href}`}
@@ -57,7 +78,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
               >
                 {t(`nav.${link.label}`)}
               </a>
-            )
+            ),
           )
       }
     </nav>
@@ -82,7 +103,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
         .filter(
           (link) =>
             !link.toggle ||
-            (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle))
+            (isValidToggleKey(link.toggle) && isFeatureActive(link.toggle)),
         )
         .map((link) =>
           "dropdown" in link ? (
@@ -110,7 +131,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
             >
               {t(`nav.${link.label}`)}
             </a>
-          )
+          ),
         )
     }
 

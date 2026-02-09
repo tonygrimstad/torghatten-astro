@@ -139,5 +139,11 @@
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2015/20150502torgattenmaraton-97.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2015/20150502torgattenmaraton-98.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2015/20150502torgattenmaraton-99.jpg"
+  ],
+  "photographers": [
+    {
+      "name": "Bjørn Henrik Ormø",
+      "url": ""
+    }
   ]
 }

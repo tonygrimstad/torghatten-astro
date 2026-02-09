@@ -1,0 +1,90 @@
+---
+import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t } = useTranslations(Astro.url);
+---
+
+{isFeatureActive("liveScroll") && (
+  <!-- Permanent Live Scroll Hint - Clickable banner -->
+  <div
+    id="live-scroll-banner"
+    class="flex justify-center mt-6 cursor-pointer"
+  >
+    <!-- Floating banner - Clickable -->
+    <div class="max-w-lg mx-4 bg-linear-to-r from-red-600 via-red-700 to-red-800 rounded-2xl shadow-2xl border border-red-400/30 p-6 text-white text-center animate-pulse hover:animate-none hover:shadow-red-500/50 transition-all duration-300">
+      <!-- Live indicator -->
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="relative flex h-4 w-4">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-4 w-4 bg-red-300"></span>
+        </span>
+        <span class="font-bold text-lg uppercase tracking-wider">
+          {t("liveScroll.live", "LIVE")}
+        </span>
+      </div>
+
+      <!-- Main message -->
+      <h2 class="text-xl md:text-2xl font-bold mb-2">
+        🏃‍♂️ {t("liveScrollHint.title", "Løpet er i gang!")}
+      </h2>
+
+      <p class="text-base md:text-lg mb-4 text-red-100">
+        {t("liveScrollHint.message", "Følg løpet live! Klikk for å se resultater i sanntid")}
+      </p>
+
+      <!-- Scroll down indicator -->
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-sm text-red-200">
+          {t("liveScrollHint.scrollDown", "Klikk for å gå til live resultater")}
+        </span>
+        <div class="animate-bounce">
+          <svg
+            class="w-8 h-8 text-yellow-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  // LiveScrollHint - Scroll to live results
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("live-scroll-banner");
+
+    if (banner) {
+      // Klikk på banner for å scrolle til live results
+      banner.addEventListener("click", () => {
+        // Finn LiveScroll-seksjonen (den har en unik bakgrunnsfarge)
+        const liveScrollSection = document.querySelector('section.bg-linear-to-r.from-green-600') ||
+                                  document.querySelector('section:has(iframe[src*="eqtiming"])') ||
+                                  document.querySelector('iframe[src*="eqtiming"]')?.closest('section');
+
+        if (liveScrollSection) {
+          // Få header høyden for å justere scroll posisjon
+          const header = document.querySelector('header') || document.querySelector('nav');
+          const headerHeight = header ? (header as HTMLElement).offsetHeight : 80; // fallback til 80px
+
+          // Scroll med offset for header
+          const elementPosition = (liveScrollSection as HTMLElement).offsetTop - headerHeight - 20; // 20px ekstra margin
+
+          window.scrollTo({
+            top: elementPosition,
+            behavior: "smooth"
+          });
+        }
+      });
+    }
+  });
+</script>

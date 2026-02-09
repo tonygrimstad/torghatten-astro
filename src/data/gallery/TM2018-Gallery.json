@@ -66,5 +66,19 @@
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2018/30996725_10155152510310981_274069383_n.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2018/31008570_10155152542195981_569535343_n.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2018/31150475_10155152534350981_1485626723_n.jpg"
+  ],
+  "photographers": [
+    {
+      "name": "Brønnøysund avis",
+      "url": "https://www.banett.no/"
+    },
+    {
+      "name": "Bente Kaspersen",
+      "url": ""
+    },
+    {
+      "name": "Tony Grimstad",
+      "url": ""
+    }
   ]
 }

@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LightboxGallery from "../components/LightboxGallery.astro";
+import { galleriData } from "../data/galleriIndex";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
+const sortedYears = [...galleriData].sort((a, b) => b.year - a.year);
+
+// Use translated SEO titles
+const title = t("seo.galleryTitle");
+const description = t("seo.galleryDescription");
+---
+
+<Layout title={title} description={description} lang={currentLang}>
+  <!-- Modern Hero Section for Gallery -->
+  <section
+    class="bg-gradient-to-r from-purple-900 via-blue-800 to-indigo-900 text-white py-16 mt-32 md:mt-36"
+  >
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {t("gallery.modernTitle", "Øyeblikk fra Løpet")}
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 mb-8">
+        {
+          t(
+            "gallery.subtitle",
+            "Se tilbake på magiske øyeblikk fra Torghatten Maraton gjennom årene",
+          )
+        }
+      </p>
+      <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Navigation Section -->
+  <section class="bg-white py-8 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="text-gray-600 font-medium">📅 Velg år:</span>
+          <select
+            id="yearFilter"
+            class="bg-white border border-gray-300 text-gray-800 px-4 py-2 rounded-lg shadow-sm hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+          >
+            <option value="all">{t("visAlleAar")}</option>
+            {
+              sortedYears.map((g) => (
+                <option value={`year-${g.year}`}>{g.year}</option>
+              ))
+            }
+          </select>
+        </div>
+        <div class="text-sm text-gray-500">
+          <span id="photoCounter">
+            {sortedYears.reduce((acc, year) => acc + year.photos.length, 0)}
+            {t("gallery.photoCount", "bilder totalt")}
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Content -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      {
+        sortedYears.map((entry) => (
+          <div
+            class="gallery-year mb-16"
+            data-year={`year-${entry.year}`}
+            data-photo-count={entry.photos.length}
+          >
+            <LightboxGallery
+              year={entry.year}
+              photos={entry.photos}
+              photographers={entry.photographers || []}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("yearFilter") as HTMLSelectElement;
+      const sections = document.querySelectorAll(
+        ".gallery-year",
+      ) as NodeListOf<HTMLElement>;
+      const counter = document.getElementById("photoCounter");
+      const counterText =
+        counter?.textContent?.split(" ").slice(-2).join(" ") || "bilder totalt";
+
+      function updateCounter(selectedValue: string) {
+        if (!counter) return;
+
+        if (selectedValue === "all") {
+          // Kalkuler totalt for alle år
+          const totalPhotos = Array.from(sections).reduce((sum, section) => {
+            const count = parseInt(section.dataset.photoCount || "0");
+            return sum + count;
+          }, 0);
+          counter.textContent = `${totalPhotos} ${counterText}`;
+        } else {
+          // Finn det valgte året og vis antallet for det året
+          const selectedSection = Array.from(sections).find(
+            (section) => section.dataset.year === selectedValue,
+          );
+          if (selectedSection) {
+            const count = selectedSection.dataset.photoCount || "0";
+            counter.textContent = `${count} ${counterText}`;
+          }
+        }
+      }
+
+      select?.addEventListener("change", () => {
+        const val = select.value;
+        sections.forEach((sectionEl) => {
+          const match = sectionEl.dataset.year === val;
+          sectionEl.style.display = val === "all" || match ? "" : "none";
+        });
+
+        // Oppdater photo counter
+        updateCounter(val);
+      });
+    });
+  </script>
+</Layout>

@@ -11,11 +11,15 @@ import { useTranslations } from "../utils/useTranslations.ts";
 const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title={t("nav.Paraløp")} lang={currentLang} light={true}>
+<Layout
+  title={t("seo.paraRaceTitle")}
+  description={t("paralop.description")}
+  lang={currentLang}
+  light={true}
+>
   <HeroSectionDistanse
-    distanse={`♿ ${t("nav.Paraløp")}`}
+    distanse={`♿ ${t("nav.paraRace")}`}
     description={t("paralop.description")}
-    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile

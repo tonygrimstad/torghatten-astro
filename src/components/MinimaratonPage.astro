@@ -9,17 +9,22 @@ import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
 import minimaraton_36_km from "../data/top5_json/minimaraton_36_km.json";
 import VideoSection from "../components/VideoSection.astro";
+import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title={t("nav.Minimaraton")} lang={currentLang} light={true}>
+<Layout
+  title={t("seo.miniMarathonTitle")}
+  description={t("minimaraton.description")}
+  lang={currentLang}
+  light={true}
+>
   <HeroSectionDistanse
-    distanse={`🏃‍♂️ ${t("nav.Minimaraton (3,6 km)")}`}
+    distanse={`🏃‍♂️ ${t("nav.miniMarathon36km")}`}
     description={t("minimaraton.description")}
-    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
@@ -36,26 +41,35 @@ const { t, currentLang } = useTranslations(Astro.url);
     klasser={["10–11 år", "12–13 år", "14–15 år", "over 15 år"]}
   />
 
-  <Top5recordsComponent
-    distanse={t("nav.Minimaraton")}
-    kjonn="K"
-    data={minimaraton_36_km}
-  />
-  <Top5recordsComponent
-    distanse={t("nav.Minimaraton")}
-    kjonn="M"
-    data={minimaraton_36_km}
-  />
+  <FeatureSection feature="recordsSection">
+    <Top5recordsComponent
+      distanse={t("nav.miniMarathon")}
+      kjonn="K"
+      data={minimaraton_36_km}
+    />
+    <Top5recordsComponent
+      distanse={t("nav.miniMarathon")}
+      kjonn="M"
+      data={minimaraton_36_km}
+    />
+  </FeatureSection>
 
-  <VideoSection
-    title={t("minimaraton.videoTitle")}
-    description={t("minimaraton.videoDescription")}
-    videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
-  />
+  <FeatureSection feature="videoSection">
+    <VideoSection
+      title={t("minimaraton.videoTitle")}
+      description={t("minimaraton.videoDescription")}
+      videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
+    />
+  </FeatureSection>
 
   <FeatureSection feature="infoSection">
     <InfoSection />
   </FeatureSection>
   <DistancesSection current="Minimaraton (3,6 km)" />
+
+  <FeatureSection feature="SponsorerAlleSider">
+    <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />
+  </FeatureSection>
+
   <Footer />
 </Layout>

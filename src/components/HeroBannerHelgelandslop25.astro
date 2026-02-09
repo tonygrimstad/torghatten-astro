@@ -1,0 +1,22 @@
+---
+const { src, alt, title, lead } = Astro.props;
+---
+
+<section class="relative isolate">
+  <picture>
+    <img
+      src="/images/Banner_HL_2025.png"
+      alt={alt || title || "Banner Helgelandsløpene 2025"}
+      class="h-64 w-full object-cover md:h-80 lg:h-350"
+      loading="eager"
+      decoding="async"
+    />
+  </picture>
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+    <h1 class="text-white text-3xl md:text-4xl font-bold drop-shadow">
+      {title}
+    </h1>
+    {lead && <p class="text-white/90 mt-2 max-w-2xl">{lead}</p>}
+  </div>
+</section>

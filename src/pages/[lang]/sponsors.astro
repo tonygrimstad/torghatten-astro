@@ -1,0 +1,175 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations } from "../../utils/useTranslations.ts";
+import { getSponsorsByTier } from "../../config/sponsors.ts";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const { t, currentLang } = useTranslations(Astro.url);
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/");
+}
+
+const title = t("sponsors.title", "Sponsorer");
+const description = t(
+  "sponsors.pageDescription",
+  "Takk til alle våre samarbeidspartnere som gjør Torghatten Maraton mulig. Se alle sponsorene som støtter oss.",
+);
+
+// Hent sponsorer per tier
+const premiumSponsors = getSponsorsByTier("premium");
+const goldSponsors = getSponsorsByTier("gold");
+const silverSponsors = getSponsorsByTier("silver");
+---
+
+<Layout
+  lang={currentLang}
+  title={`${title} - Torghatten Maraton`}
+  description={description}
+>
+  <!-- Hero Section for Sponsors -->
+  <section
+    class="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white py-20 mt-32 md:mt-36"
+  >
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {t("sponsors.pageTitle", "Våre Samarbeidspartnere")}
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 mb-8">
+        {
+          t(
+            "sponsors.pageSubtitle",
+            "Takk til alle som gjør Torghatten Maraton mulig",
+          )
+        }
+      </p>
+      <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Sponsor sections by tier -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Premium Sponsors -->
+      {
+        premiumSponsors.length > 0 && (
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">
+              {t("sponsors.premium", "Hovedsponsorer")}
+            </h2>
+            <div class="flex justify-center items-center gap-12 flex-wrap">
+              {premiumSponsors.map((sponsor) => (
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group transition-all duration-300 hover:scale-105 hover:drop-shadow-lg"
+                  aria-label={`Besøk ${sponsor.name}`}
+                >
+                  <img
+                    src={`/images/sponsors/${sponsor.logo}`}
+                    alt={sponsor.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="object-contain h-16 md:h-20 transition-all duration-300"
+                    style="max-width: 200px;"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      <!-- Gold Sponsors -->
+      {
+        goldSponsors.length > 0 && (
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-700 text-center mb-8">
+              {t("sponsors.gold", "Gullsponsorer")}
+            </h2>
+            <div class="flex justify-center items-center gap-8 flex-wrap">
+              {goldSponsors.map((sponsor) => (
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group transition-all duration-300 hover:scale-105 hover:drop-shadow-lg"
+                  aria-label={`Besøk ${sponsor.name}`}
+                >
+                  <img
+                    src={`/images/sponsors/${sponsor.logo}`}
+                    alt={sponsor.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="object-contain h-12 md:h-14 transition-all duration-300"
+                    style="max-width: 160px;"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      <!-- Silver Sponsors -->
+      {
+        silverSponsors.length > 0 && (
+          <div class="mb-16">
+            <h2 class="text-xl font-bold text-gray-600 text-center mb-8">
+              {t("sponsors.silver", "Sølvsponsorer")}
+            </h2>
+            <div class="flex justify-center items-center gap-6 flex-wrap">
+              {silverSponsors.map((sponsor) => (
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group transition-all duration-300 hover:scale-105 hover:drop-shadow-lg"
+                  aria-label={`Besøk ${sponsor.name}`}
+                >
+                  <img
+                    src={`/images/sponsors/${sponsor.logo}`}
+                    alt={sponsor.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="object-contain h-10 md:h-12 transition-all duration-300"
+                    style="max-width: 140px;"
+                  />
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Call to Action for potential sponsors -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">
+        {t("sponsors.becomeTitle", "Bli en Samarbeidspartner")}
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        {
+          t(
+            "sponsors.becomeDescription",
+            "Vil du støtte Torghatten Maraton? Ta kontakt for å høre om sponsormuligheter.",
+          )
+        }
+      </p>
+      <a
+        href={`mailto:${t("footer.email")}`}
+        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+      >
+        {t("sponsors.contactUs", "Kontakt oss")}
+      </a>
+    </div>
+  </section>
+</Layout>

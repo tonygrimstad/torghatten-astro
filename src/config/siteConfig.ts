@@ -1,6 +1,6 @@
 // ======================================================================
 // Torghatten Maraton website (astro)
-// Utviklet av Tony Grimstad (github.com/tonygrimstad) siden 2014
+// Utviklet av TonyG (github.com/tonygrimstad) siden 2014
 // ======================================================================
 
 
@@ -19,16 +19,20 @@ export type FeatureToggleKey =
   | "videoSection"
   | "recordsSection"
   | "signupHint"
-  | "promoBanner"
+  | "programSection"
+  | "liveScroll"
   | "raceYear"
   | "raceDate"
   | "signupButton"
-  | "signupUrl"
+
   | "Distanser"
   | "Resultater"
-  | "Bilder"
+  | "Øyeblikk"
   | "Overnatting"
   | "OmOss"
+  | "SponsorerMeny"
+  | "SponsorerForsiden"
+  | "SponsorerAlleSider"
   | "Helgelandslopene";
 
 // Toggle-typen støtter nå også `text`
@@ -42,54 +46,57 @@ export type FeatureToggle = {
 
 // Selve togglene
 export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
+  // Informasjon til deltagere på distansesidene
   infoSection: {
-    enabled: true,
-    from: "2025-02-01",
-    to: "2025-04-26",
+    enabled: false,
+    from: "2026-02-01",
+    to: "2026-04-26",
   },
   videoSection: {
-    enabled: false,
+    enabled: true,
   },
   recordsSection: {
     enabled: true,
   },
   signupHint: {
     enabled: false,
-    to: "2025-04-25",
-    text: "📣 Påmelding er åpen frem til 25. april!",
+    to: "2026-04-25"
   },
-  promoBanner: {
+  programSection: {
     enabled: false,
+  },
+  liveScroll: {
+    enabled: false,
+    // Oppdatert dato og tid for live scroll
+    from: "2026-04-25T08:00:00",
+    to: "2026-04-25T16:00:00",
+    // Oppdatert URL for live scroll
+    url: "https://live.eqtiming.com/74867#livescroll",
   },
   raceYear: {
     enabled: true,
-    from: "2025-05-01",
-    to: "2026-05-01",
+    from: "2026-01-01",
+    to: "2026-04-26",
     text: "2026",
   },
   raceDate: {
-    enabled: false,
-    from: "2025-01-01",
-    to: "2025-12-31",
+    enabled: true,
+    from: "2026-01-01",
+    to: "2026-04-26",
     text: "25. april 2026",
   },
   signupButton: {
-    enabled: false,
-    from: "2025-01-01",
-    to: "2025-12-31",
-    text: "Meld deg på nå",
-    url: "https://live.eqtiming.com/74867#dashboard",
-  },
-  signupUrl: {
-    enabled: false,
-    from: "2025-01-01",
-    to: "2025-12-31",
-    text: "https://live.eqtiming.com/74867#dashboard",
-  },
-  Bilder: {
     enabled: true,
-    from: "2025-01-01",
-    to: "2025-12-31"
+    from: "2026-01-01",
+    to: "2026-04-26",
+
+    url: "https://signup.eqtiming.com/?Event=Torghatten&lang=norwegian",
+  },
+
+  Øyeblikk: {
+    enabled: true,
+    from: "2026-01-01",
+    to: "2030-12-31"
   },
   Distanser: {
     enabled: true,
@@ -120,6 +127,27 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     url: undefined
   },
   Helgelandslopene: {
+    enabled: true,
+    from: "2025-01-01",
+    to: "2025-12-31",
+    text: undefined,
+    url: undefined
+  },
+  SponsorerMeny: {
+    enabled: false,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  SponsorerForsiden: {
+    enabled: false,
+    from: undefined,
+    to: undefined,
+    text: undefined,
+    url: undefined
+  },
+  SponsorerAlleSider: {
     enabled: false,
     from: undefined,
     to: undefined,

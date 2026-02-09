@@ -6,6 +6,7 @@ import InfoSection from "./InfoSection.astro";
 import DistancesSection from "./DistancesSection.astro";
 import Top5recordsComponent from "./Top5recordsComponent.astro";
 import VideoSection from "./VideoSection.astro";
+import SponsorSection from "./SponsorSection.astro";
 import helmaratonRecords from "../data/top5_json/helmaraton.json";
 import Footer from "./footer.astro";
 import FeatureSection from "./FeatureSection.astro";
@@ -16,11 +17,15 @@ import { classGroups } from "../config/classGroups.ts";
 const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title={t("nav.Helmaraton")} lang={currentLang} light={true}>
+<Layout
+  title={t("seo.fullMarathonTitle")}
+  description={t("helmaraton.description")}
+  lang={currentLang}
+  light={true}
+>
   <HeroSectionDistanse
-    distanse={`🏃‍♂️ ${t("nav.Helmaraton")} (42 195 m)`}
+    distanse={`🏃‍♂️ ${t("nav.fullMarathon")} (42 195 m)`}
     description={t("helmaraton.description")}
-    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
@@ -37,18 +42,20 @@ const { t, currentLang } = useTranslations(Astro.url);
     klasser={classGroups.helmaraton}
   />
 
-  <Top5recordsComponent
-    distanse={t("nav.Helmaraton")}
-    kjonn="K"
-    data={helmaratonRecords}
-  />
-  <Top5recordsComponent
-    distanse={t("nav.Helmaraton")}
-    kjonn="M"
-    data={helmaratonRecords}
-  />
+  <FeatureSection feature="recordsSection">
+    <Top5recordsComponent
+      distanse={t("nav.fullMarathon") || "Helmaraton"}
+      kjonn="K"
+      data={helmaratonRecords}
+    />
+    <Top5recordsComponent
+      distanse={t("nav.fullMarathon") || "Helmaraton"}
+      kjonn="M"
+      data={helmaratonRecords}
+    />
+  </FeatureSection>
 
-  <FeatureSection feature="VideoSection">
+  <FeatureSection feature="videoSection">
     <VideoSection />
   </FeatureSection>
 
@@ -57,5 +64,10 @@ const { t, currentLang } = useTranslations(Astro.url);
   </FeatureSection>
 
   <DistancesSection current="Helmaraton" />
+
+  <FeatureSection feature="SponsorerAlleSider">
+    <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />
+  </FeatureSection>
+
   <Footer />
 </Layout>

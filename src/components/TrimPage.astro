@@ -7,17 +7,22 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import VideoSection from "../components/VideoSection.astro";
+import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title={t("nav.Trim")} lang={currentLang} light={true}>
+<Layout
+  title={t("seo.trimTitle")}
+  description={t("trim.description")}
+  lang={currentLang}
+  light={true}
+>
   <HeroSectionDistanse
-    distanse={`🧑‍🦽🚶‍♂️ ${t("nav.Trim")}`}
+    distanse={`🧑‍🦽🚶‍♂️ ${t("nav.trim")}`}
     description={t("trim.description")}
-    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
@@ -31,15 +36,22 @@ const { t, currentLang } = useTranslations(Astro.url);
 
   <ClassList tittel={t("trim.classTitle")} klasser={[t("trim.classValue")]} />
 
-  <VideoSection
-    title={t("trim.videoTitle")}
-    description={t("trim.videoDescription")}
-    videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
-  />
+  <FeatureSection feature="videoSection">
+    <VideoSection
+      title={t("trim.videoTitle")}
+      description={t("trim.videoDescription")}
+      videoUrl="https://www.youtube.com/embed/OdKvTpXfrgQ"
+    />
+  </FeatureSection>
 
   <FeatureSection feature="infoSection">
     <InfoSection />
   </FeatureSection>
   <DistancesSection current="Trim" />
+
+  <FeatureSection feature="SponsorerAlleSider">
+    <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />
+  </FeatureSection>
+
   <Footer />
 </Layout>

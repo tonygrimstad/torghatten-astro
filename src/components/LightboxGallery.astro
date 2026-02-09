@@ -1,27 +1,82 @@
 ---
-// props: year, photos
-const { photos, year } = Astro.props;
+// props: year, photos, photographers
+const { photos, year, photographers = [] } = Astro.props;
 if (!photos || !year) {
   throw new Error("LightboxGallery requires 'photos' and 'year' props");
 }
+
+import { useTranslations } from "../utils/useTranslations";
+const { t } = useTranslations(Astro.url);
+
+// TypeScript types
+interface Photographer {
+  name: string;
+  url?: string;
+}
 ---
 
-<div class="mb-8">
-  <h2 class="text-xl font-semibold text-yellow-400 mb-4">📸 {year}</h2>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="mb-12">
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center gap-2">
+      <span class="text-blue-600">📅</span>
+      {year}
+    </h2>
+
+    {/* Photographer Credits - sammen med årstallet */}
+    {
+      photographers && photographers.length > 0 && (
+        <div class="flex flex-wrap items-center gap-2 text-sm">
+          <span class="text-gray-600">
+            📸 {t("gallery.photographers", "Fotografer")}:
+          </span>
+          {photographers.map((photographer: Photographer, index: number) => (
+            <span class="inline-flex items-center">
+              {photographer.url ? (
+                <a
+                  href={photographer.url}
+                  class="text-blue-600 hover:text-blue-800 hover:underline font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {photographer.name}
+                </a>
+              ) : (
+                <span class="text-gray-700 font-medium">
+                  {photographer.name}
+                </span>
+              )}
+              {index < photographers.length - 1 && (
+                <span class="mx-1 text-gray-400">•</span>
+              )}
+            </span>
+          ))}
+        </div>
+      )
+    }
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     {
       photos.map((url: string, i: number) => (
-        <a
-          href={url.replace("/w_800/", "/w_1600/")}
-          data-fslightbox={`gallery-${year}`}
-        >
-          <img
-            src={url}
-            class="w-full h-auto cursor-pointer transition-transform duration-300 hover:scale-105"
-            alt={`Bilde ${i + 1}`}
-            loading="lazy"
-          />
-        </a>
+        <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+          <a
+            href={url.replace("/w_800/", "/w_1600/")}
+            data-fslightbox={`gallery-${year}`}
+          >
+            <img
+              src={url}
+              class="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
+              alt={`Bilde ${i + 1}`}
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+              <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
       ))
     }
   </div>
@@ -29,7 +84,7 @@ if (!photos || !year) {
 
 <div
   id="lightbox-overlay"
-  class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center"
+  class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center"
   style="backdrop-filter: blur(5px);"
 >
   <div class="relative max-w-4xl w-full px-4">

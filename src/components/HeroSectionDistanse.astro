@@ -1,30 +1,161 @@
 ---
 import SignupButton from "./signupButton.astro";
+import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t } = useTranslations(Astro.url);
 const {
   distanse = "🏃‍♂️ Helmaraton (42 195 m)",
   description = "Helmaratonløypen gir mulighet for uforglemmelige naturopplevelser.",
-  signupUrl = "https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten",
+  heroId = "race-hero", // Ny prop for unik ID
 } = Astro.props;
+
+const headingId = `${heroId}-heading`;
+const descriptionId = `${heroId}-description`;
 ---
 
 <section
+  id={heroId}
   class="relative w-full min-h-screen bg-cover bg-center text-white flex flex-col justify-center items-center text-center px-4"
   style="background-image: url('/torghatten20150217_1600.jpg');"
+  role="banner"
+  aria-labelledby={headingId}
 >
-  <div class="absolute inset-0 bg-black/70 z-0"></div>
+  <!-- Decorative overlay -->
+  <div class="absolute inset-0 bg-black/70 z-0" aria-hidden="true"></div>
 
-  <div class="relative z-10 max-w-3xl">
+  <div class="relative z-10 max-w-4xl mx-auto space-y-6 md:space-y-8">
     <h1
-      class="text-2xl md:text-5xl font-bold text-yellow-400 mb-4 drop-shadow-lg"
+      id={headingId}
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-400 mb-6 drop-shadow-lg leading-tight"
     >
       {distanse}
     </h1>
-    <p class="text-lg md:text-xl text-white drop-shadow-sm">
+
+    <p
+      id={descriptionId}
+      class="text-lg md:text-xl lg:text-2xl text-white drop-shadow-sm leading-relaxed max-w-3xl mx-auto"
+    >
       {description}
     </p>
 
-    <SignupButton />
+    {/* Signup Hint */}
+    {
+      isFeatureActive("signupHint") && (
+        <div
+          class="mt-6 mb-6 px-6 py-4 bg-yellow-500/20 border border-yellow-400/30 rounded-lg text-yellow-300 max-w-2xl mx-auto"
+          role="complementary"
+          aria-label="Påmeldingsinformasjon"
+        >
+          <p class="text-sm md:text-base font-medium">
+            {getFeatureText("signupHint")}
+          </p>
+        </div>
+      )
+    }
 
-    <div class="mt-8 animate-bounce text-white text-3xl">⬇️</div>
+    <div class="flex justify-center">
+      <SignupButton />
+    </div>
+
+    {/* Scroll hint - WCAG improved */}
+    <div class="mt-8 flex justify-center">
+      <button
+        id="scrollDownButton"
+        class="flex flex-col items-center text-white hover:text-yellow-400 transition-all duration-300
+               focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:ring-offset-2 focus:ring-offset-black/50
+               hover:ring-2 hover:ring-yellow-400/30 rounded-xl p-4 group cursor-pointer
+               bg-black/20 hover:bg-black/40 backdrop-blur-sm"
+        aria-label={t("hero.scrollHintAriaLabel")}
+        type="button"
+        onclick="scrollToNextSection()"
+      >
+        <span
+          class="text-sm md:text-base mb-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300 font-medium"
+        >
+          {t("hero.scrollHint")}
+        </span>
+        <div
+          class="animate-bounce text-3xl group-hover:scale-110 transition-transform duration-300"
+          aria-hidden="true"
+        >
+          ⬇️
+        </div>
+      </button>
+    </div>
   </div>
 </section>
+
+<script is:inline>
+  function scrollToNextSection() {
+    try {
+      // Find the hero section by role and ID
+      const heroSection =
+        document.querySelector('section[role="banner"]') ||
+        document.querySelector('section[id*="hero"]') ||
+        document.querySelector('section[style*="torghatten20150217_1600.jpg"]');
+
+      if (!heroSection) {
+        console.warn("Hero section not found, using fallback scroll");
+        window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+        return;
+      }
+
+      // Find the next section after the hero
+      let nextSection = heroSection.nextElementSibling;
+
+      // Look for the next main content section
+      while (
+        nextSection &&
+        !nextSection.matches('section, main, [role="main"]')
+      ) {
+        nextSection = nextSection.nextElementSibling;
+      }
+
+      if (nextSection) {
+        // Calculate offset to account for potential fixed headers
+        const headerOffset = 80;
+        const elementPosition =
+          nextSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, elementPosition),
+          behavior: "smooth",
+        });
+
+        // Announce to screen readers that scroll has occurred
+        const button = document.getElementById("scrollDownButton");
+        if (button) {
+          button.setAttribute("aria-label", "Scrollet til neste seksjon");
+          setTimeout(() => {
+            button.setAttribute(
+              "aria-label",
+              button.dataset.originalLabel ||
+                "Rull ned for mer informasjon om løpet",
+            );
+          }, 2000);
+        }
+      } else {
+        // Fallback: scroll down by viewport height
+        window.scrollBy({
+          top: window.innerHeight * 0.8,
+          behavior: "smooth",
+        });
+      }
+    } catch (error) {
+      console.error("Scroll function error:", error);
+      // Ultimate fallback
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+    }
+  }
+
+  // Store original aria-label for restoration
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("scrollDownButton");
+    if (button) {
+      button.dataset.originalLabel = button.getAttribute("aria-label");
+    }
+  });
+</script>

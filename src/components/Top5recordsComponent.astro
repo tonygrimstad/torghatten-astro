@@ -9,7 +9,13 @@ interface Rekord {
   År: number;
 }
 
-const { distanse, kjonn, data } = Astro.props;
+interface Props {
+  distanse: string;
+  kjonn: "K" | "M";
+  data: Record<string, Rekord[]>;
+}
+
+const { distanse, kjonn, data }: Props = Astro.props;
 const { t, currentLang } = useTranslations(Astro.url);
 
 const liste = Array.isArray(data[kjonn]) ? (data[kjonn] as Rekord[]) : [];
@@ -20,46 +26,237 @@ const topp5 = liste
   .slice(0, 5);
 
 const title = kjonn === "K" ? t("records.female") : t("records.male");
+
+// Unique ID for this component instance
+const componentId = `top5-records-${kjonn}-${Math.random().toString(36).substr(2, 9)}`;
+const tableId = `${componentId}-table`;
+const headingId = `${componentId}-heading`;
+const descriptionId = `${componentId}-description`;
 ---
 
-<section class="py-8 px-4 max-w-6xl mx-auto">
-  <div class="bg-white/80 backdrop-blur-lg rounded-xl shadow-lg p-6">
-    <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">
-      {kjonn === "K" ? "👩" : "👨"}
-      {t("records.top5")}
-      {title} – {distanse}
+<section
+  role="region"
+  aria-labelledby={headingId}
+  class="py-8 px-4 max-w-6xl mx-auto"
+>
+  <div
+    class="bg-white/80 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-gray-200"
+  >
+    {/* Screen reader description */}
+    <div id={descriptionId} class="sr-only">
+      {t("records.description") || `Top 5 rekorder for ${title} - ${distanse}`}
+    </div>
+
+    <h2
+      id={headingId}
+      class="text-xl md:text-2xl font-bold mb-4 text-center text-gray-900"
+    >
+      <span class="inline-flex items-center gap-2">
+        <span
+          role="img"
+          aria-label={kjonn === "K"
+            ? t("records.femaleIcon")
+            : t("records.maleIcon")}
+        >
+          {kjonn === "K" ? "👩" : "👨"}
+        </span>
+        <span>{t("records.top5")} {title}</span>
+        <span class="text-gray-600">– {distanse}</span>
+      </span>
     </h2>
-    <div class="overflow-x-auto">
-      <table class="w-full text-left text-sm md:text-base">
-        <thead>
-          <tr
-            class={kjonn === "K"
-              ? "bg-pink-100 text-pink-800"
-              : "bg-blue-100 text-blue-800"}
+
+    {
+      topp5.length === 0 ? (
+        <div
+          role="status"
+          aria-live="polite"
+          class="text-center py-8 text-gray-600"
+        >
+          <p>{t("records.noData")}</p>
+        </div>
+      ) : (
+        <div class="overflow-x-auto" role="region" aria-labelledby={headingId}>
+          <table
+            id={tableId}
+            class="w-full text-left text-sm md:text-base border-collapse"
+            role="table"
+            aria-describedby={descriptionId}
           >
-            <th class="p-2">{t("records.name")}</th>
-            <th class="p-2">{t("records.club")}</th>
-            <th class="p-2">{t("records.time")}</th>
-            <th class="p-2">{t("records.class")}</th>
-            <th class="p-2">{t("records.year")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            topp5.map((row) => (
-              <tr class="odd:bg-white even:bg-gray-100 hover:bg-yellow-50 transition">
-                <td class="p-2 whitespace-nowrap">{row.Navn}</td>
-                <td class="p-2 whitespace-nowrap">{row["Lag/Klubb"]}</td>
-                <td class="p-2 whitespace-nowrap font-semibold text-gray-800">
-                  {row.Tid}
-                </td>
-                <td class="p-2 whitespace-nowrap">{row.Klasse}</td>
-                <td class="p-2 whitespace-nowrap">{row.År}</td>
+            <caption class="sr-only">
+              {t("records.tableCaption") ||
+                `Tabell med ${topp5.length} rekorder for ${title} - ${distanse}`}
+            </caption>
+            <thead>
+              <tr
+                class={
+                  kjonn === "K"
+                    ? "bg-pink-100 text-pink-900 border-b-2 border-pink-200"
+                    : "bg-blue-100 text-blue-900 border-b-2 border-blue-200"
+                }
+                role="row"
+              >
+                <th
+                  scope="col"
+                  class="p-3 font-semibold text-left border-r border-gray-300"
+                  role="columnheader"
+                  tabindex="0"
+                >
+                  {t("records.name")}
+                </th>
+                <th
+                  scope="col"
+                  class="p-3 font-semibold text-left border-r border-gray-300"
+                  role="columnheader"
+                  tabindex="0"
+                >
+                  {t("records.club")}
+                </th>
+                <th
+                  scope="col"
+                  class="p-3 font-semibold text-left border-r border-gray-300"
+                  role="columnheader"
+                  tabindex="0"
+                  aria-sort="ascending"
+                >
+                  {t("records.time")}
+                </th>
+                <th
+                  scope="col"
+                  class="p-3 font-semibold text-left border-r border-gray-300"
+                  role="columnheader"
+                  tabindex="0"
+                >
+                  {t("records.class")}
+                </th>
+                <th
+                  scope="col"
+                  class="p-3 font-semibold text-left"
+                  role="columnheader"
+                  tabindex="0"
+                >
+                  {t("records.year")}
+                </th>
               </tr>
-            ))
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {topp5.map((row, index) => {
+                const isEven = index % 2 === 0;
+                const rowClass = isEven
+                  ? "bg-white hover:bg-yellow-50 focus-within:bg-yellow-50"
+                  : "bg-gray-50 hover:bg-yellow-50 focus-within:bg-yellow-50";
+
+                return (
+                  <tr
+                    class={`${rowClass} transition-colors duration-200 border-b border-gray-200`}
+                    role="row"
+                    tabindex="0"
+                    aria-label={
+                      t("records.rowLabel") ||
+                      `Posisjon ${index + 1}: ${row.Navn}, tid ${row.Tid}`
+                    }
+                  >
+                    <td
+                      class="p-3 whitespace-nowrap border-r border-gray-200 font-medium"
+                      role="cell"
+                    >
+                      <span class="sr-only">
+                        {t("records.position")} {index + 1}:
+                      </span>
+                      {row.Navn}
+                    </td>
+                    <td
+                      class="p-3 whitespace-nowrap border-r border-gray-200"
+                      role="cell"
+                    >
+                      {row["Lag/Klubb"] || t("records.noClub")}
+                    </td>
+                    <td
+                      class="p-3 whitespace-nowrap border-r border-gray-200 font-semibold text-gray-900"
+                      role="cell"
+                    >
+                      <span
+                        class={
+                          kjonn === "K"
+                            ? "inline-flex items-center gap-1 px-2 py-1 bg-pink-100 text-pink-800 rounded-md text-sm font-bold"
+                            : "inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-sm font-bold"
+                        }
+                        aria-label={t("records.timeLabel") || `Tid: ${row.Tid}`}
+                      >
+                        <span
+                          class="w-2 h-2 bg-current rounded-full"
+                          aria-hidden="true"
+                        />
+                        {row.Tid}
+                      </span>
+                    </td>
+                    <td
+                      class="p-3 whitespace-nowrap border-r border-gray-200"
+                      role="cell"
+                    >
+                      {row.Klasse || t("records.noClass")}
+                    </td>
+                    <td class="p-3 whitespace-nowrap" role="cell">
+                      {row.År || t("records.noYear")}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+
+    {/* Assistive technology summary */}
+    <div class="sr-only" role="status" aria-live="polite">
+      {
+        topp5.length > 0
+          ? t("records.summary") ||
+            `Viser ${topp5.length} rekorder for ${title} - ${distanse}`
+          : t("records.noDataSummary") ||
+            `Ingen data tilgjengelig for ${title} - ${distanse}`
+      }
     </div>
   </div>
 </section>
+
+<style>
+  /* Enhanced focus styles for accessibility */
+  th:focus,
+  tr:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .bg-pink-100 {
+      border: 2px solid currentColor;
+    }
+    .bg-blue-100 {
+      border: 2px solid currentColor;
+    }
+  }
+
+  /* Reduce motion for users with vestibular disorders */
+  @media (prefers-reduced-motion: reduce) {
+    .transition-colors {
+      transition: none;
+    }
+  }
+
+  /* Improved hover states */
+  tr:hover td,
+  tr:focus td {
+    background-color: inherit;
+  }
+
+  /* Better border visibility in high contrast modes */
+  @media (prefers-contrast: high) {
+    .border-gray-200,
+    .border-gray-300 {
+      border-color: ButtonBorder;
+    }
+  }
+</style>

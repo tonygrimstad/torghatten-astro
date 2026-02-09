@@ -1,10 +1,14 @@
 ---
+import { useTranslations } from "../utils/useTranslations.ts";
+
 const {
   redirectTo = "/no/", // Standard fallback
   lang = "no",
   title = "Torghatten Maraton",
   message = "Du blir videresendt...",
 } = Astro.props;
+
+const { t } = useTranslations(Astro.url);
 ---
 
 <!doctype html>
@@ -17,10 +21,10 @@ const {
   <body class="bg-black text-yellow-400 text-center p-10">
     <h1 class="text-2xl font-bold mb-4">{title}</h1>
     <p>
-      {message}
+      {t("redirect.message")}
       <br />
       <a href={redirectTo} class="underline hover:text-yellow-300">
-        Gå videre til {redirectTo}
+        {t("redirect.link")}{redirectTo}
       </a>
     </p>
   </body>

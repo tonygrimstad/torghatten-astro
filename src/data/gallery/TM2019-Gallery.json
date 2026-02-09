@@ -501,5 +501,19 @@
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2019/DSC_4951.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2019/DSC_4954.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2019/DSC_4963.jpg"
+  ],
+  "photographers": [
+    {
+      "name": "Nomi Kristoffersen",
+      "url": ""
+    },
+    {
+      "name": "Bjørn Henrik Ormø",
+      "url": ""
+    },
+    {
+      "name": "Jeanette M. Johansen",
+      "url": ""
+    }
   ]
 }

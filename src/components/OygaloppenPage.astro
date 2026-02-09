@@ -9,17 +9,22 @@ import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
 import oygaloppenRecords from "../data/top5_json/oygaloppen_10_km.json";
 import VideoSection from "../components/VideoSection.astro";
+import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
 ---
 
-<Layout title={t("nav.Øygaloppen (10 km)")} lang={currentLang} light={true}>
+<Layout
+  title={t("seo.islandRaceTitle")}
+  description={t("oygaloppen.description")}
+  lang={currentLang}
+  light={true}
+>
   <HeroSectionDistanse
-    distanse={`🏃 ${t("nav.Øygaloppen (10 km)")}`}
+    distanse={`🏃 ${t("nav.islandRace10km")}`}
     description={t("oygaloppen.description")}
-    signupUrl="https://signup.eqtiming.com/arrangement/torghatten-maraton-2025/g295.48438?event=torghatten"
   />
 
   <RaceProfile
@@ -53,26 +58,35 @@ const { t, currentLang } = useTranslations(Astro.url);
     ]}
   />
 
-  <Top5recordsComponent
-    distanse={t("nav.Øygaloppen")}
-    kjonn="K"
-    data={oygaloppenRecords}
-  />
-  <Top5recordsComponent
-    distanse={t("nav.Øygaloppen")}
-    kjonn="M"
-    data={oygaloppenRecords}
-  />
+  <FeatureSection feature="recordsSection">
+    <Top5recordsComponent
+      distanse={t("nav.islandRace")}
+      kjonn="K"
+      data={oygaloppenRecords}
+    />
+    <Top5recordsComponent
+      distanse={t("nav.islandRace")}
+      kjonn="M"
+      data={oygaloppenRecords}
+    />
+  </FeatureSection>
 
-  <VideoSection
-    title={t("oygaloppen.videoTitle")}
-    description={t("oygaloppen.videoDescription")}
-    videoUrl="https://www.youtube.com/embed/LNofALhX42k"
-  />
+  <FeatureSection feature="videoSection">
+    <VideoSection
+      title={t("oygaloppen.videoTitle")}
+      description={t("oygaloppen.videoDescription")}
+      videoUrl="https://www.youtube.com/embed/LNofALhX42k"
+    />
+  </FeatureSection>
 
   <FeatureSection feature="infoSection">
     <InfoSection />
   </FeatureSection>
   <DistancesSection current="Øygaloppen (10 km)" />
+
+  <FeatureSection feature="SponsorerAlleSider">
+    <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />
+  </FeatureSection>
+
   <Footer />
 </Layout>

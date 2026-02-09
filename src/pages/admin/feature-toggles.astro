@@ -1,5 +1,8 @@
 ---
 import { featureToggles, isFeatureActive } from "../../config/siteConfig.ts";
+import { useTranslations } from "../../utils/useTranslations.ts";
+
+const { t } = useTranslations(Astro.url);
 
 const toggles = Object.entries(featureToggles).map(([key, toggle]) => ({
   key,
@@ -10,7 +13,7 @@ const toggles = Object.entries(featureToggles).map(([key, toggle]) => ({
 
 <html lang="no">
   <head>
-    <title>Feature Toggle-status</title>
+    <title>{t("admin.title")}</title>
     <meta charset="utf-8" />
     <style>
       body {
@@ -44,21 +47,21 @@ const toggles = Object.entries(featureToggles).map(([key, toggle]) => ({
     </style>
   </head>
   <body>
-    <h1>Feature Toggles 🔧</h1>
+    <h1>{t("admin.toggles")}</h1>
     <ul>
       {
-        toggles.map((t) => (
+        toggles.map((toggle) => (
           <li>
             <div>
-              <span>{t.key}</span>
-              <span class={t.active ? "active" : "inactive"}>
-                {t.active ? " ✅ aktiv" : " ❌ deaktivert"}
+              <span>{toggle.key}</span>
+              <span class={toggle.active ? "active" : "inactive"}>
+                {toggle.active ? t("admin.active") : t("admin.inactive")}
               </span>
             </div>
             <small>
-              {t.enabled !== undefined && `Enabled: ${t.enabled} `}
-              {t.from && `| Fra: ${t.from} `}
-              {t.to && `| Til: ${t.to}`}
+              {toggle.enabled !== undefined && `${t("admin.enabled")}${toggle.enabled} `}
+              {toggle.from && `${t("admin.from")}${toggle.from} `}
+              {toggle.to && `${t("admin.to")}${toggle.to}`}
             </small>
           </li>
         ))

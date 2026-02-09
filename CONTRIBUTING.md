@@ -1,29 +1,63 @@
 # Bidra til Torghatten Maraton-nettstedet
 
-Takk for at du vurderer å bidra! Her er noen enkle retningslinjer for å sikre en god opplevelse for alle bidragsytere.
-
-## Hvordan bidra
-
-1. 📁 **Fork** dette prosjektet
-2. 🔠 Opprett en ny branch (ikke bruk `main` direkte)
-3. 🔧 Gjør endringene dine og test lokalt
-4. 🖊️ Lag en pull request (PR) tilbake til `main`
-
-## Retningslinjer
-
-- Skriv ren og lettlest kode
-- Bruk eksisterende komponenter og struktur der det er mulig
-- Ikke committ `dist/`, `.env`- eller byggfiler
-
-## Diskusjon og forslag
-
-Har du innspill, forbedringer eller oppdaget en feil? Opprett et Issue:
-
-🔧 [Opprett Issue](https://github.com/TonyGrimstad/torghatten-astro/issues)
+Takk for at du vurderer å bidra! 🎉
+Dette prosjektet drives av frivillige og har tydelige kvalitetskrav.
 
 ---
 
-🤖 Utviklet og driftet av Tony Grimstad
-📧 Kontakt: [webmaster@torghattenmaraton.no](mailto:webmaster@torghattenmaraton.no)
+## Hvordan bidra
 
-Nettsiden driftes av frivillige, og alle bidrag settes stor pris på!
+1. 📁 Fork dette prosjektet
+2. 🌿 Opprett en ny branch (ikke bruk `main` direkte)
+3. 🔧 Gjør endringene dine og test lokalt
+4. 🔀 Lag en pull request (PR) tilbake til `main`
+
+---
+
+## Retningslinjer
+
+### Kode og struktur
+
+- Følg eksisterende komponentstruktur
+- Unngå unødvendig JavaScript
+- Bruk Astro-komponenter og Tailwind CSS
+
+### Språk (i18n)
+
+- Ingen hardkodet brukerrettet tekst
+- Alle tekster via `useTranslations()`
+- Husk både `no.json` og `en.json`
+
+Se `I18N.md`.
+
+### Tilgjengelighet og kvalitet
+
+- Endringer skal følge WCAG 2.1 AA
+- Tastatur og fokus må fungere
+- Bilder må ha korrekt alt-tekst
+
+Se:
+
+- `ACCESSIBILITY.md`
+- `A11Y-COMPONENTS.md`
+
+---
+
+## Før du lager PR
+
+- Kjør siden lokalt
+- Gå gjennom `CHECKLIST.md`
+- Sjekk at NO/EN fortsatt speiler hverandre
+
+---
+
+## Spørsmål eller forslag?
+
+Opprett et Issue:
+
+🔧 https://github.com/TonyGrimstad/torghatten-astro/issues
+
+---
+
+🤖 Utviklet og driftet av TonyG
+📧 Kontakt: webmaster@torghattenmaraton.no

@@ -1,0 +1,276 @@
+{
+  "hero": {
+    "title": "Torghatten Marathon",
+    "subtitle": "Experience the joy of running in Norway's most scenic marathon!",
+    "scrollHint": "Learn more about the race",
+    "scrollHintAriaLabel": "Scroll down for more information about the race"
+  },
+  "seo": {
+    "defaultTitle": "Torghatten Marathon - Norway's Most Beautiful Marathon",
+    "defaultDescription": "Torghatten Marathon takes place annually on the last weekend of April on Torgøyan in Brønnøy. Experience running joy in scenic surroundings with distances for everyone.",
+    "galleryTitle": "Gallery - Torghatten Marathon",
+    "galleryDescription": "View photos from previous years of Torghatten Marathon. Experience the atmosphere and natural beauty from Norway's most beautiful marathon.",
+    "fullMarathonTitle": "Full Marathon - Torghatten Marathon",
+    "halfMarathonTitle": "Half Marathon - Torghatten Marathon",
+    "islandRaceTitle": "Island Race 10km - Torghatten Marathon",
+    "miniMarathonTitle": "Mini Marathon 3.6km - Torghatten Marathon",
+    "kidsRaceTitle": "Kids Race - Torghatten Marathon",
+    "paraRaceTitle": "Para Race - Torghatten Marathon",
+    "trimTitle": "Trim Activity - Torghatten Marathon",
+    "helgelandRacesTitle": "Helgeland Races 2025 - Torghatten Marathon",
+    "helgelandRacesDescription": "Take part in at least four out of five races across Helgeland to earn a special T-shirt, an engraved plate and a chance to win NOK 5,000. Experience Torghatten, Sømnamile, Alstahaug Marathon, Milæ and the Nesna Running Festival."
+  },
+  "footer": {
+    "contact": "Contact",
+    "siteName": "Torghatten Marathon",
+    "email": "post@torghattenmaraton.no",
+    "description": "Torghatten Marathon was first held in 2015 and is organized annually on the last weekend of April. The race takes place in scenic surroundings on the Torgøyan islands in Brønnøy municipality.",
+    "event": "Torghatten Marathon",
+    "organizer": "Organizer",
+    "organizedBy": "Sport Torghatten Idrettslag",
+    "orgUrl": "https://sporttorghatten.no",
+    "poweredBy": "Developed and maintained by TonyG with ❤️ and Astro",
+    "language": "Language",
+    "_feedback": "Give feedback on GitHub",
+    "phone": "Phone: ",
+    "english": "🇬🇧 English",
+    "norwegian": "🇳🇴 Norwegian"
+  },
+  "nav": {
+    "distances": "Distances",
+    "fullMarathon": "Full Marathon",
+    "halfMarathon": "Half Marathon",
+    "islandRace": "Island Race",
+    "islandRace10km": "Island Race (10 km)",
+    "miniMarathon": "Mini Marathon",
+    "miniMarathon36km": "Mini Marathon (3.6 km)",
+    "kidsRace": "Kids Race",
+    "paraRace": "Para Race",
+    "trim": "Trim",
+    "program": "Program",
+    "results": "Results",
+    "accommodation": "Accommodation",
+    "about": "About",
+    "gallery": "Moments",
+    "sponsors": "Sponsors",
+    "helgelandRaces": "Helgeland Races"
+  },
+  "records": {
+    "top5": "Top 5",
+    "female": "Women",
+    "male": "Men",
+    "name": "Name",
+    "club": "Club",
+    "time": "Time",
+    "class": "Class",
+    "year": "Year"
+  },
+  "classList": {
+    "title": "Women and Men:",
+    "heading": "👥 Classes"
+  },
+  "distances": {
+    "title": "Our distances",
+    "others": "Our other distances",
+    "timed": "Timed",
+    "notTimed": "Not timed",
+    "timedTooltip": "Timed race",
+    "timedLabel": "This race is timed",
+    "clockIcon": "clock",
+    "medal": "medal",
+    "navigation": "Choose race distance",
+    "backgroundAlt": "Background image shows tracks and nature around Torghatten",
+    "colorIndicator": "Category marker",
+    "pressEnter": "Press Enter to read more",
+    "summary": "{{count}} available distances",
+    "icons": {
+      "marathon": "marathon strength",
+      "halfMarathon": "male runner",
+      "tenK": "runner",
+      "mini": "mini race",
+      "trim": "fitness and exercise",
+      "children": "children's activity",
+      "para": "para race accessibility"
+    }
+  },
+  "gallery": {
+    "title": "📸 Gallery",
+    "modernTitle": "Moments from the Race",
+    "subtitle": "Look back at magical moments from Torghatten Marathon through the years",
+    "photoCount": "photos total",
+    "image": "Image ",
+    "photographers": "Photo"
+  },
+  "visAlleAar": "Show all years",
+  "admin": {
+    "title": "Feature Toggle Status",
+    "toggles": "Feature Toggles 🔧",
+    "active": " ✅ active",
+    "inactive": " ❌ inactive",
+    "enabled": "Enabled: ",
+    "from": "| From: ",
+    "to": "| To: "
+  },
+  "redirect": {
+    "message": "You are being redirected...",
+    "link": "Continue to "
+  },
+  "barnelop": {
+    "description": "Fun race for children with age-appropriate distances.",
+    "certified": "This course is not officially certified.",
+    "profileTitle": "Kids Race Profile",
+    "description1": "A safe and fun race designed specifically for children.",
+    "description2": "Various distances based on age groups to ensure all children can participate."
+  },
+  "halvmaraton": {
+    "description": "Half marathon distance through scenic Norwegian landscapes.",
+    "certified": "This course is officially certified and measured.",
+    "profileTitle": "Half Marathon Profile",
+    "description1": "Experience the perfect balance of challenge and scenery.",
+    "description2": "21.097 km of beautiful coastal and island terrain.",
+    "videoTitle": "Half Marathon Highlights",
+    "videoDescription": "Watch highlights from previous half marathon races."
+  },
+  "helmaraton": {
+    "classTitle": "Full Marathon Classes",
+    "description": "The ultimate challenge - full marathon distance in breathtaking surroundings.",
+    "certified": "This course is officially certified and measured.",
+    "profileTitle": "Full Marathon Profile",
+    "description1": "The crown jewel of Torghatten Marathon - 42.195 km of pure adventure.",
+    "description2": "Test your limits on Norway's most beautiful marathon course."
+  },
+  "minimaraton": {
+    "description": "Shorter distance perfect for beginners or those wanting a lighter challenge.",
+    "certified": "This course is not officially certified.",
+    "profileTitle": "Mini Marathon Profile",
+    "description1": "A great introduction to distance running in beautiful surroundings.",
+    "description2": "3.6 km of scenic routes perfect for all fitness levels.",
+    "classTitle": "Mini Marathon Classes",
+    "videoTitle": "Mini Marathon Experience",
+    "videoDescription": "See what the mini marathon experience is all about."
+  },
+  "oygaloppen": {
+    "description": "10 km race around the beautiful islands with stunning coastal views.",
+    "certified": "This course is officially certified and measured.",
+    "profileTitle": "Island Race Profile",
+    "description1": "Run through the spectacular island landscape of Torghatten.",
+    "description2": "10 kilometers of coastal beauty and challenging terrain.",
+    "classTitle": "Island Race Classes",
+    "videoTitle": "Island Race Adventure",
+    "videoDescription": "Experience the island race through dramatic landscapes."
+  },
+  "paralop": {
+    "description": "Accessible race for participants with disabilities.",
+    "certified": "This course is not officially certified.",
+    "profileTitle": "Para Race Profile",
+    "description1": "An inclusive race designed for all abilities.",
+    "description2": "Adapted course ensuring everyone can participate in the marathon experience."
+  },
+  "trim": {
+    "description": "Recreational fitness activity for all ages and abilities.",
+    "certified": "This is a recreational activity, not officially certified.",
+    "profileTitle": "Trim Activity Profile",
+    "description1": "Join our community fitness activity in beautiful natural surroundings.",
+    "description2": "A non-competitive way to enjoy exercise and the stunning Torghatten landscape.",
+    "classTitle": "Trim Classes",
+    "classValue": "Open to all ages",
+    "videoTitle": "Trim Activity",
+    "videoDescription": "See how our community comes together for healthy outdoor activity."
+  },
+  "helgelandslopene": {
+    "title": "Helgeland Races 2025",
+    "lead": "Helgeland Races 2025 features five great events across the Helgeland region. If you participate in at least four out of five races, you earn a special T-shirt and an engraved plate. You also enter the draw for NOK 5,000. Distances must be 10 km or longer. The following races are included:",
+    "bannerAlt": "Helgeland Races – hero banner",
+    "sections": {
+      "races": { "title": "The Races" }
+    },
+    "runs": [
+      {
+        "key": "torghatten",
+        "name": "Torghatten Marathon – Saturday 26 April",
+        "desc": "Run in stunning scenery around the legendary mountain outside Brønnøysund. Distances from 3.6 to 42.2 km, with certified 10 km, half and full marathon courses. Includes a kids’ race and para race.",
+        "url": "https://torghattenmaraton.no/",
+        "logo": "torghatten-maraton.jpg",
+        "alt": "Torghatten Marathon logo"
+      },
+      {
+        "key": "somnamile",
+        "name": "Sømnamile – Saturday 24 May",
+        "desc": "Sømna IL has a long tradition of distance running. Sømnamile continues this with certified 5 km and 10 km races, plus a 650 m kids’ race. Expect a friendly Saturday at Sømna stadium!",
+        "url": "https://www.somnamile.no/",
+        "logo": "Somnamile.jpg",
+        "alt": "Sømnamile logo"
+      },
+      {
+        "key": "alstahaug",
+        "name": "Alstahaug Marathon – Saturday 14 June",
+        "desc": "A legendary race since 1982. Certified distances of 5, 10, 21 and 42.2 km. The marathon starts in Sandnessjøen; all distances finish at beautiful Tjøtta gård.",
+        "url": "https://tjotta.net/alstahaug-maraton/hjem.html",
+        "logo": "Alstahaug-maraton.png",
+        "alt": "Alstahaug Marathon logo"
+      },
+      {
+        "key": "milae",
+        "name": "Milæ – Saturday 16 August",
+        "desc": "A vibrant city-centre race on flat courses through Mosjøen, hosted by Vefsn municipality and Helgeland Kraft sports clubs. Distances: kids’ race, 5 km and 10 km. In 2025 the race is part of the Helgeland Kraft Energy Games at Kippermoen, including the Norwegian pole climbing championships!",
+        "url": "https://milæ.no/",
+        "logo": "mila.png",
+        "alt": "Milæ logo"
+      },
+      {
+        "key": "nesna",
+        "name": "Nesna Running Festival – Saturday 20 September",
+        "desc": "First held in 2023 with over 400 participants. Choose between half marathon, 10 km and 5 km (all certified). Also includes a 5 km untimed option and a kids’ race – aiming for a festive community atmosphere.",
+        "url": "https://heilehelgeland.no/events/nesna-lopefestival/",
+        "logo": "nesna-lop.png",
+        "alt": "Nesna Running Festival logo"
+      }
+    ]
+  },
+
+  "sponsors": {
+    "title": "Sponsors",
+    "partners": "Partners",
+    "viewAll": "View all partners",
+    "pageTitle": "Our Partners",
+    "pageSubtitle": "Thank you to everyone who makes Torghatten Marathon possible",
+    "pageDescription": "Thank you to all our partners who make Torghatten Marathon possible. See all the sponsors who support us.",
+    "premium": "Main Sponsors",
+    "gold": "Gold Sponsors",
+    "silver": "Silver Sponsors",
+    "becomeTitle": "Become a Partner",
+    "becomeDescription": "Want to support Torghatten Marathon? Contact us to learn about sponsorship opportunities.",
+    "contactUs": "Contact us"
+  },
+
+  "results": {
+    "pageTitle": "Results & Times",
+    "subtitle": "See results from all Torghatten Marathon races through the years",
+    "pageDescription": "See results from all Torghatten Marathon races through the years. Find your time and placement from previous races.",
+    "current": "Recent race",
+    "upcoming": "Upcoming race",
+    "viewResults": "See complete result list and times",
+    "viewButton": "View results",
+    "viewUpcoming": "View registration",
+    "infoTitle": "Can't find your result?",
+    "infoText": "Contact us if you have questions about results or can't find what you're looking for.",
+    "contactUs": "Contact us"
+  },
+  "liveScroll": {
+    "title": "Live results",
+    "description": "Follow the race live as it happens!",
+    "live": "LIVE",
+    "loading": "Loading live results...",
+    "refreshInfo": "Results update automatically. No need to reload the page."
+  },
+  "liveScrollHint": {
+    "title": "The race is on!",
+    "message": "Follow the race live! Click to see real-time results",
+    "scrollDown": "Click to go to live results",
+    "close": "Close message"
+  },
+  "signup": {
+    "button": "Sign up now",
+    "hint": "📣 Registration is open until April 25th!"
+  }
+}

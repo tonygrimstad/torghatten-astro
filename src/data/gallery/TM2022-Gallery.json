@@ -221,5 +221,15 @@
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2022/A6500-2022_04_30-4816_OTS.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2022/A6500-2022_04_30-4855_OTS.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2022/A6500-2022_04_30-4859_OTS.jpg"
+  ],
+  "photographers": [
+    {
+      "name": "Nomi Kristoffersen",
+      "url": ""
+    },
+    {
+      "name": "Olav T. Søla",
+      "url": ""
+    }
   ]
 }

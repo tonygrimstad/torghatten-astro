@@ -88,6 +88,11 @@ claude.md
 gemini.md
 .github
 settings.json
+.cursor/
+mcp.config.*
+*.env
+*key.env
+api-keys.*
 
 # Kiro AI-hooks
 .kiro/
@@ -107,3 +112,8 @@ settings.json
 # Trae-regler (Taskmaster-relatert)
 .trae/
 .trae/rules/
+
+# Cursor-regler
+echo "" >> .gitignore
+echo "# Cursor AI-editor" >> .gitignore
+echo ".cursor/" >> .gitignore

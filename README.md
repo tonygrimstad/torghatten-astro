@@ -1,82 +1,142 @@
-# 🏃‍♂️ Torghatten Maraton – Offisiell nettside
+# Torghatten Maraton – nettside
 
-Dette er kildekoden til den offisielle nettsiden for **Torghatten Maraton**, et løpsarrangement som finner sted ved det ikoniske fjellet med hull i Brønnøy kommune. Nettsiden er bygget for å være rask, universelt utformet, og enkel å vedlikeholde.
+Dette repoet inneholder nettsiden for **Torghatten Maraton**.
 
----
+Nettsiden er bygget som et raskt, tilgjengelig og lettlest statisk nettsted med fokus på:
 
-## 🌍 Live nettsted
-
-👉 [torghattenmaraton.no](https://torghattenmaraton.no)
-
----
-
-## 🚀 Teknisk oppsett
-
-- **Astro** – moderne statisk sidegenerator
-- **Tailwind CSS** – stilrammeverk
-- **JSON-baserte datafiler** – for distanser, resultater og feature toggles
-- **GitHub Actions + FTP** – automatisk deploy til Domeneshop
-- **Feature Toggles** – sentral styring av seksjoner og innhold
-- **Språkstøtte** – støtte for norsk og engelsk (under utvikling)
+- god brukeropplevelse (UX)
+- universell utforming (WCAG)
+- ytelse
+- enkel videreutvikling
 
 ---
 
-## 📁 Mappestruktur
+## Tech stack
 
-.
-├── public/ # Bilder og andre statiske ressurser
-├── src/
-│ ├── components/ # Gjenbrukbare UI-komponenter
-│ ├── data/ # JSON-filer (eks: resultater, topplister)
-│ ├── layouts/ # Sideoppsett
-│ ├── pages/ # Nettsider (*.astro)
-│ ├── config/ # siteConfig.ts, feature toggles og metadata
-│ └── styles/ # Globale stilark
-├── .github/workflows/ # GitHub Actions for deploy
-├── astro.config.mjs # Astro-oppsett
-└── package.json # Avhengigheter
+- **Astro** (statisk nettsted)
+- **Tailwind CSS**
+- **Tailwind Typography** (`prose`) for lesbar tekst
+- **TypeScript**
+- **i18n** via mappebasert URL-struktur (`/no`, `/en`)
+- Bilder primært fra `public/` (med plan for gradvis optimalisering)
 
 ---
 
-## 📦 Kom i gang lokalt
+## Språk og URL-struktur
 
-```bash
-git clone https://github.com/TonyGrimstad/torghatten-astro.git
-cd torghatten-astro
-npm install
-npm run dev
-```
+Språk styres via URL:
 
-## ✅ Feature toggles
+/no/... → Norsk (default)
+/en/... → Engelsk
 
-Sentralisert styring av innhold og seksjoner (InfoSection, VideoSection, Påmelding, osv.)
+Strukturen i `src/pages/no` og `src/pages/en` skal speile hverandre.
 
-Defineres i src/config/siteConfig.ts
+Alle tekster håndteres via:
 
-```bash
-export const featureToggles = {
-  infoSection: { enabled: true, from: "2025-01-01", to: "2025-04-30" },
-  signupButton: { enabled: true, to: "2025-04-25" },
-  raceDate: { enabled: true, text: "26. april 2025" },
-};
-```
+src/translations/no.json
+src/translations/en.json
 
-## 🧠 Viktige konsepter
+Se `I18N.md` for detaljer og regler.
 
-✅ Component-driven – Hver seksjon (Hero, Video, Topp5 osv.) er en selvstendig komponent.
+---
 
-🔧 Toggle-basert innhold – Hver komponent kan slås av/på basert på dato og config.
+## Prosjektmål (kvalitet)
 
-🎯 Resultater per distanse – JSON-filer for hel-, halvmaraton osv., med gjenbrukbar komponent.
+Dette prosjektet har tydelige kvalitetsmål:
 
-## 🤝 Bidra
+### Tilgjengelighet
 
-Har du innspill, bilder eller forbedringer?
-👉 [Opprett et Issue](https://github.com/tonygrimstad/torghatten-astro/issues) eller send en Pull Request.
+- **WCAG 2.1 AA** er målsetting
+- Tastaturnavigasjon
+- Synlig fokus
+- God kontrast
+- Semantisk HTML
 
-📄 Lisens & utviklerinfo
-© Torghatten Maraton v/ Sport Torghatten Idrettslag
+Se `ACCESSIBILITY.md`.
 
-Nettside utviklet og vedlikeholdt av Tony Grimstad
+---
 
-GitHub: github.com/TonyGrimstad/torghatten-astro
+### Lesbarhet og innhold
+
+- Tekst skal være skannbar og lett å forstå
+- Bruk korte avsnitt, overskrifter og punktlister
+- Bruk `prose` (Tailwind Typography) på teksttunge seksjoner
+
+Se `TYPOGRAPHY.md` og `CONTENT-GUIDE.md`.
+
+---
+
+### Bilder og ytelse
+
+- Bilder skal ha korrekt alt-tekst
+- Hero- og nøkkelbilder skal vurderes for optimalisering
+- Gradvis migrering til `astro:assets` der det gir verdi
+
+Se `IMAGES.md`.
+
+---
+
+## Kode- og designprinsipper
+
+- Bruk semantiske HTML-elementer
+- Unngå unødvendig JavaScript
+- Små, gjenbrukbare Astro-komponenter
+- Konsistent design basert på Tailwind-klasser
+- Gul brukes primært som accent (ikke brødtekst)
+
+Se `DESIGN-SYSTEM.md`.
+
+---
+
+## Copilot og utviklingsstøtte
+
+Dette repoet er tilrettelagt for bruk av **GitHub Copilot i VS Code**.
+
+Copilot styres av:
+
+.github/copilot-instructions.md
+
+Denne definerer:
+
+- arkitekturvalg
+- WCAG-krav
+- i18n-regler
+- kode- og designprinsipper
+
+---
+
+## Viktige dokumenter
+
+| Fil | Formål |
+
+|----|-------|
+
+| `DEV.md` | Teknisk arkitektur og implementasjon |
+| `ACCESSIBILITY.md` | WCAG-regler og sjekklister |
+| `A11Y-COMPONENTS.md` | Tilgjengelighetskrav per komponent |
+| `TYPOGRAPHY.md` | Lesbarhet og bruk av prose |
+| `CONTENT-GUIDE.md` | Innholdsstruktur og klarspråk |
+| `IMAGES.md` | Bildebruk, alt-tekst og ytelse |
+| `DESIGN-SYSTEM.md` | Farger, typografi og UI-regler |
+| `I18N.md` | Språk og oversettelser |
+| `SEO.md` | SEO-regler og metadata |
+| `CHECKLIST.md` | Sjekkliste før deploy |
+
+---
+
+## Anbefalt arbeidsflyt
+
+1. Les `README.md`
+2. Følg retningslinjene i:
+   - `DEV.md`
+   - `ACCESSIBILITY.md`
+   - `I18N.md`
+3. Bruk Copilot aktivt – repoet gir kontekst
+4. Før deploy: gå gjennom `CHECKLIST.md`
+
+---
+
+## Status
+
+Prosjektet er under aktiv videreutvikling.
+Dokumentasjonen er ment å være **levende** og oppdateres ved behov.

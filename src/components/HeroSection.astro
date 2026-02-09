@@ -1,5 +1,6 @@
 ---
 import SignupButton from "./signupButton.astro";
+import LiveScrollHint from "./LiveScrollHint.astro";
 import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
 import { useTranslations } from "../utils/useTranslations.ts";
 import { navLinks } from "../config/navLinks.ts";
@@ -13,17 +14,9 @@ const { t } = useTranslations(Astro.url);
   <!-- Overlay for mørkere bakgrunn -->
   <div class="absolute inset-0 bg-black/60 z-0"></div>
 
-  <!-- Logo -->
-  <img
-    src="/tm-logo.jpg"
-    alt="Torghatten Maraton logo"
-    class="absolute top-15 left-0 w-40 md:w-60 opacity-80 z-10 drop-shadow-md rounded-xl"
-    style="box-shadow: 4px 4px 15px rgba(234, 179, 8, 0.5);"
-  />
-
   <!-- Innhold -->
   <div
-    class="relative z-10 flex flex-col flex-grow justify-start items-center px-4 pt-80 md:pt-80 pb-16 text-center"
+    class="relative z-10 flex flex-col grow justify-start items-center px-4 pt-32 md:pt-40 pb-16 text-center"
   >
     <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">
       {t("hero.title")}
@@ -35,6 +28,19 @@ const { t } = useTranslations(Astro.url);
       {isFeatureActive("raceDate") && ` – ${getFeatureText("raceDate")}`}
     </p>
 
+    {/* Signup Hint */}
+    {
+      isFeatureActive("signupHint") && (
+        <div class="mb-4 px-4 py-2 bg-yellow-500/20 border border-yellow-400/30 rounded-lg text-yellow-300">
+          <p class="text-sm md:text-base font-medium">
+            {getFeatureText("signupHint") || t("signup.hint")}
+          </p>
+        </div>
+      )
+    }
+
     <SignupButton />
+
+    <LiveScrollHint />
   </div>
 </section>

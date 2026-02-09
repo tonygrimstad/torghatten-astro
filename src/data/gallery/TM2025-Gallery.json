@@ -164,5 +164,11 @@
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2025/TM25_0129.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2025/TM25_0130.jpg",
     "https://res.cloudinary.com/ds125t1j6/image/upload/w_800/galleri/TM2025/TM25_0131.jpg"
+  ],
+  "photographers": [
+    {
+      "name": "Brønnøy kameraklubb",
+      "url": "https://bronnoykameraklubb.no/"
+    }
   ]
 }

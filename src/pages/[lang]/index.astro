@@ -1,0 +1,61 @@
+---
+import FeatureSection from "../../components/FeatureSection.astro";
+import Layout from "../../layouts/Layout.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import LiveScrollHint from "../../components/LiveScrollHint.astro";
+import ProgramSection from "../../components/ProgramSection.astro";
+import LiveScroll from "../../components/LiveScroll.astro";
+import DistancesSection from "../../components/DistancesSection.astro";
+import GallerySection from "../../components/GallerySection.astro";
+import AccommodationSection from "../../components/AccommodationSection.astro";
+import AboutSection from "../../components/AboutSection.astro";
+import InfoSection from "../../components/InfoSection.astro";
+import SponsorSection from "../../components/SponsorSection.astro";
+import Footer from "../../components/footer.astro";
+import { useTranslations } from "../../utils/useTranslations.ts";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const { t, currentLang } = useTranslations(Astro.url);
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/");
+}
+---
+
+<Layout
+  lang={currentLang}
+  title={t("seo.defaultTitle")}
+  description={t("seo.defaultDescription")}
+>
+  <!-- 🖼️ Bakgrunnsbilde som dekker hele siden -->
+  <div
+    class="absolute inset-0 -z-10 bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center"
+  >
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Seksjoner -->
+  <HeroSection />
+  <FeatureSection feature="programSection"><ProgramSection /></FeatureSection>
+  <FeatureSection feature="liveScroll"><LiveScroll /></FeatureSection>
+  <DistancesSection />
+  <FeatureSection feature="infoSection"><InfoSection /></FeatureSection>
+  <GallerySection />
+  <AccommodationSection />
+  <AboutSection />
+  <FeatureSection feature="SponsorerForsiden"
+    ><SponsorSection
+      variant="minimal"
+      maxLogos={12}
+      showViewAllLink={false}
+    /></FeatureSection
+  >
+
+  <!-- Footer nederst -->
+  <Footer />
+</Layout>

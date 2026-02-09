@@ -7,4 +7,6 @@ import tm2022 from "./gallery/TM2022-Gallery.json";
 import tm2023 from "./gallery/TM2023-Gallery.json";
 import tm2025 from "./gallery/TM2025-Gallery.json";
 
-export const galleriData = [tm2015, tm2016, tm2017, tm2018, tm2019, tm2022, tm2023, tm2025]; // rekkefølge = visningsrekkefølge
+import type { GalleryYear } from "../types/gallery";
+
+export const galleriData: GalleryYear[] = [tm2015, tm2016, tm2017, tm2018, tm2019, tm2022, tm2023, tm2025] as GalleryYear[]; // rekkefølge = visningsrekkefølge

@@ -1,0 +1,121 @@
+---
+import { getAllSponsors, getSponsorsByTier } from "../config/sponsors";
+import { useTranslations } from "../utils/useTranslations";
+
+const { t } = useTranslations(Astro.url);
+
+interface Props {
+  variant?: "minimal" | "full" | "footer";
+  showTitle?: boolean;
+  maxLogos?: number;
+  showViewAllLink?: boolean;
+}
+
+const {
+  variant = "minimal",
+  showTitle = true,
+  maxLogos,
+  showViewAllLink = true,
+} = Astro.props;
+
+const premiumSponsors = getSponsorsByTier("premium");
+const goldSponsors = getSponsorsByTier("gold");
+const allSponsors = getAllSponsors();
+
+// Velg hvilke sponsorer som vises basert på variant
+let displaySponsors = allSponsors;
+if (variant === "minimal") {
+  if (maxLogos) {
+    // Hvis maxLogos er satt, bruk alle sponsorer opp til det tallet
+    displaySponsors = allSponsors.slice(0, maxLogos);
+  } else {
+    // Standard oppførsel for minimal: premium + 3 gold sponsorer
+    displaySponsors = [...premiumSponsors, ...goldSponsors.slice(0, 3)];
+  }
+} else if (variant === "footer") {
+  displaySponsors = premiumSponsors;
+  if (maxLogos) {
+    displaySponsors = displaySponsors.slice(0, maxLogos);
+  }
+} else if (maxLogos) {
+  displaySponsors = displaySponsors.slice(0, maxLogos);
+}
+---
+
+{
+  displaySponsors.length > 0 && (
+    <section
+      class={`py-8 ${variant === "footer" ? "border-t border-white/20" : "bg-gradient-to-r from-gray-50 to-gray-100"}`}
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        {showTitle && (
+          <h3
+            class={`text-center mb-6 ${
+              variant === "footer"
+                ? "text-yellow-400 text-lg font-semibold"
+                : "text-gray-600 text-sm font-medium tracking-wider uppercase"
+            }`}
+          >
+            {variant === "footer"
+              ? t("sponsors.title", "Sponsorer")
+              : t("sponsors.partners", "Samarbeidspartnere")}
+          </h3>
+        )}
+
+        <div
+          class={`flex items-center justify-center gap-6 md:gap-8 flex-wrap ${
+            variant === "minimal"
+              ? "opacity-60 hover:opacity-80 transition-opacity"
+              : ""
+          }`}
+        >
+          {displaySponsors.map((sponsor) => (
+            <a
+              href={sponsor.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`group transition-all duration-300 hover:scale-105 ${
+                variant === "footer"
+                  ? "hover:drop-shadow-md hover:brightness-110"
+                  : "hover:drop-shadow-lg grayscale hover:grayscale-0"
+              }`}
+              aria-label={`Besøk ${sponsor.name}`}
+            >
+              <img
+                src={`/images/sponsors/${sponsor.logo}`}
+                alt={sponsor.alt}
+                loading="lazy"
+                decoding="async"
+                class={`object-contain transition-all duration-300 ${
+                  sponsor.tier === "premium"
+                    ? "h-12 md:h-16"
+                    : sponsor.tier === "gold"
+                      ? "h-10 md:h-12"
+                      : "h-8 md:h-10"
+                } ${
+                  variant === "footer"
+                    ? "filter brightness-90 group-hover:brightness-110"
+                    : ""
+                }`}
+                style={`max-width: ${
+                  sponsor.tier === "premium" ? "160px" : "120px"
+                };`}
+              />
+            </a>
+          ))}
+        </div>
+
+        {variant === "minimal" && showViewAllLink && (
+          <div class="text-center mt-6">
+            <a
+              href={`/${Astro.url.pathname.split("/")[1] || "no"}/sponsors`}
+              class="text-gray-500 text-sm hover:text-gray-700 hover:underline transition-colors"
+            >
+              {t("sponsors.viewAll", "Se alle samarbeidspartnere")} →
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}

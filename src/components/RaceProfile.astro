@@ -1,4 +1,6 @@
 ---
+import { formatLineBreaks } from "../utils/textUtils";
+
 const {
   kontrollmalt = true,
   kontrolltekst = "Løypen er kontrollmålt av Norsk Friidrett – april 2022",
@@ -6,27 +8,60 @@ const {
   tittel = "📍 Løypeprofil",
   beskrivelse1 = "Helmaratonløypa (halvmaraton x 2) har start og mål på Nordhus Stadion. Den går i naturskjønne omgivelser langs Torgøyene og rundt det sagnomsuste fjellet Torghatten.",
   beskrivelse2 = "Løypen er nokså flat. Starter ca 8 moh, høyeste punkt 32 moh etter 12,5 km. Jevn stigning og lett nedover til mål.",
+  profileId = "race-profile" // Ny prop for unik ID
 } = Astro.props;
+
+// Generer unik ID hvis ikke gitt
+const headingId = `${profileId}-heading`;
 ---
 
-<section class="bg-white/90 text-black py-16 px-6 backdrop-blur-sm">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-    {
-      kontrollmalt && (
-        <div>
-          <img
-            src={kontrollbilde}
-            alt="Logo: Nasjonalt kontrollmålt løype"
-            class="w-48 mx-auto mb-4 rounded-full opacity-80 shadow-lg"
+<section
+  class="bg-white/90 text-black py-16 px-6 backdrop-blur-sm"
+  aria-labelledby={headingId}
+  role="region"
+>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+
+    {kontrollmalt && (
+      <div class="order-2 md:order-1">
+        <img
+          src={kontrollbilde}
+          alt="Offisielt godkjent løype - kontrollmålt av Norsk Friidrett"
+          class="w-48 mx-auto mb-4 rounded-full opacity-80 shadow-lg"
+          loading="lazy"
+          role="img"
+        />
+        <p class="text-center text-sm text-gray-800 font-medium">
+          {kontrolltekst}
+        </p>
+      </div>
+    )}
+
+    <div class="order-1 md:order-2">
+      <h2
+        id={headingId}
+        class="text-2xl md:text-3xl font-bold mb-4 text-gray-900"
+      >
+        {tittel}
+      </h2>
+
+      <div class="space-y-4">
+        <p class="text-base md:text-lg leading-relaxed text-gray-900">
+          {beskrivelse1}
+        </p>
+
+        <div
+          class="bg-blue-50 border-l-4 border-blue-300 p-4 rounded-r-lg"
+          role="complementary"
+          aria-label="Tekniske detaljer om løypa"
+        >
+          <p
+            class="text-sm md:text-base text-gray-800 leading-relaxed"
+            set:html={formatLineBreaks(beskrivelse2)}
           />
-          <p class="text-center text-sm text-gray-600">{kontrolltekst}</p>
         </div>
-      )
-    }
-    <div>
-      <h2 class="text-xl font-semibold mb-2">{tittel}</h2>
-      <p>{beskrivelse1}</p>
-      <p class="mt-2 text-sm text-gray-700">{beskrivelse2}</p>
+      </div>
     </div>
+
   </div>
 </section>

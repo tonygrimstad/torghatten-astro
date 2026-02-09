@@ -3,7 +3,7 @@ const { lang = "no" } = Astro.props as { lang?: "no" | "en" };
 
 const programText = {
   no: {
-    title: "🗓️ Starttider – 26. april 2025",
+    title: "🗓️ Starttider – 25. april 2026",
     events: [
       { time: "10:00", description: "Start 42 km – Maraton" },
       { time: "10:45", description: "Paraløp" },
@@ -16,7 +16,7 @@ const programText = {
     note: "* De som skal gå/trille 3,6 km trim kan starte når de selv ønsker, men vi oppfordrer til å følge offisiell start kl. 11:45 eller starte tidligere på dagen, slik at man får med seg målgang til distanseløperne. I tillegg vil det da bli bedre plass i løypa siden både minimaraton 3,6 km og 10 km følger samme løypetrasé.",
   },
   en: {
-    title: "🗓️ Start Times – April 26, 2025",
+    title: "🗓️ Start Times – April 25, 2026",
     events: [
       { time: "10:00", description: "Start 42 km – Marathon" },
       { time: "10:45", description: "Para race" },
@@ -34,7 +34,7 @@ const { title, events, note } = programText[lang];
 ---
 
 <section
-  class="relative z-10 -mt-0 max-w-3xl mx-auto bg-black/70 text-white backdrop-blur-md shadow-lg rounded-lg px-6 py-12"
+  class="relative z-10 mt-0 max-w-3xl mx-auto bg-black/70 text-white backdrop-blur-md shadow-lg rounded-lg px-6 py-12"
   id="program"
 >
   <div class="max-w-4xl mx-auto">

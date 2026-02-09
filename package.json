@@ -6,11 +6,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "claude:test": "node scripts/claude-test.js",
+    "claude:review": "node scripts/claude-review-file.js",
+    "claude:gen": "node scripts/claude-generate-component.js",
+    "claude:seo": "node scripts/claude-generate-seo.js",
+    "claude:scan": "node scripts/claude-scan-to-tasks.js",
+    "i18n:audit": "node scripts/i18n-audit.js",
+    "i18n:extract": "node scripts/i18n-extract-from-pages.js",
+    "i18n:merge": "node scripts/i18n-merge-to-json.js",
+    "i18n:fill": "node scripts/i18n-fill-missing.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.60.0",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.9.1",
+    "dotenv": "^17.2.1",
     "fslightbox": "^3.6.1",
     "photoswipe": "^5.4.4",
     "tailwindcss": "^4.1.4"

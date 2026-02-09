@@ -1,32 +1,196 @@
 ---
+import { useTranslations } from "../utils/useTranslations.ts";
+
+interface Props {
+  title?: string;
+  description?: string;
+  videoUrl?: string;
+}
+
 const {
-  title = "🎥 Se løypen",
-  description = "Ta en visuell reise gjennom hele løypen og forbered deg til eventyret!",
+  title,
+  description,
   videoUrl = "https://www.youtube.com/embed/sPpCKe2s94k",
-} = Astro.props;
+}: Props = Astro.props;
+
+const { t } = useTranslations(Astro.url);
+
+// Use translations with fallbacks
+const videoTitle = title || t("video.defaultTitle") || "🎥 Se løypen";
+const videoDescription = description || t("video.defaultDescription") || "Ta en visuell reise gjennom hele løypen og forbered deg til eventyret!";
+
+// Generate unique IDs for accessibility
+const componentId = `video-section-${Math.random().toString(36).substr(2, 9)}`;
+const headingId = `${componentId}-heading`;
+const descriptionId = `${componentId}-description`;
+const videoId = `${componentId}-video`;
 ---
 
-<section class="relative py-20 px-6 text-white bg-cover bg-center">
-  <!-- Mørkt overlegg -->
-  <div class="absolute inset-0 bg-black/70 z-0"></div>
+<section
+  role="region"
+  aria-labelledby={headingId}
+  class="relative py-20 px-6 text-white bg-cover bg-center bg-gray-900"
+>
+  <!-- Dark overlay with sufficient contrast -->
+  <div
+    class="absolute inset-0 bg-black/80 z-0"
+    aria-hidden="true"
+  ></div>
 
   <div class="relative z-10 max-w-5xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
-      {title}
+    <h2
+      id={headingId}
+      class="text-3xl md:text-4xl font-bold mb-4 text-yellow-300"
+    >
+      {videoTitle}
     </h2>
-    <p class="mb-6 text-lg md:text-xl max-w-3xl mx-auto text-white">
-      {description}
+
+    <p
+      id={descriptionId}
+      class="mb-8 text-lg md:text-xl max-w-3xl mx-auto text-white leading-relaxed"
+    >
+      {videoDescription}
     </p>
+
     <div
-      class="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-400/40"
+      class="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-300/50"
+      role="region"
+      aria-label={t("video.playerLabel") || "Video player"}
     >
       <iframe
+        id={videoId}
         src={videoUrl}
-        title={title}
-        class="absolute top-0 left-0 w-full h-full"
+        title={videoTitle}
+        class="absolute top-0 left-0 w-full h-full focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-offset-4 focus:ring-offset-gray-900"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-        allowfullscreen></iframe>
+        allow="encrypted-media; picture-in-picture; fullscreen"
+        allowfullscreen
+        aria-describedby={descriptionId}
+        loading="lazy"
+        tabindex="0"
+      ></iframe>
+
+      <!-- Loading state for better UX -->
+      <div
+        class="absolute inset-0 bg-gray-800 flex items-center justify-center"
+        aria-hidden="true"
+        id={`${videoId}-loading`}
+      >
+        <div class="animate-pulse">
+          <div class="w-16 h-16 bg-yellow-300/20 rounded-full flex items-center justify-center">
+            <div class="w-0 h-0 border-l-8 border-l-yellow-300 border-y-6 border-y-transparent ml-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional context for screen readers -->
+    <div class="sr-only">
+      <p>{t("video.instructions") || "Bruk mellomrom eller enter for å starte avspilling. Bruk piltaster for å navigere i videoen."}</p>
+      <p>{t("video.fullscreenInfo") || "Trykk F eller dobbeltclick for fullskjerm."}</p>
     </div>
   </div>
 </section>
+
+<script>
+  // Enhanced video loading and focus management
+  document.addEventListener('DOMContentLoaded', function() {
+    const iframes = document.querySelectorAll('[id$="-video"]');
+
+    iframes.forEach(element => {
+      const iframe = element;
+      const loadingDiv = document.getElementById(iframe.id + '-loading');
+
+      // Hide loading state when iframe loads
+      iframe.addEventListener('load', function() {
+        if (loadingDiv) {
+          loadingDiv.style.opacity = '0';
+          loadingDiv.style.pointerEvents = 'none';
+          setTimeout(() => {
+            loadingDiv.style.display = 'none';
+          }, 300);
+        }
+      });
+
+      // Enhanced keyboard navigation
+      iframe.addEventListener('keydown', function(e) {
+        const keyboardEvent = e as KeyboardEvent;
+        if (keyboardEvent && keyboardEvent.key === 'Escape') {
+          (iframe as HTMLIFrameElement).blur();
+          // Focus on heading for better navigation flow
+          const ariaDescribedBy = iframe.getAttribute('aria-describedby');
+          if (ariaDescribedBy) {
+            const heading = document.getElementById(ariaDescribedBy.replace('-description', '-heading'));
+            if (heading) {
+              heading.focus();
+            }
+          }
+        }
+      });
+
+      // Error handling
+      iframe.addEventListener('error', function() {
+        if (loadingDiv) {
+          const title = iframe.getAttribute('title') || 'Video';
+          const src = iframe.getAttribute('src') || '#';
+          loadingDiv.innerHTML = `
+            <div class="text-center p-4">
+              <div class="text-red-300 mb-2">⚠️</div>
+              <p class="text-red-300">${title} kunne ikke lastes</p>
+              <a href="${src}" target="_blank" rel="noopener noreferrer"
+                 class="text-yellow-300 hover:text-yellow-200 underline mt-2 inline-block">
+                Åpne i ny fane
+              </a>
+            </div>
+          `;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Improved contrast and accessibility */
+  @media (prefers-contrast: high) {
+    .ring-yellow-300\/50 {
+      ring-color: rgb(253 224 71 / 1);
+      ring-width: 6px;
+    }
+
+    .text-yellow-300 {
+      color: rgb(253 224 71);
+    }
+
+    .bg-black\/80 {
+      background-color: rgb(0 0 0 / 0.9);
+    }
+  }
+
+  /* Reduce motion for sensitive users */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse {
+      animation: none;
+    }
+
+    iframe {
+      transition: none;
+    }
+  }
+
+  /* Focus improvements */
+  iframe:focus {
+    outline: none;
+  }
+
+  /* Loading animation accessibility */
+  @keyframes pulse-gentle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-pulse > div {
+      animation: pulse-gentle 2s infinite;
+    }
+  }
+</style>

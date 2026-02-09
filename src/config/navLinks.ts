@@ -21,38 +21,25 @@ export type NavItem =
 // Navigasjonsstruktur
 export const navLinks: NavItem[] = [
   {
-    label: "Distanser",
+    label: "distances",
+    toggle: "Distanser",
     dropdown: [
-      { href: "helmaraton", label: "Helmaraton" },
-      { href: "halvmaraton", label: "Halvmaraton" },
-      { href: "oygaloppen", label: "Øygaloppen (10 km)" },
-      { href: "minimaraton", label: "Minimaraton (3,6 km)" },
-      { href: "barnelop", label: "Barneløp" },
-      { href: "paralop", label: "Paraløp" },
-      { href: "trim", label: "Trim" },
+      { href: "helmaraton", label: "fullMarathon" },
+      { href: "halvmaraton", label: "halfMarathon" },
+      { href: "oygaloppen", label: "islandRace10km" },
+      { href: "minimaraton", label: "miniMarathon36km" },
+      { href: "barnelop", label: "kidsRace" },
+      { href: "paralop", label: "paraRace" },
+      { href: "trim", label: "trim" },
     ],
   },
   // isFeatureActive("infoSection") && { href: "/informasjon", label: "Informasjon" },
-  {
-    label: "Resultater",
-    toggle: "Resultater",
-    dropdown: [
-      { href: "https://live.eqtiming.com/74867#result", label: "2025", external: true },
-      { href: "https://live.eqtiming.com/69716#result", label: "2024", external: true },
-      { href: "https://live.eqtiming.com/63885#result", label: "2023", external: true },
-      { href: "https://live.eqtiming.com/58375#result", label: "2022", external: true },
-      { href: "https://live.eqtiming.com/44345#result", label: "2019", external: true },
-      { href: "https://live.eqtiming.com/38389#result", label: "2018", external: true },
-      { href: "https://live.eqtiming.com/32266#result", label: "2017", external: true },
-      { href: "https://live.eqtiming.com/23192#result", label: "2016", external: true },
-      { href: "https://torghattenmaraton.no/wordpress/wp-content/uploads/2016/TM16/Annonser/TorghattenMaraton2015_res.pdf", label: "2015", external: true },
-    ],
-  },
-  { href: "gallery", label: "Bilder", toggle: "Bilder" },
+  { href: "results", label: "results", toggle: "Resultater" },
+  { href: "gallery", label: "gallery", toggle: "Øyeblikk" },
 
-  { href: "overnatting", label: "Overnatting", toggle: "Overnatting" },
-  { href: "omoss", label: "Om oss", toggle: "OmOss" },
-  { href: "helgelandslopene", label: "Helgelandsløpene", toggle: "Helgelandslopene" },
-  // isFeatureActive("signupHint") && { href: "/pamelding", label: "Påmelding" },
+  { href: "overnatting", label: "accommodation", toggle: "Overnatting" },
+  { href: "omoss", label: "about", toggle: "OmOss" },
+  { href: "sponsors", label: "sponsors", toggle: "SponsorerMeny" },
+  { href: "helgelandslopene", label: "helgelandRaces", toggle: "Helgelandslopene" },
 ];
 // .filter(Boolean); // Fjerner tomme elementer
