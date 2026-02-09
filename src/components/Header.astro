@@ -90,14 +90,38 @@ const switchUrl = `/${otherLang}/${restPath}`;
       </a>
     </div>
 
-    <!-- Mobilknapp -->
-    <button id="mobile-menu-toggle" class="md:hidden" aria-label="Meny">
-      ☰
+    <!-- Mobilknapp - WCAG 2.1 AA kompatibel -->
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden flex items-center justify-center w-11 h-11 bg-yellow-400/10 border border-yellow-400/30 rounded-md hover:bg-yellow-400/20 hover:border-yellow-400/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-1 focus:ring-offset-black transition-all duration-200"
+      aria-label="Åpne navigasjonsmeny"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        class="w-6 h-6 text-yellow-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <span class="sr-only">Meny</span>
     </button>
   </div>
 
-  <!-- Mobilmeny -->
-  <nav id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2 text-sm">
+  <!-- Mobilmeny - WCAG accessible -->
+  <nav
+    id="mobile-menu"
+    class="md:hidden hidden px-6 pb-4 space-y-2 text-sm bg-black/95 border-t border-yellow-400/20"
+    aria-label="Mobilnavigasjon"
+    role="navigation"
+  >
     {
       navLinks
         .filter(
@@ -108,16 +132,16 @@ const switchUrl = `/${otherLang}/${restPath}`;
         .map((link) =>
           "dropdown" in link ? (
             <details>
-              <summary class="cursor-pointer hover:text-yellow-300">
+              <summary class="cursor-pointer hover:text-yellow-300 focus:outline-none focus:bg-yellow-400/10 py-2 px-2 rounded transition-colors">
                 {t(`nav.${link.label}`)}
               </summary>
-              <div class="ml-4 pl-2 border-l border-yellow-700 space-y-1">
+              <div class="ml-4 pl-3 border-l-2 border-yellow-700/40 space-y-1 mt-2">
                 {link.dropdown.map((item) => (
                   <a
                     href={`/${currentLang}/${item.href}`}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    class="block hover:text-yellow-300"
+                    class="block hover:text-yellow-300 focus:outline-none focus:bg-yellow-400/10 py-2 px-2 rounded transition-colors"
                   >
                     {t(`nav.${item.label}`)}
                   </a>
@@ -127,7 +151,7 @@ const switchUrl = `/${otherLang}/${restPath}`;
           ) : (
             <a
               href={`/${currentLang}/${link.href}`}
-              class="block hover:text-yellow-300"
+              class="block hover:text-yellow-300 focus:outline-none focus:bg-yellow-400/10 py-2 px-2 rounded transition-colors"
             >
               {t(`nav.${link.label}`)}
             </a>
@@ -136,8 +160,12 @@ const switchUrl = `/${otherLang}/${restPath}`;
     }
 
     <!-- Språkvalg mobil -->
-    <div class="flex space-x-4 pt-4 border-t border-yellow-700 mt-4">
-      <a href={switchUrl} class="hover:text-yellow-300">
+    <div class="flex space-x-4 pt-4 border-t border-yellow-700/40 mt-4">
+      <a
+        href={switchUrl}
+        class="hover:text-yellow-300 focus:outline-none focus:bg-yellow-400/10 py-2 px-2 rounded transition-colors"
+        aria-label={`Bytt til ${currentLang === "no" ? "engelsk" : "norsk"}`}
+      >
         {currentLang === "no" ? "🇬🇧 English" : "🇳🇴 Norsk"}
       </a>
     </div>
@@ -145,10 +173,51 @@ const switchUrl = `/${otherLang}/${restPath}`;
 </header>
 
 <script>
+  // WCAG-kompatibel mobilmeny
   document
     .getElementById("mobile-menu-toggle")
-    ?.addEventListener("click", () => {
+    ?.addEventListener("click", (event) => {
+      const button = event.currentTarget as HTMLButtonElement;
       const menu = document.getElementById("mobile-menu");
-      if (menu) menu.classList.toggle("hidden");
+
+      if (menu && button) {
+        const isOpen = !menu.classList.contains("hidden");
+
+        // Toggle synlighet
+        menu.classList.toggle("hidden");
+
+        // Oppdater ARIA-attributter
+        button.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        button.setAttribute(
+          "aria-label",
+          isOpen ? "Åpne navigasjonsmeny" : "Lukk navigasjonsmeny",
+        );
+
+        // Fokus-håndtering
+        if (!isOpen) {
+          // Meny åpnet - fokuser på første lenke
+          const firstLink = menu.querySelector(
+            "a, details summary",
+          ) as HTMLElement;
+          firstLink?.focus();
+        }
+      }
     });
+
+  // Lukk meny ved ESC-tast (WCAG 2.1.1)
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      const menu = document.getElementById("mobile-menu");
+      const button = document.getElementById(
+        "mobile-menu-toggle",
+      ) as HTMLButtonElement;
+
+      if (menu && button && !menu.classList.contains("hidden")) {
+        menu.classList.add("hidden");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Åpne navigasjonsmeny");
+        button.focus(); // Returner fokus til knappen
+      }
+    }
+  });
 </script>
