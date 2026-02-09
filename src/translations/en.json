@@ -120,14 +120,14 @@
     "certified": "This course is not officially certified.",
     "profileTitle": "Kids Race Profile",
     "description1": "A safe and fun race designed specifically for children.",
-    "description2": "Various distances based on age groups to ensure all children can participate."
+    "description2": "The children’s race is a short distance that everyone can complete, with or without assistance. \n There are two laps around Nordhus Stadium, and the children finish at the same location as participants in the other distances. \n There is always a great atmosphere at Nordhus, with children being cheered on by family and others. If any of the children need help to complete the race, that is of course perfectly fine. \n All participants receive a medal at the finish line. \n\n NB! Registration can also be done directly at the race office. Please allow sufficient time!."
   },
   "halvmaraton": {
     "description": "Half marathon distance through scenic Norwegian landscapes.",
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Half Marathon Profile",
     "description1": "Experience the perfect balance of challenge and scenery.",
-    "description2": "21.097 km of beautiful coastal and island terrain.",
+    "description2": "The half marathon course is the same as the full marathon course (x 0.5). It starts and finishes at Nordhus Stadium. \n The course is run on asphalt in scenic surroundings along the coastline of the Torg Islands. Parts of the course also follow gravel roads around the legendary Torghatten mountain, offering a unique nature experience. \n \n Overall, this is a relatively flat course with gentle undulations. \n The start area is approximately 8 meters above sea level, and the highest point on the course is reached after about 12.5 km, at approximately 32 meters above sea level. \n The course starts flat/downhill, followed by a 6-meter climb after 200 meters. This is followed by fairly flat terrain for about 11.5 km, then a gradual climb of 27 meters over approximately 1 km to the highest point, before descending and flattening out towards the finish.",
     "videoTitle": "Half Marathon Highlights",
     "videoDescription": "Watch highlights from previous half marathon races."
   },
@@ -137,14 +137,14 @@
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Full Marathon Profile",
     "description1": "The crown jewel of Torghatten Marathon - 42.195 km of pure adventure.",
-    "description2": "Test your limits on Norway's most beautiful marathon course."
+    "description2": "The full marathon course is the same as the half marathon course (x 2). It starts and finishes at Nordhus Stadium. \n The course is run on asphalt in scenic surroundings along the coastline of the Torg Islands. Parts of the course also follow gravel roads around the legendary Torghatten mountain, offering a unique nature experience. \n \n Overall, this is a relatively flat course with gentle undulations. \n The start area is approximately 8 meters above sea level, and the highest point on the course is reached after about 12.5 km, at approximately 32 meters above sea level. \n The course starts flat/downhill, followed by a 6-meter climb after 200 meters. This is followed by fairly flat terrain for about 11.5 km, then a gradual climb of 27 meters over approximately 1 km to the highest point, before descending and flattening out towards the finish."
   },
   "minimaraton": {
     "description": "Shorter distance perfect for beginners or those wanting a lighter challenge.",
     "certified": "This course is not officially certified.",
     "profileTitle": "Mini Marathon Profile",
     "description1": "A great introduction to distance running in beautiful surroundings.",
-    "description2": "3.6 km of scenic routes perfect for all fitness levels.",
+    "description2": "The Minimarathon partly follows the same course as Øygaloppen. The course starts at Nordhus School and runs downhill towards Toft. \n At Solvang Toft Youth Center, the course turns right onto the cycle path. The cycle path is followed down towards the Aquaculture Center at Toft, before continuing along the main road back to the finish line at Nordhus Stadium.",
     "classTitle": "Mini Marathon Classes",
     "videoTitle": "Mini Marathon Experience",
     "videoDescription": "See what the mini marathon experience is all about."
@@ -153,8 +153,8 @@
     "description": "10 km race around the beautiful islands with stunning coastal views.",
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Island Race Profile",
-    "description1": "Run through the spectacular island landscape of Torghatten.",
-    "description2": "10 kilometers of coastal beauty and challenging terrain.",
+    "description1": "Øygaloppen follows the same course as the Sør-Helgeland Running Series, where the long-standing race carries the same name.",
+    "description2": "The course starts at Nordhus School and follows the paved road towards Torghatten, with the turnaround point located on the final hill before Torgvatnan. \nOn the return, the route passes Nordhus School and continues downhill towards Toft. At Solvang Toft Youth Center, the course turns right onto the cycle path. \nThe cycle path is followed down towards the Aquaculture Center at Toft, before rejoining the main road back to the finish line at Nordhus Stadium.",
     "classTitle": "Island Race Classes",
     "videoTitle": "Island Race Adventure",
     "videoDescription": "Experience the island race through dramatic landscapes."
@@ -164,14 +164,14 @@
     "certified": "This course is not officially certified.",
     "profileTitle": "Para Race Profile",
     "description1": "An inclusive race designed for all abilities.",
-    "description2": "Adapted course ensuring everyone can participate in the marathon experience."
+    "description2": "The Para Race is for people with disabilities – of all ages, from 0 to 100 years! \n Participants in the Para Race complete one or two laps around Nordhus Stadium and finish at the same location as the other distances. All assistive devices and guides are allowed. \n There is always a great atmosphere and strong support from spectators around Nordhus Stadium on race day. \n All participants receive a medal when they cross the finish line."
   },
   "trim": {
     "description": "Recreational fitness activity for all ages and abilities.",
     "certified": "This is a recreational activity, not officially certified.",
     "profileTitle": "Trim Activity Profile",
     "description1": "Join our community fitness activity in beautiful natural surroundings.",
-    "description2": "A non-competitive way to enjoy exercise and the stunning Torghatten landscape.",
+    "description2": "You do not have to run for time, and you are also welcome to walk or roll. That is why we have set up a fitness walk route along the same course as Øygaloppen and the Minimarathon. \n\n Bring family and friends for an outing in beautiful surroundings at Nordhus and Toft, along walking and cycling paths and sidewalks, while cheering on the runners in Øygaloppen and the Minimarathon. \n\n NB! Start numbers are used, but without timing chips. \n\n The course starts at Nordhus School and runs downhill towards Toft. \n\n At Solvang Toft Youth Center, the course turns right onto the cycle path. The cycle path is followed down towards the Aquaculture Center at Toft, before continuing along the main road back to the finish line at Nordhus Stadium. \n\n NB! Registration can also be done directly at the race office. Please allow plenty of time!",
     "classTitle": "Trim Classes",
     "classValue": "Open to all ages",
     "videoTitle": "Trim Activity",

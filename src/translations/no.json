@@ -121,14 +121,14 @@
     "certified": "Denne løypa er ikke offisielt målt.",
     "profileTitle": "Barneløp Profil",
     "description1": "Et trygt og morsomt løp designet spesielt for barn.",
-    "description2": "Forskjellige distanser basert på aldersgrupper slik at alle barn kan delta."
+    "description2": "Barneløpet har en kort distanse som alle klarer, med eller uten hjelp. \nDet er 2 runder rundt Nordhus stadion og barna løper i mål på samme sted som deltakerne på de andre distansene. \nDet er alltid god stemning på Nordhus når barna blir heiet frem av familie og andre. Om noen av barna vil ha hjelp for å komme seg gjennom løpet er det selvsagt helt greit. \nAlle deltagerne får medalje når de kommer i mål. \n\n NB! Påmelding kan også gjøres direkte i sekretariatet. Beregne da god tid!"
   },
   "halvmaraton": {
     "description": "Halvmaratondistanse gjennom spektakulært norsk landskap.",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Halvmaraton Profil",
     "description1": "Opplev den perfekte balansen mellom utfordring og naturskjønnet.",
-    "description2": "21,097 km med vakre kyst- og øylandskap.",
+    "description2": "Helmaratonløypa er den samme som halvmaratonløpa (x 0.5). Den har start og mål på Nordhus Stadion. \n Løypa går på asfalt i naturskjønne omgivelser langs skjærgården på Torgøyene. Deler av løypa går også på grusvei rundt det sagnomsuste fjellet Torghatten. Her er det mulighet for en unik naturopplevelse. \n \n Generelt er dette en nokså «flat» og lett kupert løype. \n Startområdet er på ca 8 moh, og høyeste punkt på løypa nåes etter ca 12,5 km, ca 32 moh. \nLøypa starter flatt/nedover, med en påfølgende stigning på 6 m. etter 200 m. Deretter ganske flatt terreng i ca 11,5 km, så en gradvis stigning på 27 m. over ca 1 km mot høyeste punkt, før det går nedover og flater ut inn mot mål.",
     "videoTitle": "Halvmaraton Høydepunkter",
     "videoDescription": "Se høydepunkter fra tidligere halvmaratonløp."
   },
@@ -138,14 +138,14 @@
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Helmaraton Profil",
     "description1": "Kronjuvelen til Torghatten Maraton - 42,195 km med purt eventyr.",
-    "description2": "Test dine grenser på Norges vakreste maratonløype."
+    "description2": "Helmaratonløypa er den samme som halvmaratonløpa (x 2). Den har start og mål på Nordhus Stadion. \n Løypa går på asfalt i naturskjønne omgivelser langs skjærgården på Torgøyene. Deler av løypa går også på grusvei rundt det sagnomsuste fjellet Torghatten. Her er det mulighet for en unik naturopplevelse. \n \n Generelt er dette en nokså «flat» og lett kupert løype. \n Startområdet er på ca 8 moh, og høyeste punkt på løypa nåes etter ca 12,5 km, ca 32 moh. \nLøypa starter flatt/nedover, med en påfølgende stigning på 6 m. etter 200 m. Deretter ganske flatt terreng i ca 11,5 km, så en gradvis stigning på 27 m. over ca 1 km mot høyeste punkt, før det går nedover og flater ut inn mot mål."
   },
   "minimaraton": {
     "description": "Kortere distanse perfekt for nybegynnere eller de som ønsker en lettere utfordring.",
     "certified": "Denne løypa er ikke offisielt målt.",
     "profileTitle": "Minimaraton Profil",
     "description1": "En flott introduksjon til distanseløp i vakre omgivelser.",
-    "description2": "3,6 km med naturskjønne ruter perfekt for alle treningsnivåer.",
+    "description2": "Minimaraton følger delvis samme løype som Øygaloppen. Løypa starter ved Nordhus skole, og går ned mot Toft. \n Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
     "classTitle": "Minimaraton Klasser",
     "videoTitle": "Minimaraton Opplevelse",
     "videoDescription": "Se hva minimaraton opplevelsen handler om."
@@ -154,8 +154,8 @@
     "description": "10 km løp rundt de vakre øyene med fantastisk kystutsikt.",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Øygaloppen Profil",
-    "description1": "Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn. ",
-    "description2": "- Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan.  \n \n- Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. \n \n- Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
+    "description1": "Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn.",
+    "description2": "Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan. \n Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. \n Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
     "classTitle": "Øygaloppen Klasser",
     "videoTitle": "Øygaloppen Eventyr",
     "videoDescription": "Opplev øygaloppen gjennom dramatiske landskap."
@@ -165,14 +165,14 @@
     "certified": "Denne løypa er ikke offisielt målt.",
     "profileTitle": "Paraløp Profil",
     "description1": "Et inkluderende løp designet for alle funksjonsnivåer.",
-    "description2": "Tilpasset løype som sikrer at alle kan delta i maratonopplevelsen."
+    "description2": "Paraløpet er løpet for mennesker med funksjonsnedsettelse – i alle aldre, fra 0 – 100 år! \n Deltagerne i Paraløpet løper en eller to runder rundt Nordhus stadion, og går i mål på samme sted som de andre distansene. Alle hjelpemidler og ledsager er tillatt. \nDet er alltid god stemning og stor heiagjeng rundt Nordhus stadion på løpsdagen. \nAlle deltagerne får medalje når de kommer i mål."
   },
   "trim": {
     "description": "Rekreasjons treningsaktivitet for alle aldre og ferdighetsnivåer.",
     "certified": "Dette er en rekreasjonsaktivitet, ikke offisielt sertifisert.",
     "profileTitle": "Trim Aktivitetsprofil",
     "description1": "Bli med på vår samfunnstreningsaktivitet i vakre naturomgivelser.",
-    "description2": "En ikke-konkurransebasert måte å nyte trening og det fantastiske Torghatten landskapet.",
+    "description2": "Man behøver ikke å løpe på tid, og man kan jo også gå eller trille. Derfor har vi satt opp en trimtur-løype i samme trase som Øygaloppen og Minimaraton. \n\n Ta med familien og venner på en tur i flotte omgivelser på Nordhus og Toft, langs gang/sykkelvei og fortau, og heie frem løperne fra Øygaloppen og Minimaraton. \n\n NB! Her brukes startnummer uten tidbrikker. \n\n Løypa starter ved Nordhus skole, og går ned mot Toft. \n\n Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion. \n\n NB! Påmelding kan også gjøres direkte i sekretariatet. Beregne da God tid!",
     "classTitle": "Trim Klasser",
     "classValue": "Åpent for alle aldre",
     "videoTitle": "Trim Aktivitet",

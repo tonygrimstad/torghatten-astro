@@ -7,6 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "favicon:generate": "node scripts/generate-favicons.js",
     "claude:test": "node scripts/claude-test.js",
     "claude:review": "node scripts/claude-review-file.js",
     "claude:gen": "node scripts/claude-generate-component.js",
@@ -25,5 +26,8 @@
     "fslightbox": "^3.6.1",
     "photoswipe": "^5.4.4",
     "tailwindcss": "^4.1.4"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
