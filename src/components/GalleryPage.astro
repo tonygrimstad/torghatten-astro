@@ -33,15 +33,19 @@ const description = t("seo.galleryDescription");
     </div>
   </section>
 
-  <!-- Navigation Section -->
-  <section class="bg-white py-8 border-b border-gray-200">
+  <!-- Sticky Navigation Section -->
+  <section
+    class="bg-white/95 backdrop-blur-sm py-4 border-b border-gray-200 sticky top-36 z-40 shadow-sm"
+  >
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <span class="text-gray-600 font-medium">📅 Velg år:</span>
+        <div class="flex items-center gap-3">
+          <span class="text-gray-700 font-medium text-sm sm:text-base">
+            📅 {t("gallery.selectYear", "Velg år:")}
+          </span>
           <select
             id="yearFilter"
-            class="bg-white border border-gray-300 text-gray-800 px-4 py-2 rounded-lg shadow-sm hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+            class="bg-white border border-gray-300 text-gray-800 px-3 py-2 rounded-lg shadow-sm hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-sm"
           >
             <option value="all">{t("visAlleAar")}</option>
             {
@@ -51,7 +55,7 @@ const description = t("seo.galleryDescription");
             }
           </select>
         </div>
-        <div class="text-sm text-gray-500">
+        <div class="text-xs sm:text-sm text-gray-500">
           <span id="photoCounter">
             {sortedYears.reduce((acc, year) => acc + year.photos.length, 0)}
             {t("gallery.photoCount", "bilder totalt")}
@@ -123,6 +127,41 @@ const description = t("seo.galleryDescription");
 
         // Oppdater photo counter
         updateCounter(val);
+
+        // Scroll til valgt år
+        if (val !== "all") {
+          const targetSection = document.querySelector(
+            `[data-year="${val}"]`,
+          ) as HTMLElement;
+          if (targetSection) {
+            // Finn heading eller første element med årstall/fotograf
+            const yearHeading = targetSection.querySelector(
+              "h2, h3, .year-header",
+            ) as HTMLElement;
+            const scrollTarget = yearHeading || targetSection;
+
+            // Scroll til årstall/fotograf-seksjonen med riktig margin
+            const stickyNavHeight = 220; // Ekstra stor margin så både årstall og fotograf vises helt tydelig
+            const elementPosition = scrollTarget.offsetTop - stickyNavHeight;
+            window.scrollTo({
+              top: elementPosition,
+              behavior: "smooth",
+            });
+          }
+        } else {
+          // Scroll til toppen av gallery-innholdet når "vis alle år" velges
+          const gallerySection = document.querySelector(
+            ".py-12.bg-gray-50",
+          ) as HTMLElement;
+          if (gallerySection) {
+            const stickyNavHeight = 120;
+            const elementPosition = gallerySection.offsetTop - stickyNavHeight;
+            window.scrollTo({
+              top: elementPosition,
+              behavior: "smooth",
+            });
+          }
+        }
       });
     });
   </script>
