@@ -43,12 +43,12 @@ const { t, currentLang } = useTranslations(Astro.url);
 
   <FeatureSection feature="recordsSection">
     <Top5recordsComponent
-      distanse={t("nav.miniMarathon")}
+      distanse={t("nav.miniMarathon", "Minimaraton") || "Minimaraton"}
       kjonn="K"
       data={minimaraton_36_km}
     />
     <Top5recordsComponent
-      distanse={t("nav.miniMarathon")}
+      distanse={t("nav.miniMarathon", "Minimaraton") || "Minimaraton"}
       kjonn="M"
       data={minimaraton_36_km}
     />
