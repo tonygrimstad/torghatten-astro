@@ -3,7 +3,10 @@
     "title": "Torghatten Marathon",
     "subtitle": "Experience the joy of running in Norway's most scenic marathon!",
     "scrollHint": "Learn more about the race",
-    "scrollHintAriaLabel": "Scroll down for more information about the race"
+    "scrollHintAriaLabel": "Scroll down for more information about the race",
+    "exploreTitle": "Explore Torghatten Marathon",
+    "exploreSubtitle": "View distances and more info",
+    "scrolledMessage": "Scrolled to next section"
   },
   "seo": {
     "defaultTitle": "Torghatten Marathon - Norway's Most Beautiful Marathon",
@@ -38,6 +41,7 @@
   },
   "nav": {
     "distances": "Distances",
+    "allDistances": "All Distances Overview",
     "fullMarathon": "Full Marathon",
     "halfMarathon": "Half Marathon",
     "islandRace": "Island Race",
@@ -51,6 +55,7 @@
     "results": "Results",
     "accommodation": "Accommodation",
     "about": "About",
+    "contact": "Contact",
     "gallery": "Moments",
     "sponsors": "Sponsors",
     "helgelandRaces": "Helgeland Races"
@@ -71,6 +76,13 @@
   },
   "distances": {
     "title": "Our distances",
+    "pageTitle": "All Distances - Torghatten Marathon",
+    "pageDescription": "Overview of all race distances in Torghatten Marathon - from full marathon to kids' races. Find your perfect distance!",
+    "heroSubtitle": "From full marathon to kids' races - find your perfect challenge in beautiful natural surroundings on Torgøya",
+    "infoTitle": "Ready to participate?",
+    "infoText": "Register for your favorite distance today.",
+    "seeResults": "See previous results",
+    "contactUs": "Contact us",
     "others": "Our other distances",
     "timed": "Timed",
     "notTimed": "Not timed",
@@ -81,8 +93,34 @@
     "navigation": "Choose race distance",
     "backgroundAlt": "Background image shows tracks and nature around Torghatten",
     "colorIndicator": "Category marker",
-    "pressEnter": "Press Enter to read more",
+    "pressEnter": "Click to read more",
     "summary": "{{count}} available distances",
+    "controlled": "Controlled",
+    "difficulty": "Difficulty",
+    "registrationFee": "Registration fee",
+    "participants": "Participants",
+    "readMore": "Read more about",
+    "register": "Register",
+    "aboutDistance": "About distance",
+    "timedRaces": "timed races",
+    "controlledRaces": "controlled",
+    "difficulties": {
+      "challenging": "Challenging",
+      "demanding": "Demanding",
+      "moderate": "Moderate",
+      "easy": "Easy",
+      "forKids": "For kids",
+      "adapted": "Adapted"
+    },
+    "participantCounts": {
+      "marathon": "100+",
+      "halfMarathon": "200+",
+      "tenK": "200+",
+      "mini": "150+",
+      "kids": "150+",
+      "para": "10-30 participants",
+      "trim": "20-100 participants"
+    },
     "icons": {
       "marathon": "marathon strength",
       "halfMarathon": "male runner",
@@ -91,6 +129,47 @@
       "trim": "fitness and exercise",
       "children": "children's activity",
       "para": "para race accessibility"
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "pageDescription": "Contact Sport Torghatten IL and Torghatten Marathon",
+    "organizationName": "Sport Torghatten IL",
+    "address": {
+      "line1": "P.O. Box 149",
+      "line2": "8901 Brønnøysund",
+      "country": "NORWAY"
+    },
+    "email": "post@torghattenmaraton.no",
+    "roles": {
+      "projectLeader": "Project Leader",
+      "eventManager": "Event Manager",
+      "sponsor": "Sponsor",
+      "registration": "Registration",
+      "courses": "Courses",
+      "timing": "Timing",
+      "media": "Media"
+    },
+    "people": {
+      "livBentzen": {
+        "name": "Liv Bentzen",
+        "mobile": "482 71 484"
+      },
+      "johnAndreasLorentzen": {
+        "name": "John-Andreas Lorentzen"
+      },
+      "tommyJohansen": {
+        "name": "Tommy Johansen"
+      },
+      "hanneSolberg": {
+        "name": "Hanne Solberg"
+      },
+      "arnfinnTorgnes": {
+        "name": "Arnfinn Torgnes"
+      },
+      "eqTiming": {
+        "name": "EQ Timing"
+      }
     }
   },
   "gallery": {
@@ -117,20 +196,20 @@
     "link": "Continue to "
   },
   "barnelop": {
-    "description": "Fun race for children with age-appropriate distances.",
+    "description": "Fun race for children On Nordhus Stadium",
     "certified": "This course is not officially certified.",
     "profileTitle": "Kids Race Profile",
     "description1": "A safe and fun race designed specifically for children.",
     "description2": "The children’s race is a short distance that everyone can complete, with or without assistance. \n There are two laps around Nordhus Stadium, and the children finish at the same location as participants in the other distances. \n There is always a great atmosphere at Nordhus, with children being cheered on by family and others. If any of the children need help to complete the race, that is of course perfectly fine. \n All participants receive a medal at the finish line. \n\n NB! Registration can also be done directly at the race office. Please allow sufficient time!."
   },
   "halvmaraton": {
-    "description": "Half marathon distance through scenic Norwegian landscapes.",
+    "description": "Half marathon distance through a scenic landscape",
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Half Marathon Profile",
     "description1": "Experience the perfect balance of challenge and scenery.",
     "description2": "The half marathon course is the same as the full marathon course (x 0.5). It starts and finishes at Nordhus Stadium. \n The course is run on asphalt in scenic surroundings along the coastline of the Torg Islands. Parts of the course also follow gravel roads around the legendary Torghatten mountain, offering a unique nature experience. \n \n Overall, this is a relatively flat course with gentle undulations. \n The start area is approximately 8 meters above sea level, and the highest point on the course is reached after about 12.5 km, at approximately 32 meters above sea level. \n The course starts flat/downhill, followed by a 6-meter climb after 200 meters. This is followed by fairly flat terrain for about 11.5 km, then a gradual climb of 27 meters over approximately 1 km to the highest point, before descending and flattening out towards the finish.",
-    "videoTitle": "Half Marathon Highlights",
-    "videoDescription": "Watch highlights from previous half marathon races."
+    "videoTitle": "Half Marathon",
+    "videoDescription": "View the half marathon course, and join and take part."
   },
   "helmaraton": {
     "classTitle": "Full Marathon Classes",
@@ -138,7 +217,9 @@
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Full Marathon Profile",
     "description1": "The crown jewel of Torghatten Marathon - 42.195 km of pure adventure.",
-    "description2": "The full marathon course is the same as the half marathon course (x 2). It starts and finishes at Nordhus Stadium. \n The course is run on asphalt in scenic surroundings along the coastline of the Torg Islands. Parts of the course also follow gravel roads around the legendary Torghatten mountain, offering a unique nature experience. \n \n Overall, this is a relatively flat course with gentle undulations. \n The start area is approximately 8 meters above sea level, and the highest point on the course is reached after about 12.5 km, at approximately 32 meters above sea level. \n The course starts flat/downhill, followed by a 6-meter climb after 200 meters. This is followed by fairly flat terrain for about 11.5 km, then a gradual climb of 27 meters over approximately 1 km to the highest point, before descending and flattening out towards the finish."
+    "description2": "The full marathon course is the same as the half marathon course (x 2). It starts and finishes at Nordhus Stadium. \n The course is run on asphalt in scenic surroundings along the coastline of the Torg Islands. Parts of the course also follow gravel roads around the legendary Torghatten mountain, offering a unique nature experience. \n \n Overall, this is a relatively flat course with gentle undulations. \n The start area is approximately 8 meters above sea level, and the highest point on the course is reached after about 12.5 km, at approximately 32 meters above sea level. \n The course starts flat/downhill, followed by a 6-meter climb after 200 meters. This is followed by fairly flat terrain for about 11.5 km, then a gradual climb of 27 meters over approximately 1 km to the highest point, before descending and flattening out towards the finish.",
+    "videoTitle": "Marathon",
+    "videoDescription": "View the full marathon course, and join and take part."
   },
   "minimaraton": {
     "description": "Shorter distance perfect for beginners or those wanting a lighter challenge.",
@@ -147,18 +228,18 @@
     "description1": "A great introduction to distance running in beautiful surroundings.",
     "description2": "The Minimarathon partly follows the same course as Øygaloppen. The course starts at Nordhus School and runs downhill towards Toft. \n At Solvang Toft Youth Center, the course turns right onto the cycle path. The cycle path is followed down towards the Aquaculture Center at Toft, before continuing along the main road back to the finish line at Nordhus Stadium.",
     "classTitle": "Mini Marathon Classes",
-    "videoTitle": "Mini Marathon Experience",
-    "videoDescription": "See what the mini marathon experience is all about."
+    "videoTitle": "Mini Marathon",
+    "videoDescription": "View the mini marathon course, and join and take part."
   },
   "oygaloppen": {
-    "description": "10 km race around the beautiful islands with stunning coastal views.",
+    "description": "10 km race on Nordhus and a loop out to Toft.",
     "certified": "This course is officially certified and measured.",
     "profileTitle": "Island Race Profile",
     "description1": "Øygaloppen follows the same course as the Sør-Helgeland Running Series, where the long-standing race carries the same name.",
     "description2": "The course starts at Nordhus School and follows the paved road towards Torghatten, with the turnaround point located on the final hill before Torgvatnan. \nOn the return, the route passes Nordhus School and continues downhill towards Toft. At Solvang Toft Youth Center, the course turns right onto the cycle path. \nThe cycle path is followed down towards the Aquaculture Center at Toft, before rejoining the main road back to the finish line at Nordhus Stadium.",
     "classTitle": "Island Race Classes",
-    "videoTitle": "Island Race Adventure",
-    "videoDescription": "Experience the island race through dramatic landscapes."
+    "videoTitle": "Island Race",
+    "videoDescription": "View the island race course, and join and take part."
   },
   "paralop": {
     "description": "Accessible race for participants with disabilities.",
@@ -175,8 +256,8 @@
     "description2": "You do not have to run for time, and you are also welcome to walk or roll. That is why we have set up a fitness walk route along the same course as Øygaloppen and the Minimarathon. \n\n Bring family and friends for an outing in beautiful surroundings at Nordhus and Toft, along walking and cycling paths and sidewalks, while cheering on the runners in Øygaloppen and the Minimarathon. \n\n NB! Start numbers are used, but without timing chips. \n\n The course starts at Nordhus School and runs downhill towards Toft. \n\n At Solvang Toft Youth Center, the course turns right onto the cycle path. The cycle path is followed down towards the Aquaculture Center at Toft, before continuing along the main road back to the finish line at Nordhus Stadium. \n\n NB! Registration can also be done directly at the race office. Please allow plenty of time!",
     "classTitle": "Trim Classes",
     "classValue": "Open to all ages",
-    "videoTitle": "Trim Activity",
-    "videoDescription": "See how our community comes together for healthy outdoor activity."
+    "videoTitle": "Trim",
+    "videoDescription": "The course is the same as the Mini Marathon and is suitable for everyone."
   },
   "helgelandslopene": {
     "title": "Helgeland Races 2025",
@@ -229,6 +310,28 @@
     ]
   },
 
+  "about": {
+    "pageTitle": "About us",
+    "subtitle": "Sport Torghatten IL and the story behind Torghatten Marathon",
+    "pageDescription": "Read about Sport Torghatten IL who organizes Torghatten Marathon, our history since 2015 and our commitment to running and fitness.",
+    "organizerTitle": "Organizer: Sport Torghatten IL",
+    "organizerText": "Torghatten Marathon is organized by Sport Torghatten IL, which is located on Torgøya island in Brønnøy municipality.",
+    "traditionTitle": "Tradition and diversity",
+    "traditionText": "Sport Torghatten has a long tradition of organizing races and fitness activities, and has gathered distances in this event that suit everyone regardless of ambition, age or level.",
+    "historyTitle": "Our history since 2015",
+    "historyText": "Torghatten Marathon was first organized in 2015, after enthusiasts got the whole thing started. Since then we have gained experience and learned, more enthusiasts have joined, the local community supports us, and together we have become quite good at organizing.",
+    "welcomeTitle": "Welcome everyone!",
+    "welcomeText": "The race event is intended for everyone who enjoys running and fitness, not just locals, but also visitors from home and abroad, and everyone who wants to be spectators.",
+    "feedbackTitle": "Positive experiences",
+    "feedbackText": "We receive incredibly many positive feedbacks from participants, both regarding the event itself and especially the beautiful nature experience that the distances invite to.",
+    "collaborationTitle": "Collaboration and support",
+    "collaborationText": "We are fortunate to have these nature experiences here with us, but without sponsors, volunteers and enthusiasts, it would not be possible to organize Torghatten Marathon. If you want to contribute, don't hesitate to contact us.",
+    "qualityTitle": "Quality and precision",
+    "qualityText": "We know it's important for participants that distances are correct and that timing and results are accurate. Therefore, most distances in the event are certified. And we use hired professional timers (from EQ Timing), with top modern timing equipment.",
+    "contactTitle": "Your input matters",
+    "contactText": "We would like you to contact us (phone, email or speak directly with us), if you have opinions, suggestions or tips (positive or negative). We are more than receptive and gladly accept input, so we can make even better arrangements, so that Torghatten Marathon becomes a positive experience for everyone."
+  },
+
   "sponsors": {
     "title": "Sponsors",
     "partners": "Partners",
@@ -248,6 +351,8 @@
     "pageTitle": "Results & Times",
     "subtitle": "See results from all Torghatten Marathon races through the years",
     "pageDescription": "See results from all Torghatten Marathon races through the years. Find your time and placement from previous races.",
+    "sectionTitle": "Choose your race year",
+    "sectionSubtitle": "Click on the year to see results and times from that particular race",
     "current": "Recent race",
     "upcoming": "Upcoming race",
     "viewResults": "See complete result list and times",
@@ -255,7 +360,8 @@
     "viewUpcoming": "View registration",
     "infoTitle": "Can't find your result?",
     "infoText": "Contact us if you have questions about results or can't find what you're looking for.",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "contactEmailLabel": "Send email to post@torghattenmaraton.no for questions about results"
   },
   "liveScroll": {
     "title": "Live results",

@@ -23,24 +23,33 @@ const { t, currentLang } = useTranslations(Astro.url);
   lang={currentLang}
   light={true}
 >
+  <!-- Seksjoner med alternerende bakgrunner for visuell rytme -->
   <HeroSectionDistanse
     distanse={`🏃‍♂️ ${t("nav.fullMarathon")} (42 195 m)`}
     description={t("helmaraton.description")}
   />
 
-  <RaceProfile
-    kontrollmalt={true}
-    kontrolltekst={t("helmaraton.certified")}
-    kontrollbilde="/KontrollertLoype.png"
-    tittel={t("helmaraton.profileTitle")}
-    beskrivelse1={t("helmaraton.description1")}
-    beskrivelse2={t("helmaraton.description2")}
-  />
+  <!-- Lys seksjon -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <RaceProfile
+      kontrollmalt={true}
+      kontrolltekst={t("helmaraton.certified")}
+      kontrollbilde="/KontrollertLoype.png"
+      tittel={t("helmaraton.profileTitle")}
+      beskrivelse1={t("helmaraton.description1")}
+      beskrivelse2={t("helmaraton.description2")}
+    />
+  </div>
 
-  <ClassList
-    tittel={t("helmaraton.classTitle")}
-    klasser={classGroups.helmaraton}
-  />
+  <!-- Lys seksjon for klasser -->
+  <div
+    class="relative bg-linear-to-br from-white/90 to-gray-50/95 backdrop-blur-sm"
+  >
+    <ClassList
+      tittel={t("helmaraton.classTitle")}
+      klasser={classGroups.helmaraton}
+    />
+  </div>
 
   <FeatureSection feature="recordsSection">
     <Top5recordsComponent
@@ -56,14 +65,23 @@ const { t, currentLang } = useTranslations(Astro.url);
   </FeatureSection>
 
   <FeatureSection feature="videoSection">
-    <VideoSection />
+    <VideoSection
+      title={t("helmaraton.videoTitle")}
+      description={t("helmaraton.videoDescription")}
+      videoUrl="https://www.youtube.com/embed/sPpCKe2s94k"
+    />
   </FeatureSection>
 
   <FeatureSection feature="infoSection">
-    <InfoSection />
+    <div class="relative bg-white/95 backdrop-blur-sm">
+      <InfoSection />
+    </div>
   </FeatureSection>
 
-  <DistancesSection current="Helmaraton" />
+  <!-- Lys seksjon for distanser -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <DistancesSection current="Helmaraton" />
+  </div>
 
   <FeatureSection feature="SponsorerAlleSider">
     <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />

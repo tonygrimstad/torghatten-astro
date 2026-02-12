@@ -21,20 +21,24 @@ const descriptionId = `${heroId}-description`;
   role="banner"
   aria-labelledby={headingId}
 >
-  <!-- Decorative overlay -->
-  <div class="absolute inset-0 bg-black/70 z-0" aria-hidden="true"></div>
+  <!-- Elegant gradient overlay for bedre lesbarhet -->
+  <div
+    class="absolute inset-0 bg-linear-to-br from-black/25 via-black/40 to-black/60 z-0"
+    aria-hidden="true"
+  >
+  </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto space-y-6 md:space-y-8">
+  <div class="relative z-10 max-w-4xl mx-auto space-y-8 md:space-y-10">
     <h1
       id={headingId}
-      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-400 mb-6 drop-shadow-lg leading-tight"
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-400 mb-8 md:mb-10 drop-shadow-lg leading-tight"
     >
       {distanse}
     </h1>
 
     <p
       id={descriptionId}
-      class="text-lg md:text-xl lg:text-2xl text-white drop-shadow-sm leading-relaxed max-w-3xl mx-auto"
+      class="text-lg md:text-xl lg:text-2xl text-white/95 drop-shadow-sm leading-relaxed max-w-3xl mx-auto"
     >
       {description}
     </p>
@@ -101,20 +105,43 @@ const descriptionId = `${heroId}-description`;
         return;
       }
 
-      // Find the next section after the hero
-      let nextSection = heroSection.nextElementSibling;
+      // Find the next visible content section after the hero
+      let nextElement = heroSection.nextElementSibling;
+      let nextSection = null;
 
-      // Look for the next main content section
-      while (
-        nextSection &&
-        !nextSection.matches('section, main, [role="main"]')
-      ) {
-        nextSection = nextSection.nextElementSibling;
+      // Look through siblings to find the next meaningful content section
+      while (nextElement) {
+        // Check if it's a section directly
+        if (nextElement.matches('section, main, [role="main"]')) {
+          nextSection = nextElement;
+          break;
+        }
+
+        // Check if it's a wrapper div containing a section
+        const nestedSection = nextElement.querySelector(
+          'section, main, [role="main"]',
+        );
+        if (nestedSection) {
+          nextSection = nestedSection;
+          break;
+        }
+
+        // Check if this div has substantial content (not just empty wrapper)
+        if (
+          nextElement.tagName === "DIV" &&
+          nextElement.offsetHeight > 100 &&
+          nextElement.textContent.trim().length > 50
+        ) {
+          nextSection = nextElement;
+          break;
+        }
+
+        nextElement = nextElement.nextElementSibling;
       }
 
       if (nextSection) {
-        // Calculate offset to account for potential fixed headers
-        const headerOffset = 80;
+        // Calculate offset for fixed header (account for smaller header now)
+        const headerOffset = 100; // Increased to ensure proper spacing
         const elementPosition =
           nextSection.getBoundingClientRect().top +
           window.pageYOffset -

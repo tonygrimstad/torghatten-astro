@@ -17,7 +17,10 @@ const { t } = useTranslations(Astro.url);
 
 // Use translations with fallbacks
 const videoTitle = title || t("video.defaultTitle") || "🎥 Se løypen";
-const videoDescription = description || t("video.defaultDescription") || "Ta en visuell reise gjennom hele løypen og forbered deg til eventyret!";
+const videoDescription =
+  description ||
+  t("video.defaultDescription") ||
+  "Ta en visuell reise gjennom hele løypen og forbered deg til eventyret!";
 
 // Generate unique IDs for accessibility
 const componentId = `video-section-${Math.random().toString(36).substr(2, 9)}`;
@@ -29,13 +32,30 @@ const videoId = `${componentId}-video`;
 <section
   role="region"
   aria-labelledby={headingId}
-  class="relative py-20 px-6 text-white bg-cover bg-center bg-gray-900"
+  class='\"relative'
+  py-20
+  px-6
+  text-white
+  bg-linear-to-br
+  from-gray-800
+  via-gray-900
+  to-black\"
 >
-  <!-- Dark overlay with sufficient contrast -->
+  <!-- Elegant gradient overlay for better depth -->
   <div
-    class="absolute inset-0 bg-black/80 z-0"
+    class='\"absolute'
+    inset-0
+    bg-linear-to-t
+    from-black
+    60
+    via-black
+    30
+    to-black
+    20
+    z-0\"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
 
   <div class="relative z-10 max-w-5xl mx-auto text-center">
     <h2
@@ -67,8 +87,7 @@ const videoId = `${componentId}-video`;
         allowfullscreen
         aria-describedby={descriptionId}
         loading="lazy"
-        tabindex="0"
-      ></iframe>
+        tabindex="0"></iframe>
 
       <!-- Loading state for better UX -->
       <div
@@ -77,8 +96,13 @@ const videoId = `${componentId}-video`;
         id={`${videoId}-loading`}
       >
         <div class="animate-pulse">
-          <div class="w-16 h-16 bg-yellow-300/20 rounded-full flex items-center justify-center">
-            <div class="w-0 h-0 border-l-8 border-l-yellow-300 border-y-6 border-y-transparent ml-1"></div>
+          <div
+            class="w-16 h-16 bg-yellow-300/20 rounded-full flex items-center justify-center"
+          >
+            <div
+              class="w-0 h-0 border-l-8 border-l-yellow-300 border-y-6 border-y-transparent ml-1"
+            >
+            </div>
           </div>
         </div>
       </div>
@@ -86,41 +110,53 @@ const videoId = `${componentId}-video`;
 
     <!-- Additional context for screen readers -->
     <div class="sr-only">
-      <p>{t("video.instructions") || "Bruk mellomrom eller enter for å starte avspilling. Bruk piltaster for å navigere i videoen."}</p>
-      <p>{t("video.fullscreenInfo") || "Trykk F eller dobbeltclick for fullskjerm."}</p>
+      <p>
+        {
+          t("video.instructions") ||
+            "Bruk mellomrom eller enter for å starte avspilling. Bruk piltaster for å navigere i videoen."
+        }
+      </p>
+      <p>
+        {
+          t("video.fullscreenInfo") ||
+            "Trykk F eller dobbeltclick for fullskjerm."
+        }
+      </p>
     </div>
   </div>
 </section>
 
 <script>
   // Enhanced video loading and focus management
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const iframes = document.querySelectorAll('[id$="-video"]');
 
-    iframes.forEach(element => {
+    iframes.forEach((element) => {
       const iframe = element;
-      const loadingDiv = document.getElementById(iframe.id + '-loading');
+      const loadingDiv = document.getElementById(iframe.id + "-loading");
 
       // Hide loading state when iframe loads
-      iframe.addEventListener('load', function() {
+      iframe.addEventListener("load", function () {
         if (loadingDiv) {
-          loadingDiv.style.opacity = '0';
-          loadingDiv.style.pointerEvents = 'none';
+          loadingDiv.style.opacity = "0";
+          loadingDiv.style.pointerEvents = "none";
           setTimeout(() => {
-            loadingDiv.style.display = 'none';
+            loadingDiv.style.display = "none";
           }, 300);
         }
       });
 
       // Enhanced keyboard navigation
-      iframe.addEventListener('keydown', function(e) {
+      iframe.addEventListener("keydown", function (e) {
         const keyboardEvent = e as KeyboardEvent;
-        if (keyboardEvent && keyboardEvent.key === 'Escape') {
+        if (keyboardEvent && keyboardEvent.key === "Escape") {
           (iframe as HTMLIFrameElement).blur();
           // Focus on heading for better navigation flow
-          const ariaDescribedBy = iframe.getAttribute('aria-describedby');
+          const ariaDescribedBy = iframe.getAttribute("aria-describedby");
           if (ariaDescribedBy) {
-            const heading = document.getElementById(ariaDescribedBy.replace('-description', '-heading'));
+            const heading = document.getElementById(
+              ariaDescribedBy.replace("-description", "-heading"),
+            );
             if (heading) {
               heading.focus();
             }
@@ -129,10 +165,10 @@ const videoId = `${componentId}-video`;
       });
 
       // Error handling
-      iframe.addEventListener('error', function() {
+      iframe.addEventListener("error", function () {
         if (loadingDiv) {
-          const title = iframe.getAttribute('title') || 'Video';
-          const src = iframe.getAttribute('src') || '#';
+          const title = iframe.getAttribute("title") || "Video";
+          const src = iframe.getAttribute("src") || "#";
           loadingDiv.innerHTML = `
             <div class="text-center p-4">
               <div class="text-red-300 mb-2">⚠️</div>
@@ -184,8 +220,13 @@ const videoId = `${componentId}-video`;
 
   /* Loading animation accessibility */
   @keyframes pulse-gentle {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {

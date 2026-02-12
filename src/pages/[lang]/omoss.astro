@@ -1,0 +1,217 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations } from "../../utils/useTranslations.ts";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const { t, currentLang } = useTranslations(Astro.url);
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/");
+}
+
+const title = t("about.pageTitle", "Om oss");
+const description = t(
+  "about.pageDescription",
+  "Les om Sport Torghatten IL som arrangerer Torghatten Maraton, vår historie siden 2015 og vårt engasjement for løp og mosjon.",
+);
+---
+
+<Layout
+  lang={currentLang}
+  title={`${title} - Torghatten Maraton`}
+  description={description}
+>
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
+    style="background-image: url('/images/29apr-TorghattenMaratonNomi-9435.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"
+  >
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0 bg-linear-to-br from-black/70 via-gray-900/80 to-black/70"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        {t("about.pageTitle", "Om oss")}
+      </h1>
+      <p
+        class="text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed"
+      >
+        {
+          t(
+            "about.subtitle",
+            "Sport Torghatten IL og historien bak Torghatten Maraton",
+          )
+        }
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Organizer & Tradition Combined Section -->
+      <div
+        class="mb-12 bg-yellow-50 p-8 rounded-xl border-l-4 border-yellow-400"
+      >
+        <!-- Logo at the top -->
+        <div class="flex justify-center mb-8">
+          <a
+            href="https://www.sporttorghatten.no/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block"
+          >
+            <img
+              src="/images/logos/STIL-LOGO.gif"
+              alt="Sport Torghatten IL logo - klikk for å besøke sporttorghatten.no"
+              class="h-24 w-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+              style="background: transparent; border: none; mix-blend-mode: multiply;"
+            />
+          </a>
+        </div>
+
+        <h2 class="text-3xl font-bold text-yellow-800 mb-6">
+          {t("about.organizerTitle", "Arrangøren: Sport Torghatten IL")}
+        </h2>
+        <p class="text-lg text-yellow-700 leading-relaxed mb-6">
+          {
+            t(
+              "about.organizerText",
+              "Torghatten Maraton arrangeres av Sport Torghatten IL, som holder til ute på Torgøyan i Brønnøy kommune.",
+            )
+          }
+        </p>
+        <p class="text-lg text-yellow-700 leading-relaxed">
+          {
+            t(
+              "about.traditionText",
+              "Sport Torghatten har lang tradisjon med å arrangere løp og mosjon, og har i dette arrangementet samlet distanser som passer for alle uansett ambisjon, alder eller nivå.",
+            )
+          }
+        </p>
+      </div>
+
+      <!-- History & Welcome Combined Section -->
+      <div class="mb-12 bg-blue-50 p-8 rounded-xl">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">
+          Torghatten Maraton
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-6">
+          <div>
+            <p class="text-lg text-blue-700 leading-relaxed">
+              {
+                t(
+                  "about.historyText",
+                  "Torghatten Maraton ble arrangert første gang i 2015, etter at ildsjeler dro det hele i gang. Siden da har vi erfart og lært, flere ildsjeler er kommet til, lokalbefolkningen stiller opp, og vi er til sammen ganske gode til å arrangere.",
+                )
+              }
+            </p>
+            <br />
+            <p class="text-lg text-blue-700 leading-relaxed">
+              {
+                t(
+                  "about.welcomeText",
+                  "Løpsarrangementet er ment for alle som er glad i å løpe og trimme, ikke bare lokale, men også tilreisende fra inn- og utland, og alle som ønsker å være publikum.",
+                )
+              }
+            </p>
+          </div>
+          <div class="flex justify-center">
+            <img
+              src="/images/58382813_544749482717292_4769545763275407360_n.jpg"
+              alt="Historisk bilde fra Torghatten Maraton"
+              class="max-w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback & Collaboration Combined Section -->
+      <div class="mb-12 bg-green-50 p-8 rounded-xl">
+        <h2 class="text-3xl font-bold text-green-800 mb-6">Takk til alle!</h2>
+        <p class="text-lg text-green-700 leading-relaxed mb-6">
+          {
+            t(
+              "about.feedbackText",
+              "Vi opplever å få utrolig mange positive tilbakemeldinger fra deltagere, både ift. selve arrangementet og ikke minst den flotte naturopplevelsen som distansene inviterer til.",
+            )
+          }
+        </p>
+        <p class="text-lg text-green-700 leading-relaxed">
+          {
+            t(
+              "about.collaborationText",
+              "Naturopplevelsene er vi heldige som har her hos oss, men uten sponsorer, frivillige og ildsjeler vil det ikke være mulig å arrangere Torghatten Maraton. Vil du være med å bidra, ikke nøl med å ta kontakt med oss.",
+            )
+          }
+        </p>
+      </div>
+
+      <!-- Quality & Contact Combined Section -->
+      <div class="bg-yellow-50 p-8 rounded-xl border-l-4 border-yellow-400">
+        <h2 class="text-3xl font-bold text-yellow-800 mb-6">Innspill!</h2>
+        <p class="text-lg text-yellow-700 leading-relaxed mb-6">
+          {
+            t(
+              "about.qualityText",
+              "Vi vet at det er viktig for de som deltar at distanser stemmer og at tidtaking og resultat blir riktig. Derfor er de fleste distansene i arrangementet kontrollmålt. Og vi bruker innleide profesjonelle tidtagere (fra EQ Timing), med topp moderne tidtakingsutstyr.",
+            )
+          }
+        </p>
+        <p class="text-lg text-yellow-700 leading-relaxed mb-6">
+          {
+            t(
+              "about.contactText",
+              "Vi vil gjerne at du tar kontakt med oss (telefon, e-post eller snakke direkte med oss), om du har meninger, innspill eller tips (positivt som negativt). Vi er mer enn mottagelig og tar gjerne imot innspill, slik at vi kan legge enda bedre til rette, for at Torghatten Maraton skal være en positiv opplevelse for alle.",
+            )
+          }
+        </p>
+        <a
+          href={`/${currentLang}/kontakt`}
+          class="inline-flex items-center gap-3 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4V2m0 2a8 8 0 018 8h-2m-6-8V2m0 2a8 8 0 00-8 8h2m13 7l-4-4m0 0l-4 4m4-4v8"
+            ></path>
+          </svg>
+          {t("footer.contact", "Kontakt oss")}
+        </a>
+      </div>
+
+      <!-- Sport Torghatten IL Banner - Centered Bottom -->
+      <div class="mt-16 flex justify-center">
+        <a
+          href="https://www.sporttorghatten.no/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block"
+        >
+          <img
+            src="/images/logos/STILFane.gif"
+            alt="Sport Torghatten IL banner - klikk for å besøke sporttorghatten.no"
+            class="max-w-xs h-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+            style="background: transparent; border: none; mix-blend-mode: multiply;"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

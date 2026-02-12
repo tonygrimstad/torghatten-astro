@@ -120,7 +120,7 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     url: undefined
   },
   OmOss: {
-    enabled: false,
+    enabled: true,
     from: undefined,
     to: undefined,
     text: undefined,

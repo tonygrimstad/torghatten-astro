@@ -140,10 +140,10 @@ const headingId = `${componentId}-heading`;
               href={`/${currentLang}/${dist.link}/`}
               class={`
                 group relative p-6 rounded-xl shadow-xl text-center
-                transition-all transform hover:scale-[1.02] focus:scale-[1.02]
-                duration-300 bg-white/90 backdrop-blur-md border-2
-                ${dist.color} hover:shadow-2xl focus:shadow-2xl
+                transition-all duration-300 bg-white/90 backdrop-blur-md border-2
+                ${dist.color} hover:shadow-xl focus:shadow-xl hover:bg-white focus:bg-white
                 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white
+                min-h-72 flex flex-col
               `}
               aria-label={cardLabel}
               tabindex="0"
@@ -180,7 +180,7 @@ const headingId = `${componentId}-heading`;
 
               {/* Main icon */}
               <div
-                class="text-5xl mb-4 group-hover:scale-110 group-focus:scale-110 transition-transform duration-300"
+                class="text-5xl mb-4 transition-all duration-300 group-hover:brightness-110 group-focus:brightness-110"
                 role="img"
                 aria-label={dist.iconLabel}
               >
@@ -219,8 +219,8 @@ const headingId = `${componentId}-heading`;
               </div>
 
               {/* Focus indicator for screen readers */}
-              <span class="sr-only group-hover:not-sr-only group-focus:not-sr-only absolute inset-x-4 bottom-4 text-xs text-gray-600 text-center">
-                {t("distances.pressEnter") || "Trykk Enter for å lese mer"}
+              <span class="sr-only group-hover:not-sr-only group-focus:not-sr-only absolute inset-x-4 -bottom-1 text-xs bg-white/95 text-gray-700 text-center py-1 px-2 rounded shadow-sm border border-gray-200">
+                {t("distances.pressEnter") || "Klikk for å lese mer"}
               </span>
             </a>
           );

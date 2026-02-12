@@ -3,7 +3,10 @@
     "title": "Torghatten Maraton",
     "subtitle": "Opplev løpsglede på Torgøyan – Norges vakreste maraton!",
     "scrollHint": "Les mer om løpet",
-    "scrollHintAriaLabel": "Rull ned for mer informasjon om løpet"
+    "scrollHintAriaLabel": "Rull ned for mer informasjon om løpet",
+    "exploreTitle": "Utforsk Torghatten Maraton",
+    "exploreSubtitle": "Se distanser og mer info",
+    "scrolledMessage": "Scrollet til neste seksjon"
   },
 
   "seo": {
@@ -39,6 +42,7 @@
   },
   "nav": {
     "distances": "Distanser",
+    "allDistances": "Oversikt alle distanser",
     "fullMarathon": "Helmaraton",
     "halfMarathon": "Halvmaraton",
     "islandRace": "Øygaloppen",
@@ -52,9 +56,31 @@
     "results": "Resultater",
     "accommodation": "Overnatting",
     "about": "Om oss",
+    "contact": "Kontakt",
     "gallery": "Øyeblikk",
     "sponsors": "Sponsorer",
     "helgelandRaces": "Helgelandsløpene"
+  },
+  "about": {
+    "pageTitle": "Om oss",
+    "subtitle": "Sport Torghatten IL og historien bak Torghatten Maraton",
+    "pageDescription": "Les om Sport Torghatten IL som arrangerer Torghatten Maraton, vår historie siden 2015 og vårt engasjement for løp og mosjon.",
+    "organizerTitle": "Arrangøren: Sport Torghatten IL",
+    "organizerText": "Torghatten Maraton arrangeres av Sport Torghatten IL, som holder til ute på Torgøyan i Brønnøy kommune.",
+    "traditionTitle": "Tradisjon og mangfold",
+    "traditionText": "Sport Torghatten har lang tradisjon med å arrangere løp og mosjon, og har i dette arrangementet samlet distanser som passer for alle uansett ambisjon, alder eller nivå.",
+    "historyTitle": "Vår historie siden 2015",
+    "historyText": "Torghatten Maraton ble arrangert første gang i 2015, etter at ildsjeler dro det hele i gang. Siden da har vi erfart og lært, flere ildsjeler er kommet til, lokalbefolkningen stiller opp, og vi er til sammen ganske gode til å arrangere.",
+    "welcomeTitle": "Velkommen alle!",
+    "welcomeText": "Løpsarrangementet er ment for alle som er glad i å løpe og trimme, ikke bare lokale, men også tilreisende fra inn- og utland, og alle som ønsker å være publikum.",
+    "feedbackTitle": "Positive opplevelser",
+    "feedbackText": "Vi opplever å få utrolig mange positive tilbakemeldinger fra deltagere, både ift. selve arrangementet og ikke minst den flotte naturopplevelsen som distansene inviterer til.",
+    "collaborationTitle": "Samarbeid og støtte",
+    "collaborationText": "Naturopplevelsene er vi heldige som har her hos oss, men uten sponsorer, frivillige og ildsjeler vil det ikke være mulig å arrangere Torghatten Maraton. Vil du være med å bidra, ikke nøl med å ta kontakt med oss.",
+    "qualityTitle": "Kvalitet og presisjon",
+    "qualityText": "Vi vet at det er viktig for de som deltar at distanser stemmer og at tidtaking og resultat blir riktig. Derfor er de fleste distansene i arrangementet kontrollmålt. Og vi bruker innleide profesjonelle tidtagere (fra EQ Timing), med topp moderne tidtakingsutstyr.",
+    "contactTitle": "Dine innspill betyr mye",
+    "contactText": "Vi vil gjerne at du tar kontakt med oss (telefon, e-post eller snakke direkte med oss), om du har meninger, innspill eller tips (positivt som negativt). Vi er mer enn mottagelig og tar gjerne imot innspill, slik at vi kan legge enda bedre til rette, for at Torghatten Maraton skal være en positiv opplevelse for alle."
   },
   "records": {
     "top5": "Topp 5",
@@ -72,6 +98,13 @@
   },
   "distances": {
     "title": "Våre distanser",
+    "pageTitle": "Alle Distanser - Torghatten Maraton",
+    "pageDescription": "Oversikt over alle løpsdistanser i Torghatten Maraton - fra helmaraton til barneløp. Finn din perfekte distanse!",
+    "heroSubtitle": "Fra helmaraton til barneløp - finn din perfekte utfordring i naturskjønne omgivelser på Torgøyan",
+    "infoTitle": "Klar for å delta?",
+    "infoText": "Registrer deg for din favorittdistanse allerede i dag.",
+    "seeResults": "Se tidligere resultater",
+    "contactUs": "Kontakt oss",
     "others": "Våre andre distanser",
     "timed": "Tidtaking",
     "notTimed": "Uten tidtaking",
@@ -82,8 +115,34 @@
     "navigation": "Velg løpsdistanse",
     "backgroundAlt": "Bakgrunnsbilde viser løyper og natur rundt Torghatten",
     "colorIndicator": "Kategorimarkør",
-    "pressEnter": "Trykk Enter for å lese mer",
+    "pressEnter": "Klikk for å lese mer",
     "summary": "{{count}} tilgjengelige distanser",
+    "controlled": "Kontrollmålt",
+    "difficulty": "Vanskelighet",
+    "registrationFee": "Deltageravgift",
+    "participants": "Deltakere",
+    "readMore": "Les mer om",
+    "register": "Meld deg på",
+    "aboutDistance": "Om distansen",
+    "timedRaces": "tidtatte løp",
+    "controlledRaces": "kontrollmålte",
+    "difficulties": {
+      "challenging": "Krevende",
+      "demanding": "Utfordrende",
+      "moderate": "Moderat",
+      "easy": "Lett",
+      "forKids": "For barn",
+      "adapted": "Tilpasset"
+    },
+    "participantCounts": {
+      "marathon": "100+",
+      "halfMarathon": "200+",
+      "tenK": "200+",
+      "mini": "150+",
+      "kids": "150+",
+      "para": "10-30 deltakere",
+      "trim": "20-100 deltakere"
+    },
     "icons": {
       "marathon": "maraton styrke",
       "halfMarathon": "løper mann",
@@ -92,6 +151,47 @@
       "trim": "trim og mosjon",
       "children": "barneaktivitet",
       "para": "paraløp tilgjengelighet"
+    }
+  },
+  "contact": {
+    "pageTitle": "Kontakt",
+    "pageDescription": "Ta kontakt med Sport Torghatten IL og Torghatten Maraton",
+    "organizationName": "Sport Torghatten IL",
+    "address": {
+      "line1": "Postboks 149",
+      "line2": "8901 Brønnøysund",
+      "country": "NORGE"
+    },
+    "email": "post@torghattenmaraton.no",
+    "roles": {
+      "projectLeader": "Prosjektleder",
+      "eventManager": "Arrangementsansvarlig",
+      "sponsor": "Sponsor",
+      "registration": "Påmelding",
+      "courses": "Løyper",
+      "timing": "Tidtaking",
+      "media": "Media"
+    },
+    "people": {
+      "livBentzen": {
+        "name": "Liv Bentzen",
+        "mobile": "482 71 484"
+      },
+      "johnAndreasLorentzen": {
+        "name": "John-Andreas Lorentzen"
+      },
+      "tommyJohansen": {
+        "name": "Tommy Johansen"
+      },
+      "hanneSolberg": {
+        "name": "Hanne Solberg"
+      },
+      "arnfinnTorgnes": {
+        "name": "Arnfinn Torgnes"
+      },
+      "eqTiming": {
+        "name": "EQ Timing"
+      }
     }
   },
   "gallery": {
@@ -118,48 +218,50 @@
     "link": "Gå videre til "
   },
   "barnelop": {
-    "description": "Morsomt løp for barn med aldersseserterte distanser.",
+    "description": "Morsomt løp for barn på Nordhus Stadion",
     "certified": "Denne løypa er ikke offisielt målt.",
     "profileTitle": "Barneløp Profil",
     "description1": "Et trygt og morsomt løp designet spesielt for barn.",
     "description2": "Barneløpet har en kort distanse som alle klarer, med eller uten hjelp. \nDet er 2 runder rundt Nordhus stadion og barna løper i mål på samme sted som deltakerne på de andre distansene. \nDet er alltid god stemning på Nordhus når barna blir heiet frem av familie og andre. Om noen av barna vil ha hjelp for å komme seg gjennom løpet er det selvsagt helt greit. \nAlle deltagerne får medalje når de kommer i mål. \n\n NB! Påmelding kan også gjøres direkte i sekretariatet. Beregne da god tid!"
   },
   "halvmaraton": {
-    "description": "Halvmaratondistanse gjennom spektakulært norsk landskap.",
+    "description": "Halvmaratondistanse gjennom et spektakulært landskap",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Halvmaraton Profil",
     "description1": "Opplev den perfekte balansen mellom utfordring og naturskjønnet.",
     "description2": "Helmaratonløypa er den samme som halvmaratonløpa (x 0.5). Den har start og mål på Nordhus Stadion. \n Løypa går på asfalt i naturskjønne omgivelser langs skjærgården på Torgøyene. Deler av løypa går også på grusvei rundt det sagnomsuste fjellet Torghatten. Her er det mulighet for en unik naturopplevelse. \n \n Generelt er dette en nokså «flat» og lett kupert løype. \n Startområdet er på ca 8 moh, og høyeste punkt på løypa nåes etter ca 12,5 km, ca 32 moh. \nLøypa starter flatt/nedover, med en påfølgende stigning på 6 m. etter 200 m. Deretter ganske flatt terreng i ca 11,5 km, så en gradvis stigning på 27 m. over ca 1 km mot høyeste punkt, før det går nedover og flater ut inn mot mål.",
-    "videoTitle": "Halvmaraton Høydepunkter",
-    "videoDescription": "Se høydepunkter fra tidligere halvmaratonløp."
+    "videoTitle": "Halvmaraton",
+    "videoDescription": "Se halvmaratonløp løypen, og bli med å delta."
   },
   "helmaraton": {
     "classTitle": "Helmaraton Klasser",
-    "description": "Den ultimate utfordringen - full maratondistanse i fantastiske omgivelser.",
+    "description": "Den ultimate utfordringen - full maratondistanse i fantastiske omgivelser",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Helmaraton Profil",
     "description1": "Kronjuvelen til Torghatten Maraton - 42,195 km med purt eventyr.",
-    "description2": "Helmaratonløypa er den samme som halvmaratonløpa (x 2). Den har start og mål på Nordhus Stadion. \n Løypa går på asfalt i naturskjønne omgivelser langs skjærgården på Torgøyene. Deler av løypa går også på grusvei rundt det sagnomsuste fjellet Torghatten. Her er det mulighet for en unik naturopplevelse. \n \n Generelt er dette en nokså «flat» og lett kupert løype. \n Startområdet er på ca 8 moh, og høyeste punkt på løypa nåes etter ca 12,5 km, ca 32 moh. \nLøypa starter flatt/nedover, med en påfølgende stigning på 6 m. etter 200 m. Deretter ganske flatt terreng i ca 11,5 km, så en gradvis stigning på 27 m. over ca 1 km mot høyeste punkt, før det går nedover og flater ut inn mot mål."
+    "description2": "Helmaratonløypa er den samme som halvmaratonløpa (x 2). Den har start og mål på Nordhus Stadion. \n Løypa går på asfalt i naturskjønne omgivelser langs skjærgården på Torgøyene. Deler av løypa går også på grusvei rundt det sagnomsuste fjellet Torghatten. Her er det mulighet for en unik naturopplevelse. \n \n Generelt er dette en nokså «flat» og lett kupert løype. \n Startområdet er på ca 8 moh, og høyeste punkt på løypa nåes etter ca 12,5 km, ca 32 moh. \nLøypa starter flatt/nedover, med en påfølgende stigning på 6 m. etter 200 m. Deretter ganske flatt terreng i ca 11,5 km, så en gradvis stigning på 27 m. over ca 1 km mot høyeste punkt, før det går nedover og flater ut inn mot mål.",
+    "videoTitle": "Helmaraton",
+    "videoDescription": "Se helmaratonløp løypen, og bli med å delta."
   },
   "minimaraton": {
-    "description": "Kortere distanse perfekt for nybegynnere eller de som ønsker en lettere utfordring.",
+    "description": "Kortere distanse perfekt for nybegynnere eller de som ønsker en lettere utfordring",
     "certified": "Denne løypa er ikke offisielt målt.",
     "profileTitle": "Minimaraton Profil",
     "description1": "En flott introduksjon til distanseløp i vakre omgivelser.",
     "description2": "Minimaraton følger delvis samme løype som Øygaloppen. Løypa starter ved Nordhus skole, og går ned mot Toft. \n Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
     "classTitle": "Minimaraton Klasser",
-    "videoTitle": "Minimaraton Opplevelse",
-    "videoDescription": "Se hva minimaraton opplevelsen handler om."
+    "videoTitle": "Minimaraton",
+    "videoDescription": "Se minimaraton løypen, eller bli med å delta."
   },
   "oygaloppen": {
-    "description": "10 km løp rundt de vakre øyene med fantastisk kystutsikt.",
+    "description": "10 km løp på Nordhus og en tur til Toft",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Øygaloppen Profil",
     "description1": "Øygaloppen følger samme løype som i Sør-Helgeland Løpskarusell, hvor det tradisjonsrike løpet har samme navn.",
     "description2": "Løypa starter ved Nordhus skole, går på asfalt i retning mot Torghatten hvor snupunktet er i siste bakke før Torgvatnan. \n Tilbake går turen forbi Nordhus skole og videre ned mot Toft. Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. \n Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion.",
     "classTitle": "Øygaloppen Klasser",
-    "videoTitle": "Øygaloppen Eventyr",
-    "videoDescription": "Opplev øygaloppen gjennom dramatiske landskap."
+    "videoTitle": "Øygaloppen",
+    "videoDescription": "Opplev øygaloppen, og bli med å delta."
   },
   "paralop": {
     "description": "Tilgjengelig løp for deltakere med funksjonsnedsettelser.",
@@ -175,9 +277,9 @@
     "description1": "Bli med på vår samfunnstreningsaktivitet i vakre naturomgivelser.",
     "description2": "Man behøver ikke å løpe på tid, og man kan jo også gå eller trille. Derfor har vi satt opp en trimtur-løype i samme trase som Øygaloppen og Minimaraton. \n\n Ta med familien og venner på en tur i flotte omgivelser på Nordhus og Toft, langs gang/sykkelvei og fortau, og heie frem løperne fra Øygaloppen og Minimaraton. \n\n NB! Her brukes startnummer uten tidbrikker. \n\n Løypa starter ved Nordhus skole, og går ned mot Toft. \n\n Løypa tar til høyre opp sykkelveien ved Solvang Toft ungdomshus. Sykkelstien følges ned mot Havbrukssenteret på Toft, og videre hovedveien tilbake til målgang på Nordhus stadion. \n\n NB! Påmelding kan også gjøres direkte i sekretariatet. Beregne da God tid!",
     "classTitle": "Trim Klasser",
-    "classValue": "Åpent for alle aldre",
-    "videoTitle": "Trim Aktivitet",
-    "videoDescription": "Se hvordan vårt samfunn kommer sammen for sunn utendørsaktivitet."
+    "classValue": "Åpent for alle",
+    "videoTitle": "Trim",
+    "videoDescription": "Løypen er den samme som Minimaraton og passer for alle."
   },
   "helgelandslopene": {
     "title": "Helgelandsløpene 2025",
@@ -249,6 +351,8 @@
     "pageTitle": "Resultater & Tider",
     "subtitle": "Se resultater fra alle Torghatten Maraton løp gjennom årene",
     "pageDescription": "Se resultater fra alle Torghatten Maraton løp gjennom årene. Finn din tid og plassering fra tidligere løp.",
+    "sectionTitle": "Velg ditt løpsår",
+    "sectionSubtitle": "Klikk på året for å se resultater og tider fra det aktuelle løpet",
     "current": "Seneste løp",
     "upcoming": "Kommende løp",
     "viewResults": "Se komplett resultatliste og tider",
@@ -256,7 +360,8 @@
     "viewUpcoming": "Se påmelding",
     "infoTitle": "Finner du ikke resultatet ditt?",
     "infoText": "Kontakt oss hvis du har spørsmål om resultater eller ikke finner det du leter etter.",
-    "contactUs": "Kontakt oss"
+    "contactUs": "Kontakt oss",
+    "contactEmailLabel": "Send e-post til post@torghattenmaraton.no for spørsmål om resultater"
   },
   "liveScroll": {
     "title": "Live resultater",

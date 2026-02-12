@@ -24,6 +24,7 @@ export const navLinks: NavItem[] = [
     label: "distances",
     toggle: "Distanser",
     dropdown: [
+      { href: "distanser", label: "allDistances" },
       { href: "helmaraton", label: "fullMarathon" },
       { href: "halvmaraton", label: "halfMarathon" },
       { href: "oygaloppen", label: "islandRace10km" },
@@ -39,6 +40,7 @@ export const navLinks: NavItem[] = [
 
   { href: "overnatting", label: "accommodation", toggle: "Overnatting" },
   { href: "omoss", label: "about", toggle: "OmOss" },
+  { href: "kontakt", label: "contact" },
   { href: "sponsors", label: "sponsors", toggle: "SponsorerMeny" },
   { href: "helgelandslopene", label: "helgelandRaces", toggle: "Helgelandslopene" },
 ];

@@ -11,19 +11,22 @@ const { t } = useTranslations(Astro.url);
 <section
   class="relative min-h-screen bg-[url('/herosek-tmbru.jpg')] bg-cover bg-center bg-fixed text-white flex flex-col"
 >
-  <!-- Overlay for mørkere bakgrunn -->
-  <div class="absolute inset-0 bg-black/60 z-0"></div>
+  <!-- Overlay med gjennomtenkt gradient -->
+  <div
+    class="absolute inset-0 bg-linear-to-br from-black/30 via-black/40 to-black/60 z-0"
+  >
+  </div>
 
   <!-- Innhold -->
   <div
-    class="relative z-10 flex flex-col grow justify-start items-center px-4 pt-32 md:pt-40 pb-16 text-center"
+    class="relative z-10 flex flex-col grow justify-start items-center px-4 pt-40 md:pt-48 lg:pt-56 pb-16 text-center"
   >
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">
+    <h1 class="text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-yellow-400">
       {t("hero.title")}
       {isFeatureActive("raceYear") && ` ${getFeatureText("raceYear")}`}
     </h1>
 
-    <p class="text-lg md:text-xl mb-6 max-w-2xl">
+    <p class="text-lg md:text-xl mb-8 md:mb-10 max-w-2xl">
       {t("hero.subtitle")}
       {isFeatureActive("raceDate") && ` – ${getFeatureText("raceDate")}`}
     </p>
@@ -42,5 +45,206 @@ const { t } = useTranslations(Astro.url);
     <SignupButton />
 
     <LiveScrollHint />
+
+    <!-- Permanent scroll hint for alle besøkende -->
+    <div class="mt-12 flex justify-center">
+      <button
+        id="frontpageScrollHint"
+        class="group flex flex-col items-center text-white/80 hover:text-yellow-400 transition-all duration-300
+               focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:ring-offset-2 focus:ring-offset-black/50
+               hover:ring-2 hover:ring-yellow-400/30 rounded-2xl p-6 cursor-pointer
+               bg-linear-to-br from-black/10 via-black/20 to-black/30
+               hover:from-black/20 hover:via-black/30 hover:to-black/40
+               backdrop-blur-sm border border-white/10 hover:border-yellow-400/30
+               transform hover:scale-105"
+        aria-label={t("hero.scrollHintAriaLabel")}
+        data-original-label={t("hero.scrollHintAriaLabel")}
+        data-scrolled-label={t("hero.scrolledMessage")}
+        type="button"
+      >
+        <!-- Ikon og tekst -->
+        <div class="flex items-center gap-3 mb-3">
+          <div
+            class="relative w-8 h-8 group-hover:scale-110 transition-transform duration-300"
+            aria-hidden="true"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-transparent shadow-md border border-white/30 overflow-hidden transition-all duration-300 group-hover:border-yellow-400/50 group-hover:shadow-yellow-400/40"
+            >
+              <img
+                src="/images/logos/torghatten-maraton2.jpg"
+                alt=""
+                class="w-full h-full object-cover rounded-full transition-all duration-300 filter grayscale group-hover:grayscale-0 group-hover:brightness-110"
+              />
+              <!-- Fargeoverlay på hover -->
+              <div
+                class="absolute inset-0 bg-linear-to-br from-yellow-400/0 to-blue-600/0 transition-all duration-300 group-hover:from-yellow-400/20 group-hover:to-blue-600/10 rounded-full"
+              >
+              </div>
+            </div>
+          </div>
+          <span
+            class="text-base md:text-lg font-medium opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            {t("hero.exploreTitle")}
+          </span>
+        </div>
+
+        <!-- Animert pil -->
+        <div
+          class="animate-bounce group-hover:animate-pulse text-3xl group-hover:scale-125 transition-all duration-300"
+          aria-hidden="true"
+        >
+          ⬇️
+        </div>
+
+        <!-- Undertekst -->
+        <span
+          class="text-sm mt-2 opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+        >
+          {t("hero.exploreSubtitle")}
+        </span>
+      </button>
+    </div>
   </div>
 </section>
+
+<script is:inline>
+  function scrollToExplore() {
+    try {
+      // Find the first meaningful content section after hero
+      const heroSection = document.querySelector(
+        'section[class*="min-h-screen"]',
+      );
+
+      if (!heroSection) {
+        console.warn("Hero section not found, using fallback scroll");
+        window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+        return;
+      }
+
+      let nextElement = heroSection.nextElementSibling;
+      let targetSection = null;
+
+      // Look through siblings to find the next meaningful content section
+      while (nextElement) {
+        // Check if it's a section directly
+        if (nextElement.matches('section, main, [role="main"]')) {
+          targetSection = nextElement;
+          break;
+        }
+
+        // Check if it's a wrapper div containing a section or meaningful content
+        const nestedSection = nextElement.querySelector(
+          'section, main, [role="main"]',
+        );
+        if (nestedSection) {
+          targetSection = nestedSection;
+          break;
+        }
+
+        // Check if this div has substantial content (not just empty wrapper)
+        if (
+          nextElement.tagName === "DIV" &&
+          nextElement.offsetHeight > 100 &&
+          (nextElement.textContent.trim().length > 50 ||
+            nextElement.querySelector("h1, h2, h3, .feature, .section"))
+        ) {
+          targetSection = nextElement;
+          break;
+        }
+
+        nextElement = nextElement.nextElementSibling;
+      }
+
+      if (targetSection) {
+        // Calculate offset for fixed header
+        const headerOffset = 120;
+        const elementPosition =
+          targetSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, elementPosition),
+          behavior: "smooth",
+        });
+
+        // Announce to screen readers
+        const button = document.getElementById("frontpageScrollHint");
+        if (button) {
+          const originalLabel =
+            button.dataset.originalLabel || button.getAttribute("aria-label");
+          const scrolledLabel =
+            button.dataset.scrolledLabel || "Scrolled to next section";
+
+          button.setAttribute("aria-label", scrolledLabel);
+          setTimeout(() => {
+            button.setAttribute("aria-label", originalLabel);
+          }, 2000);
+        }
+      } else {
+        // Fallback: scroll down by viewport height
+        window.scrollBy({
+          top: window.innerHeight * 0.9,
+          behavior: "smooth",
+        });
+      }
+    } catch (error) {
+      console.error("Scroll function error:", error);
+      // Ultimate fallback
+      window.scrollBy({ top: window.innerHeight * 0.9, behavior: "smooth" });
+    }
+  }
+
+  // Enhanced smooth scroll experience
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollButton = document.getElementById("frontpageScrollHint");
+    if (scrollButton) {
+      // Store original label from data attribute
+      if (!scrollButton.dataset.originalLabel) {
+        scrollButton.dataset.originalLabel =
+          scrollButton.getAttribute("aria-label");
+      }
+
+      // Add click event for scrolling
+      scrollButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        scrollToExplore();
+      });
+
+      // Add ripple effect on click
+      scrollButton.addEventListener("click", function (e) {
+        const ripple = document.createElement("div");
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(234, 179, 8, 0.3);
+          transform: scale(0);
+          animation: ripple 600ms linear;
+          pointer-events: none;
+          left: ${e.offsetX - 25}px;
+          top: ${e.offsetY - 25}px;
+          width: 50px;
+          height: 50px;
+        `;
+
+        this.style.position = "relative";
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    }
+  });
+</script>
+
+<style is:inline>
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+</style>

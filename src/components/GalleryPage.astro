@@ -13,15 +13,25 @@ const description = t("seo.galleryDescription");
 ---
 
 <Layout title={title} description={description} lang={currentLang}>
-  <!-- Modern Hero Section for Gallery -->
+  <!-- Modern Hero Section for Gallery with Random Background -->
   <section
-    class="bg-linear-to-r from-purple-900 via-blue-800 to-indigo-900 text-white py-16 mt-32 md:mt-36"
+    id="gallery-hero"
+    class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
   >
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0 bg-linear-to-br from-purple-900/80 via-indigo-800/70 to-blue-700/80"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-16">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
         {t("gallery.modernTitle", "Øyeblikk fra Løpet")}
       </h1>
-      <p class="text-xl md:text-2xl opacity-90 mb-8">
+      <p
+        class="text-xl md:text-2xl opacity-95 mb-8 max-w-3xl mx-auto drop-shadow-md"
+      >
         {
           t(
             "gallery.subtitle",
@@ -29,23 +39,82 @@ const description = t("seo.galleryDescription");
           )
         }
       </p>
-      <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+      <div class="w-32 h-1 bg-yellow-400 mx-auto shadow-lg"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    >
+      <svg
+        class="w-6 h-6 text-white/80"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </section>
 
+  <script>
+    // Random background image selection for gallery hero
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroSection = document.getElementById("gallery-hero");
+      if (heroSection) {
+        const heroImages = [
+          "/images/banner/cropped-torghatten20150217-1.jpg",
+          "/images/banner/cropped-i-SmkP5Tb.jpg",
+          "/images/banner/cropped-20150502torgattenmaraton-34.jpg",
+          "/images/banner/cropped-20150502torgattenmaraton-21.jpg",
+          "/images/banner/cropped-i-j4tV97J.jpg",
+          "/images/banner/30mai-TorghattenMaraton-9721.jpg",
+          "/images/banner/30mai-TorghattenMaraton-9712.jpg",
+          "/images/banner/30mai-TorghattenMaraton-9095.jpg",
+        ];
+
+        const randomImage =
+          heroImages[Math.floor(Math.random() * heroImages.length)];
+        heroSection.style.backgroundImage = `url('${randomImage}')`;
+        heroSection.style.backgroundSize = "cover";
+        heroSection.style.backgroundPosition = "center";
+        heroSection.style.backgroundAttachment = "fixed";
+      }
+    });
+  </script>
+
   <!-- Sticky Navigation Section -->
   <section
-    class="bg-white/95 backdrop-blur-sm py-4 border-b border-gray-200 sticky top-36 z-40 shadow-sm"
+    class="bg-white/95 backdrop-blur-sm py-6 border-b border-gray-200 sticky top-20 md:top-24 z-40 shadow-lg"
   >
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <span class="text-gray-700 font-medium text-sm sm:text-base">
-            📅 {t("gallery.selectYear", "Velg år:")}
+        <div class="flex items-center gap-4">
+          <span
+            class="text-gray-700 font-semibold text-sm sm:text-base flex items-center gap-2"
+          >
+            <svg
+              class="w-5 h-5 text-purple-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+            {t("gallery.selectYear", "Velg år:")}
           </span>
           <select
             id="yearFilter"
-            class="bg-white border border-gray-300 text-gray-800 px-3 py-2 rounded-lg shadow-sm hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-sm"
+            class="bg-white border border-gray-300 text-gray-800 px-4 py-2 rounded-xl shadow-sm hover:border-purple-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all text-sm font-medium"
           >
             <option value="all">{t("visAlleAar")}</option>
             {
@@ -55,8 +124,23 @@ const description = t("seo.galleryDescription");
             }
           </select>
         </div>
-        <div class="text-xs sm:text-sm text-gray-500">
-          <span id="photoCounter">
+        <div
+          class="flex items-center gap-2 text-xs sm:text-sm text-gray-500 bg-gray-100 px-3 py-2 rounded-lg"
+        >
+          <svg
+            class="w-4 h-4 text-purple-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+            ></path>
+          </svg>
+          <span id="photoCounter" class="font-medium">
             {sortedYears.reduce((acc, year) => acc + year.photos.length, 0)}
             {t("gallery.photoCount", "bilder totalt")}
           </span>
@@ -141,7 +225,7 @@ const description = t("seo.galleryDescription");
             const scrollTarget = yearHeading || targetSection;
 
             // Scroll til årstall/fotograf-seksjonen med riktig margin
-            const stickyNavHeight = 220; // Ekstra stor margin så både årstall og fotograf vises helt tydelig
+            const stickyNavHeight = 180; // Justert for den nye sticky nav posisjonen
             const elementPosition = scrollTarget.offsetTop - stickyNavHeight;
             window.scrollTo({
               top: elementPosition,
@@ -154,7 +238,7 @@ const description = t("seo.galleryDescription");
             ".py-12.bg-gray-50",
           ) as HTMLElement;
           if (gallerySection) {
-            const stickyNavHeight = 120;
+            const stickyNavHeight = 100; // Justert for ny sticky nav posisjon
             const elementPosition = gallerySection.offsetTop - stickyNavHeight;
             window.scrollTo({
               top: elementPosition,

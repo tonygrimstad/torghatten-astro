@@ -6,9 +6,9 @@ import LiveScrollHint from "../../components/LiveScrollHint.astro";
 import ProgramSection from "../../components/ProgramSection.astro";
 import LiveScroll from "../../components/LiveScroll.astro";
 import DistancesSection from "../../components/DistancesSection.astro";
-import GallerySection from "../../components/GallerySection.astro";
-import AccommodationSection from "../../components/AccommodationSection.astro";
-import AboutSection from "../../components/AboutSection.astro";
+// import GallerySection from "../../components/GallerySection.astro";
+// import AccommodationSection from "../../components/AccommodationSection.astro";
+// import AboutSection from "../../components/AboutSection.astro";
 import InfoSection from "../../components/InfoSection.astro";
 import SponsorSection from "../../components/SponsorSection.astro";
 import Footer from "../../components/footer.astro";
@@ -32,22 +32,29 @@ if (lang !== "no" && lang !== "en") {
   title={t("seo.defaultTitle")}
   description={t("seo.defaultDescription")}
 >
-  <!-- 🖼️ Bakgrunnsbilde som dekker hele siden -->
+  <!-- 🖼️ Bakgrunnsbilde med elegant gradient -->
   <div
     class="absolute inset-0 -z-10 bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center"
   >
-    <div class="absolute inset-0 bg-black/40"></div>
+    <!-- Gradient overlay for bedre lesbarhet -->
+    <div
+      class="absolute inset-0 bg-linear-to-b from-black/20 via-black/30 to-black/50"
+    >
+    </div>
   </div>
 
-  <!-- Seksjoner -->
+  <!-- Seksjoner med alternerende bakgrunner for bedre rytme -->
   <HeroSection />
   <FeatureSection feature="programSection"><ProgramSection /></FeatureSection>
   <FeatureSection feature="liveScroll"><LiveScroll /></FeatureSection>
-  <DistancesSection />
+
+  <!-- Lys seksjon for kontrast -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <DistancesSection />
+  </div>
+
   <FeatureSection feature="infoSection"><InfoSection /></FeatureSection>
-  <GallerySection />
-  <AccommodationSection />
-  <AboutSection />
+
   <FeatureSection feature="SponsorerForsiden"
     ><SponsorSection
       variant="minimal"

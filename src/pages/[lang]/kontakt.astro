@@ -1,0 +1,219 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { useTranslations } from "../../utils/useTranslations.ts";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const { t, currentLang } = useTranslations(Astro.url);
+
+// Validate language parameter
+if (lang !== "no" && lang !== "en") {
+  return Astro.redirect("/no/");
+}
+
+const title = t("contact.pageTitle", "Kontakt");
+const description = t(
+  "contact.pageDescription",
+  "Ta kontakt med Sport Torghatten IL og Torghatten Maraton",
+);
+---
+
+<Layout
+  lang={currentLang}
+  title={`${title} - Torghatten Maraton`}
+  description={description}
+>
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
+    style="background-image: url('/images/A6500-2022_04_30-4281_OTS.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"
+  >
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0 bg-linear-to-br from-black/70 via-gray-900/80 to-black/70"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        {t("contact.pageTitle", "Kontakt")}
+      </h1>
+      <p
+        class="text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed"
+      >
+        {
+          t(
+            "contact.pageDescription",
+            "Ta kontakt med Sport Torghatten IL og Torghatten Maraton",
+          )
+        }
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Organization Info Section -->
+      <div class="mb-16">
+        <!-- Organization Details -->
+        <div
+          class="bg-yellow-50 p-8 rounded-xl border-l-4 border-yellow-400 max-w-md mx-auto"
+        >
+          <!-- Logo at the top -->
+          <div class="flex justify-center mb-8">
+            <a
+              href="https://www.sporttorghatten.no/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block"
+            >
+              <img
+                src="/images/logos/STIL-LOGO.gif"
+                alt="Sport Torghatten IL logo - klikk for å besøke sporttorghatten.no"
+                class="h-24 w-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
+                style="background: transparent; border: none; mix-blend-mode: multiply;"
+              />
+            </a>
+          </div>
+
+          <h2 class="text-3xl font-bold text-yellow-800 mb-6">
+            {t("contact.organizationName", "Sport Torghatten IL")}
+          </h2>
+
+          <div class="text-lg text-yellow-700 space-y-2 mb-6">
+            <p>{t("contact.address.line1", "Postboks 149")}</p>
+            <p>{t("contact.address.line2", "8901 Brønnøysund")}</p>
+            <p class="font-semibold">{t("contact.address.country", "NORGE")}</p>
+          </div>
+
+          <a
+            href={`mailto:${t("contact.email")}`}
+            class="inline-flex items-center gap-3 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            {t("contact.email", "post@torghattenmaraton.no")}
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Persons Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project Leader -->
+        <div
+          class="bg-linear-to-br from-purple-50 to-purple-100 p-6 rounded-xl border-l-4 border-purple-500"
+        >
+          <h3 class="text-xl font-bold text-purple-800 mb-3">
+            {t("contact.roles.projectLeader", "Prosjektleder")}
+          </h3>
+          <p class="text-purple-700 font-semibold text-lg mb-2">
+            {t("contact.people.livBentzen.name", "Liv Bentzen")}
+          </p>
+          <p class="text-purple-600">
+            <span class="font-medium">Mob.:</span>
+            {t("contact.people.livBentzen.mobile", "482 71 484")}
+          </p>
+        </div>
+
+        <!-- Event Manager -->
+        <div
+          class="bg-linear-to-br from-green-50 to-green-100 p-6 rounded-xl border-l-4 border-green-500"
+        >
+          <h3 class="text-xl font-bold text-green-800 mb-3">
+            {t("contact.roles.eventManager", "Arrangementsansvarlig")}
+          </h3>
+          <p class="text-green-700 font-semibold text-lg">
+            {
+              t(
+                "contact.people.johnAndreasLorentzen.name",
+                "John-Andreas Lorentzen",
+              )
+            }
+          </p>
+        </div>
+
+        <!-- Sponsor -->
+        <div
+          class="bg-linear-to-br from-orange-50 to-orange-100 p-6 rounded-xl border-l-4 border-orange-500"
+        >
+          <h3 class="text-xl font-bold text-orange-800 mb-3">
+            {t("contact.roles.sponsor", "Sponsor")}
+          </h3>
+          <p class="text-orange-700 font-semibold text-lg">
+            {t("contact.people.tommyJohansen.name", "Tommy Johansen")}
+          </p>
+        </div>
+
+        <!-- Registration -->
+        <div
+          class="bg-linear-to-br from-pink-50 to-pink-100 p-6 rounded-xl border-l-4 border-pink-500"
+        >
+          <h3 class="text-xl font-bold text-pink-800 mb-3">
+            {t("contact.roles.registration", "Påmelding")}
+          </h3>
+          <p class="text-pink-700 font-semibold text-lg">
+            {t("contact.people.hanneSolberg.name", "Hanne Solberg")}
+          </p>
+        </div>
+
+        <!-- Courses -->
+        <div
+          class="bg-linear-to-br from-teal-50 to-teal-100 p-6 rounded-xl border-l-4 border-teal-500"
+        >
+          <h3 class="text-xl font-bold text-teal-800 mb-3">
+            {t("contact.roles.courses", "Løyper")}
+          </h3>
+          <p class="text-teal-700 font-semibold text-lg">
+            {t("contact.people.arnfinnTorgnes.name", "Arnfinn Torgnes")}
+          </p>
+        </div>
+
+        <!-- Timing -->
+        <div
+          class="bg-linear-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl border-l-4 border-indigo-500"
+        >
+          <h3 class="text-xl font-bold text-indigo-800 mb-3">
+            {t("contact.roles.timing", "Tidtaking")}
+          </h3>
+          <p class="text-indigo-700 font-semibold text-lg">
+            {t("contact.people.eqTiming.name", "EQ Timing")}
+          </p>
+        </div>
+      </div>
+
+      <!-- Media Contact -->
+      <div class="mt-12 text-center">
+        <div
+          class="bg-linear-to-br from-amber-50 to-amber-100 p-8 rounded-xl border-l-4 border-amber-500 max-w-md mx-auto"
+        >
+          <h3 class="text-2xl font-bold text-amber-800 mb-3">
+            {t("contact.roles.media", "Media")}
+          </h3>
+          <p class="text-amber-700 font-semibold text-lg mb-2">
+            {t("contact.people.livBentzen.name", "Liv Bentzen")}
+          </p>
+          <p class="text-amber-600">
+            <span class="font-medium">Mob.:</span>
+            {t("contact.people.livBentzen.mobile", "482 71 484")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

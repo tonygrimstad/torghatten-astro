@@ -23,24 +23,33 @@ const { t, currentLang } = useTranslations(Astro.url);
   lang={currentLang}
   light={true}
 >
+  <!-- Seksjoner med alternerende bakgrunner for visuell rytme -->
   <HeroSectionDistanse
     distanse={`🏃‍♂️ ${t("nav.halfMarathon")} (21 098 m)`}
     description={t("halvmaraton.description")}
   />
 
-  <RaceProfile
-    kontrollmalt={true}
-    kontrolltekst={t("halvmaraton.certified")}
-    kontrollbilde="/KontrollertLoype.png"
-    tittel={t("halvmaraton.profileTitle")}
-    beskrivelse1={t("halvmaraton.description1")}
-    beskrivelse2={t("halvmaraton.description2")}
-  />
+  <!-- Lys seksjon -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <RaceProfile
+      kontrollmalt={true}
+      kontrolltekst={t("halvmaraton.certified")}
+      kontrollbilde="/KontrollertLoype.png"
+      tittel={t("halvmaraton.profileTitle")}
+      beskrivelse1={t("halvmaraton.description1")}
+      beskrivelse2={t("halvmaraton.description2")}
+    />
+  </div>
 
-  <ClassList
-    tittel={t("helmaraton.classTitle")}
-    klasser={classGroups.halvmaraton}
-  />
+  <!-- Lys seksjon for klasser -->
+  <div
+    class="relative bg-linear-to-br from-white/90 to-gray-50/95 backdrop-blur-sm"
+  >
+    <ClassList
+      tittel={t("helmaraton.classTitle")}
+      klasser={classGroups.halvmaraton}
+    />
+  </div>
 
   <FeatureSection feature="recordsSection">
     <Top5recordsComponent
@@ -64,9 +73,15 @@ const { t, currentLang } = useTranslations(Astro.url);
   </FeatureSection>
 
   <FeatureSection feature="infoSection">
-    <InfoSection />
+    <div class="relative bg-white/95 backdrop-blur-sm">
+      <InfoSection />
+    </div>
   </FeatureSection>
-  <DistancesSection current="Halvmaraton" />
+
+  <!-- Lys seksjon for distanser -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <DistancesSection current="Halvmaraton" />
+  </div>
 
   <FeatureSection feature="SponsorerAlleSider">
     <SponsorSection variant="minimal" maxLogos={8} showViewAllLink={true} />

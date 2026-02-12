@@ -61,11 +61,12 @@ interface Photographer {
           <a
             href={url.replace("/w_800/", "/w_1600/")}
             data-fslightbox={`gallery-${year}`}
+            aria-label={`Åpne galleri bilde ${i + 1} fra ${year} i stor visning`}
           >
             <img
               src={url}
               class="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
-              alt={`Bilde ${i + 1}`}
+              alt={`Bilde fra Torghatten Maraton ${year}, bilde nummer ${i + 1}`}
               loading="lazy"
             />
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -91,19 +92,34 @@ interface Photographer {
     <button
       id="close-btn"
       class="absolute top-2 right-2 text-white text-3xl z-50"
-      aria-label="Lukk"
+      type="button"
+      aria-label="Lukk galleri"
     >
       ✖
     </button>
     <img
       id="lightbox-image"
       src=""
-      alt="Stort bilde"
+      alt="Galleri bilde i full størrelse"
       class="w-full max-h-[90vh] object-contain rounded opacity-0 transition-opacity duration-500"
     />
     <div class="flex justify-between mt-4">
-      <button id="prev-btn" class="text-white text-2xl">←</button>
-      <button id="next-btn" class="text-white text-2xl">→</button>
+      <button
+        id="prev-btn"
+        class="text-white text-2xl p-2 hover:bg-white/20 rounded"
+        type="button"
+        aria-label="Forrige bilde"
+      >
+        ←
+      </button>
+      <button
+        id="next-btn"
+        class="text-white text-2xl p-2 hover:bg-white/20 rounded"
+        type="button"
+        aria-label="Neste bilde"
+      >
+        →
+      </button>
     </div>
   </div>
 </div>

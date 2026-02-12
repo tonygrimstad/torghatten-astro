@@ -1,0 +1,287 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
+
+// SEO
+const title = t("distances.pageTitle", "Alle Distanser - Torghatten Maraton");
+const description = t("distances.pageDescription", "Oversikt over alle løpsdistanser i Torghatten Maraton - fra helmaraton til barneløp. Finn din perfekte distanse!");
+
+// Distanse data med ikoner, beskrivelser og info
+const distances = [
+  {
+    id: "helmaraton",
+    title: t("nav.fullMarathon", "Helmaraton"),
+    subtitle: "42,195 km",
+    description: t("helmaraton.description", "Helmaratondistanse gjennom et spektakulært landskap"),
+    icon: "💪",
+    certified: true,
+    timed: true,
+    color: "from-blue-600 to-blue-800",
+    hoverColor: "hover:from-blue-700 hover:to-blue-900",
+    difficulty: t("distances.difficulties.challenging", "Krevende"),
+    participants: "NOK 600,-"
+  },
+  {
+    id: "halvmaraton",
+    title: t("nav.halfMarathon", "Halvmaraton"),
+    subtitle: "21,1 km",
+    description: t("halvmaraton.description", "Halvmaratondistanse gjennom et spektakulært landskap"),
+    icon: "🏃‍♂️",
+    certified: true,
+    timed: true,
+    color: "from-blue-600 to-blue-800",
+    hoverColor: "hover:from-blue-700 hover:to-blue-900",
+    difficulty: t("distances.difficulties.demanding", "Utfordrende"),
+    participants: "NOK 550,-"
+  },
+  {
+    id: "oygaloppen",
+    title: t("nav.islandRace", "Øygaloppen"),
+    subtitle: "10 km",
+    description: t("oygaloppen.description", "Flott 10km løp rundt øyene"),
+    icon: "🏃",
+    certified: true,
+    timed: true,
+    color: "from-red-600 to-red-800",
+    hoverColor: "hover:from-red-700 hover:to-red-900",
+    difficulty: t("distances.difficulties.moderate", "Moderat"),
+    participants: "NOK 500,-"
+  },
+  {
+    id: "minimaraton",
+    title: t("nav.miniMarathon", "Minimaraton"),
+    subtitle: "3,6 km",
+    description: t("minimaraton.description", "Kort og hyggelig distanse for alle"),
+    icon: "🏃‍♂️",
+    certified: false,
+    timed: true,
+    color: "from-green-600 to-green-800",
+    hoverColor: "hover:from-green-700 hover:to-green-900",
+    difficulty: t("distances.difficulties.easy", "Lett"),
+    participants: "NOK 250,-"
+  },
+  {
+    id: "barnelop",
+    title: t("nav.kidsRace", "Barneløp"),
+    subtitle: "Varierende",
+    description: t("barnelop.description", "Morsomme løp tilpasset barn i alle aldre"),
+    icon: "🎈",
+    certified: false,
+    timed: false,
+    color: "from-yellow-500 to-yellow-600",
+    hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
+    difficulty: t("distances.difficulties.forKids", "For barn"),
+    participants: "NOK 50,-"
+  },
+  {
+    id: "paralop",
+    title: t("nav.paraRace", "Paraløp"),
+    subtitle: "Tilpasset",
+    description: t("paralop.description", "Tilrettelagt løp for alle funksjonsnivåer"),
+    icon: "♿",
+    certified: false,
+    timed: false,
+    color: "from-yellow-500 to-yellow-600",
+    hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
+    difficulty: t("distances.difficulties.adapted", "Tilpasset"),
+    participants: "NOK 50,-"
+  },
+  {
+    id: "trim",
+    title: t("nav.trim", "Trim"),
+    subtitle: "Egen fart",
+    description: t("trim.description", "Trim og mosjon i fantastiske omgivelser"),
+    icon: "🚶‍♂️",
+    certified: false,
+    timed: false,
+    color: "from-green-600 to-green-800",
+    hoverColor: "hover:from-green-700 hover:to-green-900",
+    difficulty: t("distances.difficulties.easy", "Lett"),
+    participants: "NOK 50,-"
+  }
+];
+---
+
+<Layout title={title} description={description} lang={currentLang}>
+  <!-- Hero Section with Random Background -->
+  <section
+    id="distanser-hero"
+    class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
+  >
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-linear-to-br from-blue-900/80 via-emerald-800/70 to-teal-700/80"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-16">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+        {t("distances.title", "Våre Distanser")}
+      </h1>
+      <p class="text-xl md:text-2xl opacity-95 mb-8 max-w-3xl mx-auto drop-shadow-md">
+        {t("distances.heroSubtitle", "Fra helmaraton til barneløp - finn din perfekte utfordring i naturskjønne omgivelser på Torgøyan")}
+      </p>
+      <div class="flex items-center justify-center gap-2 text-lg opacity-90">
+        <span class="bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+          🏃‍♂️ {distances.filter(d => d.timed).length} {t("distances.timedRaces", "tidtatte løp")}
+        </span>
+        <span class="bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+          🎯 {distances.filter(d => d.certified).length} {t("distances.controlledRaces", "kontrollmålte")}
+        </span>
+      </div>
+      <div class="w-32 h-1 bg-yellow-400 mx-auto shadow-lg mt-8"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Distances Grid -->
+  <section class="py-20 bg-linear-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {distances.map((distance, index) => (
+          <div class={`group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 bg-linear-to-br ${distance.color}`}>
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-linear-to-br from-black/10 to-black/30 group-hover:from-black/20 group-hover:to-black/40 transition-all duration-300"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 p-8 text-white min-h-80 flex flex-col">
+              <!-- Header -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="text-4xl" aria-label={distance.title}>{distance.icon}</div>
+                <div class="flex flex-col items-end gap-2">
+                  {distance.certified && (
+                    <span class="bg-white/20 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+                      ✓ {t("distances.controlled", "Kontrollmålt")}
+                    </span>
+                  )}
+                  {distance.timed && (
+                    <span class="bg-white/20 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+                      ⏱️ {t("distances.timed", "Tidtatt")}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <!-- Title and Distance -->
+              <div class="mb-6">
+                <h3 class="text-2xl md:text-3xl font-bold mb-2">{distance.title}</h3>
+                <p class="text-xl opacity-90 font-semibold">{distance.subtitle}</p>
+              </div>
+
+              <!-- Description -->
+              <p class="text-white/90 mb-6 leading-relaxed grow">
+                {distance.description}
+              </p>
+
+              <!-- Stats -->
+              <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+                <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                  <div class="font-semibold opacity-80">{t("distances.difficulty", "Vanskelighet")}</div>
+                  <div>{distance.difficulty}</div>
+                </div>
+                <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                  <div class="font-semibold opacity-80">{t("distances.registrationFee", "Deltageravgift")}</div>
+                  <div>{distance.participants}</div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="grid grid-cols-2 gap-3">
+                <!-- About Distance Button -->
+                <a
+                  href={`/${currentLang}/${distance.id}`}
+                  class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-white/40 text-sm"
+                  aria-label={`${t("distances.aboutDistance", "Om distansen")} ${distance.title}`}
+                >
+                  <span class="mr-1">{t("distances.aboutDistance", "Om distansen")}</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </a>
+
+                <!-- Registration Button -->
+                <a
+                  href="https://signup.eqtiming.com/?Event=Torghatten&lang=norwegian"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 group-hover:scale-105 backdrop-blur-sm border border-white/20 hover:border-white/40 text-sm"
+                  aria-label={`${t("distances.register", "Meld deg på")} ${distance.title}`}
+                >
+                  <span class="mr-1">{t("distances.register", "Meld deg på")}</span>
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="py-16 bg-linear-to-br from-slate-900 via-gray-800 to-slate-900 text-white relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-linear-to-br from-blue-400/20 via-transparent to-emerald-400/20"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        {t("distances.infoTitle", "Klar for å delta?")}
+      </h2>
+      <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+        {t("distances.infoText", "Registrer deg for din favorittdistanse allerede i dag.")}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href={`/${currentLang}/results`}
+          class="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+          {t("distances.seeResults", "Se tidligere resultater")}
+        </a>
+        <a
+          href="mailto:post@torghattenmaraton.no"
+          class="inline-flex items-center gap-3 bg-linear-to-r from-emerald-500 to-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          {t("distances.contactUs", "Kontakt oss")}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Random background image selection for distanser hero
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroSection = document.getElementById("distanser-hero");
+      if (heroSection) {
+        const heroImages = [
+          // "/images/banner/30969140_10155152676665981_1625063110_o.jpg",
+          "/images/banner/58419956_2441986629147484_7815652812888473600_n.jpg",
+          "/images/banner/58441178_2639374736341031_3101152733458071552_n.jpg",
+          "/images/banner/58441355_2307298546196060_5876851120311107584_n.jpg",
+          "/images/banner/59203958_321270088557935_9006607184909303808_n.jpg"
+        ];
+
+        const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+        heroSection.style.backgroundImage = `url('${randomImage}')`;
+        heroSection.style.backgroundSize = "cover";
+        heroSection.style.backgroundPosition = "center";
+        heroSection.style.backgroundAttachment = "fixed";
+      }
+    });
+  </script>
+</Layout>

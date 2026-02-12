@@ -17,23 +17,35 @@ const { t, currentLang } = useTranslations(Astro.url);
   lang={currentLang}
   light={true}
 >
+  <!-- Seksjoner med alternerende bakgrunner for visuell rytme -->
   <HeroSectionDistanse
     distanse={`🎈 ${t("nav.kidsRace")}`}
     description={t("barnelop.description")}
   />
 
-  <RaceProfile
-    kontrollmalt={false}
-    kontrolltekst={t("barnelop.certified")}
-    kontrollbilde="/KontrollertLoype.png"
-    tittel={t("barnelop.profileTitle")}
-    beskrivelse1={t("barnelop.description1")}
-    beskrivelse2={t("barnelop.description2")}
-  />
+  <!-- Lys seksjon -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <RaceProfile
+      kontrollmalt={false}
+      kontrolltekst={t("barnelop.certified")}
+      kontrollbilde="/KontrollertLoype.png"
+      tittel={t("barnelop.profileTitle")}
+      beskrivelse1={t("barnelop.description1")}
+      beskrivelse2={t("barnelop.description2")}
+    />
+  </div>
 
   <FeatureSection feature="infoSection">
-    <InfoSection />
+    <div
+      class="relative bg-linear-to-br from-white/90 to-gray-50/95 backdrop-blur-sm"
+    >
+      <InfoSection />
+    </div>
   </FeatureSection>
-  <DistancesSection current="Barneløp" />
+
+  <!-- Lys seksjon for distanser -->
+  <div class="relative bg-white/95 backdrop-blur-sm">
+    <DistancesSection current="Barneløp" />
+  </div>
   <Footer />
 </Layout>
