@@ -25,7 +25,7 @@ Problemet med "Internal Server Error" under deployment er løst via:
 Filen `public/.htaccess` håndterer:
 - ✅ Redirect fra root (`/`) til `/no/`
 - ✅ Directory-basert routing for språk
-- ✅ Trailing slash håndtering  
+- ✅ Trailing slash håndtering
 - ✅ Error handling (500/404)
 - ✅ Performance (gzip + caching)
 
@@ -60,7 +60,7 @@ For å redusere deployment downtime:
 3. **Test på staging** før main deployment
 
 ## 🔗 Relaterte filer
-- `public/.htaccess` - Apache routing konfigurasjon  
+- `public/.htaccess` - Apache routing konfigurasjon
 - `public/500.html` - Error fallback side
 - `.github/workflows/*.yml` - Deployment automation
 - `astro.config.mjs` - Astro build settings
