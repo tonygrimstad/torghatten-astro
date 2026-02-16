@@ -1,5 +1,5 @@
 # Torghatten Maraton - Apache config for Domeneshop
-# Standard konfiguration för DocumentRoot deployment
+# DocumentRoot deployment struktur
 
 # Aktiver URL rewriting
 RewriteEngine On

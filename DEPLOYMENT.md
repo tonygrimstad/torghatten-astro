@@ -5,6 +5,7 @@ Dette dokumentet beskriver hvordan nettsiden automatisk deployes til Domeneshop 
 ## 🚀 Deployment-prosess
 
 ### Automatisk deployment
+
 Når du pusher til `main`-branchen:
 
 1. GitHub Actions starter automatisk
@@ -13,6 +14,7 @@ Når du pusher til `main`-branchen:
 4. Apache server håndterer routing via `.htaccess`
 
 ### Løsning for Internal Server Error
+
 Problemet med "Internal Server Error" under deployment er løst via:
 
 1. **`.htaccess`** - Apache URL-rewriting for Astro's directory routing
@@ -22,7 +24,9 @@ Problemet med "Internal Server Error" under deployment er løst via:
 ## ⚙️ Teknisk løsning
 
 ### Apache-konfigurasjon (`.htaccess`)
+
 Filen `public/.htaccess` håndterer:
+
 - ✅ Redirect fra root (`/`) til `/no/`
 - ✅ Directory-basert routing för språk
 - ✅ Standard DocumentRoot deployment (ej `/astro/` subdirectory)
@@ -30,16 +34,19 @@ Filen `public/.htaccess` håndterer:
 - ✅ Performance (gzip + caching)
 
 ### Error handling
+
 - **500.html** - Vises under deployment/server issues
 - **Auto-reload** - Prøver på nytt etter 30 sekunder
 - **Brukerinfromasjon** - Tydelig kommunikasjon
 
 ### Deployment struktur
+
 Filerna deployeras till DocumentRoot (`/www/`) istället för subdirectory för att undvika URL-problem.
 
 ## 🔍 Feilsøking
 
 ### Internal Server Error
+
 Hvis du fortsatt får "Internal Server Error":
 
 1. **Sjekk at .htaccess er uploadet**:
@@ -50,12 +57,14 @@ Hvis du fortsatt får "Internal Server Error":
    - GitHub → Actions → se om upload feiler
 
 3. **Test lokal build**:
+
    ```bash
    npm run build
    npm run preview  # Test directory routing lokalt
    ```
 
 ### Debugging timing-issues
+
 For å redusere deployment downtime:
 
 1. **Fjern `dangerous-clean-slate`** fra GitHub Action
@@ -63,6 +72,7 @@ For å redusere deployment downtime:
 3. **Test på staging** før main deployment
 
 ## 🔗 Relaterte filer
+
 - `public/.htaccess` - Apache routing konfigurasjon
 - `public/500.html` - Error fallback side
 - `.github/workflows/*.yml` - Deployment automation
@@ -70,4 +80,4 @@ For å redusere deployment downtime:
 
 ---
 
-_Løsning implementert: Februar 2026_
+Løsning implementerat: Februar 2026
