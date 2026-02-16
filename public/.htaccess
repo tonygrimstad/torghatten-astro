@@ -4,7 +4,14 @@
 # Aktiver URL rewriting
 RewriteEngine On
 
+# VIKTIG: Steng directory listing (sikkerhet)
+Options -Indexes
+
+# DirectoryIndex - hvilke filer Apache skal lete etter
+DirectoryIndex index.html index.htm
+
 # Språk-baserad redirect från root til /no/
+RewriteCond %{REQUEST_URI} ^/?$
 RewriteRule ^/?$ /no/ [R=301,L]
 
 # Håndter Astro's statiske routing
@@ -17,7 +24,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ /$1/index.html [L]
 
 # Custom error documents
+# 404.html genereras av Astro från src/pages/404.astro
 # 500.html ligger i /www/500.html (utanför /www/astro/) för å alltid vara tilgjengelig
+ErrorDocument 403 /404.html
 ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
 ErrorDocument 503 /500.html
