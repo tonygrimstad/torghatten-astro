@@ -38,6 +38,13 @@ Filen `public/.htaccess` håndterer:
 - **Auto-reload** - Prøver på nytt etter 30 sekunder
 - **Brukerinformasjon** - Tydelig kommunikasjon
 
+**Viktig:** For at 500.html skal vises under deployment, må den ligge **utenfor** `/www/astro/`:
+
+1. Last ned `public/500.html` fra prosjektet
+2. Logg inn på FTP (WinSCP til ftp.domeneshop.no)
+3. Last opp `500.html` til `/www/500.html` (IKKE i astro-mappen)
+4. Dette sikrer at feilsida alltid finnes, selv når `/www/astro/` tømmes under deployment
+
 ### Deployment struktur
 
 Filene deployeres til `/www/astro/` via FTP.

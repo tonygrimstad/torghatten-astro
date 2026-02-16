@@ -17,8 +17,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ /$1/index.html [L]
 
 # Custom error documents
+# 500.html ligger i /www/500.html (utanför /www/astro/) för å alltid vara tilgjengelig
 ErrorDocument 404 /404.html
 ErrorDocument 500 /500.html
+ErrorDocument 503 /500.html
 
 # Gzip compression for better performance
 <IfModule mod_deflate.c>
