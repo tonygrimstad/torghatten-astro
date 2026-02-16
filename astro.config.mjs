@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',
   vite: {
     plugins: [tailwindcss()]
   }

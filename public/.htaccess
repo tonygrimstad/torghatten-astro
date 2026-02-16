@@ -7,21 +7,17 @@ RewriteEngine On
 # Språk-basert redirect fra root til /no/
 RewriteRule ^/?$ /no/ [R=301,L]
 
-# Legg til trailing slash for directories (Astro standard)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.+[^/])$ $1/ [R=301,L]
-
 # Håndter Astro's statiske routing
-# Hvis filen ikke eksisterer, prøv å finne index.html i directory
+# Prøv directory med index.html først
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)/(.*)$ /$1/$2/index.html [L]
+RewriteRule ^([^/]+)/([^/]+)/?$ /$1/$2/index.html [L]
 
-# Backup: direkteaccess til index.html for directories
+# Legg til trailing slash kun for directories som eksisterer
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ /$1/ [R=301,L]
+RewriteRule ^(.*)$ $1/ [R=301,L]
 
 # Custom error documents
 ErrorDocument 404 /404.html
