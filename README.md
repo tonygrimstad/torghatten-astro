@@ -108,10 +108,9 @@ Denne definerer:
 ## Viktige dokumenter
 
 | Fil | Formål |
-
 |----|-------|
-
 | `DEV.md` | Teknisk arkitektur og implementasjon |
+| `DEPLOYMENT.md` | Deployment til Domeneshop via GitHub Actions |
 | `ACCESSIBILITY.md` | WCAG-regler og sjekklister |
 | `A11Y-COMPONENTS.md` | Tilgjengelighetskrav per komponent |
 | `TYPOGRAPHY.md` | Lesbarhet og bruk av prose |
@@ -132,7 +131,8 @@ Denne definerer:
    - `ACCESSIBILITY.md`
    - `I18N.md`
 3. Bruk Copilot aktivt – repoet gir kontekst
-4. Før deploy: gå gjennom `CHECKLIST.md`
+4. For deployment: se `DEPLOYMENT.md`
+5. Før deploy: gå gjennom `CHECKLIST.md`
 
 ---
 

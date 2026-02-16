@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torghatten Maraton - Midlertidig utilgjengelig</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: #fbbf24;
+            text-align: center;
+            padding: 2rem;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .refresh-btn {
+            background: #fbbf24;
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .refresh-btn:hover {
+            background: #f59e0b;
+        }
+        .status {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏃‍♂️ Torghatten Maraton</h1>
+        <p>Nettsiden oppdateres for øyeblikket.</p>
+        <p>Vi beklager ulempen, sidene kommer straks tilbake.</p>
+        <a href="/" class="refresh-btn" onclick="window.location.reload(); return false;">Prøv igjen</a>
+        <div class="status">
+            Hvis problemet vedvarer, kontakt oss på post@torghattenmaraton.no
+        </div>
+    </div>
+
+    <script>
+        // Auto-reload etter 30 sekunder
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+    </script>
+</body>
+</html>
