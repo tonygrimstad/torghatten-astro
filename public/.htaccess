@@ -1,5 +1,5 @@
 # Torghatten Maraton - Apache config for Domeneshop
-# DocumentRoot deployment struktur
+# Deployment til /www/astro/ (DocumentRoot konfigurert i Domeneshop kontrollpanel)
 
 # Aktiver URL rewriting
 RewriteEngine On

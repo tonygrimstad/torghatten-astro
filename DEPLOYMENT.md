@@ -29,7 +29,6 @@ Filen `public/.htaccess` håndterer:
 
 - ✅ Redirect fra root (`/`) til `/no/`
 - ✅ Directory-basert routing för språk
-- ✅ Standard DocumentRoot deployment (ej `/astro/` subdirectory)
 - ✅ Error handling (500/404)
 - ✅ Performance (gzip + caching)
 
@@ -37,11 +36,13 @@ Filen `public/.htaccess` håndterer:
 
 - **500.html** - Vises under deployment/server issues
 - **Auto-reload** - Prøver på nytt etter 30 sekunder
-- **Brukerinfromasjon** - Tydelig kommunikasjon
+- **Brukerinformasjon** - Tydelig kommunikasjon
 
 ### Deployment struktur
 
-Filerna deployeras till DocumentRoot (`/www/`) istället för subdirectory för att undvika URL-problem.
+Filene deployeres til `/www/astro/` via FTP.
+
+Domeneshop har DocumentRoot konfigurert til `/www/astro/` i deres kontrollpanel, vilket gir rena URLs utan `/astro/` synlig för besökare.
 
 ## 🔍 Feilsøking
 
