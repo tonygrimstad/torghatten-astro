@@ -1,23 +1,20 @@
 # Torghatten Maraton - Apache config for Domeneshop
-# Håndterer Astro's directory-baserte routing og språkstøtte
+# Standard konfiguration för DocumentRoot deployment
 
 # Aktiver URL rewriting
 RewriteEngine On
 
-# Språk-basert redirect fra root til /no/
+# Språk-baserad redirect från root til /no/
 RewriteRule ^/?$ /no/ [R=301,L]
 
 # Håndter Astro's statiske routing
-# Prøv directory med index.html først
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/([^/]+)/?$ /$1/$2/index.html [L]
 
-# Legg til trailing slash kun for directories som eksisterer
+# Eksisterende filer och directories
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ $1/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ /$1/index.html [L]
 
 # Custom error documents
 ErrorDocument 404 /404.html

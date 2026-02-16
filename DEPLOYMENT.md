@@ -24,8 +24,8 @@ Problemet med "Internal Server Error" under deployment er løst via:
 ### Apache-konfigurasjon (`.htaccess`)
 Filen `public/.htaccess` håndterer:
 - ✅ Redirect fra root (`/`) til `/no/`
-- ✅ Directory-basert routing for språk
-- ✅ Trailing slash håndtering
+- ✅ Directory-basert routing för språk
+- ✅ Standard DocumentRoot deployment (ej `/astro/` subdirectory)
 - ✅ Error handling (500/404)
 - ✅ Performance (gzip + caching)
 
@@ -33,6 +33,9 @@ Filen `public/.htaccess` håndterer:
 - **500.html** - Vises under deployment/server issues
 - **Auto-reload** - Prøver på nytt etter 30 sekunder
 - **Brukerinfromasjon** - Tydelig kommunikasjon
+
+### Deployment struktur
+Filerna deployeras till DocumentRoot (`/www/`) istället för subdirectory för att undvika URL-problem.
 
 ## 🔍 Feilsøking
 
