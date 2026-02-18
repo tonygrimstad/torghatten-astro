@@ -1,6 +1,6 @@
 # Deployment til Domeneshop
 
-Dette dokumentet beskriver hvordan nettsiden automatisk deployes til Domeneshop via GitHub Actions og løser Internal Server Error under deployment.
+Dette dokumentet beskriver hvordan nettsiden automatisk deployes til Domeneshop via GitHub Actions.
 
 ## 🚀 Deployment-prosess
 
@@ -10,16 +10,30 @@ Når du pusher til `main`-branchen:
 
 1. GitHub Actions starter automatisk
 2. Bygger Astro-nettsiden (`npm run build`)
-3. Deployer via FTP til Domeneshop
+3. Deployer via FTP til Domeneshop (filer skrives over, ikke slettet først)
 4. Apache server håndterer routing via `.htaccess`
 
-### Løsning for Internal Server Error
+**Forbedring:** `dangerous-clean-slate` er fjernet for å minimere downtime under deployment.
 
-Problemet med "Internal Server Error" under deployment er løst via:
+## 🛠️ Maintenance Mode (Vedlikeholdsmodus)
 
-1. **`.htaccess`** - Apache URL-rewriting for Astro's directory routing
-2. **500.html** - Fallback error-side under deployment
-3. **Forbedret deployment timing**
+For å vise en vedlikeholdsside under større oppdateringer:
+
+### Aktivere maintenance mode:
+
+1. Åpne WinSCP og koble til `ftp.domeneshop.no`
+2. Naviger til `/www/astro/`
+3. Opprett en **tom fil** med navn `.maintenance` (høyreklikk → New → File)
+4. Alle besøkende ser nå `maintenance.html` med automatisk reload
+
+### Deaktivere maintenance mode:
+
+1. Åpne WinSCP
+2. Naviger til `/www/astro/`
+3. Slett filen `.maintenance`
+4. Nettsiden er umiddelbart tilgjengelig igjen
+
+**Tips:** Filen `.maintenance` ignoreres av GitHub Actions, så den påvirker ikke deployments.
 
 ## ⚙️ Teknisk løsning
 
@@ -27,9 +41,11 @@ Problemet med "Internal Server Error" under deployment er løst via:
 
 Filen `public/.htaccess` håndterer:
 
+- ✅ **Maintenance mode** - Automatisk redirect til vedlikeholdsside hvis `.maintenance` finnes
+- ✅ **Sikkerhet** - `Options -Indexes` forhindrer directory listing
 - ✅ Redirect fra root (`/`) til `/no/`
 - ✅ Directory-basert routing för språk
-- ✅ Error handling (500/404)
+- ✅ Error handling (403/404/500/503)
 - ✅ Performance (gzip + caching)
 
 ### Error handling

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torghatten Maraton - Under vedlikehold</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fbbf24;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: #fbbf24;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+        h2 {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            font-weight: normal;
+            margin-bottom: 2rem;
+        }
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e5e7eb;
+            margin-bottom: 2rem;
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(251, 191, 36, 0.2);
+            border-top-color: #fbbf24;
+            border-radius: 50%;
+            margin: 2rem auto;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .info {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-top: 2rem;
+        }
+        .status {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid #fbbf24;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">TM</div>
+
+        <h1>Under vedlikehold</h1>
+        <h2>Vi gjør nettsiden enda bedre</h2>
+
+        <div class="message">
+            <p>Torghatten Maraton oppdaterer nettsiden for øyeblikket.</p>
+            <p>Vi er tilbake om bare noen minutter!</p>
+        </div>
+
+        <div class="loader"></div>
+
+        <div class="status">
+            <strong>Status:</strong> Oppdateringen pågår...
+        </div>
+
+        <div class="info">
+            Siden laster automatisk når vi er klare.<br>
+            <small id="timer">Prøver på nytt om <span id="countdown">30</span> sekunder...</small>
+        </div>
+    </div>
+
+    <script>
+        let seconds = 30;
+        const countdownEl = document.getElementById('countdown');
+
+        const countdown = setInterval(() => {
+            seconds--;
+            if (countdownEl) {
+                countdownEl.textContent = seconds;
+            }
+
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                globalThis.location.reload();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

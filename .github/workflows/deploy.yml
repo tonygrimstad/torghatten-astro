@@ -28,4 +28,8 @@ jobs:
           local-dir: ./dist/
           server-dir: /www/astro/
           log-level: minimal
-          dangerous-clean-slate: true
+          # Dangerous-clean-slate fjernet for å unngå downtime
+          # Filer skrives over i stedet for å slettes først
+          exclude: |
+            .maintenance
+            .htaccess.backup

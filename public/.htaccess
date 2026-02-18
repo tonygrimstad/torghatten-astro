@@ -10,6 +10,22 @@ Options -Indexes
 # DirectoryIndex - hvilke filer Apache skal lete etter
 DirectoryIndex index.html index.htm
 
+# ========================================
+# MAINTENANCE MODE
+# ========================================
+# Hvis filen .maintenance finnes, vis maintenance.html
+# For å aktivere: Last opp en tom .maintenance fil via FTP
+# For å deaktivere: Slett .maintenance filen
+RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
+RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg)$
+RewriteRule ^(.*)$ /maintenance.html [R=503,L]
+Header always set Retry-After "60" env=REDIRECT_STATUS
+
+# ========================================
+# SPRÅK OG ROUTING
+# ========================================
+
 # Språk-baserad redirect från root til /no/
 RewriteCond %{REQUEST_URI} ^/?$
 RewriteRule ^/?$ /no/ [R=301,L]
