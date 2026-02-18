@@ -14,13 +14,12 @@ DirectoryIndex index.html index.htm
 # MAINTENANCE MODE
 # ========================================
 # Hvis filen .maintenance finnes, vis maintenance.html
-# For å aktivere: Last opp en tom .maintenance fil via FTP
-# For å deaktivere: Slett .maintenance filen
+# For å aktivere: Last opp en tom .maintenance fil via FTP til /www/astro/.maintenance
+# For å deaktivere: Slett /www/astro/.maintenance filen
 RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
 RewriteCond %{REQUEST_URI} !^/maintenance\.html$
-RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg)$
-RewriteRule ^(.*)$ /maintenance.html [R=503,L]
-Header always set Retry-After "60" env=REDIRECT_STATUS
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf)$
+RewriteRule ^.*$ /maintenance.html [L,QSA]
 
 # ========================================
 # SPRÅK OG ROUTING

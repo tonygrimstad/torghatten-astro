@@ -24,7 +24,7 @@ For å vise en vedlikeholdsside under større oppdateringer:
 1. Åpne WinSCP og koble til `ftp.domeneshop.no`
 2. Naviger til `/www/astro/`
 3. Opprett en **tom fil** med navn `.maintenance` (høyreklikk → New → File)
-4. Alle besøkende ser nå `maintenance.html` med automatisk reload
+4. Alle besøkende ser nå vedlikeholdssiden med automatisk reload
 
 ### Deaktivere maintenance mode:
 
@@ -33,7 +33,11 @@ For å vise en vedlikeholdsside under større oppdateringer:
 3. Slett filen `.maintenance`
 4. Nettsiden er umiddelbart tilgjengelig igjen
 
-**Tips:** Filen `.maintenance` ignoreres av GitHub Actions, så den påvirker ikke deployments.
+**Hvordan det fungerer:**
+- `maintenance.html` deployeras automatiskt från `public/maintenance.html`
+- `.maintenance` är en tom flaggfil du skapar manuellt via FTP
+- Når `.maintenance` finnes, vises `maintenance.html` för alla besökande
+- Filen `.maintenance` ignoreres av GitHub Actions deployment
 
 ## ⚙️ Teknisk løsning
 
