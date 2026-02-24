@@ -30,7 +30,9 @@ src/
 │   └── useTranslations.ts # Core i18n utility
 ├── config/
 │   ├── navLinks.ts        # Navigation configuration
-│   └── i18n.ts           # Legacy i18n config (fallback)
+│   ├── siteConfig.ts      # Feature toggles & site config
+│   ├── classGroups.ts     # Race age groups
+│   └── sponsors.ts        # Sponsor configuration
 ├── pages/
 │   └── [lang]/           # Dynamic language routing
 │       ├── index.astro   # Home page (wrapper)
@@ -266,7 +268,7 @@ Reusable components for common functionality:
    vim src/translations/en.json  # English
    ```
 
-3. **Use in components**
+2. **Use in components**
 
    ```astro
    ---
@@ -275,7 +277,7 @@ Reusable components for common functionality:
    <p>{t("newSection.content")}</p>
    ```
 
-4. **Verify with audit**
+3. **Verify with audit**
 
    ```bash
    npm run i18n:audit  # Should show 0 missing keys

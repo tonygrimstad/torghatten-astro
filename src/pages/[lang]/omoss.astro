@@ -103,7 +103,7 @@ const description = t(
       <!-- History & Welcome Combined Section -->
       <div class="mb-12 bg-blue-50 p-8 rounded-xl">
         <h2 class="text-3xl font-bold text-blue-800 mb-6">
-          Torghatten Maraton
+          {t("about.marathonSectionTitle", "Torghatten Maraton")}
         </h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-6">
           <div>
@@ -137,7 +137,9 @@ const description = t(
 
       <!-- Feedback & Collaboration Combined Section -->
       <div class="mb-12 bg-green-50 p-8 rounded-xl">
-        <h2 class="text-3xl font-bold text-green-800 mb-6">Takk til alle!</h2>
+        <h2 class="text-3xl font-bold text-green-800 mb-6">
+          {t("about.thanksSectionTitle", "Takk til alle!")}
+        </h2>
         <p class="text-lg text-green-700 leading-relaxed mb-6">
           {
             t(
@@ -157,8 +159,11 @@ const description = t(
       </div>
 
       <!-- Quality & Contact Combined Section -->
+
       <div class="bg-yellow-50 p-8 rounded-xl border-l-4 border-yellow-400">
-        <h2 class="text-3xl font-bold text-yellow-800 mb-6">Innspill!</h2>
+        <h2 class="text-3xl font-bold text-yellow-800 mb-6">
+          {t("about.feedbackSectionTitle", "Innspill!")}
+        </h2>
         <p class="text-lg text-yellow-700 leading-relaxed mb-6">
           {
             t(
@@ -205,7 +210,7 @@ const description = t(
           class="inline-block"
         >
           <img
-            src="/images/banner/stilbanner_transparent.svg"
+            src="/images/banner/stilbanner_transparent.png"
             alt="Sport Torghatten IL banner - klikk for å besøke sporttorghatten.no"
             class="max-w-xs h-auto shadow-lg hover:shadow-xl transition-shadow duration-300"
             style="background: transparent; border: none; mix-blend-mode: multiply;"
