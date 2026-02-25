@@ -25,6 +25,12 @@ RewriteCond %{REQUEST_URI} !^/favicon
 RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|webp)$
 RewriteRule ^.*$ /maintenance.html [R=302,L]
 
+# Redirect BORT fra maintenance.html når vedlikehold er over
+# (hvis .maintenance IKKE finnes, send brukere tilbake til hovedsiden)
+RewriteCond %{DOCUMENT_ROOT}/.maintenance !-f
+RewriteCond %{REQUEST_URI} ^/maintenance\.html$
+RewriteRule ^.*$ / [R=302,L]
+
 # ========================================
 # SPRÅK OG ROUTING
 # ========================================
