@@ -11,23 +11,28 @@ Options -Indexes
 DirectoryIndex index.html index.htm
 
 # ========================================
-# MAINTENANCE MODE
+# MAINTENANCE MODE (MÅ KOMME FØRST!)
 # ========================================
 # Hvis filen .maintenance finnes, vis maintenance.html
 # For å aktivere: Last opp en tom .maintenance fil via FTP til /www/astro/.maintenance
 # For å deaktivere: Slett /www/astro/.maintenance filen
+#
+# VIKTIG: Denne regelen MÅ komme før alle andre rewrite-regler!
 RewriteCond %{DOCUMENT_ROOT}/.maintenance -f
 RewriteCond %{REQUEST_URI} !^/maintenance\.html$
-RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf)$
-RewriteRule ^.*$ /maintenance.html [L,QSA]
+RewriteCond %{REQUEST_URI} !^/apple-touch-icon\.png$
+RewriteCond %{REQUEST_URI} !^/favicon
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|webp)$
+RewriteRule ^.*$ /maintenance.html [R=302,L]
 
 # ========================================
 # SPRÅK OG ROUTING
 # ========================================
 
 # Språk-baserad redirect från root til /no/
+# ENDRET til 302 (midlertidig) for å unngå browser caching som kan blokkere maintenance mode
 RewriteCond %{REQUEST_URI} ^/?$
-RewriteRule ^/?$ /no/ [R=301,L]
+RewriteRule ^/?$ /no/ [R=302,L]
 
 # Håndter Astro's statiske routing
 RewriteCond %{REQUEST_FILENAME} !-f
