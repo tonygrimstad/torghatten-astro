@@ -1,11 +1,83 @@
 ---
+import { getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import LightboxGallery from "../components/LightboxGallery.astro";
 import { galleriData } from "../data/galleriIndex";
 import { useTranslations } from "../utils/useTranslations.ts";
 
+// Import gallery hero images
+import hero1 from "../assets/gallery-hero/cropped-torghatten20150217-1.jpg";
+import hero2 from "../assets/gallery-hero/cropped-i-SmkP5Tb.jpg";
+import hero3 from "../assets/gallery-hero/cropped-20150502torgattenmaraton-34.jpg";
+import hero4 from "../assets/gallery-hero/cropped-20150502torgattenmaraton-21.jpg";
+import hero5 from "../assets/gallery-hero/cropped-i-j4tV97J.jpg";
+import hero6 from "../assets/gallery-hero/30mai-TorghattenMaraton-9721.jpg";
+import hero7 from "../assets/gallery-hero/30mai-TorghattenMaraton-9712.jpg";
+import hero8 from "../assets/gallery-hero/30mai-TorghattenMaraton-9095.jpg";
+
 const { t, currentLang } = useTranslations(Astro.url);
 const sortedYears = [...galleriData].sort((a, b) => b.year - a.year);
+
+// Generate optimized URLs for all hero images (for runtime random selection)
+const optimizedHero1 = await getImage({
+  src: hero1,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero2 = await getImage({
+  src: hero2,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero3 = await getImage({
+  src: hero3,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero4 = await getImage({
+  src: hero4,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero5 = await getImage({
+  src: hero5,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero6 = await getImage({
+  src: hero6,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero7 = await getImage({
+  src: hero7,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+const optimizedHero8 = await getImage({
+  src: hero8,
+  width: 1280,
+  format: "webp",
+  quality: 85,
+});
+
+const heroUrls = [
+  optimizedHero1.src,
+  optimizedHero2.src,
+  optimizedHero3.src,
+  optimizedHero4.src,
+  optimizedHero5.src,
+  optimizedHero6.src,
+  optimizedHero7.src,
+  optimizedHero8.src,
+];
 
 // Use translated SEO titles
 const title = t("seo.galleryTitle");
@@ -13,14 +85,14 @@ const description = t("seo.galleryDescription");
 ---
 
 <Layout title={title} description={description} lang={currentLang}>
-  <!-- Modern Hero Section for Gallery with Random Background -->
+  <!-- Modern Hero Section for Gallery with Optimized Background -->
   <section
     id="gallery-hero"
     class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
   >
     <!-- Gradient Overlay -->
     <div
-      class="absolute inset-0 bg-linear-to-br from-purple-900/80 via-indigo-800/70 to-blue-700/80"
+      class="absolute inset-0 bg-gradient-to-br from-purple-900/80 via-indigo-800/70 to-blue-700/80"
     >
     </div>
 
@@ -61,25 +133,13 @@ const description = t("seo.galleryDescription");
     </div>
   </section>
 
-  <script>
-    // Random background image selection for gallery hero
+  <script define:vars={{ heroUrls }}>
+    // Random hero selection at RUNTIME (per page visit)
     document.addEventListener("DOMContentLoaded", () => {
       const heroSection = document.getElementById("gallery-hero");
-      if (heroSection) {
-        const heroImages = [
-          "/images/banner/cropped-torghatten20150217-1.jpg",
-          "/images/banner/cropped-i-SmkP5Tb.jpg",
-          "/images/banner/cropped-20150502torgattenmaraton-34.jpg",
-          "/images/banner/cropped-20150502torgattenmaraton-21.jpg",
-          "/images/banner/cropped-i-j4tV97J.jpg",
-          "/images/banner/30mai-TorghattenMaraton-9721.jpg",
-          "/images/banner/30mai-TorghattenMaraton-9712.jpg",
-          "/images/banner/30mai-TorghattenMaraton-9095.jpg",
-        ];
-
-        const randomImage =
-          heroImages[Math.floor(Math.random() * heroImages.length)];
-        heroSection.style.backgroundImage = `url('${randomImage}')`;
+      if (heroSection && heroUrls && heroUrls.length > 0) {
+        const randomUrl = heroUrls[Math.floor(Math.random() * heroUrls.length)];
+        heroSection.style.backgroundImage = `url('${randomUrl}')`;
         heroSection.style.backgroundSize = "cover";
         heroSection.style.backgroundPosition = "center";
         heroSection.style.backgroundAttachment = "fixed";
