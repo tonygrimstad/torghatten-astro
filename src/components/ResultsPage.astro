@@ -1,0 +1,298 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../utils/useTranslations.ts";
+
+const { t, currentLang } = useTranslations(Astro.url);
+
+const title = t("nav.results", "Resultater");
+const description = t(
+  "results.pageDescription",
+  "Se resultater fra alle Torghatten Maraton løp gjennom årene. Finn din tid og plassering fra tidligere løp.",
+);
+
+// Resultatdata - sortert etter år (nyeste først)
+const results = [
+  {
+    year: "2026",
+    url: "https://live.eqtiming.com/80036",
+    status: t("results.upcoming", "Kommende løp"),
+    isUpcoming: true,
+    isEqTiming: true,
+  },
+  {
+    year: "2025",
+    url: "https://live.eqtiming.com/74867#result",
+    status: t("results.current", "Seneste løp"),
+    isEqTiming: true,
+  },
+  {
+    year: "2024",
+    url: "https://live.eqtiming.com/69716#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2023",
+    url: "https://live.eqtiming.com/63885#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2019",
+    url: "https://live.eqtiming.com/44345#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2018",
+    url: "https://live.eqtiming.com/38389#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2017",
+    url: "https://live.eqtiming.com/32266#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2016",
+    url: "https://live.eqtiming.com/23192#result",
+    status: undefined,
+    isEqTiming: true,
+  },
+  {
+    year: "2015",
+    url: "/results/TorghattenMaraton2015_res.pdf",
+    status: "PDF",
+    isPdf: true,
+    isEqTiming: false,
+  },
+];
+---
+
+<Layout
+  lang={currentLang}
+  title={`${title} - Torghatten Maraton`}
+  description={description}
+>
+  <!-- Hero Section for Results -->
+  <section
+    class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white mt-20 md:mt-24"
+    style="background-image: url('/images/29apr-TorghattenMaratonNomi-9519.jpg'); background-size: cover; background-position: center; background-attachment: fixed;"
+  >
+    <!-- Gradient Overlay -->
+    <div
+      class="absolute inset-0 bg-linear-to-br from-green-900/80 via-emerald-800/70 to-teal-700/80"
+    >
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-16">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+        {t("results.pageTitle", "Resultater & Tider")}
+      </h1>
+      <p
+        class="text-xl md:text-2xl opacity-95 mb-8 max-w-3xl mx-auto drop-shadow-md"
+      >
+        {
+          t(
+            "results.subtitle",
+            "Se resultater fra alle Torghatten Maraton løp gjennom årene",
+          )
+        }
+      </p>
+      <div class="w-32 h-1 bg-yellow-400 mx-auto shadow-lg"></div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    >
+      <svg
+        class="w-6 h-6 text-white/80"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Results Grid -->
+  <section class="py-20 bg-linear-to-b from-gray-50 to-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          {t("results.sectionTitle", "Velg ditt løpsår")}
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {
+            t(
+              "results.sectionSubtitle",
+              "Klikk på året for å se resultater og tider fra det aktuelle løpet",
+            )
+          }
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      >
+        {
+          results.map((result, index) => (
+            <div
+              class={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-green-200 hover:-translate-y-1 ${
+                index % 2 === 0
+                  ? "hover:bg-green-50/30"
+                  : "hover:bg-emerald-50/30"
+              }`}
+            >
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors">
+                    {result.year}
+                  </h3>
+                  {result.status && (
+                    <span
+                      class={`px-3 py-1 rounded-full text-xs font-medium ${
+                        result.status === "PDF"
+                          ? "bg-red-100 text-red-800 border border-red-200"
+                          : result.isUpcoming
+                            ? "bg-blue-100 text-blue-800 border border-blue-200"
+                            : result.status.includes("Seneste") ||
+                                result.status.includes("Recent")
+                              ? "bg-green-100 text-green-800 border border-green-200"
+                              : "bg-gray-100 text-gray-800 border border-gray-200"
+                      }`}
+                    >
+                      {result.status}
+                    </span>
+                  )}
+                </div>
+
+                {result.isEqTiming && (
+                  <div class="flex items-center gap-2 mb-6 p-2 bg-gray-50 rounded-lg border">
+                    <img
+                      src="/images/logos/EQ-Timing-logo.png"
+                      alt="EQ Timing logo"
+                      class="h-4 w-auto opacity-80"
+                    />
+                    <span class="text-xs text-gray-600 font-medium">
+                      EQ Timing
+                    </span>
+                  </div>
+                )}
+
+                <a
+                  href={result.url}
+                  target={result.isPdf ? "_blank" : "_blank"}
+                  rel="noopener noreferrer"
+                  class={`inline-flex items-center justify-center w-full font-semibold py-3 px-4 rounded-lg transition-all duration-300 group ${
+                    result.isPdf
+                      ? "bg-linear-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 shadow-md hover:shadow-lg"
+                      : result.isUpcoming
+                        ? "bg-linear-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-md hover:shadow-lg"
+                        : "bg-linear-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 shadow-md hover:shadow-lg"
+                  }`}
+                  aria-label={`Se resultater for ${result.year}`}
+                >
+                  <span>
+                    {result.isUpcoming
+                      ? t("results.viewUpcoming", "Se påmelding")
+                      : t("results.viewButton", "Se resultater")}
+                  </span>
+                  {result.isPdf ? (
+                    <svg
+                      class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  )}
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section
+    class="py-16 bg-linear-to-br from-slate-900 via-gray-800 to-slate-900 text-white relative overflow-hidden"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div
+        class="absolute inset-0 bg-linear-to-br from-green-400/20 via-transparent to-emerald-400/20"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+        {t("results.infoTitle", "Finner du ikke resultatet ditt?")}
+      </h2>
+      <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+        {
+          t(
+            "results.infoText",
+            "Kontakt oss hvis du har spørsmål om resultater eller ikke finner det du leter etter.",
+          )
+        }
+      </p>
+      <a
+        href={`mailto:${t("footer.email")}`}
+        class="inline-flex items-center gap-3 bg-linear-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+        aria-label={t(
+          "results.contactEmailLabel",
+          `Send e-post til ${t("footer.email")} for spørsmål om resultater`,
+        )}
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          ></path>
+        </svg>
+        {t("results.contactUs", "Kontakt oss")}
+      </a>
+    </div>
+  </section>
+</Layout>

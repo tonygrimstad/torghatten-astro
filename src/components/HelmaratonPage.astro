@@ -7,8 +7,14 @@ import DistancesSection from "./DistancesSection.astro";
 import Top5recordsComponent from "./Top5recordsComponent.astro";
 import VideoSection from "./VideoSection.astro";
 import SponsorSection from "./SponsorSection.astro";
-import helmaratonRecords from "../data/top5_json/helmaraton.json";
+import helmaratonRecordsRaw from "../data/top5_json/helmaraton.json";
+import { validateRecords, type RecordsByGender } from "../types/records";
 import Footer from "./footer.astro";
+
+const helmaratonRecords = validateRecords(
+  helmaratonRecordsRaw,
+  "helmaraton.json",
+);
 import FeatureSection from "./FeatureSection.astro";
 import Layout from "../layouts/Layout.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
@@ -19,7 +25,7 @@ const { t, currentLang } = useTranslations(Astro.url);
 
 <Layout
   title={t("seo.fullMarathonTitle")}
-  description={t("helmaraton.description")}
+  description={t("seo.fullMarathonDescription")}
   lang={currentLang}
   light={true}
 >

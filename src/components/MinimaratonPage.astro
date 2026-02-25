@@ -7,8 +7,14 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
-import minimaraton_36_km from "../data/top5_json/minimaraton_36_km.json";
+import minimaraton_36_kmRaw from "../data/top5_json/minimaraton_36_km.json";
+import { validateRecords, type RecordsByGender } from "../types/records";
 import VideoSection from "../components/VideoSection.astro";
+
+const minimaraton_36_km = validateRecords(
+  minimaraton_36_kmRaw,
+  "minimaraton_36_km.json",
+);
 import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
@@ -19,7 +25,7 @@ const { t, currentLang } = useTranslations(Astro.url);
 
 <Layout
   title={t("seo.miniMarathonTitle")}
-  description={t("minimaraton.description")}
+  description={t("seo.miniMarathonDescription")}
   lang={currentLang}
   light={true}
 >

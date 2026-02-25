@@ -14,12 +14,19 @@
     "galleryTitle": "Gallery - Torghatten Marathon",
     "galleryDescription": "View photos from previous years of Torghatten Marathon. Experience the atmosphere and natural beauty from Norway's most beautiful marathon.",
     "fullMarathonTitle": "Full Marathon - Torghatten Marathon",
+    "fullMarathonDescription": "The ultimate challenge - full marathon distance in breathtaking surroundings. 42.195 km through scenic and gently rolling courses around Torghatten.",
     "halfMarathonTitle": "Half Marathon - Torghatten Marathon",
+    "halfMarathonDescription": "Half marathon distance through a scenic landscape. 21.1 km on certified course along the archipelago of the Torg Islands.",
     "islandRaceTitle": "Island Race 10km - Torghatten Marathon",
+    "islandRaceDescription": "10 km race on Nordhus and a loop out to Toft. Controlled and certified course in the Southern Helgeland Running Series.",
     "miniMarathonTitle": "Mini Marathon 3.6km - Torghatten Marathon",
+    "miniMarathonDescription": "Shorter distance perfect for beginners or those wanting a lighter challenge. Great introduction to distance running in beautiful surroundings.",
     "kidsRaceTitle": "Kids Race - Torghatten Marathon",
+    "kidsRaceDescription": "Fun race for children at Nordhus Stadium. Safe and inclusive with medals for all finishers.",
     "paraRaceTitle": "Para Race - Torghatten Marathon",
+    "paraRaceDescription": "Accessible race for participants with disabilities. Inclusive event for all ages with enthusiastic supporters.",
     "trimTitle": "Trim Activity - Torghatten Marathon",
+    "trimDescription": "Recreational fitness activity for all ages and abilities. Walk, run or roll along beautiful walking and cycling paths.",
     "helgelandRacesTitle": "Helgeland Races 2025 - Torghatten Marathon",
     "helgelandRacesDescription": "Take part in at least four out of five races across Helgeland to earn a special T-shirt, an engraved plate and a chance to win NOK 5,000. Experience Torghatten, Sømnamile, Alstahaug Marathon, Milæ and the Nesna Running Festival."
   },
@@ -40,6 +47,9 @@
     "norwegian": "🇳🇴 Norwegian"
   },
   "nav": {
+    "skipToMain": "Skip to main content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
     "distances": "Distances",
     "allDistances": "All Distances Overview",
     "fullMarathon": "Full Marathon",
@@ -64,11 +74,16 @@
     "top5": "Top 5",
     "female": "Women",
     "male": "Men",
+    "femaleIcon": "Female icon",
+    "maleIcon": "Male icon",
     "name": "Name",
     "club": "Club",
     "time": "Time",
     "class": "Class",
-    "year": "Year"
+    "year": "Year",
+    "description": "Top 5 records for the distance",
+    "noData": "No records available",
+    "tableCaption": "Table with records"
   },
   "classList": {
     "title": "Women and Men:",
@@ -210,7 +225,9 @@
     "selectYear": "Select year:",
     "photoCount": "photos total",
     "image": "Image ",
-    "photographers": "Photo"
+    "photographers": "Photo",
+    "imageAlt": "Torghatten Marathon {{year}}, image {{current}} of {{total}}",
+    "imageAltWithPhotographer": "Torghatten Marathon {{year}}, image {{current}} of {{total}}, photo: {{photographer}}"
   },
   "visAlleAar": "Show all years",
   "admin": {
@@ -294,6 +311,7 @@
     "title": "Helgeland Races 2025",
     "lead": "Helgeland Races 2025 features five great events across the Helgeland region. If you participate in at least four out of five races, you earn a special T-shirt and an engraved plate. You also enter the draw for NOK 5,000. Distances must be 10 km or longer. The following races are included:",
     "bannerAlt": "Helgeland Races – hero banner",
+    "externalLink": "Opens external website:",
     "sections": {
       "races": { "title": "The Races" }
     },
@@ -334,7 +352,7 @@
         "key": "nesna",
         "name": "Nesna Running Festival – Saturday 20 September",
         "desc": "First held in 2023 with over 400 participants. Choose between half marathon, 10 km and 5 km (all certified). Also includes a 5 km untimed option and a kids’ race – aiming for a festive community atmosphere.",
-        "url": "https://heilehelgeland.no/events/nesna-lopefestival/",
+        "url": "https://www.facebook.com/profile.php?id=61551644504366",
         "logo": "nesna-lop.png",
         "alt": "Nesna Running Festival logo"
       }

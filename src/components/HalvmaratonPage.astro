@@ -8,8 +8,14 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
-import halvmaratonRecords from "../data/top5_json/halvmaraton.json";
+import halvmaratonRecordsRaw from "../data/top5_json/halvmaraton.json";
+import { validateRecords, type RecordsByGender } from "../types/records";
 import VideoSection from "../components/VideoSection.astro";
+
+const halvmaratonRecords = validateRecords(
+  halvmaratonRecordsRaw,
+  "halvmaraton.json",
+);
 import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
@@ -19,7 +25,7 @@ const { t, currentLang } = useTranslations(Astro.url);
 
 <Layout
   title={t("seo.halfMarathonTitle")}
-  description={t("halvmaraton.description")}
+  description={t("seo.halfMarathonDescription")}
   lang={currentLang}
   light={true}
 >

@@ -1,25 +1,11 @@
 ---
-import FeatureSection from "../../components/FeatureSection.astro";
-import Layout from "../../layouts/Layout.astro";
-import HeroSection from "../../components/HeroSection.astro";
-import LiveScrollHint from "../../components/LiveScrollHint.astro";
-import ProgramSection from "../../components/ProgramSection.astro";
-import LiveScroll from "../../components/LiveScroll.astro";
-import DistancesSection from "../../components/DistancesSection.astro";
-// import GallerySection from "../../components/GallerySection.astro";
-// import AccommodationSection from "../../components/AccommodationSection.astro";
-// import AboutSection from "../../components/AboutSection.astro";
-import InfoSection from "../../components/InfoSection.astro";
-import SponsorSection from "../../components/SponsorSection.astro";
-import Footer from "../../components/footer.astro";
-import { useTranslations } from "../../utils/useTranslations.ts";
+import IndexPage from "../../components/IndexPage.astro";
 
 export function getStaticPaths() {
   return [{ params: { lang: "no" } }, { params: { lang: "en" } }];
 }
 
 const { lang } = Astro.params;
-const { t, currentLang } = useTranslations(Astro.url);
 
 // Validate language parameter
 if (lang !== "no" && lang !== "en") {
@@ -27,42 +13,4 @@ if (lang !== "no" && lang !== "en") {
 }
 ---
 
-<Layout
-  lang={currentLang}
-  title={t("seo.defaultTitle")}
-  description={t("seo.defaultDescription")}
->
-  <!-- 🖼️ Bakgrunnsbilde med elegant gradient -->
-  <div
-    class="absolute inset-0 -z-10 bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center"
-  >
-    <!-- Gradient overlay for bedre lesbarhet -->
-    <div
-      class="absolute inset-0 bg-linear-to-b from-black/20 via-black/30 to-black/50"
-    >
-    </div>
-  </div>
-
-  <!-- Seksjoner med alternerende bakgrunner for bedre rytme -->
-  <HeroSection />
-  <FeatureSection feature="programSection"><ProgramSection /></FeatureSection>
-  <FeatureSection feature="liveScroll"><LiveScroll /></FeatureSection>
-
-  <!-- Lys seksjon for kontrast -->
-  <div class="relative bg-white/95 backdrop-blur-sm">
-    <DistancesSection />
-  </div>
-
-  <FeatureSection feature="infoSection"><InfoSection /></FeatureSection>
-
-  <FeatureSection feature="SponsorerForsiden"
-    ><SponsorSection
-      variant="minimal"
-      maxLogos={12}
-      showViewAllLink={false}
-    /></FeatureSection
-  >
-
-  <!-- Footer nederst -->
-  <Footer />
-</Layout>
+<IndexPage />

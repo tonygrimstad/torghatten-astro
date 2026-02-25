@@ -7,8 +7,14 @@ import ClassList from "../components/ClassList.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import Top5recordsComponent from "../components/Top5recordsComponent.astro";
-import oygaloppenRecords from "../data/top5_json/oygaloppen_10_km.json";
+import oygaloppenRecordsRaw from "../data/top5_json/oygaloppen_10_km.json";
+import { validateRecords, type RecordsByGender } from "../types/records";
 import VideoSection from "../components/VideoSection.astro";
+
+const oygaloppenRecords = validateRecords(
+  oygaloppenRecordsRaw,
+  "oygaloppen_10_km.json",
+);
 import SponsorSection from "../components/SponsorSection.astro";
 import Footer from "../components/footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
@@ -19,7 +25,7 @@ const { t, currentLang } = useTranslations(Astro.url);
 
 <Layout
   title={t("seo.islandRaceTitle")}
-  description={t("oygaloppen.description")}
+  description={t("seo.islandRaceDescription")}
   lang={currentLang}
   light={true}
 >

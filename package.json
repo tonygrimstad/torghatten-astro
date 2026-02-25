@@ -20,12 +20,15 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.60.0",
+    "@astrojs/check": "^0.9.6",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.9.1",
     "dotenv": "^17.2.1",
     "fslightbox": "^3.6.1",
     "photoswipe": "^5.4.4",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.9.3",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "sharp": "^0.34.5"

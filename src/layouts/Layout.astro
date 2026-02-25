@@ -50,8 +50,16 @@ const pageDescription = description || t("seo.defaultDescription");
   <body
     class={`bg-fixed bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center ${bodyClass}`}
   >
+    <!-- Skip to main content link for keyboard navigation -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-yellow-400 focus:text-gray-900 focus:font-semibold focus:rounded-lg focus:shadow-xl focus:ring-4 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all"
+    >
+      {t("nav.skipToMain")}
+    </a>
+
     <Header />
-    <main class="pt-0" backdrop-blur-sm>
+    <main id="main-content" class="pt-0" backdrop-blur-sm tabindex="-1">
       <slot />
     </main>
   </body>

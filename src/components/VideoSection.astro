@@ -32,27 +32,11 @@ const videoId = `${componentId}-video`;
 <section
   role="region"
   aria-labelledby={headingId}
-  class='\"relative'
-  py-20
-  px-6
-  text-white
-  bg-linear-to-br
-  from-gray-800
-  via-gray-900
-  to-black\"
+  class="relative py-20 px-6 text-white bg-gradient-to-br from-gray-800 via-gray-900 to-black"
 >
   <!-- Elegant gradient overlay for better depth -->
   <div
-    class='\"absolute'
-    inset-0
-    bg-linear-to-t
-    from-black
-    60
-    via-black
-    30
-    to-black
-    20
-    z-0\"
+    class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20 z-0"
     aria-hidden="true"
   >
   </div>
@@ -60,7 +44,7 @@ const videoId = `${componentId}-video`;
   <div class="relative z-10 max-w-5xl mx-auto text-center">
     <h2
       id={headingId}
-      class="text-3xl md:text-4xl font-bold mb-4 text-yellow-300"
+      class="text-3xl md:text-4xl font-bold mb-4 text-yellow-400"
     >
       {videoTitle}
     </h2>
@@ -73,15 +57,13 @@ const videoId = `${componentId}-video`;
     </p>
 
     <div
-      class="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-300/50"
-      role="region"
-      aria-label={t("video.playerLabel") || "Video player"}
+      class="relative w-full aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-4 ring-yellow-400/50"
     >
       <iframe
         id={videoId}
         src={videoUrl}
         title={videoTitle}
-        class="absolute top-0 left-0 w-full h-full focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-offset-4 focus:ring-offset-gray-900"
+        class="absolute top-0 left-0 w-full h-full focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-offset-4 focus:ring-offset-gray-900"
         frameborder="0"
         allow="encrypted-media; picture-in-picture; fullscreen"
         allowfullscreen
@@ -97,10 +79,10 @@ const videoId = `${componentId}-video`;
       >
         <div class="animate-pulse">
           <div
-            class="w-16 h-16 bg-yellow-300/20 rounded-full flex items-center justify-center"
+            class="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center"
           >
             <div
-              class="w-0 h-0 border-l-8 border-l-yellow-300 border-y-6 border-y-transparent ml-1"
+              class="w-0 h-0 border-l-8 border-l-yellow-400 border-y-6 border-y-transparent ml-1"
             >
             </div>
           </div>

@@ -28,7 +28,7 @@ Dette prosjektet drives av frivillige og har tydelige kvalitetskrav.
 - Alle tekster via `useTranslations()`
 - Husk både `no.json` og `en.json`
 
-Se `I18N.md`.
+Se `docs/standards/i18n.md`.
 
 ### Tilgjengelighet og kvalitet
 
@@ -38,8 +38,94 @@ Se `I18N.md`.
 
 Se:
 
-- `ACCESSIBILITY.md`
-- `A11Y-COMPONENTS.md`
+- `docs/standards/accessibility.md`
+- `docs/standards/a11y-components.md`
+
+---
+
+## Commit message conventions
+
+Bruk beskrivende commit-meldinger med type-prefix:
+
+- `feat:` - Ny funksjonalitet
+- `fix:` - Bugfiks
+- `docs:` - Dokumentasjonsendringer
+- `style:` - Formatering (ingen kodeendring)
+- `refactor:` - Kodeomstrukturering
+- `test:` - Testing
+- `chore:` - Build/config-endringer
+
+**Eksempler:**
+```
+feat: add gallery year indicator in lightbox
+fix: correct contrast on yellow CTA buttons
+docs: update i18n guidelines with examples
+```
+
+---
+
+## Branch naming
+
+Bruk beskrivende branch-navn med prefix:
+
+- `feature/` - Ny funksjonalitet (f.eks. `feature/gallery-year-badge`)
+- `bugfix/` - Bugfikser (f.eks. `bugfix/menu-focus-trap`)
+- `docs/` - Dokumentasjon (f.eks. `docs/update-readme`)
+- `refactor/` - Omstrukturering (f.eks. `refactor/component-structure`)
+
+---
+
+## Testing
+
+Før du lager PR, test følgende:
+
+### Lokal testing
+- [ ] Kjør `npm run dev` og verifiser endringer
+- [ ] Kjør `npm run build` uten feil
+- [ ] Kjør `npm run check` (TypeScript)
+
+### Manuell testing
+- [ ] Test på mobil og desktop
+- [ ] Test tastaturnavigasjon (Tab/Enter/Escape)
+- [ ] Test på begge språk (NO/EN)
+- [ ] Zoom til 200% og sjekk layout
+- [ ] Test i ulike nettlesere (Chrome, Firefox, Safari)
+
+### Accessibility
+- [ ] Kjør Lighthouse (mål: 100 Accessibility)
+- [ ] Sjekk kontrast på nye farger (WebAIM)
+- [ ] Sjekk at fokus er synlig
+- [ ] Verifiser alt-tekst på nye bilder
+
+---
+
+## Pull Request process
+
+1. **Beskriv endringene**:
+   - Hva løser PR-en?
+   - Hvorfor er endringen nødvendig?
+   - Hvordan har du testet?
+
+2. **Inkluder screenshots** (hvis visuell endring)
+
+3. **Link til relaterte issues** (hvis aktuelt)
+
+4. **Sjekk at CI/CD kjører grønt**
+
+5. **Vent på code review** før merge
+
+---
+
+## Code style
+
+- **Astro components**: Bruk `.astro`-format for UI
+- **TypeScript**: Bruk type-safety der mulig
+- **Tailwind**: Bruk utility-klasser, unngå custom CSS
+- **Kommentarer**: Skriv kommentarer for kompleks logikk
+- **Filnavn**:
+  - Components: `PascalCase.astro` (f.eks. `HeroSection.astro`)
+  - Utils: `camelCase.ts` (f.eks. `useTranslations.ts`)
+  - Config: `camelCase.ts` (f.eks. `siteConfig.ts`)
 
 ---
 
@@ -48,6 +134,8 @@ Se:
 - Kjør siden lokalt
 - Gå gjennom `CHECKLIST.md`
 - Sjekk at NO/EN fortsatt speiler hverandre
+- Følg commit message conventions
+- Test accessibility grundig
 
 ---
 

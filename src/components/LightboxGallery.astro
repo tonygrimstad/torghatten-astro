@@ -13,6 +13,14 @@ interface Photographer {
   name: string;
   url?: string;
 }
+
+// Bygg fotograf-streng
+const photographerNames =
+  photographers.length > 0
+    ? photographers.map((p: Photographer) => p.name).join(", ")
+    : "";
+
+const totalPhotos = photos.length;
 ---
 
 <div class="mb-12">
@@ -56,29 +64,45 @@ interface Photographer {
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     {
-      photos.map((url: string, i: number) => (
-        <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-          <a
-            href={url.replace("/w_800/", "/w_1600/")}
-            data-fslightbox={`gallery-${year}`}
-            aria-label={`Åpne galleri bilde ${i + 1} fra ${year} i stor visning`}
-          >
-            <img
-              src={url}
-              class="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
-              alt={`Bilde fra Torghatten Maraton ${year}, bilde nummer ${i + 1}`}
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-              <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
+      photos.map((url: string, i: number) => {
+        // Velg riktig template basert på om vi har fotograf-info
+        const altTemplate = photographerNames
+          ? t("gallery.imageAltWithPhotographer")
+          : t("gallery.imageAlt");
+
+        // Erstatt placeholders - fallback hvis template er undefined
+        const altText = (altTemplate || "")
+          .replace("{{year}}", String(year))
+          .replace("{{current}}", String(i + 1))
+          .replace("{{total}}", String(totalPhotos))
+          .replace("{{photographer}}", photographerNames);
+
+        const ariaLabel = `${altText} - ${t("gallery.image") || "Image"} ${i + 1}`;
+
+        return (
+          <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+            <a
+              href={url.replace("/w_800/", "/w_1600/")}
+              data-fslightbox={`gallery-${year}`}
+              aria-label={ariaLabel}
+            >
+              <img
+                src={url}
+                class="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
+                alt={altText}
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-      ))
+            </a>
+          </div>
+        );
+      })
     }
   </div>
 </div>
@@ -123,3 +147,179 @@ interface Photographer {
     </div>
   </div>
 </div>
+
+<script>
+  // Add accessible labels to FSLightbox auto-generated buttons and year indicator
+  let currentGalleryYear = "";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Set up MutationObserver to watch for FSLightbox elements
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              const element = node as Element;
+              if (
+                element.classList?.contains("fslightbox-container") ||
+                element.querySelector?.(".fslightbox-container")
+              ) {
+                setTimeout(() => {
+                  addFsLightboxAria();
+                  addYearIndicator();
+                }, 100);
+              }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Listen to clicks on gallery images to capture the year
+    const lightboxTriggers = document.querySelectorAll("[data-fslightbox]");
+    lightboxTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const galleryName = trigger.getAttribute("data-fslightbox") || "";
+        if (galleryName.startsWith("gallery-")) {
+          currentGalleryYear = galleryName.replace("gallery-", "");
+          console.log("Gallery year captured:", currentGalleryYear);
+        }
+
+        setTimeout(() => {
+          addFsLightboxAria();
+          addYearIndicator();
+        }, 150);
+      });
+    });
+  });
+
+  function addFsLightboxAria() {
+    const fsButtons = document.querySelectorAll(
+      ".fslightbox-toolbar button, .fslightbox-slide-btn, .fslightbox-toolbar-button",
+    );
+
+    fsButtons.forEach((btn) => {
+      if (!btn.hasAttribute("aria-label")) {
+        const btnClasses = btn.className;
+
+        if (
+          btnClasses.includes("fslightbox-toolbar-button") ||
+          btn.innerHTML.includes("×")
+        ) {
+          btn.setAttribute("aria-label", "Lukk galleri");
+        }
+
+        if (btnClasses.includes("fslightbox-slide-btn-previous")) {
+          btn.setAttribute("aria-label", "Forrige bilde");
+        }
+
+        if (btnClasses.includes("fslightbox-slide-btn-next")) {
+          btn.setAttribute("aria-label", "Neste bilde");
+        }
+
+        if (
+          btnClasses.includes("fslightbox-toolbar") &&
+          btn.querySelector("svg") &&
+          !btn.hasAttribute("aria-label")
+        ) {
+          btn.setAttribute("aria-label", "Fullskjerm");
+        }
+      }
+    });
+  }
+
+  function addYearIndicator() {
+    if (!currentGalleryYear) {
+      console.log("No gallery year available");
+      return;
+    }
+
+    // Check if year indicator already exists
+    if (document.getElementById("gallery-year-indicator")) {
+      console.log("Year indicator already exists");
+      return;
+    }
+
+    // Find FSLightbox container
+    const fsContainer = document.querySelector(".fslightbox-container");
+    if (!fsContainer) {
+      console.log("FSLightbox container not found");
+      return;
+    }
+
+    console.log("Adding year indicator:", currentGalleryYear);
+
+    // Create year indicator element
+    const yearIndicator = document.createElement("div");
+    yearIndicator.id = "gallery-year-indicator";
+    yearIndicator.style.cssText = `
+      position: fixed;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 16px;
+      font-size: 20px;
+      font-weight: 700;
+      z-index: 2147483647;
+      pointer-events: none;
+      font-family: system-ui, -apple-system, sans-serif;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.5px;
+      animation: slideInYear 0.4s ease-out;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    `;
+    yearIndicator.textContent = `📅 ${currentGalleryYear}`;
+
+    // Add CSS animation
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes slideInYear {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Add to body
+    document.body.appendChild(yearIndicator);
+    console.log("Year indicator added to DOM");
+
+    // Remove when lightbox closes
+    const closeObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.removedNodes.length) {
+          mutation.removedNodes.forEach((node) => {
+            if (node === fsContainer) {
+              const indicator = document.getElementById(
+                "gallery-year-indicator",
+              );
+              if (indicator) {
+                indicator.remove();
+                console.log("Year indicator removed");
+              }
+              closeObserver.disconnect();
+            }
+          });
+        }
+      });
+    });
+
+    closeObserver.observe(document.body, {
+      childList: true,
+    });
+  }
+</script>

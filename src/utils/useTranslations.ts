@@ -1,7 +1,6 @@
 import noTranslations from "../translations/no.json";
 import enTranslations from "../translations/en.json";
-
-type Translations = Record<string, any>;
+import type { TranslationKey, Translations } from "../types/translations";
 
 export function useTranslations(url: URL) {
   const [, lang] = url.pathname.split("/");
@@ -9,9 +8,16 @@ export function useTranslations(url: URL) {
   const urlLang = lang === "en" ? "en" : "no";
 
   // Use only JSON translations
-  const jsonTranslations = urlLang === "no" ? noTranslations : enTranslations;
+  const jsonTranslations: Translations =
+    urlLang === "no" ? noTranslations : enTranslations;
 
-  const t = (key: string, fallback?: string): string | undefined => {
+  /**
+   * Get translated text with type-safe keys
+   * @param key - Dot-notation translation key (type-safe)
+   * @param fallback - Fallback text if key not found
+   * @returns Translated string or fallback
+   */
+  const t = (key: TranslationKey, fallback?: string): string | undefined => {
     // Navigate through the translation object using dot notation
     const parts = key.split(".");
     let value: any = jsonTranslations;
@@ -26,6 +32,11 @@ export function useTranslations(url: URL) {
     return value || fallback;
   };
 
+  /**
+   * Get raw translation data (for objects/arrays)
+   * @param key - Dot-notation translation key
+   * @returns Raw data without string conversion
+   */
   const getRaw = (key: string): any => {
     // Return raw data without string conversion
     const parts = key.split(".");

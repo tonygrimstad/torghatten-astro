@@ -216,7 +216,72 @@ const switchUrl = `/${otherLang}/${restPath}`;
 </header>
 
 <script>
-  // WCAG-kompatibel mobilmeny
+  // WCAG-kompatibel mobilmeny med focus trap
+  let lastFocusedElement: HTMLElement | null = null;
+
+  // Hjelpefunksjon for å finne alle fokusbare elementer
+  function getFocusableElements(container: HTMLElement): HTMLElement[] {
+    const focusableSelectors = [
+      "a[href]:not([disabled])",
+      "button:not([disabled])",
+      "textarea:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "details summary",
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(", ");
+
+    return Array.from(
+      container.querySelectorAll<HTMLElement>(focusableSelectors),
+    ).filter((el) => {
+      // Sjekk at elementet er synlig
+      return (
+        el.offsetParent !== null &&
+        !el.hasAttribute("hidden") &&
+        getComputedStyle(el).display !== "none"
+      );
+    });
+  }
+
+  // Håndter focus trap i mobil-menyen
+  function handleMenuFocusTrap(event: KeyboardEvent) {
+    const menu = document.getElementById("mobile-menu");
+    const button = document.getElementById("mobile-menu-toggle");
+
+    if (!menu || menu.classList.contains("hidden")) {
+      return; // Menyen er ikke åpen
+    }
+
+    // Kombiner menu-knappen og menu-elementene
+    const allFocusable = [button, ...getFocusableElements(menu)].filter(
+      Boolean,
+    ) as HTMLElement[];
+
+    if (allFocusable.length === 0) return;
+
+    const firstElement = allFocusable[0];
+    const lastElement = allFocusable[allFocusable.length - 1];
+    const activeElement = document.activeElement as HTMLElement;
+
+    // Håndter Tab
+    if (event.key === "Tab") {
+      if (event.shiftKey) {
+        // Shift + Tab (bakover)
+        if (activeElement === firstElement) {
+          event.preventDefault();
+          lastElement?.focus();
+        }
+      } else {
+        // Tab (forover)
+        if (activeElement === lastElement) {
+          event.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    }
+  }
+
+  // Toggle mobilmeny
   document
     .getElementById("mobile-menu-toggle")
     ?.addEventListener("click", (event) => {
@@ -226,6 +291,11 @@ const switchUrl = `/${otherLang}/${restPath}`;
       if (menu && button) {
         const isOpen = !menu.classList.contains("hidden");
 
+        // Lagre hvilket element som hadde fokus før menyen åpnet
+        if (!isOpen) {
+          lastFocusedElement = document.activeElement as HTMLElement;
+        }
+
         // Toggle synlighet
         menu.classList.toggle("hidden");
 
@@ -233,7 +303,9 @@ const switchUrl = `/${otherLang}/${restPath}`;
         button.setAttribute("aria-expanded", isOpen ? "false" : "true");
         button.setAttribute(
           "aria-label",
-          isOpen ? "Åpne navigasjonsmeny" : "Lukk navigasjonsmeny",
+          isOpen
+            ? button.dataset.openLabel || "Open menu"
+            : button.dataset.closeLabel || "Close menu",
         );
 
         // Fokus-håndtering
@@ -243,25 +315,37 @@ const switchUrl = `/${otherLang}/${restPath}`;
             "a, details summary",
           ) as HTMLElement;
           firstLink?.focus();
+        } else {
+          // Meny lukket - returner fokus
+          if (lastFocusedElement && lastFocusedElement !== button) {
+            lastFocusedElement.focus();
+          }
         }
       }
     });
 
-  // Lukk meny ved ESC-tast (WCAG 2.1.1)
+  // Keyboard event handlers
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      const menu = document.getElementById("mobile-menu");
-      const button = document.getElementById(
-        "mobile-menu-toggle",
-      ) as HTMLButtonElement;
+    const menu = document.getElementById("mobile-menu");
+    const button = document.getElementById(
+      "mobile-menu-toggle",
+    ) as HTMLButtonElement;
 
+    // Lukk meny ved ESC-tast (WCAG 2.1.1)
+    if (event.key === "Escape") {
       if (menu && button && !menu.classList.contains("hidden")) {
         menu.classList.add("hidden");
         button.setAttribute("aria-expanded", "false");
-        button.setAttribute("aria-label", "Åpne navigasjonsmeny");
+        button.setAttribute(
+          "aria-label",
+          button.dataset.openLabel || "Open menu",
+        );
         button.focus(); // Returner fokus til knappen
       }
     }
+
+    // Focus trap
+    handleMenuFocusTrap(event);
   });
 </script>
 

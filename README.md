@@ -13,12 +13,119 @@ Nettsiden er bygget som et raskt, tilgjengelig og lettlest statisk nettsted med 
 
 ## Tech stack
 
-- **Astro** (statisk nettsted)
-- **Tailwind CSS**
-- **Tailwind Typography** (`prose`) for lesbar tekst
-- **TypeScript**
+- **Astro v4.x** (statisk nettsted)
+- **Tailwind CSS v3.x**
+- **Tailwind Typography** (`@tailwindcss/typography`) for lesbar tekst
+- **TypeScript v5.x**
 - **i18n** via mappebasert URL-struktur (`/no`, `/en`)
+- **Node.js** v18+ (v20 recommended for development)
 - Bilder primært fra `public/` (med plan for gradvis optimalisering)
+
+---
+
+## 💡 Viktige konsepter
+
+Før du begynner å utvikle, er det nyttig å forstå disse nøkkelkonseptene:
+
+### 1. **Dynamic Language Routing**
+Alle sider bruker `[lang]`-routing for å håndtere både NO og EN:
+- URL: `/no/helmaraton` → `src/pages/[lang]/helmaraton.astro`
+- Språk detekteres automatisk fra URL
+- Oversettelser hentes via `useTranslations()`
+
+### 2. **Two-Layer Architecture**
+Sider er delt i to lag:
+- **Route Layer** (`src/pages/[lang]/*.astro`): Håndterer routing
+- **Component Layer** (`src/components/*Page.astro`): Inneholder all logikk
+
+### 3. **Type-Safe i18n**
+Alle oversettelsesnøkler er type-safe:
+```typescript
+t("nav.helmaraton")  // ✅ Auto-completion
+t("invalid.key")     // ❌ Type error
+```
+
+### 4. **Accessibility First**
+All kode må følge WCAG 2.1 AA:
+- Tastaturnavigasjon fungerer overalt
+- Fokus alltid synlig
+- Kontrast minimum 4.5:1
+
+Se [docs/standards/accessibility.md](docs/standards/accessibility.md) for detaljer.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** v18+ (v20 recommended)
+- **npm** or **pnpm**
+- Git
+
+### Setup Development Environment
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tonygrimstad/torghatten-astro.git
+   cd torghatten-astro
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser:**
+   ```
+   http://localhost:4321
+   ```
+
+### Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server on `localhost:4321` |
+| `npm run build` | Build production site to `./dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run check` | Run TypeScript type checking |
+| `npm run astro -- --help` | Show Astro CLI help |
+
+### Project Structure
+
+```
+torghatten-astro/
+├── src/
+│   ├── components/      # Astro components
+│   ├── config/          # Site configuration (see src/config/README.md)
+│   ├── data/            # Structured data (see src/data/README.md)
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Routes and pages
+│   ├── translations/    # i18n JSON files
+│   └── types/           # TypeScript type definitions
+├── public/              # Static assets (images, fonts, etc.)
+├── .github/             # GitHub Actions, Copilot instructions
+└── docs/                # Documentation and standards
+    ├── development/     # Technical docs (DEV.md, DEPLOYMENT.md)
+    ├── standards/       # Code standards (accessibility, i18n, etc.)
+    ├── content/         # Content guidelines
+    ├── ai-agents/       # AI assistant instructions
+    └── adr/             # Architecture Decision Records
+```
+
+### Deployment
+
+See **`docs/development/DEPLOYMENT.md`** for detailed instructions on deploying to Domeneshop via GitHub Actions.
+
+**Quick deploy workflow:**
+1. Push changes to `main` branch
+2. GitHub Actions automatically builds and deploys
+3. Site updates at `https://torghattenmaraton.no`
 
 ---
 
@@ -36,7 +143,7 @@ Alle tekster håndteres via:
 src/translations/no.json
 src/translations/en.json
 
-Se `I18N.md` for detaljer og regler.
+Se `docs/standards/i18n.md` for detaljer og regler.
 
 ---
 
@@ -52,7 +159,7 @@ Dette prosjektet har tydelige kvalitetsmål:
 - God kontrast
 - Semantisk HTML
 
-Se `ACCESSIBILITY.md`.
+Se `docs/standards/accessibility.md`.
 
 ---
 
@@ -62,7 +169,7 @@ Se `ACCESSIBILITY.md`.
 - Bruk korte avsnitt, overskrifter og punktlister
 - Bruk `prose` (Tailwind Typography) på teksttunge seksjoner
 
-Se `TYPOGRAPHY.md` og `CONTENT-GUIDE.md`.
+Se `docs/standards/typography.md` og `docs/content/content-guide.md`.
 
 ---
 
@@ -72,7 +179,7 @@ Se `TYPOGRAPHY.md` og `CONTENT-GUIDE.md`.
 - Hero- og nøkkelbilder skal vurderes for optimalisering
 - Gradvis migrering til `astro:assets` der det gir verdi
 
-Se `IMAGES.md`.
+Se `docs/standards/images.md`.
 
 ---
 
@@ -84,7 +191,7 @@ Se `IMAGES.md`.
 - Konsistent design basert på Tailwind-klasser
 - Gul brukes primært som accent (ikke brødtekst)
 
-Se `DESIGN-SYSTEM.md`.
+Se `docs/standards/design-system.md`.
 
 ---
 
@@ -105,21 +212,33 @@ Denne definerer:
 
 ---
 
-## Viktige dokumenter
+## 📚 Viktige dokumenter
 
+### Development
 | Fil | Formål |
 |----|-------|
-| `DEV.md` | Teknisk arkitektur og implementasjon |
-| `DEPLOYMENT.md` | Deployment til Domeneshop via GitHub Actions |
-| `ACCESSIBILITY.md` | WCAG-regler og sjekklister |
-| `A11Y-COMPONENTS.md` | Tilgjengelighetskrav per komponent |
-| `TYPOGRAPHY.md` | Lesbarhet og bruk av prose |
-| `CONTENT-GUIDE.md` | Innholdsstruktur og klarspråk |
-| `IMAGES.md` | Bildebruk, alt-tekst og ytelse |
-| `DESIGN-SYSTEM.md` | Farger, typografi og UI-regler |
-| `I18N.md` | Språk og oversettelser |
-| `SEO.md` | SEO-regler og metadata |
-| `CHECKLIST.md` | Sjekkliste før deploy |
+| [`docs/development/DEV.md`](docs/development/DEV.md) | Teknisk arkitektur og implementasjon |
+| [`docs/development/DEPLOYMENT.md`](docs/development/DEPLOYMENT.md) | Deployment til Domeneshop via GitHub Actions |
+| [`docs/development/local-fixes.md`](docs/development/local-fixes.md) | Lokale fikser og workarounds |
+
+### Standards & Guidelines
+| Fil | Formål |
+|----|-------|
+| [`docs/standards/accessibility.md`](docs/standards/accessibility.md) | WCAG-regler og sjekklister |
+| [`docs/standards/a11y-components.md`](docs/standards/a11y-components.md) | Tilgjengelighetskrav per komponent |
+| [`docs/standards/typography.md`](docs/standards/typography.md) | Lesbarhet og bruk av prose |
+| [`docs/standards/images.md`](docs/standards/images.md) | Bildebruk, alt-tekst og ytelse |
+| [`docs/standards/design-system.md`](docs/standards/design-system.md) | Farger, typografi og UI-regler |
+| [`docs/standards/i18n.md`](docs/standards/i18n.md) | Språk og oversettelser |
+| [`docs/standards/seo.md`](docs/standards/seo.md) | SEO-regler og metadata |
+| [`docs/standards/components.md`](docs/standards/components.md) | Komponentstandarder |
+
+### Content & Contribution
+| Fil | Formål |
+|----|-------|
+| [`docs/content/content-guide.md`](docs/content/content-guide.md) | Innholdsstruktur og klarspråk |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Retningslinjer for bidrag |
+| [`CHECKLIST.md`](CHECKLIST.md) | Sjekkliste før deploy |
 
 ---
 
@@ -127,12 +246,12 @@ Denne definerer:
 
 1. Les `README.md`
 2. Følg retningslinjene i:
-   - `DEV.md`
-   - `ACCESSIBILITY.md`
-   - `I18N.md`
+   - [`docs/development/DEV.md`](docs/development/DEV.md)
+   - [`docs/standards/accessibility.md`](docs/standards/accessibility.md)
+   - [`docs/standards/i18n.md`](docs/standards/i18n.md)
 3. Bruk Copilot aktivt – repoet gir kontekst
-4. For deployment: se `DEPLOYMENT.md`
-5. Før deploy: gå gjennom `CHECKLIST.md`
+4. For deployment: se [`docs/development/DEPLOYMENT.md`](docs/development/DEPLOYMENT.md)
+5. Før deploy: gå gjennom [`CHECKLIST.md`](CHECKLIST.md)
 
 ---
 

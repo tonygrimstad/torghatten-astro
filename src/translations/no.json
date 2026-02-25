@@ -15,12 +15,19 @@
     "galleryTitle": "Galleri - Torghatten Maraton",
     "galleryDescription": "Se bilder fra tidligere år av Torghatten Maraton. Opplev atmosfæren og naturskjønheten fra Norges vakreste maraton.",
     "fullMarathonTitle": "Helmaraton - Torghatten Maraton",
+    "fullMarathonDescription": "Den ultimate utfordringen - full maratondistanse i fantastiske omgivelser. 42,195 km gjennom naturskjønne og lett kuperte løyper rundt Torghatten.",
     "halfMarathonTitle": "Halvmaraton - Torghatten Maraton",
+    "halfMarathonDescription": "Halvmaratondistanse gjennom et spektakulært landskap. 21,1 km på sertifisert løype langs skjærgården på Torgøyene.",
     "islandRaceTitle": "Øygaloppen 10km - Torghatten Maraton",
+    "islandRaceDescription": "10 km løp på Nordhus og en tur til Toft. Kontrollmålt og sertifisert løype i Sør-Helgeland Løpskarusell.",
     "miniMarathonTitle": "Minimaraton 3,6km - Torghatten Maraton",
+    "miniMarathonDescription": "Kortere distanse perfekt for nybegynnere eller de som ønsker en lettere utfordring. Flott introduksjon til distanseløp i vakre omgivelser.",
     "kidsRaceTitle": "Barneløp - Torghatten Maraton",
+    "kidsRaceDescription": "Morsomt løp for barn på Nordhus Stadion. Trygt og inkluderende med medalje til alle som fullfører.",
     "paraRaceTitle": "Paraløp - Torghatten Maraton",
+    "paraRaceDescription": "Tilgjengelig løp for deltakere med funksjonsnedsettelser. Inkluderende arrangement for alle aldre med gode heiagjenger.",
     "trimTitle": "Trim - Torghatten Maraton",
+    "trimDescription": "Rekreasjons treningsaktivitet for alle aldre og ferdighetsnivåer. Gå, løp eller trille langs vakre gang- og sykkelveier.",
     "helgelandRacesTitle": "Helgelandsløpene 2025 - Torghatten Maraton",
     "helgelandRacesDescription": "Delta i minst fire av fem løp på Helgeland og vinn en spesiell t-skjorte, inngravert tallerken og bli med i trekningen av 5000 kroner. Opplev Torghatten, Sømnamile, Alstahaug Maraton, Milæ og Nesna løpefestival."
   },
@@ -41,6 +48,9 @@
     "norwegian": "🇳🇴 Norsk"
   },
   "nav": {
+    "skipToMain": "Hopp til hovedinnhold",
+    "openMenu": "Åpne navigasjonsmeny",
+    "closeMenu": "Lukk navigasjonsmeny",
     "distances": "Distanser",
     "allDistances": "Oversikt alle distanser",
     "fullMarathon": "Helmaraton",
@@ -89,11 +99,16 @@
     "top5": "Topp 5",
     "female": "Kvinner",
     "male": "Menn",
+    "femaleIcon": "Kvinneikon",
+    "maleIcon": "Manneikon",
     "name": "Navn",
     "club": "Klubb",
     "time": "Tid",
     "class": "Klasse",
-    "year": "År"
+    "year": "År",
+    "description": "Topp 5 rekorder for distansen",
+    "noData": "Ingen rekorder tilgjengelig",
+    "tableCaption": "Tabell med rekorder"
   },
   "classList": {
     "title": "Damer og Herrer:",
@@ -235,7 +250,9 @@
     "selectYear": "Velg år:",
     "photoCount": "bilder totalt",
     "image": "Bilde ",
-    "photographers": "Foto"
+    "photographers": "Foto",
+    "imageAlt": "Torghatten Maraton {{year}}, bilde {{current}} av {{total}}",
+    "imageAltWithPhotographer": "Torghatten Maraton {{year}}, bilde {{current}} av {{total}}, foto: {{photographer}}"
   },
   "visAlleAar": "Vis alle år",
   "admin": {
@@ -319,6 +336,7 @@
     "title": "Helgelandsløpene 2025",
     "lead": "Helgelandsløpene 2025 er 5 flotte arrangementer på Helgeland. Dersom du deltar på minst 4 av 5 løp har du gjort deg fortjent til en helt spesiell t-skjorte og inngravert tallerken. Samtidig blir du med i trekningen av 5000 kroner. Kravet er at du deltar på distanser fra 10 km og oppover. Følgende løp inngår i dette samarbeidet:",
     "bannerAlt": "Helgelandsløpene – toppbanner",
+    "externalLink": "Åpner eksternt nettsted:",
     "sections": {
       "races": { "title": "Løpene" }
     },
@@ -359,7 +377,7 @@
         "key": "nesna",
         "name": "Nesna løpefestival – lørdag 20. september",
         "desc": "Nesna løpefestival ble første gang arrangert i 2023 med til sammen over 400 deltakere. Du kan velge mellom 3 distanser; halvmaraton, 10 og 5 km. Alle distansene er kontrollmålte. I tillegg kan du løpe 5 km uten tid og barneløp. Nesna løpefestival ønsker å lage en folkefest med god stemning i løypene.",
-        "url": "https://heilehelgeland.no/events/nesna-lopefestival/",
+        "url": "https://www.facebook.com/profile.php?id=61551644504366",
         "logo": "nesna-lop.png",
         "alt": "Nesna løpefestival logo"
       }

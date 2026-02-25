@@ -1,23 +1,52 @@
 ---
 import { useTranslations } from "../utils/useTranslations.ts";
+import type { Photographer } from "../types/gallery";
 
-// props: year, photos
-const { year, photos } = Astro.props;
+// props: year, photos, photographers
+const {
+  year,
+  photos,
+  photographers = [],
+} = Astro.props as {
+  year: number;
+  photos: string[];
+  photographers?: Photographer[];
+};
 const { t } = useTranslations(Astro.url);
+
+// Bygg fotograf-streng
+const photographerNames =
+  photographers.length > 0 ? photographers.map((p) => p.name).join(", ") : "";
+
+const totalPhotos = photos.length;
 ---
 
 <section class="my-12 px-4">
   <h2 class="text-3xl text-yellow-400 font-bold text-center mb-6">{year}</h2>
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
     {
-      photos.map((url: string, i: number) => (
-        <img
-          src={`${url}=w800`}
-          alt={`${t("gallery.image")}${i + 1}`}
-          class="rounded shadow hover:scale-105 transition duration-300"
-          loading="lazy"
-        />
-      ))
+      photos.map((url: string, i: number) => {
+        // Velg riktig template basert på om vi har fotograf-info
+        const altTemplate = photographerNames
+          ? t("gallery.imageAltWithPhotographer")
+          : t("gallery.imageAlt");
+
+        // Erstatt placeholders - fallback hvis template er undefined
+        const altText = (altTemplate || "")
+          .replace("{{year}}", String(year))
+          .replace("{{current}}", String(i + 1))
+          .replace("{{total}}", String(totalPhotos))
+          .replace("{{photographer}}", photographerNames);
+
+        return (
+          <img
+            src={`${url}=w800`}
+            alt={altText}
+            class="rounded shadow hover:scale-105 transition duration-300"
+            loading="lazy"
+          />
+        );
+      })
     }
   </div>
 </section>
