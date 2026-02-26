@@ -45,14 +45,6 @@ t("nav.helmaraton")  // ✅ Auto-completion
 t("invalid.key")     // ❌ Type error
 ```
 
-### 4. **Accessibility First**
-All kode må følge WCAG 2.1 AA:
-- Tastaturnavigasjon fungerer overalt
-- Fokus alltid synlig
-- Kontrast minimum 4.5:1
-
-Se [docs/standards/accessibility.md](docs/standards/accessibility.md) for detaljer.
-
 ---
 
 ## 🚀 Getting Started
@@ -244,14 +236,14 @@ Denne definerer:
 
 ## Anbefalt arbeidsflyt
 
-1. Les `README.md`
-2. Følg retningslinjene i:
-   - [`docs/development/DEV.md`](docs/development/DEV.md)
-   - [`docs/standards/accessibility.md`](docs/standards/accessibility.md)
-   - [`docs/standards/i18n.md`](docs/standards/i18n.md)
-3. Bruk Copilot aktivt – repoet gir kontekst
-4. For deployment: se [`docs/development/DEPLOYMENT.md`](docs/development/DEPLOYMENT.md)
-5. Før deploy: gå gjennom [`CHECKLIST.md`](CHECKLIST.md)
+1. Les denne README for oversikt
+2. Se teknisk arkitektur i [`docs/development/DEV.md`](docs/development/DEV.md)
+3. Følg standarder for:
+   - Accessibility: [`docs/standards/accessibility.md`](docs/standards/accessibility.md)
+   - i18n: [`docs/standards/i18n.md`](docs/standards/i18n.md)
+   - Design: [`docs/standards/design-system.md`](docs/standards/design-system.md)
+4. Før deploy: sjekk [`CHECKLIST.md`](CHECKLIST.md)
+5. For deployment: se [`docs/development/DEPLOYMENT.md`](docs/development/DEPLOYMENT.md)
 
 ---
 
