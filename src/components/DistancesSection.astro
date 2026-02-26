@@ -17,6 +17,80 @@ interface Props {
 const { current }: Props = Astro.props;
 const { t, currentLang } = useTranslations(Astro.url);
 
+// Helper function to get translated name for each distance
+const getDistanceName = (key: string): string => {
+  switch (key) {
+    case "Helmaraton":
+      return t("nav.fullMarathon", "Helmaraton") || "Helmaraton";
+    case "Halvmaraton":
+      return t("nav.halfMarathon", "Halvmaraton") || "Halvmaraton";
+    case "Øygaloppen (10 km)":
+      return (
+        t("nav.islandRace10km", "Øygaloppen (10 km)") || "Øygaloppen (10 km)"
+      );
+    case "Minimaraton (3,6 km)":
+      return (
+        t("nav.miniMarathon36km", "Minimaraton (3,6 km)") ||
+        "Minimaraton (3,6 km)"
+      );
+    case "Trim":
+      return t("nav.trim", "Trim") || "Trim";
+    case "Barneløp":
+      return t("nav.kidsRace", "Barneløp") || "Barneløp";
+    case "Paraløp":
+      return t("nav.paraRace", "Paraløp") || "Paraløp";
+    default:
+      return key;
+  }
+};
+
+// Helper function to get translated description for each distance
+const getDistanceDescription = (key: string): string => {
+  switch (key) {
+    case "Helmaraton":
+      return (
+        t(
+          "helmaraton.description",
+          "Helmaratondistanse gjennom et spektakulært landskap",
+        ) || "Helmaratondistanse gjennom et spektakulært landskap"
+      );
+    case "Halvmaraton":
+      return (
+        t(
+          "halvmaraton.description",
+          "Halvmaratondistanse gjennom et spektakulært landskap",
+        ) || "Halvmaratondistanse gjennom et spektakulært landskap"
+      );
+    case "Øygaloppen (10 km)":
+      return (
+        t("oygaloppen.description", "Flott 10km løp rundt øyene") ||
+        "Flott 10km løp rundt øyene"
+      );
+    case "Minimaraton (3,6 km)":
+      return (
+        t("minimaraton.description", "Kort og hyggelig distanse for alle") ||
+        "Kort og hyggelig distanse for alle"
+      );
+    case "Trim":
+      return (
+        t("trim.description", "Trim og mosjon i fantastiske omgivelser") ||
+        "Trim og mosjon i fantastiske omgivelser"
+      );
+    case "Barneløp":
+      return (
+        t("barnelop.description", "Morsomme løp tilpasset barn i alle aldre") ||
+        "Morsomme løp tilpasset barn i alle aldre"
+      );
+    case "Paraløp":
+      return (
+        t("paralop.description", "Tilrettelagt løp for alle funksjonsnivåer") ||
+        "Tilrettelagt løp for alle funksjonsnivåer"
+      );
+    default:
+      return "";
+  }
+};
+
 const distances: Distance[] = [
   {
     key: "Helmaraton",
@@ -133,7 +207,9 @@ const headingId = `${componentId}-heading`;
           const isTimedText = dist.timed
             ? t("distances.timed") || "tidtatt"
             : t("distances.notTimed") || "ikke tidtatt";
-          const cardLabel = `${t(`nav.${dist.key}`) || dist.key} - ${isTimedText}. ${t(`distances.${dist.key}.description`) || ""}`;
+          const distanceName = getDistanceName(dist.key);
+          const distanceDescription = getDistanceDescription(dist.key);
+          const cardLabel = `${distanceName} - ${isTimedText}. ${distanceDescription}`;
 
           return (
             <a
@@ -189,12 +265,12 @@ const headingId = `${componentId}-heading`;
 
               {/* Distance name */}
               <h3 class="text-lg md:text-xl font-semibold mb-3 tracking-wide uppercase text-gray-800">
-                {t(`nav.${dist.key}`) || dist.key}
+                {distanceName}
               </h3>
 
               {/* Description */}
               <p class="text-sm text-gray-700 leading-relaxed mb-2">
-                {t(`distances.${dist.key}.description`) || ""}
+                {distanceDescription}
               </p>
 
               {/* Timing status */}

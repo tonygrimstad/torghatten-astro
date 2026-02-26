@@ -175,6 +175,15 @@
     "aboutDistance": "Om distansen",
     "timedRaces": "tidtatte løp",
     "controlledRaces": "kontrollmålte",
+    "subtitles": {
+      "fullMarathon": "42,195 km",
+      "halfMarathon": "21,1 km",
+      "islandRace": "10 km",
+      "miniMarathon": "3,6 km",
+      "kidsRace": "Varierende",
+      "paraRace": "Tilpasset",
+      "trim": "Egen fart"
+    },
     "difficulties": {
       "challenging": "Krevende",
       "demanding": "Utfordrende",

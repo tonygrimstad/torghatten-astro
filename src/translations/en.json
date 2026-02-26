@@ -150,6 +150,15 @@
     "aboutDistance": "About distance",
     "timedRaces": "timed races",
     "controlledRaces": "controlled",
+    "subtitles": {
+      "fullMarathon": "42.195 km",
+      "halfMarathon": "21.1 km",
+      "islandRace": "10 km",
+      "miniMarathon": "3.6 km",
+      "kidsRace": "Varying",
+      "paraRace": "Adapted",
+      "trim": "Own pace"
+    },
     "difficulties": {
       "challenging": "Challenging",
       "demanding": "Demanding",
