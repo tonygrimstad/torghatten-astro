@@ -38,17 +38,23 @@ const pageDescription = description || t("seo.defaultDescription");
   <meta property="og:url" content={Astro.url} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta property="og:image" content="/torghatten20150217_1600.jpg" />
+  <meta
+    property="og:image"
+    content="/images/hero/torghatten20150217_1600.jpg"
+  />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={Astro.url} />
   <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={pageDescription} />
-  <meta name="twitter:image" content="/torghatten20150217_1600.jpg" />
+  <meta
+    name="twitter:image"
+    content="/images/hero/torghatten20150217_1600.jpg"
+  />
 
   <body
-    class={`bg-fixed bg-[url('/torghatten20150217_1600.jpg')] bg-cover bg-center ${bodyClass}`}
+    class={`bg-fixed bg-[url('/images/hero/torghatten20150217_1600.jpg')] bg-cover bg-center ${bodyClass}`}
   >
     <!-- Skip to main content link for keyboard navigation -->
     <a

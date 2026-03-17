@@ -1,5 +1,5 @@
 ---
-import SignupButton from "./signupButton.astro";
+import SignupButton from "./SignupButton.astro";
 import { isFeatureActive, getFeatureText } from "../config/siteConfig.ts";
 import { useTranslations } from "../utils/useTranslations.ts";
 
@@ -17,7 +17,7 @@ const descriptionId = `${heroId}-description`;
 <section
   id={heroId}
   class="relative w-full min-h-screen bg-cover bg-center text-white flex flex-col justify-center items-center text-center px-4"
-  style="background-image: url('/torghatten20150217_1600.jpg');"
+  style="background-image: url('/images/hero/torghatten20150217_1600.jpg');"
   role="banner"
   aria-labelledby={headingId}
 >

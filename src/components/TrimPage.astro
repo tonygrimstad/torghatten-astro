@@ -8,7 +8,7 @@ import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
 import VideoSection from "../components/VideoSection.astro";
 import SponsorSection from "../components/SponsorSection.astro";
-import Footer from "../components/footer.astro";
+import Footer from "../components/Footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
@@ -31,7 +31,7 @@ const { t, currentLang } = useTranslations(Astro.url);
     <RaceProfile
       kontrollmalt={false}
       kontrolltekst={t("trim.certified")}
-      kontrollbilde="/KontrollertLoype.png"
+      kontrollbilde="/images/content/KontrollertLoype.png"
       tittel={t("trim.profileTitle")}
       beskrivelse1={t("trim.description1")}
       beskrivelse2={t("trim.description2")}

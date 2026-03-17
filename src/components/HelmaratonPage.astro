@@ -9,7 +9,7 @@ import VideoSection from "./VideoSection.astro";
 import SponsorSection from "./SponsorSection.astro";
 import helmaratonRecordsRaw from "../data/top5_json/helmaraton.json";
 import { validateRecords, type RecordsByGender } from "../types/records";
-import Footer from "./footer.astro";
+import Footer from "./Footer.astro";
 
 const helmaratonRecords = validateRecords(
   helmaratonRecordsRaw,
@@ -40,7 +40,7 @@ const { t, currentLang } = useTranslations(Astro.url);
     <RaceProfile
       kontrollmalt={true}
       kontrolltekst={t("helmaraton.certified")}
-      kontrollbilde="/KontrollertLoype.png"
+      kontrollbilde="/images/content/KontrollertLoype.png"
       tittel={t("helmaraton.profileTitle")}
       beskrivelse1={t("helmaraton.description1")}
       beskrivelse2={t("helmaraton.description2")}

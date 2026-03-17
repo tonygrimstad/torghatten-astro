@@ -5,7 +5,7 @@ import HeroSectionDistanse from "../components/HeroSectionDistanse.astro";
 import RaceProfile from "../components/RaceProfile.astro";
 import InfoSection from "../components/InfoSection.astro";
 import DistancesSection from "../components/DistancesSection.astro";
-import Footer from "../components/footer.astro";
+import Footer from "../components/Footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
@@ -28,7 +28,7 @@ const { t, currentLang } = useTranslations(Astro.url);
     <RaceProfile
       kontrollmalt={false}
       kontrolltekst={t("barnelop.certified")}
-      kontrollbilde="/KontrollertLoype.png"
+      kontrollbilde="/images/content/KontrollertLoype.png"
       tittel={t("barnelop.profileTitle")}
       beskrivelse1={t("barnelop.description1")}
       beskrivelse2={t("barnelop.description2")}

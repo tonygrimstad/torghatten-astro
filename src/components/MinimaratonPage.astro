@@ -16,7 +16,7 @@ const minimaraton_36_km = validateRecords(
   "minimaraton_36_km.json",
 );
 import SponsorSection from "../components/SponsorSection.astro";
-import Footer from "../components/footer.astro";
+import Footer from "../components/Footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 import { classGroups } from "../config/classGroups.ts";
 
@@ -40,7 +40,7 @@ const { t, currentLang } = useTranslations(Astro.url);
     <RaceProfile
       kontrollmalt={false}
       kontrolltekst={t("minimaraton.certified")}
-      kontrollbilde="/KontrollertLoype.png"
+      kontrollbilde="/images/content/KontrollertLoype.png"
       tittel={t("minimaraton.profileTitle")}
       beskrivelse1={t("minimaraton.description1")}
       beskrivelse2={t("minimaraton.description2")}

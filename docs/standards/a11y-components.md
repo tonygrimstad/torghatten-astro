@@ -27,7 +27,7 @@ Krav:
 
 ---
 
-## Buttons & Links (`signupButton.astro`)
+## Buttons & Links (`SignupButton.astro`)
 
 - Bruk `<a>` for navigasjon til ekstern påmelding
 - Bruk `<button>` kun for handlinger som ikke navigerer

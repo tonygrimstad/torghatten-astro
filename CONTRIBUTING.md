@@ -22,6 +22,19 @@ Dette prosjektet drives av frivillige og har tydelige kvalitetskrav.
 - Unngå unødvendig JavaScript
 - Bruk Astro-komponenter og Tailwind CSS
 
+### AI-assistert utvikling
+
+Når du bruker AI-verktøy (Copilot, Claude, etc.) til å generere kode:
+
+- **Prefer modifying existing files** over creating new ones
+- **Reuse existing components** whenever possible - check `src/components/` first
+- **Follow current naming conventions** - see existing files for patterns
+- **Avoid new dependencies** unless explicitly necessary
+- **Don't restructure folders** unless specifically requested
+- Always review AI-generated code for quality and standards compliance
+
+Se `.github/copilot-instructions.md` for mer detaljerte retningslinjer.
+
 ### Språk (i18n)
 
 - Ingen hardkodet brukerrettet tekst

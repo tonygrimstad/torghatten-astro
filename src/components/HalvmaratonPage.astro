@@ -17,7 +17,7 @@ const halvmaratonRecords = validateRecords(
   "halvmaraton.json",
 );
 import SponsorSection from "../components/SponsorSection.astro";
-import Footer from "../components/footer.astro";
+import Footer from "../components/Footer.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
@@ -40,7 +40,7 @@ const { t, currentLang } = useTranslations(Astro.url);
     <RaceProfile
       kontrollmalt={true}
       kontrolltekst={t("halvmaraton.certified")}
-      kontrollbilde="/KontrollertLoype.png"
+      kontrollbilde="/images/content/KontrollertLoype.png"
       tittel={t("halvmaraton.profileTitle")}
       beskrivelse1={t("halvmaraton.description1")}
       beskrivelse2={t("halvmaraton.description2")}

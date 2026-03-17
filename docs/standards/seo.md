@@ -15,8 +15,25 @@ SEO er implementert i `Layout.astro` og styres via oversettelser (`seo.*`).
 - Alle sider skal ha:
   - `<title>`
   - `<meta name="description">`
+  - **Nøyaktig én `<h1>`** per side (viktigste overskrift)
 - SEO-tekster skal **aldri hardkodes**
 - All SEO-tekst skal hentes via `useTranslations()`
+
+### Overskriftshierarki
+
+- ✅ **Én H1 per side** - Hovedoverskrift som beskriver sidens innhold
+- ✅ **Beskrivende overskrifter** - Bruk H2, H3, etc. i logisk rekkefølge
+- ✅ **Ingen hopp i hierarki** - Ikke hopp fra H1 til H3
+- ✅ **Overskrifter er meningsfulle** - Unngå generiske titler som "Innhold" eller "Info"
+
+Eksempel:
+```astro
+<h1>Helmaraton – Torghatten Maraton</h1> <!-- Kun én H1 -->
+<h2>Løypeinformasjon</h2>
+<h3>Start og mål</h3>
+<h3>Høydeprofil</h3>
+<h2>Påmelding</h2>
+```
 
 ---
 

@@ -144,7 +144,7 @@ export const defaultLang = "no";
 1. Add language to `languages` object
 2. Create `/src/translations/{lang}.json`
 3. Add pages in `/src/pages/[lang]/`
-4. Update language switcher in `src/components/footer.astro`
+4. Update language switcher in `src/components/Footer.astro`
 
 ---
 

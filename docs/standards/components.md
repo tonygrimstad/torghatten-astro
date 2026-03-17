@@ -14,6 +14,18 @@ Mål:
 
 ## 1. Komponenttyper
 
+### Designprinsipper
+
+Alle komponenter skal følge disse prinsippene:
+
+- ✅ **Single responsibility** - Én komponent, étt ansvar
+- ✅ **Composition over size** - Bygge store komponenter av små deler
+- ✅ **Avoid deep nesting** - Maks 3–4 nivåer med nesting
+- ✅ **Reusability** - Komponenter skal kunne gjenbrukes
+- ✅ **Testability** - Komponenter skal være testbare isolert
+
+---
+
 ### 1.1 Page components (`*Page.astro`)
 
 Page-komponenter representerer **én full side**.
@@ -67,7 +79,7 @@ Kjennetegn:
 
 Eksempler:
 
-- `signupButton.astro`
+- `SignupButton.astro`
 - `LightboxGallery.astro`
 - `ClassList.astro`
 

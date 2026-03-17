@@ -91,7 +91,7 @@
     "key": "footerPhone",
     "noText": "Telefon: ",
     "enText": "Phone: ",
-    "file": "src\\components\\footer.astro",
+    "file": "src\\components\\Footer.astro",
     "line": "N/A",
     "suggestedKey": "footer.phone"
   },
@@ -99,7 +99,7 @@
     "key": "footerEnglish",
     "noText": "🇬🇧 English",
     "enText": "🇬🇧 English",
-    "file": "src\\components\\footer.astro",
+    "file": "src\\components\\Footer.astro",
     "line": "N/A",
     "suggestedKey": "footer.english"
   },
@@ -107,7 +107,7 @@
     "key": "footerNorwegian",
     "noText": "🇳🇴 Norsk",
     "enText": "🇳🇴 Norwegian",
-    "file": "src\\components\\footer.astro",
+    "file": "src\\components\\Footer.astro",
     "line": "N/A",
     "suggestedKey": "footer.norwegian"
   },
