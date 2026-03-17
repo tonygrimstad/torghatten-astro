@@ -11,7 +11,13 @@ jobs:
 
     steps:
       - name: 📥 Sjekk ut kode
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: 🟢 Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
       - name: 📦 Installer avhengigheter
         run: npm ci
@@ -20,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: 🚀 Last opp til Domeneshop via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ftp.domeneshop.no
           username: ${{ secrets.FTP_USERNAME }}
@@ -28,8 +34,6 @@ jobs:
           local-dir: ./dist/
           server-dir: /www/astro/
           log-level: minimal
-          # Dangerous-clean-slate fjernet for å unngå downtime
-          # Filer skrives over i stedet for å slettes først
           exclude: |
             .maintenance
             .htaccess.backup
