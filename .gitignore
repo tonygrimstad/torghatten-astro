@@ -37,6 +37,7 @@ tsconfig.tsbuildinfo
 src/pages/jukseside.astro
 src/components/TailwindJukseside.astro
 src/pages/Doc/
+.i18n/
 
 # ✅ Tillat disse mappene i git
 !.github/
