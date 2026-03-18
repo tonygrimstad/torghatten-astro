@@ -157,13 +157,14 @@ import heroImg from "../assets/herosek-tmbru.jpg";
 src/
   assets/
     hero/
-      herosek-tmbru.jpg       # Main hero
+      herosek-tmbru.jpg       # Main hero (also in public/ for compatibility)
       gallery-hero-1.jpg      # Gallery random images
       ...
     content/
       omoss-*.jpg             # Content images
       race-profile-*.jpg
 public/
+  herosek-tmbru.jpg           # Copy for build compatibility (Astro requirement)
   images/                     # Legacy (to be migrated)
     photos/                   # Gallery (300+ images - long-term)
     logos/                    # Small assets (low priority)

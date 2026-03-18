@@ -12,7 +12,39 @@ Mål:
 
 ---
 
-## 1. Komponenttyper
+## 1. Filnavnkonvensjoner (VIKTIG)
+
+### Case-sensitivity
+
+**Regel:** Alle komponentfiler skal bruke **PascalCase** og matche imports eksakt.
+
+✅ **Riktig:**
+```
+Footer.astro
+SignupButton.astro
+HeroSection.astro
+```
+
+❌ **Feil:**
+```
+footer.astro       // Vil feile på Linux/GitHub Actions
+signupButton.astro // Inkonsistent case
+hero-section.astro // Ikke PascalCase
+```
+
+**Hvorfor:**
+- Windows: case-insensitive → `footer.astro` og `Footer.astro` er samme fil
+- Linux/GitHub Actions: case-sensitive → de er forskjellige filer
+- Import `from "./Footer.astro"` vil fungere lokalt på Windows, men feile på deploy
+
+**Ved rename:** Bruk `git mv` for å endre case:
+```bash
+git mv src/components/footer.astro src/components/Footer.astro
+```
+
+---
+
+## 2. Komponenttyper
 
 ### Designprinsipper
 
@@ -23,10 +55,11 @@ Alle komponenter skal følge disse prinsippene:
 - ✅ **Avoid deep nesting** - Maks 3–4 nivåer med nesting
 - ✅ **Reusability** - Komponenter skal kunne gjenbrukes
 - ✅ **Testability** - Komponenter skal være testbare isolert
+- ✅ **PascalCase filenames** - Konsistent naming for case-sensitive systemer
 
 ---
 
-### 1.1 Page components (`*Page.astro`)
+### 2.1 Page components (`*Page.astro`)
 
 Page-komponenter representerer **én full side**.
 
@@ -47,7 +80,7 @@ Eksempler:
 
 ---
 
-### 1.2 Section components (`*Section.astro`)
+### 2.2 Section components (`*Section.astro`)
 
 Section-komponenter er **gjenbrukbare seksjoner**.
 
@@ -67,7 +100,7 @@ Eksempler:
 
 ---
 
-### 1.3 UI components
+### 2.3 UI components
 
 Små, fokuserte komponenter for interaksjon og visning.
 
@@ -85,7 +118,7 @@ Eksempler:
 
 ---
 
-## 2. Tilgjengelighet (WCAG)
+## 3. Tilgjengelighet (WCAG)
 
 Alle komponenter skal:
 
@@ -100,7 +133,7 @@ Spesifikke krav per komponent:
 
 ---
 
-## 3. i18n-regler
+## 4. i18n-regler
 
 - Ingen brukerrettet tekst skal hardkodes
 - All tekst hentes via `useTranslations()`
@@ -117,13 +150,13 @@ t("helmaraton.description")
 Detaljer: se i18n.md og ../development/DEV.md.
 ```
 
-## 4. Props og ansvar
+## 5. Props og ansvar
 
 - Props skal være eksplisitte og enkle
 - Unngå “magiske” props med flere betydninger
 - Komponenter skal gjøre én ting, og gjøre den godt
 
-## 5. Hva komponenter IKKE skal gjøre
+## 6. Hva komponenter IKKE skal gjøre
 
 Komponenter skal ikke:
 
@@ -132,7 +165,7 @@ Komponenter skal ikke:
 - sette SEO (unntatt Page/Layout)
 - anta språk uten å bruke i18n
 
-## 6. Forhold til andre dokumenter
+## 7. Forhold til andre dokumenter
 
 Dette dokumentet utfyller:
 

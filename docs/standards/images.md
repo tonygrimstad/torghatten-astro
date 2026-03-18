@@ -77,7 +77,48 @@ Start med:
 
 ---
 
-## 5) Astro assets eksempel
+## 5) Case-sensitivity og filnavn (VIKTIG)
+
+### Linux vs Windows
+
+- **Windows**: Case-insensitive → `hero.jpg` og `Hero.jpg` er samme fil
+- **Linux/GitHub Actions**: Case-sensitive → de er forskjellige filer
+
+### Regel
+
+✅ **Filnavn må matche imports EKSAKT (case-sensitive)**
+
+Eksempel:
+
+```astro
+// ❌ Feil - vil feile på GitHub Actions
+import heroImg from "../assets/hero/herosek-tmbru.jpg"; // Git: herosek-Tmbru.jpg
+
+// ✅ Riktig
+import heroImg from "../assets/hero/herosek-tmbru.jpg"; // Git: herosek-tmbru.jpg
+```
+
+### Når bilder må være i både `src/assets` OG `public`
+
+Hvis Astro ser etter et bilde med absolutt path (f.eks. `/herosek-tmbru.jpg`) under build, må bildet finnes i `public/`:
+
+```astro
+// Dette krever at bildet finnes i public/herosek-tmbru.jpg
+<img src="/herosek-tmbru.jpg" alt="Hero" />
+
+// Dette krever kun src/assets/hero/herosek-tmbru.jpg
+import heroImg from "../assets/hero/herosek-tmbru.jpg";
+```
+
+**Løsning når begge trengs:**
+
+1. Original i `src/assets/hero/herosek-tmbru.jpg`
+2. Kopi i `public/herosek-tmbru.jpg`
+3. Commit begge til Git
+
+---
+
+## 6) Astro assets eksempel
 
 ```astro
 ---
