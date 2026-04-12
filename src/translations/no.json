@@ -285,6 +285,7 @@
     "description2": "Barneløpet har en kort distanse som alle klarer, med eller uten hjelp. \nDet er 2 runder rundt Nordhus stadion og barna løper i mål på samme sted som deltakerne på de andre distansene. \nDet er alltid god stemning på Nordhus når barna blir heiet frem av familie og andre. Om noen av barna vil ha hjelp for å komme seg gjennom løpet er det selvsagt helt greit. \nAlle deltagerne får medalje når de kommer i mål. \n\n NB! Påmelding kan også gjøres direkte i sekretariatet. Beregne da god tid!"
   },
   "halvmaraton": {
+    "classTitle": "Halvmaraton Klasser",
     "description": "Halvmaratondistanse gjennom et spektakulært landskap",
     "certified": "Denne løypa er offisielt målt og sertifisert.",
     "profileTitle": "Halvmaraton Profil",

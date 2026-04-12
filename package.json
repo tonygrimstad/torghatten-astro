@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.60.0",
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.8",
     "@tailwindcss/vite": "^4.1.4",
-    "astro": "^5.9.1",
+    "astro": "^6.1.5",
     "dotenv": "^17.2.1",
     "fslightbox": "^3.6.1",
     "photoswipe": "^5.4.4",
