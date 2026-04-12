@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: 📥 Sjekk ut kode
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: 🟢 Sett opp Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.3.0
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: 📦 Installer avhengigheter
