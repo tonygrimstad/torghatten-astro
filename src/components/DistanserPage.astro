@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { useTranslations } from "../utils/useTranslations.ts";
+import { isFeatureActive, getFeatureUrl } from "../config/siteConfig.ts";
 
 const { t, currentLang } = useTranslations(Astro.url);
+
+const signupActive = isFeatureActive("signupButton");
+const signupUrl = getFeatureUrl("signupButton");
 
 // SEO
 const title = t("distances.pageTitle", "Alle Distanser - Torghatten Maraton");
@@ -180,19 +184,21 @@ const distances = [
               </p>
 
               <!-- Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+              <div class={`grid gap-4 mb-6 text-sm ${signupActive ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
                   <div class="font-semibold opacity-80">{t("distances.difficulty", "Vanskelighet")}</div>
                   <div>{distance.difficulty}</div>
                 </div>
-                <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <div class="font-semibold opacity-80">{t("distances.registrationFee", "Deltageravgift")}</div>
-                  <div>{distance.participants}</div>
-                </div>
+                {signupActive && (
+                  <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                    <div class="font-semibold opacity-80">{t("distances.registrationFee", "Deltageravgift")}</div>
+                    <div>{distance.participants}</div>
+                  </div>
+                )}
               </div>
 
               <!-- Action Buttons -->
-              <div class="grid grid-cols-2 gap-3">
+              <div class={`grid gap-3 ${signupActive ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 <!-- About Distance Button -->
                 <a
                   href={`/${currentLang}/${distance.id}`}
@@ -205,19 +211,21 @@ const distances = [
                   </svg>
                 </a>
 
-                <!-- Registration Button -->
-                <a
-                  href="https://signup.eqtiming.com/?Event=Torghatten&lang=norwegian"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 group-hover:scale-105 backdrop-blur-sm border border-white/20 hover:border-white/40 text-sm"
-                  aria-label={`${t("distances.register", "Meld deg på")} ${distance.title}`}
-                >
-                  <span class="mr-1">{t("distances.register", "Meld deg på")}</span>
-                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
+                {/* Registration Button — only shown when signupButton toggle is active */}
+                {signupActive && (
+                  <a
+                    href={signupUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 group-hover:scale-105 backdrop-blur-sm border border-white/20 hover:border-white/40 text-sm"
+                    aria-label={`${t("distances.register", "Meld deg på")} ${distance.title}`}
+                  >
+                    <span class="mr-1">{t("distances.register", "Meld deg på")}</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -226,7 +234,8 @@ const distances = [
     </div>
   </section>
 
-  <!-- Info Section -->
+  {/* Info/CTA Section — only shown when signupButton toggle is active */}
+  {signupActive && (
   <section class="py-16 bg-linear-to-br from-slate-900 via-gray-800 to-slate-900 text-white relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
@@ -262,6 +271,7 @@ const distances = [
       </div>
     </div>
   </section>
+  )}
 
   <script>
     // Random background image selection for distanser hero

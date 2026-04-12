@@ -127,7 +127,7 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
     url: undefined
   },
   Helgelandslopene: {
-    enabled: true,
+    enabled: false,
     from: "2025-01-01",
     to: "2025-12-31",
     text: undefined,
