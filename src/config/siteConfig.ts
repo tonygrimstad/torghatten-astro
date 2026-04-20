@@ -60,35 +60,38 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
   },
   signupHint: {
     enabled: false,
-    to: "2026-04-25"
+    from: "2026-04-20",
+    to: "2026-04-26"
   },
   programSection: {
     enabled: false,
+    from: "2026-04-21T08:00:00",
+    to: "2026-04-25T16:00:00",
   },
   liveScroll: {
-    enabled: false,
+    enabled: true,
     // Oppdatert dato og tid for live scroll
-    from: "2026-04-25T08:00:00",
+    from: "2026-04-25T09:55:00",
     to: "2026-04-25T16:00:00",
     // Oppdatert URL for live scroll
-    url: "https://live.eqtiming.com/74867#livescroll",
+    url: "https://live.eqtiming.com/80036#livescroll",
   },
   raceYear: {
     enabled: true,
-    from: "2026-01-01",
-    to: "2026-04-26",
+    from: "2026-01-01T00:00:00",
+    to: "2026-04-25T15:00:00",
     text: "2026",
   },
   raceDate: {
     enabled: true,
-    from: "2026-01-01",
-    to: "2026-04-26",
+    from: "2026-01-01T00:00:00",
+    to: "2026-04-25T15:00:00",
     text: "25. april 2026",
   },
   signupButton: {
     enabled: true,
-    from: "2026-01-01",
-    to: "2026-04-26",
+    from: "2026-01-01T00:00:00",
+    to: "2026-04-25T15:00:00",
 
     url: "https://signup.eqtiming.com/?Event=Torghatten&lang=norwegian",
   },

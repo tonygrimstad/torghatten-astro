@@ -51,7 +51,7 @@ export const sponsors: Sponsor[] = [
   // Silver sponsorer
   {
     name: 'Sinus Elproffen',
-    logo: 'SINUS_ELPROFFEN-300x110-1.jpg',
+    logo: 'LOGOSinusEltera.jpg',
     url: 'https://www.sinus247.no/sinus-bronnoysund',
     tier: 'silver',
     alt: 'Sinus Elproffen logo'
