@@ -44,11 +44,12 @@ const liveScrollTitle = getFeatureText("liveScroll") || t("liveScroll.title");
 
         <div class="relative">
           <iframe
+            id="livescroll-iframe"
             src={liveScrollUrl}
-            class="w-full h-96 md:h-125 lg:h-150 border-0"
+            class="w-full border-0 block"
+            style="height: 1200px"
             title={liveScrollTitle}
-            loading="lazy"
-            allowfullscreen
+            allow="fullscreen"
           ></iframe>
 
           <!-- Fallback for loading -->
@@ -73,19 +74,39 @@ const liveScrollTitle = getFeatureText("liveScroll") || t("liveScroll.title");
 
 <script>
   // Skjul loading-overlay når iframe er lastet
-  document.addEventListener("DOMContentLoaded", () => {
-    const iframe = document.querySelector('iframe[title*="Live"]') as HTMLIFrameElement;
-    const loading = document.getElementById('iframe-loading');
+  const iframe = document.getElementById('livescroll-iframe') as HTMLIFrameElement | null;
+  const loading = document.getElementById('iframe-loading');
 
-    if (iframe && loading) {
-      iframe.addEventListener('load', () => {
-        loading.style.display = 'none';
-      });
+  if (iframe && loading) {
+    iframe.addEventListener('load', () => {
+      loading.style.display = 'none';
+    });
 
-      // Timeout fallback i tilfelle load event ikke fyrer
-      setTimeout(() => {
-        loading.style.display = 'none';
-      }, 3000);
+    // Timeout fallback i tilfelle load event ikke fyrer
+    setTimeout(() => {
+      loading.style.display = 'none';
+    }, 3000);
+  }
+
+  // Dynamisk høyde via postMessage (fungerer hvis EQ Timing sender resize-events)
+  window.addEventListener('message', (event) => {
+    if (!iframe) return;
+    // Aksepter kun meldinger fra EQ Timing
+    if (!event.origin.includes('eqtiming.com')) return;
+
+    const data = event.data as unknown;
+    if (typeof data === 'object' && data !== null) {
+      const msg = data as Record<string, unknown>;
+      // Vanlige postMessage-formater for iframe-resize
+      const height =
+        typeof msg['height'] === 'number' ? msg['height'] :
+        typeof msg['frameHeight'] === 'number' ? msg['frameHeight'] :
+        typeof msg['scrollHeight'] === 'number' ? msg['scrollHeight'] :
+        null;
+
+      if (height && height > 200) {
+        iframe.style.height = `${height}px`;
+      }
     }
   });
 </script>

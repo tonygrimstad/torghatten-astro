@@ -11,6 +11,11 @@ const description = t(
 );
 
 // Resultatdata - sortert etter år (nyeste først)
+// status: t("results.current", "Seneste løp"),
+// status: t("results.upcoming", "Kommende løp"),
+// status: undefined,
+// isUpcoming: true,
+// isEqTiming: true,
 const results = [
   /*{
     year: "2027",
@@ -21,15 +26,15 @@ const results = [
   },*/
   {
     year: "2026",
-    url: "https://live.eqtiming.com/80036",
-    status: t("results.upcoming", "Kommende løp"),
-    isUpcoming: true,
+    url: "https://live.eqtiming.com/80036#result",
+    status: t("results.current", "Seneste løp"),
+    isUpcoming: false,
     isEqTiming: true,
   },
   {
     year: "2025",
     url: "https://live.eqtiming.com/74867#result",
-    status: t("results.current", "Seneste løp"),
+    status: undefined,
     isEqTiming: true,
   },
   {

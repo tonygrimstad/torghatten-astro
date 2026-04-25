@@ -71,7 +71,7 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
   liveScroll: {
     enabled: true,
     // Oppdatert dato og tid for live scroll
-    from: "2026-04-25T09:55:00+02:00",
+    from: "2026-04-25T09:55:00",
     to: "2026-04-25T16:00:00",
     // Oppdatert URL for live scroll
     url: "https://live.eqtiming.com/80036#livescroll",
@@ -159,6 +159,32 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
   }
 };
 
+// Tidssone for nettstedet – sett én gang, brukes for alle datoer uten eksplisitt tidssone
+const SITE_TIMEZONE = "Europe/Oslo";
+
+// Intern hjelper: finn UTC-offset-streng (f.eks. "+02:00") for en dato i gitt tidssone
+function getUtcOffsetStr(date: Date, timezone: string): string {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    timeZoneName: "shortOffset",
+  }).formatToParts(date);
+  const tzName = parts.find((p) => p.type === "timeZoneName")?.value ?? "GMT";
+  const match = /GMT([+-])(\d+)(?::(\d+))?/.exec(tzName);
+  if (!match) return "+00:00";
+  const [, sign, h, m = "00"] = match;
+  return `${sign}${String(Number.parseInt(h)).padStart(2, "0")}:${m.padStart(2, "0")}`;
+}
+
+// Intern hjelper: tolker datostreng som lokal tid i SITE_TIMEZONE (håndterer sommertid/vintertid)
+// Datoer som allerede har tidssone (f.eks. +02:00 eller Z) brukes direkte.
+function parseToggleDate(dateStr: string): Date {
+  if ((/(?:Z|[+-]\d{2}:\d{2})$/).test(dateStr)) {
+    return new Date(dateStr);
+  }
+  const approxUtc = new Date(dateStr + "Z");
+  return new Date(dateStr + getUtcOffsetStr(approxUtc, SITE_TIMEZONE));
+}
+
 // Hjelpefunksjon for å sjekke om en feature er aktiv
 export function isFeatureActive(key: FeatureToggleKey): boolean {
   const toggle = featureToggles[key];
@@ -166,8 +192,8 @@ export function isFeatureActive(key: FeatureToggleKey): boolean {
   if (!toggle || toggle.enabled === false) return false;
 
   const today = new Date();
-  const from = toggle.from ? new Date(toggle.from) : null;
-  const to = toggle.to ? new Date(toggle.to) : null;
+  const from = toggle.from ? parseToggleDate(toggle.from) : null;
+  const to = toggle.to ? parseToggleDate(toggle.to) : null;
 
   if (from && today < from) return false;
   if (to && today > to) return false;
