@@ -162,17 +162,11 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
 // Tidssone for nettstedet – sett én gang, brukes for alle datoer uten eksplisitt tidssone
 const SITE_TIMEZONE = "Europe/Oslo";
 
-// Intern hjelper: finn UTC-offset-streng (f.eks. "+02:00") for en dato i gitt tidssone
-function getUtcOffsetStr(date: Date, timezone: string): string {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: timezone,
-    timeZoneName: "shortOffset",
-  }).formatToParts(date);
-  const tzName = parts.find((p) => p.type === "timeZoneName")?.value ?? "GMT";
-  const match = /GMT([+-])(\d+)(?::(\d+))?/.exec(tzName);
-  if (!match) return "+00:00";
-  const [, sign, h, m = "00"] = match;
-  return `${sign}${String(Number.parseInt(h)).padStart(2, "0")}:${m.padStart(2, "0")}`;
+// Intern hjelper: finn UTC-offset i minutter for en dato i gitt tidssone (håndterer sommertid/vintertid)
+function getTimezoneOffsetMinutes(date: Date, timezone: string): number {
+  const utcStr = date.toLocaleString("en-US", { timeZone: "UTC" });
+  const tzStr = date.toLocaleString("en-US", { timeZone: timezone });
+  return (new Date(tzStr).getTime() - new Date(utcStr).getTime()) / 60_000;
 }
 
 // Intern hjelper: tolker datostreng som lokal tid i SITE_TIMEZONE (håndterer sommertid/vintertid)
@@ -182,7 +176,12 @@ function parseToggleDate(dateStr: string): Date {
     return new Date(dateStr);
   }
   const approxUtc = new Date(dateStr + "Z");
-  return new Date(dateStr + getUtcOffsetStr(approxUtc, SITE_TIMEZONE));
+  const offsetMin = getTimezoneOffsetMinutes(approxUtc, SITE_TIMEZONE);
+  const sign = offsetMin >= 0 ? "+" : "-";
+  const absMin = Math.abs(offsetMin);
+  const h = String(Math.floor(absMin / 60)).padStart(2, "0");
+  const m = String(absMin % 60).padStart(2, "0");
+  return new Date(`${dateStr}${sign}${h}:${m}`);
 }
 
 // Hjelpefunksjon for å sjekke om en feature er aktiv
