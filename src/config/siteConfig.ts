@@ -71,7 +71,7 @@ export const featureToggles: Record<FeatureToggleKey, FeatureToggle> = {
   liveScroll: {
     enabled: true,
     // Oppdatert dato og tid for live scroll
-    from: "2026-04-25T09:55:00",
+    from: "2026-04-25T09:55:00+02:00",
     to: "2026-04-25T16:00:00",
     // Oppdatert URL for live scroll
     url: "https://live.eqtiming.com/80036#livescroll",
