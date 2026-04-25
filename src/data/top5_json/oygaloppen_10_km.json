@@ -52,6 +52,13 @@
       "År": 2024
     },
     {
+      "Navn": "Lasse Blom",
+      "Lag/Klubb": "Sømna IL",
+      "Tid": "00:33:59",
+      "Klasse": "M40-44",
+      "År": 2026
+    },
+    {
       "Navn": "Eirik Johansen",
       "Lag/Klubb": "Brønnøysund IL",
       "Tid": "00:34:32",
@@ -64,13 +71,6 @@
       "Tid": "00:34:41",
       "Klasse": "M40-44",
       "År": 2024
-    },
-    {
-      "Navn": "Eirik Johansen",
-      "Lag/Klubb": "Brønnøysund IL",
-      "Tid": "00:35:10",
-      "Klasse": "M18-19",
-      "År": 2017
     }
   ]
 }
